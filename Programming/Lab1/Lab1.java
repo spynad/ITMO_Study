@@ -17,7 +17,7 @@ public class Lab1 {
 
         for(int i = 0; i < 16; i++) {
             for(int j = 0; j < 11; j++) {
-                switch (b[i]) {
+                switch (a[i]) {
                     case 6:
                         b[i][j] = Math.exp(Math.cbrt(Math.atan(x[j] / 24)));
                         break;
@@ -29,7 +29,7 @@ public class Lab1 {
                         b[i][j] = Math.cos(Math.cos(Math.sin(Math.tan(x[j]))));
                         break;
                 }
-                System.out.println("%.4f", b[i][j]);
+                System.out.printf("%.4f%n", b[i][j]);
             }
         }
     }
