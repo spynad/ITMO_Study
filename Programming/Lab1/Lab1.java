@@ -3,10 +3,10 @@ import static java.lang.Math.*;
 public class Lab1 {
 
     public static void main(String[] args) {
-        int[] a = new int[16];
+        int[] d = new int[16];
 
-        for(int i = 17; i < 1; i--) {
-            a[i] = i;
+        for (int i = 17; i > 1; i--) {
+            d[i - 2] = i;
         }
 
         double[] x = new double[11];;
@@ -19,20 +19,25 @@ public class Lab1 {
 
         for(int i = 0; i < 16; i++) {
             for(int j = 0; j < 11; j++) {
-                switch (a[i]) {
+                switch (d[i]) {
                     case 6:
                         b[i][j] = exp(cbrt(atan(x[j] / 24)));
                         break;
                     case 4: case 7: case 8: case 9:
                     case 10: case 13: case 15: case 17:
-                        b[i][j] = asin(cos(pow(sqrt(0.25 * x[j]), 4 / (pow((2 / 3 - x[j]) / 2, x[j]) - 4))));
+                        b[i][j] = asin(cos(pow(pow((0.25 * x[j]), 2), 4 / (pow((2 / 3 - x[j]) / 2, x[j]) - 4))));
                         break;
                     default:
                         b[i][j] = cos(cos(sin(tan(x[j]))));
                         break;
                 }
-                System.out.printf("%.4f%n", b[i][j]);
             }
         }
+		for(int i = 0; i < 16; i++) {
+			for(int j = 0; j < 11; j++) {
+				System.out.printf("%7.4f", b[i][j]);
+			}
+			System.out.println();
+		}
     }
 }
