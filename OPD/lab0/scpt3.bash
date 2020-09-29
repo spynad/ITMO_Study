@@ -32,5 +32,5 @@ ln muk6 gigalith1/bunearymuk
 chmod u+w gigalith1
 ln muk6 gigalith1/bunearymuk
 chmod u-w gigalith1
-ln -s larvitar1 woobat4/geodudelarvitar
+ln -s ../larvitar1 woobat4/geodudelarvitar
 cd ~

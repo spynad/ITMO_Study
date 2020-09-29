@@ -9,10 +9,10 @@ public class Lab1 {
             d[i - 2] = i;
         }
 
-        double[] x = new double[11];;
+        double[] x = new double[11];
 
         for(int i = 0; i < x.length; i++) {
-            x[i] = -12 + random() * 24;
+            x[i] = -12 + random() * 25;
         }
 
         double[][] b = new double[16][11];
