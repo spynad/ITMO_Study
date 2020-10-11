@@ -21,4 +21,8 @@ class FocusBlast extends SpecialMove {
             pokemon.setMod(Stat.SPECIAL_DEFENSE, -1);
         }
     }
+	
+	protected String describe() {
+		 return "использует Focus Blast";
+	 }
 }

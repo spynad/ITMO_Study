@@ -20,6 +20,10 @@ class BulkUp extends StatusMove{
          p.setMod(Stat.ATTACK, 1);
          p.setMod(Stat.DEFENSE, 1);
      }
+	 
+	 protected String describe() {
+		 return "использует Bulk Up";
+	 }
 
 }
 
@@ -31,12 +35,20 @@ class Leer extends StatusMove {
     protected void applyOppEffects(Pokemon p) {
         p.setMod(Stat.DEFENSE, -1);
     }
+	
+	protected String describe() {
+		 return "использует Leer";
+	 }
 }
 
 class DoubleKick extends PhysicalMove {
     DoubleKick() {
         super(Type.FIGHTING, 30, 1.0, 0, 2);
     }
+	
+	protected String describe() {
+		 return "использует Double Kick";
+	 }
 }
 
 class Facade extends PhysicalMove {
@@ -52,4 +64,8 @@ class Facade extends PhysicalMove {
             power = 70;
         }
     }
+	
+	protected String describe() {
+		 return "использует Facade";
+	 }
 }

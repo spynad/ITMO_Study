@@ -18,4 +18,8 @@ class NastyPlot extends StatusMove {
     protected void applySelfEffects(Pokemon pokemon) {
         pokemon.setMod(Stat.SPECIAL_ATTACK, 2);
     }
+	
+	protected String describe() {
+		 return "использует Nasty Plot";
+	 }
 }

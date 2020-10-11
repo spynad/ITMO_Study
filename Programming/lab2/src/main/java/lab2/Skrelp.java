@@ -21,16 +21,28 @@ class WaterPulse extends SpecialMove {
             pokemon.confuse();
         }
     }
+	
+	protected String describe() {
+		 return "использует Water Pulse";
+	 }
 }
 
 class Tackle extends PhysicalMove {
     Tackle() {
         super(Type.NORMAL, 30, 1.0);
     }
+	
+	protected String describe() {
+		 return "использует Tackle";
+	 }
 }
 
 class DragonPulse extends SpecialMove {
     DragonPulse() {
         super(Type.DRAGON, 85, 1.0);
     }
+	
+	protected String describe() {
+		 return "использует Dragon Pulse";
+	 }
 }

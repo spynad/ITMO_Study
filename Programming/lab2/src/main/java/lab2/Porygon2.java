@@ -19,4 +19,8 @@ class DefenseCurl extends StatusMove {
     protected void applySelfEffects(Pokemon pokemon) {
         pokemon.setMod(Stat.DEFENSE, 1);
     }
+	
+	protected String describe() {
+		 return "использует Defense Curl";
+	 }
 }
