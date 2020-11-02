@@ -9,7 +9,7 @@ def task1():
         while nextLine:
             lines = lines + nextLine
             nextLine = input.readline()
-        result = re.findall(r'\w+(?= +[А-Я][.][А-Я][.])', lines)
+        result = re.findall(r'[А-Я]\w+(?= +[А-Я]\.[А-Я]\.$| +[А-Я]\.[А-Я]\.\s)', lines)
         result.sort()
         print("\nРезультаты")
         for v in result:
