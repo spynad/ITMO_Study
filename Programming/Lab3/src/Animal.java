@@ -3,5 +3,6 @@ public class Animal extends MulticellularOrganism {
         super(name);
         setPartsLocation(true);
         setDirection(Direction.HORIZONTAL);
+        setEvolutionStage(4);
     }
 }

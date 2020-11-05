@@ -1,4 +1,12 @@
 public enum Direction {
-    HORIZONTAL,
-    VERTICAL
+    HORIZONTAL {
+        public String toString() {
+            return "horizontal";
+        }
+    },
+    VERTICAL {
+        public String toString() {
+            return "vertical";
+        }
+    }
 }

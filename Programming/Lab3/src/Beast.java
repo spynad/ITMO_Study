@@ -5,8 +5,12 @@ public class Beast extends MulticellularOrganism{
     Beast(String name) {
         super(name);
         setPartsLocation(true);
+        setEvolutionStage(0);
     }
 
+    public boolean isCorruptState() {
+        return corruptState;
+    }
 
     public void setCorruptState(boolean corrupt) {
         corruptState = corrupt;

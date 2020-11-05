@@ -3,6 +3,7 @@ public class MulticellularOrganism extends Organism {
 
     MulticellularOrganism(String name) {
         super(name);
+        setEvolutionStage(2);
     }
 
     public Direction getDirection() {

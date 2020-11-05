@@ -1,4 +1,14 @@
 public enum Origin {
-    MARINE,
-    TERRESTRIAL
+    MARINE {
+        @Override
+        public String toString() {
+            return "marine";
+        }
+    },
+    TERRESTRIAL {
+        @Override
+        public String toString() {
+            return "terrestrial";
+        }
+    }
 }

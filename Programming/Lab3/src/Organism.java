@@ -3,6 +3,7 @@ public abstract class Organism {
     private Origin origin;
     private PlaceOfLiving pol;
     private boolean partsLocation;
+    private int EvolutionStage;
 
 
     Organism(String name, Origin origin, PlaceOfLiving pol) {
@@ -31,8 +32,16 @@ public abstract class Organism {
         return partsLocation;
     }
 
+    public int getEvolutionStage() {
+        return EvolutionStage;
+    }
+
     public void setPartsLocation(boolean p) {
         partsLocation = p;
+    }
+
+    protected void setEvolutionStage(int evolutionStage) {
+        EvolutionStage = evolutionStage;
     }
 
     public void changeOrigin(Origin o) {
