@@ -64,7 +64,7 @@ SCENE II.
 A camp near Forres. Alarum within.
 
 Enter Duncan, Malcolm, Donalbain, Lennox, with Attendants,
-meeting a bleeding Sergeant.
+meeting a bleeding Sergeant...
 
   DUNCAN. What bloody man is that? He can report,
     As seemeth by his plight, of the revolt

@@ -14,6 +14,7 @@ def task1():
         print("\nРезультаты")
         for v in result:
             print(v)
+        input.close()
 
 
 task1()
