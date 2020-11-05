@@ -33,7 +33,15 @@ public class Lab3 {
         Human Dyer = new Human("Dyer");
         Human Pebody = new Human("Pebody");
 
-        
+        Book book = new Book("Necronomicon");
+
+        Dyer.read(book);
+        Pebody.read(book);
+
+        Picture pic = new Picture("Picture", "Clark Ashton Smith");
+
+        Dyer.lookAt(pic);
+        Pebody.lookAt(pic);
 
     }
 }
