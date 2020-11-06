@@ -5,4 +5,12 @@ public class Animal extends MulticellularOrganism {
         setDirection(Direction.HORIZONTAL);
         setEvolutionStage(4);
     }
+
+    @Override
+    public String toString() {
+        return getName() + " is "
+                + "Origin: " + getOrigin().toString()
+                + "Place of living: " + getPol().toString()
+                + "Direction: " + getDirection().toString();
+    }
 }

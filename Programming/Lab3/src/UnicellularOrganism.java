@@ -4,4 +4,10 @@ public class UnicellularOrganism extends Organism {
         setEvolutionStage(1);
     }
 
+    @Override
+    public String toString() {
+        return "Unicellular Organism. " + getName() + ". "
+                + "Origin: " + getOrigin().toString()
+                + "Place of living: " + getPol().toString();
+    }
 }

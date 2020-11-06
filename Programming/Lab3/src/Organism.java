@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public abstract class Organism {
     private String name;
     private Origin origin;
@@ -51,8 +53,23 @@ public abstract class Organism {
 
     public void changePol(PlaceOfLiving pol) {
         this.pol = pol;
-        System.out.println("Organism's place of living is now " + this.pol.toString());
+        System.out.println(name + "'s place of living is now " + this.pol.toString());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organism organism = (Organism) o;
+        return partsLocation == organism.partsLocation &&
+                EvolutionStage == organism.EvolutionStage &&
+                Objects.equals(name, organism.name) &&
+                origin == organism.origin &&
+                pol == organism.pol;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, origin, pol, partsLocation, EvolutionStage);
+    }
 }

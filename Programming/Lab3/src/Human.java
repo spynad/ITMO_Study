@@ -12,4 +12,13 @@ public class Human extends Animal implements Readable, Showable {
     public void lookAt(Picture pic) {
         System.out.println(getName() + " is looking at picture: " + pic.lookAt());
     }
+
+    @Override
+    public String toString() {
+        return "Human. " + getName() + ". "
+                + "Origin: " + getOrigin().toString()
+                + "Place of living: " + getPol().toString()
+                + "Direction: " + getDirection().toString();
+    }
+
 }

@@ -3,12 +3,15 @@ public class Wing extends Part {
         super(name);
     }
 
-    public static void use(String action) {
+    public void use(String action) {
         if (action == "swim")
             System.out.println("The beast is swimming!");
         else if (action == "fly")
             System.out.println("The beast is flying!");
     }
 
+    @Override
+    public String toString() {
+        return "Wing. " + getName() + ".";
+    }
 }
-//usable

@@ -13,7 +13,7 @@ public class Lab3 {
             System.out.println("The beasts are of marine origin.");
         } else {
             beastOrigin = Origin.TERRESTRIAL;
-            System.out.println("The beasts are of TERRESTRIAL origin.");
+            System.out.println("The beasts are of terrestrial origin.");
         }
         for (int i = 0; i < beasts.length; i++) {
             beasts[i] = new Beast("Beast" + i);
@@ -42,6 +42,12 @@ public class Lab3 {
 
         Dyer.lookAt(pic);
         Pebody.lookAt(pic);
+
+        Elder elder = new Elder();
+
+        narrator.talkAbout(elder);
+        narrator.remember("Acolytes of Cthulhu");
+
 
     }
 }
