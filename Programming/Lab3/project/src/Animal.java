@@ -8,9 +8,9 @@ public class Animal extends MulticellularOrganism {
 
     @Override
     public String toString() {
-        return getName() + " is "
-                + "Origin: " + getOrigin().toString()
-                + "Place of living: " + getPol().toString()
-                + "Direction: " + getDirection().toString();
+        return "Animal. " + getName() + ". "
+                + " Origin: " + getOrigin().toString()
+                + " Place of living: " + getPol().toString()
+                + " Direction: " + getDirection().toString();
     }
 }

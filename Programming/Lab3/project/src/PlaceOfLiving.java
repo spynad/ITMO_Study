@@ -10,5 +10,11 @@ public enum PlaceOfLiving {
         public String toString() {
             return "non-Antarctica";
         }
+    },
+    UNKNOWN {
+        @Override
+        public String toString() {
+            return "unknown";
+        }
     }
 }

@@ -8,8 +8,8 @@ public class Plant extends MulticellularOrganism {
     @Override
     public String toString() {
         return "Plant. " + getName() + ". "
-                + "Origin: " + getOrigin().toString()
-                + "Place of living: " + getPol().toString()
-                + "Direction: " + getDirection().toString();
+                + " Origin: " + getOrigin().toString()
+                + " Place of living: " + getPol().toString()
+                + " Direction: " + getDirection().toString();
     }
 }

@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class MulticellularOrganism extends Organism {
-    private Direction direction;
+    private Direction direction = Direction.UNKNOWN;
 
     MulticellularOrganism(String name) {
         super(name);
@@ -32,6 +32,6 @@ public class MulticellularOrganism extends Organism {
 
     @Override
     public String toString() {
-        return getName() + ". " + "Direction: " + direction.toString();
+        return "Multicellular Organism. " + getName() + ". " + "Direction: " + direction.toString();
     }
 }

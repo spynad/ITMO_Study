@@ -16,9 +16,9 @@ public class Human extends Animal implements Readable, Showable {
     @Override
     public String toString() {
         return "Human. " + getName() + ". "
-                + "Origin: " + getOrigin().toString()
-                + "Place of living: " + getPol().toString()
-                + "Direction: " + getDirection().toString();
+                + " Origin: " + getOrigin().toString()
+                + " Place of living: " + getPol().toString()
+                + " Direction: " + getDirection().toString();
     }
 
 }

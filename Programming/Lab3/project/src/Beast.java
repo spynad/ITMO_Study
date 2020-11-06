@@ -17,7 +17,7 @@ public class Beast extends MulticellularOrganism{
 
     public void setCorruptState(boolean corrupt) {
         corruptState = corrupt;
-        System.out.println("The beast is now corrupted.");
+        System.out.println(getName() + " is now corrupted.");
     }
 
     public void fly() {
@@ -49,9 +49,9 @@ public class Beast extends MulticellularOrganism{
             corrupt = "corrupted";
         else
             corrupt = "uncorrupted";
-        return getName() + " is " + corrupt
-                + "Origin: " + getOrigin().toString()
-                + "Place of living: " + getPol().toString()
-                + "Direction: " + getDirection().toString();
+        return getName() + " is " + corrupt + " "
+                + " Origin: " + getOrigin().toString()
+                + " Place of living: " + getPol().toString()
+                + " Direction: " + getDirection().toString();
     }
 }

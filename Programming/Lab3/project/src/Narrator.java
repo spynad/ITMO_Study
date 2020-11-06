@@ -3,12 +3,7 @@ public class Narrator extends Human{
         super(name);
     }
 
-    //TODO: срочно пересмотреть этот метод, мне он не нравится
-    public void thinkAboutBeastOrigin (Beast beast,
-                                       UnicellularOrganism org1,
-                                       MulticellularOrganism org2,
-                                       Plant plant,
-                                       Animal animal) {
+    public void thinkAboutBeastOrigin (Beast beast, UnicellularOrganism org1) {
         if (beast.getEvolutionStage() < org1.getEvolutionStage()) {
             System.out.println("Narrator is confused! Beasts is on evolution stage "
                     + beast.getEvolutionStage() + " while unicellular organism is on"
@@ -23,10 +18,10 @@ public class Narrator extends Human{
     public Beast[] compareAncientWithBeasts(Beast[] beasts) {
         for (int i = 0; i < beasts.length; i++) {
             if (beasts[i].isCorruptState()) {
-                System.out.println("Beast" + i + " is corrupted. Narrator cannot compare it.");
+                System.out.println("Beast " + beasts[i].getName() + " is corrupted. Narrator cannot compare it.");
             }
             else {
-                System.out.println("Narrator have found an uncorrupted beast." +
+                System.out.println("Narrator have found an uncorrupted beast. " +
                         "The narrator assumes that they once lived outside Antarctica.");
                 for (int j = 0; j < beasts.length; j++) {
                     beasts[j].changePol(PlaceOfLiving.NON_ANTARCTICA);

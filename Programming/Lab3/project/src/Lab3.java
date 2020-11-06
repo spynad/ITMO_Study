@@ -2,9 +2,6 @@ public class Lab3 {
     public static void main(String[] args) {
         Beast[] beasts = new Beast[5];
         Narrator narrator = new Narrator("Narrator");
-        Animal animal = new Animal("Animal");
-        Plant plant = new Plant("Plant");
-        MulticellularOrganism org1 = new MulticellularOrganism("org1");
         UnicellularOrganism org2 = new UnicellularOrganism("org2");
         Origin beastOrigin;
 
@@ -20,7 +17,7 @@ public class Lab3 {
             beasts[i].changeOrigin(beastOrigin);
         }
 
-        narrator.thinkAboutBeastOrigin(beasts[0], org2, org1, plant, animal);
+        narrator.thinkAboutBeastOrigin(beasts[0], org2);
 
         for (int i = 0; i < beasts.length; i++) {
             if (Math.random() > 0.5) {

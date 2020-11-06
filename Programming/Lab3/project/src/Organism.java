@@ -2,8 +2,8 @@ import java.util.Objects;
 
 public abstract class Organism {
     private String name;
-    private Origin origin;
-    private PlaceOfLiving pol;
+    private Origin origin = Origin.UNKNOWN;
+    private PlaceOfLiving pol = PlaceOfLiving.UNKNOWN;
     private boolean partsLocation;
     private int EvolutionStage;
 

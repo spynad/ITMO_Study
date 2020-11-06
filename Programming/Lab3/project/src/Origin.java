@@ -10,5 +10,11 @@ public enum Origin {
         public String toString() {
             return "terrestrial";
         }
+    },
+    UNKNOWN {
+        @Override
+        public String toString() {
+            return "unknown";
+        }
     }
 }
