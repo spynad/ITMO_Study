@@ -1,14 +1,16 @@
-public class Human extends Animal implements Readable, Showable {
+public class Human extends Animal implements Readable, ILookAt {
     Human(String name) {
         super(name);
         setPartsLocation(true);
         setEvolutionStage(5);
     }
 
+    @Override
     public void read(Book book) {
         System.out.println(getName() + " is reading a book: " + book.read());
     }
 
+    @Override
     public void lookAt(Picture pic) {
         System.out.println(getName() + " is looking at picture: " + pic.lookAt());
     }
