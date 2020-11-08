@@ -12,7 +12,7 @@ public class Application {
         Picture pic = ctx.getBean(Picture.class);
         Elder elder = ctx.getBean(Elder.class);
 
-        
+
 
         narrator.thinkAboutBeastOrigin(beasts[0], org1);
 

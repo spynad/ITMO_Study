@@ -16,7 +16,7 @@ public class ApplicationConfiguration {
             System.out.println("The beasts are of terrestrial origin.");
         }
         for (int i = 0; i < beasts.length; i++) {
-            beasts[i] = new Beast("Beast" + i);
+            beasts[i] = new Beast("Beast" + i, wing());
             beasts[i].changeOrigin(beastOrigin);
         }
 
@@ -64,6 +64,11 @@ public class ApplicationConfiguration {
         humans[0] = dyer();
         humans[1] = pebody();
         return humans;
+    }
+
+    @Bean
+    public Wing wing() {
+        return new Wing("Wing");
     }
 
 }

@@ -2,10 +2,11 @@ import java.util.Objects;
 
 public class Beast extends MulticellularOrganism{
     private boolean corruptState;
-    private final Wing wing = new Wing("Wing");
+    private IPart wing;
 
-    Beast(String name) {
+    Beast(String name, IPart wing) {
         super(name);
+        this.wing = wing;
         setPartsLocation(true);
         setEvolutionStage(0);
         changePol(PlaceOfLiving.ANTARCTICA);
