@@ -1,4 +1,4 @@
-public class Narrator extends Human{
+public final class Narrator extends Human{
     Narrator(String name) {
         super(name);
     }

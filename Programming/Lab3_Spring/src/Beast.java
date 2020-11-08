@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Beast extends MulticellularOrganism{
+public final class Beast extends MulticellularOrganism{
     private boolean corruptState;
     private IPart wing;
 

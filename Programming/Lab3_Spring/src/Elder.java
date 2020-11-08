@@ -1,4 +1,4 @@
-public class Elder extends AncientStar {
+public final class Elder extends AncientStar {
 
     @Override
     public String toString() {

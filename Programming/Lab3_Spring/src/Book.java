@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Book{
+public final class Book{
     String name;
 
     Book(String name) {

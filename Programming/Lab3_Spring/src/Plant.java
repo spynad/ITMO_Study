@@ -1,4 +1,4 @@
-public class Plant extends MulticellularOrganism {
+public final class Plant extends MulticellularOrganism {
     Plant(String name) {
         super(name);
         setDirection(Direction.VERTICAL);

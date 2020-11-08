@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Picture {
+public final class Picture {
     private String name;
     private String author;
 

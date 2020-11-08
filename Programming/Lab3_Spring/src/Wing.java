@@ -1,4 +1,4 @@
-public class Wing extends Part implements IPart {
+public final class Wing extends Part implements IPart {
     Wing(String name) {
         super(name);
     }
