@@ -45,7 +45,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public Picture pic() {
-        return new Picture("Picture", "Clark Ashton Smith");
+        return new Picture("Picture", "Clark Ashton Smith", "Scary");
     }
 
     @Bean
@@ -55,7 +55,17 @@ public class ApplicationConfiguration {
 
     @Bean
     public Elder elder() {
-        return new Elder();
+        return new Elder("elder");
+    }
+
+    @Bean
+    public Mind mind() {
+        return new Mind();
+    }
+
+    @Bean
+    public AncientStar ancientStar() {
+        return new AncientStar("star", true, Origin.MARINE, false);
     }
 
     @Bean

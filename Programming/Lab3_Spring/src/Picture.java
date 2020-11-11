@@ -3,10 +3,12 @@ import java.util.Objects;
 public final class Picture {
     private String name;
     private String author;
+    private String bookDesc;
 
-    Picture(String name, String author) {
+    Picture(String name, String author, String bookDesc) {
         this.name = name;
         this.author = author;
+        this.bookDesc = bookDesc;
     }
 
     public String lookAt() {

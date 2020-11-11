@@ -1,7 +1,46 @@
 import java.util.Objects;
 
 public class AncientStar {
-    String name;
+    private String name;
+    private boolean isTropical;
+    private Origin origin = Origin.UNKNOWN;
+    private boolean modernity;
+    private boolean fantasticalTransformed;
+
+    AncientStar(String name, boolean isTropical, Origin origin, boolean modernity) {
+        this.name = name;
+        this.isTropical = isTropical;
+        this.origin = origin;
+        this.modernity = modernity;
+    }
+
+    AncientStar(String name) {
+        this.name = name;
+    }
+
+    public void setFantasticalTransformed(Boolean bool) {
+        fantasticalTransformed = bool;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isTropical() {
+        return isTropical;
+    }
+
+    public boolean isModernity() {
+        return modernity;
+    }
+
+    public boolean isFantasticalTransformed() {
+        return fantasticalTransformed;
+    }
+
+    public Origin getOrigin() {
+        return origin;
+    }
 
     @Override
     public boolean equals(Object o) {

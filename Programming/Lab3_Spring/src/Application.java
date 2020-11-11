@@ -10,9 +10,9 @@ public class Application {
         Human[] humans = ctx.getBean(Human[].class);
         Book book = ctx.getBean(Book.class);
         Picture pic = ctx.getBean(Picture.class);
-        Elder elder = ctx.getBean(Elder.class);
-
-
+        Elder elder = ctx.getBean("elder", Elder.class);
+        Mind mind  = ctx.getBean(Mind.class);
+        AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
 
         narrator.thinkAboutBeastOrigin(beasts[0], org1);
 
@@ -31,8 +31,10 @@ public class Application {
         humans[0].lookAt(pic);
         humans[1].lookAt(pic);
 
-
         narrator.talkAbout(elder);
+        mind.setHurted(true);
+
+        mind.transformFantastically(ancientStar);
         narrator.remember("Acolytes of Cthulhu");
     }
 
