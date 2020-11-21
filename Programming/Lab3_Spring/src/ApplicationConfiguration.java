@@ -44,6 +44,11 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    public Human wilmart() {
+        return new Human("Wilmart");
+    }
+
+    @Bean
     public Picture pic() {
         return new Picture("Picture", "Clark Ashton Smith", "Scary");
     }
@@ -70,9 +75,10 @@ public class ApplicationConfiguration {
 
     @Bean
     public Human[] humans() {
-        Human[] humans = new Human[2];
+        Human[] humans = new Human[3];
         humans[0] = dyer();
         humans[1] = pebody();
+        humans[2] = wilmart();
         return humans;
     }
 
@@ -80,5 +86,11 @@ public class ApplicationConfiguration {
     public Wing wing() {
         return new Wing("Wing");
     }
+
+    @Bean
+    public Creature creature() {
+        return new Creature("Creature");
+    }
+
 
 }

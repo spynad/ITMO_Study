@@ -28,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,15 +69,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -100,6 +98,8 @@
       <workItem from="1604868449128" duration="182000" />
       <workItem from="1604894945044" duration="758000" />
       <workItem from="1604936652668" duration="1414000" />
+      <workItem from="1605449644999" duration="7000" />
+      <workItem from="1605957567015" duration="2141000" />
     </task>
     <servers />
   </component>
@@ -131,21 +131,25 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="689" y="402" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1604858133708" />
-    <state width="1877" height="362" key="GridCell.Tab.0.bottom" timestamp="1604946197955">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1877" height="411" key="GridCell.Tab.0.bottom" timestamp="1605959885610">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="362" key="GridCell.Tab.0.center" timestamp="1604946197955">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1877" height="411" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
+    <state width="1877" height="411" key="GridCell.Tab.0.center" timestamp="1605959885610">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="362" key="GridCell.Tab.0.left" timestamp="1604946197955">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1877" height="411" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
+    <state width="1877" height="411" key="GridCell.Tab.0.left" timestamp="1605959885610">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="362" key="GridCell.Tab.0.right" timestamp="1604946197955">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1877" height="411" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
+    <state width="1877" height="411" key="GridCell.Tab.0.right" timestamp="1605959885610">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
+    <state width="1877" height="411" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
   </component>
 </project>

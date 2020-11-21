@@ -13,6 +13,7 @@ public class Application {
         Elder elder = ctx.getBean("elder", Elder.class);
         Mind mind  = ctx.getBean(Mind.class);
         AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
+        Creature creature = ctx.getBean(Creature.class);
 
         narrator.thinkAboutBeastOrigin(beasts[0], org1);
 
@@ -35,6 +36,9 @@ public class Application {
         mind.setHurted(true);
 
         mind.transformFantastically(ancientStar);
+
+        creature.setFromPrehistoricFolk(true);
+        humans[2].writeAbout(creature);
         narrator.remember("Acolytes of Cthulhu");
     }
 

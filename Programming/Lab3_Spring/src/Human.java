@@ -23,4 +23,8 @@ public class Human extends Animal implements Readable, ILookAt {
                 + " Direction: " + getDirection().toString();
     }
 
+    public void writeAbout(Object object) {
+        System.out.println(getName() + " is writing about " + object.toString());
+    }
+
 }
