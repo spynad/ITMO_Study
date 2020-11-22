@@ -1,4 +1,4 @@
-public class Creature extends MulticellularOrganism {
+public final class Creature extends MulticellularOrganism {
     private boolean isFromPrehistoricFolk;
 
     Creature(String name) {

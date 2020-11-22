@@ -53,6 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -69,13 +70,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -100,6 +103,7 @@
       <workItem from="1604936652668" duration="1414000" />
       <workItem from="1605449644999" duration="7000" />
       <workItem from="1605957567015" duration="2141000" />
+      <workItem from="1606052497000" duration="2719000" />
     </task>
     <servers />
   </component>
@@ -131,25 +135,33 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="689" y="402" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1604858133708" />
-    <state width="1877" height="411" key="GridCell.Tab.0.bottom" timestamp="1605959885610">
+    <state x="704" y="168" key="Diagram.Print.Preview.Dialog" timestamp="1606058964669">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="704" y="168" key="Diagram.Print.Preview.Dialog/0.0.1920.1170@0.0.1920.1170" timestamp="1606058964669" />
+    <state x="740" y="311" key="FileChooserDialogImpl" timestamp="1606058960794">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="740" y="311" key="FileChooserDialogImpl/0.0.1920.1170@0.0.1920.1170" timestamp="1606058960794" />
+    <state width="1877" height="401" key="GridCell.Tab.0.bottom" timestamp="1606058843961">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="411" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
-    <state width="1877" height="411" key="GridCell.Tab.0.center" timestamp="1605959885610">
+    <state width="1877" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
+    <state width="1877" height="401" key="GridCell.Tab.0.center" timestamp="1606058843961">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="411" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
-    <state width="1877" height="411" key="GridCell.Tab.0.left" timestamp="1605959885610">
+    <state width="1877" height="401" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
+    <state width="1877" height="401" key="GridCell.Tab.0.left" timestamp="1606058843961">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="411" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
-    <state width="1877" height="411" key="GridCell.Tab.0.right" timestamp="1605959885610">
+    <state width="1877" height="401" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
+    <state width="1877" height="401" key="GridCell.Tab.0.right" timestamp="1606058843961">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="411" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1605959885610" />
+    <state width="1877" height="401" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
   </component>
 </project>

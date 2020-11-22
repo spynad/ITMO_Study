@@ -1,5 +1,5 @@
 public class Mind {
-    private boolean hurted;
+    private boolean hurt;
 
     public AncientStar transformFantastically(AncientStar star){
         String modernity, org, hurt;
@@ -15,7 +15,7 @@ public class Mind {
             org = "Non-tropical";
         }
 
-        if(hurted) {
+        if(this.hurt) {
             hurt = "Painful";
         } else {
             hurt = "Non-painful";
@@ -28,7 +28,7 @@ public class Mind {
         return star;
     }
 
-    public void setHurted(boolean hurted) {
-        this.hurted = hurted;
+    public void setHurt(boolean hurt) {
+        this.hurt = hurt;
     }
 }

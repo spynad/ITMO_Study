@@ -33,7 +33,7 @@ public class Application {
         humans[1].lookAt(pic);
 
         narrator.talkAbout(elder);
-        mind.setHurted(true);
+        mind.setHurt(true);
 
         mind.transformFantastically(ancientStar);
 
