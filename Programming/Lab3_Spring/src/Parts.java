@@ -1,3 +1,3 @@
-public interface IPart {
+public interface Parts {
     void use(String action);
 }

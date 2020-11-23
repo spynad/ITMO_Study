@@ -1,4 +1,4 @@
-public class Human extends Animal implements Readable, ILookAt {
+public class Human extends Animal implements Readable, LookAt {
     Human(String name) {
         super(name);
         setPartsLocation(true);

@@ -1,3 +1,3 @@
-public interface ILookAt {
+public interface LookAt {
     void lookAt(Picture pic);
 }
