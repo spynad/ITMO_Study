@@ -5,9 +5,9 @@ public final class Wing extends Part implements Parts {
 
     @Override
     public void use(String action) {
-        if (action == "swim")
+        if (action.equals("swim"))
             System.out.println("The beast is swimming!");
-        else if (action == "fly")
+        else if (action.equals("fly"))
             System.out.println("The beast is flying!");
     }
 

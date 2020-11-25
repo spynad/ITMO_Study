@@ -23,9 +23,10 @@ public class Application {
             }
         }
 
+        
         beasts = narrator.compareAncientWithBeasts(beasts);
 
-        //human[0] - Dyer; human[1] - Pebody
+        //human[0] - Dyer; human[1] - Pebody, human[2] - Wilmart
         humans[0].read(book);
         humans[1].read(book);
 
