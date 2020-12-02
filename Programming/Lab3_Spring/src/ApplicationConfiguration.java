@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfiguration {
 
     @Bean
-    public Beast[] beasts() {
-        Beast[] beasts = new Beast[5];
+    public Elder[] beasts() {
+        Elder[] elders = new Elder[5];
         Origin beastOrigin;
         if(Math.random() > 0.2) {
             beastOrigin = Origin.MARINE;
@@ -15,12 +15,12 @@ public class ApplicationConfiguration {
             beastOrigin = Origin.TERRESTRIAL;
             System.out.println("The beasts are of terrestrial origin.");
         }
-        for (int i = 0; i < beasts.length; i++) {
-            beasts[i] = new Beast("Beast" + i, wing());
-            beasts[i].changeOrigin(beastOrigin);
+        for (int i = 0; i < elders.length; i++) {
+            elders[i] = new Elder("Beast" + i, wing());
+            elders[i].changeOrigin(beastOrigin);
         }
 
-        return beasts;
+        return elders;
     }
 
     @Bean
@@ -59,8 +59,8 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public Elder elder() {
-        return new Elder("elder");
+    public ElderLegacy elder() {
+        return new ElderLegacy("elder");
     }
 
     @Bean

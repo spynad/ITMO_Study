@@ -2,6 +2,7 @@ import java.util.Objects;
 
 public abstract class Part {
     private String name;
+    private PartLocation partLocation;
 
     Part(String name) {
         this.name = name;
@@ -9,6 +10,14 @@ public abstract class Part {
 
     public String getName() {
         return name;
+    }
+
+    public PartLocation getPartLocation() {
+        return partLocation;
+    }
+
+    public void setPartLocation(PartLocation partLocation) {
+        this.partLocation = partLocation;
     }
 
     @Override

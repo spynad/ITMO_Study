@@ -4,27 +4,27 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Application {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-        Beast[] beasts = ctx.getBean(Beast[].class);
+        Elder[] elders = ctx.getBean(Elder[].class);
         Narrator narrator = ctx.getBean(Narrator.class);
         UnicellularOrganism org1 = ctx.getBean(UnicellularOrganism.class);
         Human[] humans = ctx.getBean(Human[].class);
         Book book = ctx.getBean(Book.class);
         Picture pic = ctx.getBean(Picture.class);
-        Elder elder = ctx.getBean("elder", Elder.class);
+        ElderLegacy elderLegacy = ctx.getBean("elder", ElderLegacy.class);
         Mind mind  = ctx.getBean(Mind.class);
         AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
         Creature creature = ctx.getBean(Creature.class);
 
-        narrator.thinkAboutBeastOrigin(beasts[0], org1);
+        narrator.thinkAboutElderOrigin(elders[0], org1);
 
-        for (int i = 0; i < beasts.length; i++) {
+        for (int i = 0; i < elders.length; i++) {
             if (Math.random() > 0.5) {
-                beasts[i].setCorruptState(true);
+                elders[i].setCorruptState(true);
             }
         }
 
         
-        beasts = narrator.compareAncientWithBeasts(beasts);
+        elders = narrator.compareAncientWithElders(elders);
 
         //human[0] - Dyer; human[1] - Pebody, human[2] - Wilmart
         humans[0].read(book);
@@ -33,7 +33,7 @@ public class Application {
         humans[0].lookAt(pic);
         humans[1].lookAt(pic);
 
-        narrator.talkAbout(elder);
+        narrator.talkAbout(elderLegacy);
         mind.setHurt(true);
 
         mind.transformFantastically(ancientStar);

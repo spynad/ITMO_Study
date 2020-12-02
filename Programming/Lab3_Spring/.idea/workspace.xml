@@ -30,6 +30,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -60,6 +61,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunManager">
@@ -70,13 +74,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,6 +110,7 @@
       <workItem from="1606052497000" duration="3330000" />
       <workItem from="1606107384885" duration="129000" />
       <workItem from="1606110038399" duration="4104000" />
+      <workItem from="1606834249337" duration="4895000" />
     </task>
     <servers />
   </component>
@@ -123,6 +130,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="440" y="159" key="#Project_Structure" timestamp="1606842427137">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="440" y="159" key="#Project_Structure/0.0.1920.1170@0.0.1920.1170" timestamp="1606842427137" />
     <state x="722" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1604857823610">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -131,6 +142,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="588" y="214" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604850788383" />
+    <state x="505" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606834895923">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="505" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1170@0.0.1920.1170" timestamp="1606834895923" />
     <state x="689" y="402" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604858133708">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -143,25 +158,29 @@
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state x="740" y="311" key="FileChooserDialogImpl/0.0.1920.1170@0.0.1920.1170" timestamp="1606058960794" />
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom" timestamp="1606058843961">
+    <state width="1877" height="451" key="GridCell.Tab.0.bottom" timestamp="1606834905393">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
-    <state width="1877" height="401" key="GridCell.Tab.0.center" timestamp="1606058843961">
+    <state width="1877" height="451" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1606834905393" />
+    <state width="1877" height="451" key="GridCell.Tab.0.center" timestamp="1606834905393">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="401" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
-    <state width="1877" height="401" key="GridCell.Tab.0.left" timestamp="1606058843961">
+    <state width="1877" height="451" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1606834905393" />
+    <state width="1877" height="451" key="GridCell.Tab.0.left" timestamp="1606834905393">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="401" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
-    <state width="1877" height="401" key="GridCell.Tab.0.right" timestamp="1606058843961">
+    <state width="1877" height="451" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1606834905393" />
+    <state width="1877" height="451" key="GridCell.Tab.0.right" timestamp="1606834905393">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="362" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1604946197955" />
-    <state width="1877" height="401" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1606058843961" />
+    <state width="1877" height="451" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1606834905393" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1606843368580">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.0.1920.1170@0.0.1920.1170" timestamp="1606843368580" />
   </component>
 </project>
