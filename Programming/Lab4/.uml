@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1310.0" y="1425.0">Origin</node>
+    <node x="85.5" y="1641.0">Wing</node>
+    <node x="481.0" y="773.0">Creature</node>
+    <node x="620.25" y="480.0">MulticellularOrganism</node>
+    <node x="1154.0" y="0.0">AncientStar</node>
+    <node x="1084.0" y="1425.0">Direction</node>
+    <node x="976.0" y="806.5">Plant</node>
+    <node x="1232.0" y="436.0">Elder</node>
+    <node x="1521.0" y="1425.0">Mind</node>
+    <node x="616.0" y="1425.0">Book</node>
+    <node x="369.0" y="1425.0">Picture</node>
+    <node x="1488.0" y="0.0">ApplicationConfiguration</node>
+    <node x="142.0" y="1022.0">Human</node>
+    <node x="711.75" y="0.0">Organism</node>
+    <node x="856.25" y="535.5">UnicellularOrganism</node>
+    <node x="748.0" y="718.0">Beast</node>
+    <node x="152.0" y="1425.0">Part</node>
+    <node x="328.0" y="806.5">Animal</node>
+    <node x="0.0" y="1481.0">IPart</node>
+    <node x="0.0" y="818.0">Readable</node>
+    <node x="153.0" y="818.0">ILookAt</node>
+    <node x="0.0" y="1785.0">Application</node>
+    <node x="57.5" y="1215.0">Narrator</node>
+    <node x="833.0" y="1425.0">PlaceOfLiving</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="MulticellularOrganism" target="Organism">
+      <point x="0.0" y="-94.0" />
+      <point x="728.25" y="455.0" />
+      <point x="777.0" y="455.0" />
+      <point x="-65.25" y="215.0" />
+    </edge>
+    <edge source="Human" target="Animal">
+      <point x="59.0" y="-71.5" />
+      <point x="289.5" y="997.0" />
+      <point x="394.5" y="997.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="Human" target="ILookAt">
+      <point x="0.0" y="-71.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="Elder" target="AncientStar">
+      <point x="0.0" y="-38.5" />
+      <point x="0.0" y="193.0" />
+    </edge>
+    <edge source="Human" target="Readable">
+      <point x="-59.0" y="-71.5" />
+      <point x="171.5" y="997.0" />
+      <point x="66.5" y="997.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="Wing" target="Part">
+      <point x="33.25" y="-49.5" />
+      <point x="185.25" y="1616.0" />
+      <point x="238.0" y="1616.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="Beast" target="MulticellularOrganism">
+      <point x="0.0" y="-127.0" />
+      <point x="852.0" y="698.0" />
+      <point x="755.25" y="698.0" />
+      <point x="27.0" y="94.0" />
+    </edge>
+    <edge source="Narrator" target="Human">
+      <point x="0.0" y="-82.5" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="Wing" target="IPart">
+      <point x="-33.25" y="-49.5" />
+      <point x="118.75" y="1616.0" />
+      <point x="66.0" y="1616.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="UnicellularOrganism" target="Organism">
+      <point x="0.0" y="-38.5" />
+      <point x="956.25" y="455.0" />
+      <point x="907.5" y="455.0" />
+      <point x="65.25" y="215.0" />
+    </edge>
+    <edge source="Plant" target="MulticellularOrganism">
+      <point x="0.0" y="-38.5" />
+      <point x="1042.5" y="688.0" />
+      <point x="809.25" y="688.0" />
+      <point x="81.0" y="94.0" />
+    </edge>
+    <edge source="Creature" target="MulticellularOrganism">
+      <point x="0.0" y="-72.0" />
+      <point x="604.5" y="698.0" />
+      <point x="701.25" y="698.0" />
+      <point x="-27.0" y="94.0" />
+    </edge>
+    <edge source="Animal" target="MulticellularOrganism">
+      <point x="0.0" y="-38.5" />
+      <point x="394.5" y="688.0" />
+      <point x="647.25" y="688.0" />
+      <point x="-81.0" y="94.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.602051282051282" x="432.5" y="1353.975298126065" />
+  <SelectedNodes>
+    <node>Organism</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>Project Files</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
