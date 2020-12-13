@@ -1,13 +1,11 @@
 \newpage
-\begin{multicols}{2}
-	\setlength{\abovecaptionskip}{-2pt}
-	\setlength{\belowcaptionskip}{-7pt} 
+\begin{multicols*}{2}
     \noindent
     экспоненту:
-    \begin{align}
-    	\label{eq:2}
-    	1-\frac{T_{0}-T(t)}{T_{0}-T_{\infty}} = exp(-\frac{t}{\tau}).
-    \end{align}
+
+	\begin{myequation}\label{myeq:one}
+		1-\frac{T_{0}-T(t)}{T_{0}-T_{\infty}} = exp(-\frac{t}{\tau}).	
+	\end{myequation}
     
     \noindent
     Качественный вид зависимости температуры от времени дан на рисунке 2.
@@ -19,29 +17,27 @@
     		времени t = $\tau$ (времени релаксации)}
     \end{figure}
 
-    Что же получается: температура T, входящая в показатель экспоненты (1), сама экспоненциально зависит от времени! Подставив (2) в (1), найдем выражение для скорости экстракции кофе, пропорциональное функции
-    \begin{align}
-    	\label{eq:3}
+    Что же получается: температура T, входящая в показатель экспоненты (1), сама экспоненциально зависит от времени! Подставив (\ref{myeq:one}) в (1), найдем выражение для скорости экстракции кофе, пропорциональное функции
+    \begin{myequation}\label{myeq:two}
     	exp\left[-\frac{Q}{kT_0}\frac{1+a}{1+a exp(-\frac{t}{\tau})}\right].
-    \end{align}
+    \end{myequation}
 	\noindent
     где a = $\frac{T_0 - T_\infty}{T_\infty} = \frac{\delta T_0}{T_\infty}$ - начальный перегрев,
     отнесенный к температуре в окружающем пространстве.
     
     Более того, если заваривать кофе "при нормальных условиях" (как говорят настоящие физики) - температуре 
     0\degree C и давлении в одну атмосферу, то отношение $a = \frac{\delta T_0}{T_\infty} = \frac{100 K}{273,15 K} \approx
-    \frac{1}{e}$ и выражение (3) можно назвать трижды экспоненциальным:
-    \begin{align}
-    	\label{eq:4}
+    \frac{1}{e}$ и выражение ((\ref{myeq:two})) можно назвать трижды экспоненциальным:
+    \begin{myequation}\label{myeq:three}
     	exp\left[-\frac{Q}{kT_0}\frac{exp1+a}{exp1+exp(-t/\tau)}\right],
-    \end{align}
-	а число e = exp1 - Фундаментальной Кофейной Постоянной. До чего же вездесуще основание натуральных логарифмов!
+    \end{myequation}
+	а число e = exp1 - Фундаментальной Кофейной Постоянной. До чего же вездесуще основание натуральных логарифмов!\columnbreak
 	
-	На рисунке 3 представлена качественная зависимость (4) скорости экстракции кофе от времени - следствие подстановки
+	На рисунке 3 представлена качественная зависимость (\ref{myeq:three}) скорости экстракции кофе от времени - следствие подстановки
 	данных рисунка 2 в рисунок 1. Результат экстрации
-	\setlength{\belowcaptionskip}{-20pt} 
+	\setlength{\belowcaptionskip}{-10pt} 
 	\begin{figure}[H]
-		\centering\offinterlineskip
+		\centering
 		\includegraphics[width=0.4\textwidth]{pic2.png}
 		\caption{Зависимость от времени скорости экстракции, учитывающая и ее падение с уменьшающейся температурой (см. рис. 1), и падение
 			самой температуры со временем (см. рис. 2);
@@ -62,7 +58,7 @@
 	и без всякого удовольствия». Но Вы-то всё поняли?
 	
 	Приятного аппетита!
-\end{multicols}
+\end{multicols*}
 \newpage
 \begin{multicols}{2}
 	\begin{figure}[H]
@@ -82,8 +78,11 @@
 В олимпиаде приняли участие 378 юных
 математиков из 65 регионов России. Кроме
 того, традиционными участниками олимпиады
-\begin{center}
-	\begin{tabular}{|m{17mm}|m{2mm}|m{2mm}|m{2mm}|m{2mm}|m{2mm}|m{2mm}|m{2mm}|m{2mm}|}
+\vspace{-2em}
+\begin{table}[H]
+	\centering
+	\caption{9 класс}
+	\begin{tabular}{|M{17mm}|c|c|c|c|c|c|c|c|}
 		\hline
 		Номер задачи & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\	
 		\hline
@@ -91,6 +90,32 @@
 		& 38 & 66 & 3 & 93 & 101 & 30 & 3 \\
 		\hline
 	\end{tabular}
-\end{center}
+\end{table}
+\vspace{-2em}
+\begin{table}[H]
+	\centering
+	\caption{10 класс}
+	\begin{tabular}{|M{17mm}|c|c|c|c|c|c|c|c|}
+		\hline
+		Номер задачи & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\	
+		\hline
+		Количество участников (из 119), решивших задачу & 115
+		& 102 & 46 & 13 & 92 & 90 & 85 & 2 \\
+		\hline
+	\end{tabular}
+\end{table}
+\vspace{-2em}
+\begin{table}[H]
+	\centering
+	\caption{11 класс}
+	\begin{tabular}{|M{17mm}|c|c|c|c|c|c|c|c|}
+		\hline
+		Номер задачи & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\	
+		\hline
+		Количество участников (из 129), решивших задачу & 126
+		& 84 & 36 & 7 & 111 & 91 & 7 & 2 \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \end{multicols}
