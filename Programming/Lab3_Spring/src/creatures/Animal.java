@@ -1,3 +1,7 @@
+package creatures;
+
+import enums.Direction;
+
 public class Animal extends MulticellularOrganism {
     Animal(String name) {
         super(name);
@@ -8,9 +12,9 @@ public class Animal extends MulticellularOrganism {
 
     @Override
     public String toString() {
-        return "Animal. " + getName() + ". "
-                + " Origin: " + getOrigin().toString()
+        return "creatures.Animal. " + getName() + ". "
+                + " enums.Origin: " + getOrigin().toString()
                 + " Place of living: " + getPol().toString()
-                + " Direction: " + getDirection().toString();
+                + " enums.Direction: " + getDirection().toString();
     }
 }

@@ -1,5 +1,7 @@
+package creatures.parts;
+
 public final class Wing extends Part implements Parts {
-    Wing(String name) {
+    public Wing(String name) {
         super(name);
     }
 
@@ -13,6 +15,6 @@ public final class Wing extends Part implements Parts {
 
     @Override
     public String toString() {
-        return "Wing. " + getName() + ".";
+        return "creatures.parts.Wing. " + getName() + ".";
     }
 }

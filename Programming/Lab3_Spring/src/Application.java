@@ -1,3 +1,7 @@
+import creatures.*;
+import items.Book;
+import items.Picture;
+import items.StudyMaterial;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,7 +19,7 @@ public class Application {
         AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
         Creature creature = ctx.getBean(Creature.class);
 
-        narrator.thinkAboutElderOrigin(elders[0], org1);
+        /*narrator.thinkAboutElderOrigin(elders[0], org1);
 
         for (int i = 0; i < elders.length; i++) {
             if (Math.random() > 0.5) {
@@ -40,7 +44,10 @@ public class Application {
 
         creature.setFromPrehistoricFolk(true);
         humans[2].writeAbout(creature);
-        narrator.remember("Acolytes of Cthulhu");
+        narrator.remember("Acolytes of Cthulhu");*/
+
+        StudyMaterial sm = new StudyMaterial(2500);
+        humans[0].studyMaterial(sm);
     }
 
 }

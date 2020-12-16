@@ -1,3 +1,8 @@
+package creatures.parts;
+
+import enums.Muscularity;
+import enums.PartLocation;
+
 public class Tentacle extends Part {
     private int size;
     private Muscularity muscularity = Muscularity.HIGH_MUSCLES;

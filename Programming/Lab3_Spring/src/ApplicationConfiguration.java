@@ -1,3 +1,8 @@
+import creatures.*;
+import creatures.parts.Wing;
+import enums.Origin;
+import items.Book;
+import items.Picture;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,7 +30,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public Narrator narrator() {
-        return new Narrator("Narrator");
+        return new Narrator("creatures.Narrator");
     }
 
     @Bean
@@ -50,7 +55,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public Picture pic() {
-        return new Picture("Picture", "Clark Ashton Smith", "Scary");
+        return new Picture("items.Picture", "Clark Ashton Smith", "Scary");
     }
 
     @Bean
@@ -84,12 +89,12 @@ public class ApplicationConfiguration {
 
     @Bean
     public Wing wing() {
-        return new Wing("Wing");
+        return new Wing("creatures.parts.Wing");
     }
 
     @Bean
     public Creature creature() {
-        return new Creature("Creature");
+        return new Creature("creatures.Creature");
     }
 
 

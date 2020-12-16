@@ -1,7 +1,10 @@
+package creatures;
+
 import java.util.Objects;
+import enums.*;
 
 public abstract class Organism {
-    private String name;
+    private final String name;
     private Origin origin = Origin.UNKNOWN;
     private PlaceOfLiving pol = PlaceOfLiving.UNKNOWN;
     private boolean partsLocation;

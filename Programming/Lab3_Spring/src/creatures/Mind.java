@@ -1,3 +1,7 @@
+package creatures;
+
+import creatures.AncientStar;
+
 public class Mind {
     private boolean hurt;
 

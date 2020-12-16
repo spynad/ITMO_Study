@@ -1,3 +1,7 @@
+package creatures.parts;
+
+import enums.PartLocation;
+
 import java.util.Objects;
 
 public abstract class Part {
@@ -35,6 +39,6 @@ public abstract class Part {
 
     @Override
     public String toString() {
-        return "Part. " + getName() + ". ";
+        return "creatures.parts.Part. " + getName() + ". ";
     }
 }

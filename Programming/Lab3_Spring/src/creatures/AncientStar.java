@@ -1,13 +1,16 @@
+package creatures;
+
 import java.util.Objects;
+import enums.Origin;
 
 public class AncientStar {
-    private String name;
+    private final String name;
     private boolean isTropical;
     private Origin origin = Origin.UNKNOWN;
     private boolean modernity;
     private boolean fantasticalTransformed;
 
-    AncientStar(String name, boolean isTropical, Origin origin, boolean modernity) {
+    public AncientStar(String name, boolean isTropical, Origin origin, boolean modernity) {
         this.name = name;
         this.isTropical = isTropical;
         this.origin = origin;
@@ -57,6 +60,6 @@ public class AncientStar {
 
     @Override
     public String toString() {
-        return "AncientStar. " + name + '.';
+        return "creatures.AncientStar. " + name + '.';
     }
 }

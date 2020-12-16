@@ -1,10 +1,14 @@
+package creatures;
+
 import java.util.Objects;
+import creatures.parts.*;
+import enums.*;
 
 public final class Elder extends MulticellularOrganism{
     private boolean corruptState;
     private Parts wing;
 
-    Elder(String name, Parts wing) {
+    public Elder(String name, Parts wing) {
         super(name);
         this.wing = wing;
         setPartsLocation(true);
@@ -51,8 +55,8 @@ public final class Elder extends MulticellularOrganism{
         else
             corrupt = "uncorrupted";
         return getName() + " is " + corrupt + " "
-                + " Origin: " + getOrigin().toString()
+                + " enums.Origin: " + getOrigin().toString()
                 + " Place of living: " + getPol().toString()
-                + " Direction: " + getDirection().toString();
+                + " enums.Direction: " + getDirection().toString();
     }
 }

@@ -1,4 +1,7 @@
+package creatures;
+
 import java.util.Objects;
+import enums.Direction;
 
 public class MulticellularOrganism extends Organism {
     private Direction direction = Direction.UNKNOWN;
@@ -32,6 +35,6 @@ public class MulticellularOrganism extends Organism {
 
     @Override
     public String toString() {
-        return "Multicellular Organism. " + getName() + ". " + "Direction: " + direction.toString();
+        return "Multicellular creatures.Organism. " + getName() + ". " + "enums.Direction: " + direction.toString();
     }
 }

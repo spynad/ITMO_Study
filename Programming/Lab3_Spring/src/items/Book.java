@@ -1,14 +1,16 @@
+package items;
+
 import java.util.Objects;
 
 public final class Book{
     String name;
 
-    Book(String name) {
+    public Book(String name) {
         this.name = name;
     }
 
     public String read() {
-        return "Book " + name + " is completed.";
+        return "items.Book " + name + " is completed.";
     }
 
     @Override

@@ -1,6 +1,8 @@
+package creatures;
+
 public final class ElderLegacy extends AncientStar {
 
-    ElderLegacy(String name) {
+    public ElderLegacy(String name) {
         super(name);
     }
 
