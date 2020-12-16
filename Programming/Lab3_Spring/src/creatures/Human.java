@@ -1,14 +1,18 @@
 package creatures;
 
+import entities.Stalagmite;
 import interfaces.*;
 import items.*;
+import transport.Sleigh;
 
-public class Human extends Animal implements ableToRead, LookAt {
+public class Human extends Animal implements ableToRead, ableToLookAt {
 
     private int lvl = 1;
     private int currentExperience = 0;
     private int totalExperience = 0;
     private int expToNextLvl = 100;
+
+    private boolean isSearching = false;
 
     public static final int MAX_LVL = 100;
 
@@ -16,6 +20,26 @@ public class Human extends Animal implements ableToRead, LookAt {
         super(name);
         setPartsLocation(true);
         setEvolutionStage(5);
+    }
+
+    public boolean isSearching() {
+        return isSearching;
+    }
+
+    public int getLvl() {
+        return lvl;
+    }
+
+    public int getExpToNextLvl() {
+        return expToNextLvl;
+    }
+
+    public int getCurrentExperience() {
+        return currentExperience;
+    }
+
+    public int getTotalExperience() {
+        return totalExperience;
     }
 
     @Override
@@ -27,6 +51,22 @@ public class Human extends Animal implements ableToRead, LookAt {
     public void lookAt(Picture pic) {
         System.out.println(getName() + " is looking at picture: " + pic.lookAt());
     }
+
+    public void chipOffStalagmite(Stalagmite stalagmite) {
+        int damage = (int) (Math.random()*300);
+        System.out.println(getName() + " tried to damage the stalagmite");
+        stalagmite.takeDamage(damage);
+    }
+
+    public void searchForSomething() {
+        if(!isSearching) {
+            System.out.println(getName() + " has started to search for something.");
+        } else {
+            System.out.println(getName() + " stopped to search for something.");
+        }
+
+    }
+
 
     //TODO: это нужно как-то переделать, тупая функция
     public void studyMaterial(StudyMaterial sm) {
@@ -63,7 +103,6 @@ public class Human extends Animal implements ableToRead, LookAt {
 
                 lvl++;
                 t = t + (100 + lvl * 100);
-
             }
         }
 

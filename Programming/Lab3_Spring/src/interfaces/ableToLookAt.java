@@ -2,6 +2,6 @@ package interfaces;
 
 import items.Picture;
 
-public interface LookAt {
+public interface ableToLookAt {
     void lookAt(Picture pic);
 }

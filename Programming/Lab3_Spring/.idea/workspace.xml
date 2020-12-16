@@ -19,10 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/Stratum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/items/StudyMaterial.java" afterDir="false" />
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: wip">
+      <change afterPath="$PROJECT_DIR$/src/Base.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creatures/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Stalagmite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/Era.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame10.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame10.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame11.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame11.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame13.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../Informatics/lab7/beamer/frame13.tex" afterDir="false" />
@@ -37,34 +39,11 @@
       <change beforePath="$PROJECT_DIR$/../../Informatics/lab7/title.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../Informatics/lab7/title.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../OPD/lab2/Lab2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../OPD/lab2/Lab2.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3_Spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3_Spring.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AncientStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/AncientStar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ElderLegacy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/ElderLegacy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Human.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LookAt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/LookAt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Mind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MulticellularOrganism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/MulticellularOrganism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Muscularity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Muscularity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Narrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Narrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Organism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Origin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Origin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Part.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PartLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/PartLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Parts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Parts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlaceOfLiving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/PlaceOfLiving.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Readable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ableToRead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tentacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Tentacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UnicellularOrganism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/UnicellularOrganism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Wing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Wing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagram.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Stratum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Stratum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/LookAt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ableToLookAt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,8 +138,16 @@
       <workItem from="1606107384885" duration="129000" />
       <workItem from="1606110038399" duration="4104000" />
       <workItem from="1606834249337" duration="4895000" />
-      <workItem from="1608112104307" duration="11484000" />
+      <workItem from="1608112104307" duration="18814000" />
     </task>
+    <task id="LOCAL-00001" summary="programming lab 4: wip">
+      <created>1608138024908</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608138024908</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +165,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="programming lab 4: wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: wip" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="440" y="159" key="#Project_Structure" timestamp="1606842427137">
       <screen x="0" y="0" width="1920" height="1170" />
@@ -187,10 +178,11 @@
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state x="730" y="387" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1170@0.0.1920.1170" timestamp="1608134437265" />
-    <state x="722" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1604857823610">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="722" y="252" key="#com.intellij.ide.util.MemberChooser" timestamp="1608139054137">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state x="722" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604857823610" />
+    <state x="722" y="252" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1170@0.0.1920.1170" timestamp="1608139054137" />
     <state x="588" y="214" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1604850788383">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -247,6 +239,10 @@
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state width="1877" height="400" key="GridCell.Tab.1.right/0.0.1920.1170@0.0.1920.1170" timestamp="1608131862021" />
+    <state x="552" y="318" key="Vcs.Push.Dialog.v2" timestamp="1608138031940">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="552" y="318" key="Vcs.Push.Dialog.v2/0.0.1920.1170@0.0.1920.1170" timestamp="1608138031940" />
     <state x="664" y="477" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1608126570442">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
