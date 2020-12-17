@@ -37,6 +37,10 @@ public final class Narrator extends Human{
         return elders;
     }
 
+    public void dissect(Organism organism) {
+        System.out.println("The narrator is dissecting " + organism.getName());
+    }
+
     public void talkAbout(Object obj) {
         System.out.println("creatures.Narrator talks about " + obj.toString());
     }

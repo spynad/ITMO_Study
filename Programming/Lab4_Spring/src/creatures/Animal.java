@@ -1,8 +1,9 @@
 package creatures;
 
 import enums.Direction;
+import interfaces.canSleep;
 
-public class Animal extends MulticellularOrganism {
+public class Animal extends MulticellularOrganism implements canSleep {
     Animal(String name) {
         super(name);
         setPartsLocation(true);
@@ -10,11 +11,15 @@ public class Animal extends MulticellularOrganism {
         setEvolutionStage(4);
     }
 
+    public void sleep() {
+        System.out.println(getName() + " is sleeping");
+    }
+
     @Override
     public String toString() {
-        return "creatures.Animal. " + getName() + ". "
-                + " enums.Origin: " + getOrigin().toString()
+        return "Animal. " + getName() + ". "
+                + " Origin: " + getOrigin().toString()
                 + " Place of living: " + getPol().toString()
-                + " enums.Direction: " + getDirection().toString();
+                + " Direction: " + getDirection().toString();
     }
 }

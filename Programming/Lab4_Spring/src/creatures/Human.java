@@ -1,11 +1,12 @@
 package creatures;
 
+import places.Base;
 import entities.Stalagmite;
+import enums.Location;
 import interfaces.*;
 import items.*;
-import transport.Sleigh;
 
-public class Human extends Animal implements ableToRead, ableToLookAt {
+public class Human extends Animal implements ableToRead, ableToLookAt{
 
     private int lvl = 1;
     private int currentExperience = 0;
@@ -64,7 +65,32 @@ public class Human extends Animal implements ableToRead, ableToLookAt {
         } else {
             System.out.println(getName() + " stopped to search for something.");
         }
+    }
 
+    public void transport(Location loc, canBeMoved obj) {
+        Location selfLoc = getLoc();
+        if (loc == obj.getLocation()) {
+            System.out.println(obj.toString() + " is already at desired destination");
+        }
+        else {
+            System.out.println("Moving " + obj.toString() + " from " + obj.getLocation() + " to " +
+                    loc + " by " + getName());
+            obj.move(loc);
+        }
+    }
+
+    public void sendMessageToBase(String message, Base base) {
+        if (base.isConnectionEstablished()) {
+            base.acceptMessage(message);
+        }
+    }
+
+    public void shame() {
+        System.out.println(getName() + " is ashamed");
+    }
+
+    public void makeADiscovery(String discovery) {
+        System.out.println(getName() + " made a discovery: " + discovery);
     }
 
 

@@ -29,7 +29,15 @@ public class Sleigh {
         }
     }
 
-    public void sendToBase() {
-
+    public void sendToBay() {
+        if (helpers.size() == 3) {
+            if (cargo == null) {
+                System.out.println("Sl is now at the bay without cargo.");
+            } else{
+                System.out.println("Sl is went to the bay with cargo " + cargo.toString());
+            }
+        }
     }
+
+    //TODO: реализовать здесь ветер, который каким-либо образом будет влиять на сани
 }

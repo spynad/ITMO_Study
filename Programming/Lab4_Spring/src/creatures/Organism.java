@@ -2,11 +2,14 @@ package creatures;
 
 import java.util.Objects;
 import enums.*;
+import interfaces.canBeMoved;
 
-public abstract class Organism {
+
+public abstract class Organism implements canBeMoved {
     private final String name;
     private Origin origin = Origin.UNKNOWN;
     private PlaceOfLiving pol = PlaceOfLiving.UNKNOWN;
+    private Location loc = Location.SOMEWHERE;
     private boolean partsLocation;
     private int EvolutionStage;
 
@@ -37,8 +40,17 @@ public abstract class Organism {
         return partsLocation;
     }
 
+    public Location getLoc() {
+        return loc;
+    }
+
     public int getEvolutionStage() {
         return EvolutionStage;
+    }
+
+    @Override
+    public Location getLocation() {
+        return loc;
     }
 
     public void setPartsLocation(boolean p) {
@@ -49,6 +61,10 @@ public abstract class Organism {
         EvolutionStage = evolutionStage;
     }
 
+    public void setLoc(Location loc) {
+        this.loc = loc;
+    }
+
     public void changeOrigin(Origin o) {
         origin = o;
         System.out.println(name + "'s origin is now " + origin.toString());
@@ -57,6 +73,11 @@ public abstract class Organism {
     public void changePol(PlaceOfLiving pol) {
         this.pol = pol;
         System.out.println(name + "'s place of living is now " + this.pol.toString());
+    }
+
+    @Override
+    public void move(Location location) {
+        loc = location;
     }
 
     @Override

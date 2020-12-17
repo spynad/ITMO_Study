@@ -20,8 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: moved to the new directory">
-      <change beforePath="$PROJECT_DIR$/../untitled/src/A.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled1/src/com/company/Resource.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/Expedition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/ExpeditionResults.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/canBeMoved.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/canSleep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/canTransport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/items/DrillingDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/places/Base.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/places/Lab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Narrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Narrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +95,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
@@ -110,6 +135,7 @@
       <workItem from="1608215457492" duration="137000" />
       <workItem from="1608215665837" duration="2163000" />
       <workItem from="1608219177967" duration="134000" />
+      <workItem from="1608219458536" duration="8575000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
