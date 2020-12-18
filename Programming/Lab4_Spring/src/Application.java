@@ -1,4 +1,5 @@
 import creatures.*;
+import exceptions.InvalidExperienceException;
 import items.Book;
 import items.Picture;
 import items.StudyMaterial;
@@ -45,9 +46,13 @@ public class Application {
         creature.setFromPrehistoricFolk(true);
         humans[2].writeAbout(creature);
         narrator.remember("Acolytes of Cthulhu");*/
-
-        StudyMaterial sm = new StudyMaterial(2500);
-        humans[0].studyMaterial(sm);
+        try {
+            StudyMaterial sm = new StudyMaterial(-1000);
+            humans[0].studyMaterial(sm);
+        } catch(InvalidExperienceException e) {
+            System.out.println(e.getMessage() + e.getExp());
+            return;
+        }
     }
 
 }

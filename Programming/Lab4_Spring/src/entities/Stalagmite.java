@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class Stalagmite {
     private final boolean isMassive;
     private boolean chippedOff;
@@ -38,4 +40,26 @@ public class Stalagmite {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Stalagmite that = (Stalagmite) o;
+        return isMassive() == that.isMassive() && isChippedOff() == that.isChippedOff() && getStrength() == that.getStrength() && damage == that.damage;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isMassive(), isChippedOff(), getStrength(), damage);
+    }
+
+    @Override
+    public String toString() {
+        return "Stalagmite{" +
+                "isMassive=" + isMassive +
+                ", chippedOff=" + chippedOff +
+                ", strength=" + strength +
+                ", damage=" + damage +
+                '}';
+    }
 }
