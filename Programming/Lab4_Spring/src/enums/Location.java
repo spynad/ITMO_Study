@@ -5,4 +5,6 @@ public enum Location {
     BAY,
     SHIP,
     BASE
+
+    //TODO: реализовать систему хранения грузов, которые переданы при помощи Sleigh
 }

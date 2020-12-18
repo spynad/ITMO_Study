@@ -8,6 +8,7 @@ import items.Book;
 import items.Picture;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import transport.Sleigh;
 
 @Configuration
 public class ApplicationConfiguration {
@@ -110,6 +111,15 @@ public class ApplicationConfiguration {
     @Bean
     public Expedition expedition() {
         return new Expedition();
+    }
+
+    @Bean
+    public Sleigh[] sleighs() {
+        Sleigh[] sleighs = new Sleigh[6];
+        for (int i = 0; i < sleighs.length; i++) {
+            sleighs[i] = new Sleigh("Sleigh" + i);
+        }
+        return sleighs;
     }
 
 

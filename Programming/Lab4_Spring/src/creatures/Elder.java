@@ -3,8 +3,9 @@ package creatures;
 import java.util.Objects;
 import creatures.parts.*;
 import enums.*;
+import interfaces.canBeAdded;
 
-public final class Elder extends MulticellularOrganism{
+public final class Elder extends MulticellularOrganism implements canBeAdded {
     private boolean corruptState;
     private boolean isUnderwater;
     private Parts wing = new Wing("wing");

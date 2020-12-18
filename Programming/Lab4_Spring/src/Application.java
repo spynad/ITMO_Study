@@ -7,6 +7,7 @@ import items.Picture;
 import items.StudyMaterial;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import transport.Sleigh;
 
 public class Application {
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class Application {
         Stratum stratum = ctx.getBean(Stratum.class);
         Stratum.Stalagmite stalagmite = ctx.getBean(Stratum.Stalagmite.class);
         Expedition expedition = ctx.getBean(Expedition.class);
+        Sleigh[] sleighs = ctx.getBean(Sleigh[].class);
 
         for (Human human : humans) {
             expedition.addToExpedition(human);
@@ -33,9 +35,9 @@ public class Application {
 
         narrator.thinkAboutElderOrigin(elders[0], org1);
 
-        for (int i = 0; i < elders.length; i++) {
+        for (Elder elder : elders) {
             if (Math.random() > 0.5) {
-                elders[i].setCorruptState(true);
+                elder.setCorruptState(true);
             }
         }
 
@@ -60,6 +62,26 @@ public class Application {
         narrator.say(stratum.toString() + " belongs to " + stratum.getEra());
         narrator.chipOffStalagmite(stalagmite);
         narrator.surprise("Everything is well preserved here because of the stratum consists of " + stratum.getMaterial());
+
+        //TODO: гооооооовноооооооо коооооооооооооооод, исправь плз на это больно смотреть прошу умоляю
+        sleighs[0].addHelper(narrator);
+        sleighs[0].addHelper(dyer);
+        sleighs[0].addHelper(pebody);
+        sleighs[0].addCargo(elders[0]);
+
+        sleighs[1].addHelper(humans[0]);
+        sleighs[1].addHelper(humans[1]);
+        sleighs[1].addHelper(humans[2]);
+        sleighs[1].addCargo(elders[1]);
+
+        sleighs[2].addHelper(humans[3]);
+        sleighs[2].addHelper(humans[4]);
+        sleighs[2].addHelper(humans[5]);
+        sleighs[2].addCargo(elders[2]);
+
+        sleighs[0].sendToBay();
+        sleighs[1].sendToBay();
+        sleighs[2].sendToBay();
 
         /*try {
             StudyMaterial sm = new StudyMaterial(-1000);

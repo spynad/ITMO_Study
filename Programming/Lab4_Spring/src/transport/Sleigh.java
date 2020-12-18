@@ -2,14 +2,18 @@ package transport;
 
 import java.util.ArrayList;
 import creatures.Human;
+import enums.Location;
 import interfaces.Wind;
+import interfaces.canBeAdded;
 
 public class Sleigh {
     private final String name;
     private final ArrayList<Human> helpers = new ArrayList<>();
-    private Object cargo;
+    private Location loc = Location.SOMEWHERE;
+    private Location prevLoc;
+    private canBeAdded cargo;
 
-    Sleigh(String name) {
+    public Sleigh(String name) {
         this.name = name;
     }
 
@@ -22,10 +26,10 @@ public class Sleigh {
         }
     }
 
-    public void addCargo(Object object) {
+    public void addCargo(canBeAdded object) {
         if (cargo == null) {
             cargo = object;
-            System.out.println("Груз " + object.toString() + " погружен в сани");
+            System.out.println("Груз " + object.getName() + " погружен в сани");
         }
     }
 
@@ -57,8 +61,14 @@ public class Sleigh {
                 System.out.println("Sl is now at the bay without cargo. " + windStr);
             }
             else {
-                System.out.println("Sl is went to the bay with cargo " + cargo.toString() + " " + windStr);
+                System.out.println("Sl is went to the bay with cargo " + cargo.getName() + " " + windStr);
             }
+            prevLoc = loc;
+            loc = Location.BAY;
         }
+    }
+
+    public void unloadCargo() {
+        //TODO: реализовать выгрузку груза в локации Location
     }
 }
