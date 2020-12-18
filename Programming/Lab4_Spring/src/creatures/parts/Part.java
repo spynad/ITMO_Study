@@ -8,7 +8,7 @@ public abstract class Part {
     private String name;
     private PartLocation partLocation;
 
-    Part(String name) {
+    public Part(String name) {
         this.name = name;
     }
 

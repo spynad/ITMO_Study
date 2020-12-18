@@ -20,14 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: wip">
-      <change afterPath="$PROJECT_DIR$/src/exceptions/InvalidExperienceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/places/Cave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/Family.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exceptions/InvalidAuthorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/Wind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Expedition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Expedition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Stalagmite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Stalagmite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/DrillingDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/DrillingDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/AncientStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/AncientStar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Narrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Narrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/parts/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/parts/Tentacle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/parts/Wing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Stalagmite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Stratum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Stratum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/items/StudyMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/StudyMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +49,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -129,7 +141,7 @@
       <workItem from="1608219177967" duration="134000" />
       <workItem from="1608219458536" duration="9238000" />
       <workItem from="1608278071291" duration="582000" />
-      <workItem from="1608278665316" duration="5984000" />
+      <workItem from="1608278665316" duration="20015000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -159,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608228269128</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="programming lab 4: wip">
+      <created>1608288363156</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608288363156</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,5 +200,21 @@
     <MESSAGE value="programming lab 4: moved to the new directory" />
     <MESSAGE value="programming lab 4: wip" />
     <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: wip" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ApplicationConfiguration.java</url>
+          <line>83</line>
+          <properties class="ApplicationConfiguration" method="humans" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

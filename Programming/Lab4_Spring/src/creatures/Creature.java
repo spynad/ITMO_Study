@@ -17,6 +17,6 @@ public final class Creature extends MulticellularOrganism {
 
     @Override
     public String toString() {
-        return "creatures.Creature. " + getName() + ". " + "Is he from prehistoric folk?: " + isFromPrehistoricFolk;
+        return "Creature. " + getName() + ". " + "Is he from prehistoric folk?: " + isFromPrehistoricFolk;
     }
 }

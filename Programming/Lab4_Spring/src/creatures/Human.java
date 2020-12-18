@@ -1,7 +1,8 @@
 package creatures;
 
+import entities.Stratum;
+import enums.Family;
 import places.Base;
-import entities.Stalagmite;
 import enums.Location;
 import interfaces.*;
 import items.*;
@@ -21,6 +22,7 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
         super(name);
         setPartsLocation(true);
         setEvolutionStage(5);
+        setFamily(Family.HOMINIDAE);
     }
 
     public boolean isSearching() {
@@ -53,10 +55,17 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
         System.out.println(getName() + " is looking at picture: " + pic.lookAt());
     }
 
-    public void chipOffStalagmite(Stalagmite stalagmite) {
+    public void chipOffStalagmite(Stratum.Stalagmite stalagmite) {
         int damage = (int) (Math.random()*300);
-        System.out.println(getName() + " tried to damage the stalagmite");
-        stalagmite.takeDamage(damage);
+        while (!stalagmite.isChippedOff()){
+            System.out.println(getName() + " tried to damage the stalagmite");
+            stalagmite.takeDamage(damage);
+        }
+
+    }
+
+    public void surprise(String text) {
+        System.out.println(getName() + " is surprised: " + text);
     }
 
     public void searchForSomething() {

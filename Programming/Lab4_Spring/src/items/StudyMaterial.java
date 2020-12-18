@@ -1,14 +1,13 @@
 package items;
 
 import exceptions.InvalidExperienceException;
-
 import java.util.Objects;
 
 public final class StudyMaterial {
     private final String type;
     private final int expAmount;
 
-    public StudyMaterial(int amount) throws InvalidExperienceException{
+    public StudyMaterial(int amount){
 
         if (amount > 500) {
             type = "Big Study Material";

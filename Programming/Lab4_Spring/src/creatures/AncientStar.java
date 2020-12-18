@@ -1,33 +1,32 @@
 package creatures;
 
 import java.util.Objects;
-import enums.Origin;
 
-public class AncientStar {
-    private final String name;
+import enums.Family;
+import enums.Origin;
+import enums.PlaceOfLiving;
+
+public class AncientStar extends Organism{
     private boolean isTropical;
-    private Origin origin = Origin.UNKNOWN;
     private boolean modernity;
     private boolean fantasticalTransformed;
 
-    public AncientStar(String name, boolean isTropical, Origin origin, boolean modernity) {
-        this.name = name;
+    public AncientStar(String name, boolean isTropical, Origin origin, PlaceOfLiving pol, boolean modernity) {
+        super(name, origin, pol);
         this.isTropical = isTropical;
-        this.origin = origin;
         this.modernity = modernity;
+        setEvolutionStage(5);
+        setFamily(Family.ECHINODERM);
     }
 
     AncientStar(String name) {
-        this.name = name;
+        super(name);
     }
 
     public void setFantasticalTransformed(Boolean bool) {
         fantasticalTransformed = bool;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public boolean isTropical() {
         return isTropical;
@@ -41,25 +40,22 @@ public class AncientStar {
         return fantasticalTransformed;
     }
 
-    public Origin getOrigin() {
-        return origin;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AncientStar that = (AncientStar) o;
-        return Objects.equals(name, that.name);
+        return Objects.equals(getName(), that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(getName());
     }
 
     @Override
     public String toString() {
-        return "creatures.AncientStar. " + name + '.';
+        return "creatures.AncientStar. " + getName() + '.';
     }
 }

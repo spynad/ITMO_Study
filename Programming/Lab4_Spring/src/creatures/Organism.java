@@ -10,6 +10,7 @@ public abstract class Organism implements canBeMoved {
     private Origin origin = Origin.UNKNOWN;
     private PlaceOfLiving pol = PlaceOfLiving.UNKNOWN;
     private Location loc = Location.SOMEWHERE;
+    private Family family = Family.UNKNOWN;
     private boolean partsLocation;
     private int EvolutionStage;
 
@@ -36,6 +37,10 @@ public abstract class Organism implements canBeMoved {
         return pol;
     }
 
+    public Family getFamily() {
+        return family;
+    }
+
     public boolean getPartsLocation() {
         return partsLocation;
     }
@@ -57,6 +62,10 @@ public abstract class Organism implements canBeMoved {
         partsLocation = p;
     }
 
+    protected void setFamily(Family family) {
+        this.family = family;
+    }
+
     protected void setEvolutionStage(int evolutionStage) {
         EvolutionStage = evolutionStage;
     }
@@ -64,6 +73,7 @@ public abstract class Organism implements canBeMoved {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
+
 
     public void changeOrigin(Origin o) {
         origin = o;

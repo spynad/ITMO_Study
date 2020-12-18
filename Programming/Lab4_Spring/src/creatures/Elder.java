@@ -6,11 +6,11 @@ import enums.*;
 
 public final class Elder extends MulticellularOrganism{
     private boolean corruptState;
-    private Parts wing;
+    private boolean isUnderwater;
+    private Parts wing = new Wing("wing");
 
-    public Elder(String name, Parts wing) {
+    public Elder(String name) {
         super(name);
-        this.wing = wing;
         setPartsLocation(true);
         setEvolutionStage(0);
         changePol(PlaceOfLiving.ANTARCTICA);
@@ -20,9 +20,17 @@ public final class Elder extends MulticellularOrganism{
         return corruptState;
     }
 
+    public boolean isUnderwater() {
+        return isUnderwater;
+    }
+
     public void setCorruptState(boolean corrupt) {
         corruptState = corrupt;
         System.out.println(getName() + " is now corrupted.");
+    }
+
+    public void setUnderwater(boolean underwater) {
+        isUnderwater = underwater;
     }
 
     public void fly() {
@@ -31,6 +39,70 @@ public final class Elder extends MulticellularOrganism{
 
     public void swim(){
         wing.use("swim");
+    }
+
+    public final class Wing extends Part implements Parts {
+        public Wing(String name) {
+            super(name);
+        }
+
+        @Override
+        public void use(String action) {
+            if (action.equals("swim"))
+                System.out.println("The beast is swimming!");
+            else if (action.equals("fly"))
+                System.out.println("The beast is flying!");
+        }
+
+        @Override
+        public String toString() {
+            return "creatures.parts.Wing. " + getName() + ".";
+        }
+    }
+
+    public final class Tentacle extends Part implements Parts {
+        private final int size = 4;
+        private Muscularity muscularity = Muscularity.HIGH_MUSCLES;
+
+        Tentacle(String name, PartLocation partLocation) {
+            super(name);
+            setPartLocation(partLocation);
+
+        }
+
+        public Muscularity getMuscularity() {
+            return muscularity;
+        }
+
+        public void setMuscularity(Muscularity muscularity) {
+            this.muscularity = muscularity;
+        }
+
+        @Override
+        public void use(String action) {
+            class Paws extends Part implements Parts {
+                Paws(String name) {
+                    super(name);
+                }
+
+                @Override
+                public void use(String action) {
+                    if(action.equals("move")) {
+                        System.out.println("The beast is moving underwater");
+                    }
+                }
+
+            }
+            if (action.equals("move")) {
+                if (isUnderwater) {
+                    System.out.println("The beast is moving");
+                }
+                else {
+                    Paws paws = new Paws("paws");
+                    paws.use("move");
+                }
+            }
+        }
     }
 
     @Override
@@ -55,8 +127,9 @@ public final class Elder extends MulticellularOrganism{
         else
             corrupt = "uncorrupted";
         return getName() + " is " + corrupt + " "
-                + " enums.Origin: " + getOrigin().toString()
+                + " Origin: " + getOrigin().toString()
                 + " Place of living: " + getPol().toString()
-                + " enums.Direction: " + getDirection().toString();
+                + " Direction: " + getDirection().toString()
+                + "\nAncients, those who allegedly gave birth to life on Earth, either for fun or by mistake.";
     }
 }

@@ -1,14 +1,17 @@
 package creatures;
 
+import enums.Family;
+
 public class Dog extends Animal {
     private int barkCount;
 
     Dog(String name) {
         super(name);
+        setFamily(Family.CANIDAE);
     }
 
     public void bark() {
-        if (barkCount < 50) {
+        if (barkCount < 10) {
             System.out.println(getName() + ": bark! bark!");
         }
         else {

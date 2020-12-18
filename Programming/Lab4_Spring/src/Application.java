@@ -1,4 +1,6 @@
 import creatures.*;
+import entities.Expedition;
+import entities.Stratum;
 import exceptions.InvalidExperienceException;
 import items.Book;
 import items.Picture;
@@ -12,6 +14,8 @@ public class Application {
         Elder[] elders = ctx.getBean(Elder[].class);
         Narrator narrator = ctx.getBean(Narrator.class);
         UnicellularOrganism org1 = ctx.getBean(UnicellularOrganism.class);
+        Human dyer = ctx.getBean("dyer", Human.class);
+        Human pebody = ctx.getBean("pebody", Human.class);
         Human[] humans = ctx.getBean(Human[].class);
         Book book = ctx.getBean(Book.class);
         Picture pic = ctx.getBean(Picture.class);
@@ -19,8 +23,15 @@ public class Application {
         Mind mind  = ctx.getBean(Mind.class);
         AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
         Creature creature = ctx.getBean(Creature.class);
+        Stratum stratum = ctx.getBean(Stratum.class);
+        Stratum.Stalagmite stalagmite = ctx.getBean(Stratum.Stalagmite.class);
+        Expedition expedition = ctx.getBean(Expedition.class);
 
-        /*narrator.thinkAboutElderOrigin(elders[0], org1);
+        for (Human human : humans) {
+            expedition.addToExpedition(human);
+        }
+
+        narrator.thinkAboutElderOrigin(elders[0], org1);
 
         for (int i = 0; i < elders.length; i++) {
             if (Math.random() > 0.5) {
@@ -45,14 +56,20 @@ public class Application {
 
         creature.setFromPrehistoricFolk(true);
         humans[2].writeAbout(creature);
-        narrator.remember("Acolytes of Cthulhu");*/
-        try {
+        narrator.remember("Acolytes of Cthulhu");
+        narrator.say(stratum.toString() + " belongs to " + stratum.getEra());
+        narrator.chipOffStalagmite(stalagmite);
+        narrator.surprise("Everything is well preserved here because of the stratum consists of " + stratum.getMaterial());
+
+        /*try {
             StudyMaterial sm = new StudyMaterial(-1000);
             humans[0].studyMaterial(sm);
         } catch(InvalidExperienceException e) {
             System.out.println(e.getMessage() + e.getExp());
             return;
-        }
+        }*/
+
+        StudyMaterial studyMaterial = new StudyMaterial(-200);
     }
 
 }

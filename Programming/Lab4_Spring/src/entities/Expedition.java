@@ -29,7 +29,7 @@ public class Expedition {
 
     public void addToExpedition(Human human) {
         expeditionMembers.add(human);
-        System.out.println(human.getName() + "has been successfully added to expedition");
+        System.out.println(human.getName() + " has been successfully added to expedition");
     }
 
     @Override
