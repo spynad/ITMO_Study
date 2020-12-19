@@ -55,6 +55,7 @@ public class Sleigh {
         };
 
         String windStr;
+        wind.blow(31);
         if(wind.getSpeed() > 30) {
             windStr = "The wind is strong";
         }

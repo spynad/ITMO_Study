@@ -25,7 +25,6 @@ public class Application {
         Human[] humans = ctx.getBean(Human[].class);
         Book book = ctx.getBean(Book.class);
         Picture pic = ctx.getBean(Picture.class);
-        ElderLegacy elderLegacy = ctx.getBean("elder", ElderLegacy.class);
         Mind mind  = ctx.getBean(Mind.class);
         AncientStar ancientStar = ctx.getBean("ancientStar", AncientStar.class);
         Creature creature = ctx.getBean(Creature.class);
@@ -59,7 +58,7 @@ public class Application {
         humans[0].lookAt(pic);
         humans[1].lookAt(pic);
 
-        narrator.talkAbout(elderLegacy);
+        narrator.talkAbout(Elder.description());
         mind.setHurt(true);
 
         mind.transformFantastically(ancientStar);
@@ -125,6 +124,8 @@ public class Application {
         if(lab.isFake()) {
             narrator.say("Too bad there is no real laboratory here");
         }
+
+        dyer.shame("He objected to an expedition to the west");
 
         narrator.makeADiscovery("The highest mountain");
         narrator.makeADiscovery("Elders");

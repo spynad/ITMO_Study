@@ -56,6 +56,6 @@ public class AncientStar extends Organism{
 
     @Override
     public String toString() {
-        return "creatures.AncientStar. " + getName() + '.';
+        return "AncientStar. " + getName() + '.';
     }
 }

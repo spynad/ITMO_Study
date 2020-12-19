@@ -70,11 +70,6 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public ElderLegacy elder() {
-        return new ElderLegacy("elder");
-    }
-
-    @Bean
     public Mind mind() {
         return new Mind();
     }

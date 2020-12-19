@@ -8,7 +8,7 @@ import interfaces.canBeAdded;
 public final class Elder extends MulticellularOrganism implements canBeAdded {
     private boolean corruptState;
     private boolean isUnderwater;
-    private Parts wing = new Wing("wing");
+    private final Parts wing = new Wing("wing");
 
     public Elder(String name) {
         super(name);
@@ -111,6 +111,10 @@ public final class Elder extends MulticellularOrganism implements canBeAdded {
         }
     }
 
+    public static String description() {
+        return "Ancients, those who allegedly gave birth to life on Earth, either for fun or by mistake.";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -135,7 +139,6 @@ public final class Elder extends MulticellularOrganism implements canBeAdded {
         return getName() + " is " + corrupt + " "
                 + " Origin: " + getOrigin().toString()
                 + " Place of living: " + getPol().toString()
-                + " Direction: " + getDirection().toString()
-                + "\nAncients, those who allegedly gave birth to life on Earth, either for fun or by mistake.";
+                + " Direction: " + getDirection().toString();
     }
 }

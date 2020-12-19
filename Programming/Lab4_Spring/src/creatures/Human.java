@@ -14,7 +14,7 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
     private int totalExperience = 0;
     private int expToNextLvl = 100;
 
-    private boolean isSearching = false;
+    private final boolean isSearching = false;
 
     public static final int MAX_LVL = 100;
 
@@ -98,8 +98,8 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
         }
     }
 
-    public void shame() {
-        System.out.println(getName() + " is ashamed");
+    public void shame(String reason) {
+        System.out.println(getName() + " is ashamed: " + reason);
     }
 
     public void makeADiscovery(String discovery) {
@@ -111,7 +111,6 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
     }
 
 
-    //TODO: это нужно как-то переделать, тупая функция
     public void studyMaterial(StudyMaterial sm) {
         int smExp = sm.getExpAmount();
 

@@ -3,7 +3,7 @@ package places;
 import java.util.Objects;
 
 public class Lab {
-    private boolean isFake;
+    private final boolean isFake;
 
     public Lab(boolean isFake) {
         this.isFake = isFake;

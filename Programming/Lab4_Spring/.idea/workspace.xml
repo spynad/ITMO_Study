@@ -19,18 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: todos for new location system and main code wip">
-      <change afterPath="$PROJECT_DIR$/src/exceptions/NotEnoughPeopleException.java" afterDir="false" />
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/AncientStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/AncientStar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creatures/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/ElderLegacy.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Organism.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/InvalidAuthorException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/canBeAdded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/canBeAdded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/parts/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/DrillingDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/DrillingDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Picture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/places/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/places/Lab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
     </list>
@@ -75,6 +74,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RunManager">
@@ -130,7 +130,7 @@
       <workItem from="1608219458536" duration="9238000" />
       <workItem from="1608278071291" duration="582000" />
       <workItem from="1608278665316" duration="23598000" />
-      <workItem from="1608390325195" duration="6345000" />
+      <workItem from="1608390325195" duration="7059000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -181,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608327099223</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="programming lab 4: finished">
+      <created>1608397085333</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608397085333</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +210,8 @@
     <MESSAGE value="programming lab 4: moved to the new directory" />
     <MESSAGE value="programming lab 4: wip" />
     <MESSAGE value="programming lab 4: todos for new location system and main code wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: todos for new location system and main code wip" />
+    <MESSAGE value="programming lab 4: finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

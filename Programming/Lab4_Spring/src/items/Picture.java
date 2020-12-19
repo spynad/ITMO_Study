@@ -3,9 +3,9 @@ package items;
 import java.util.Objects;
 
 public final class Picture {
-    private String name;
-    private String author;
-    private String bookDesc;
+    private final String name;
+    private final String author;
+    private final String bookDesc;
 
     public Picture(String name, String author, String bookDesc) {
         this.name = name;

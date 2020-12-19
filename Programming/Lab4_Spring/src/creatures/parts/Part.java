@@ -5,7 +5,7 @@ import enums.PartLocation;
 import java.util.Objects;
 
 public abstract class Part {
-    private String name;
+    private final String name;
     private PartLocation partLocation;
 
     public Part(String name) {
@@ -39,6 +39,6 @@ public abstract class Part {
 
     @Override
     public String toString() {
-        return "creatures.parts.Part. " + getName() + ". ";
+        return "Part. " + getName() + ". ";
     }
 }
