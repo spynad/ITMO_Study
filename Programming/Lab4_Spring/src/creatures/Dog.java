@@ -5,7 +5,7 @@ import enums.Family;
 public class Dog extends Animal {
     private int barkCount;
 
-    Dog(String name) {
+    public Dog(String name) {
         super(name);
         setFamily(Family.CANIDAE);
     }
@@ -17,6 +17,7 @@ public class Dog extends Animal {
         else {
             System.out.println(getName() + ": bark! bark! This dog has already begun to wheeze from barking.");
         }
+        barkCount++;
     }
 
 

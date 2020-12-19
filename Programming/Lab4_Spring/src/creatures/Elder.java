@@ -30,6 +30,11 @@ public final class Elder extends MulticellularOrganism implements canBeAdded {
         System.out.println(getName() + " is now corrupted.");
     }
 
+    @Override
+    public void setLocation(Location loc) {
+        setLoc(loc);
+    }
+
     public void setUnderwater(boolean underwater) {
         isUnderwater = underwater;
     }

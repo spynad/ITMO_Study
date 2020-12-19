@@ -2,6 +2,7 @@ package creatures;
 
 import java.util.Objects;
 import enums.*;
+import interfaces.canBeAdded;
 import interfaces.canBeMoved;
 
 
@@ -87,6 +88,12 @@ public abstract class Organism implements canBeMoved {
 
     @Override
     public void move(Location location) {
+        for (int i = 0; i <loc.getStorage().size(); i++) {
+            if(equals(loc.getStorage().get(i))) {
+                loc.getStorage().remove(i);
+            }
+        }
+        location.getStorage().add((canBeAdded) this);
         loc = location;
     }
 

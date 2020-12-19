@@ -5,8 +5,12 @@ import java.util.Objects;
 public class Lab {
     private boolean isFake;
 
-    Lab(boolean isFake) {
+    public Lab(boolean isFake) {
         this.isFake = isFake;
+    }
+
+    public boolean isFake() {
+        return isFake;
     }
 
     @Override

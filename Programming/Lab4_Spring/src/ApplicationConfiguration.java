@@ -8,6 +8,8 @@ import items.Book;
 import items.Picture;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import places.Base;
+import places.Lab;
 import transport.Sleigh;
 
 @Configuration
@@ -83,7 +85,7 @@ public class ApplicationConfiguration {
     }
     @Bean
     public Human[] humans() {
-        Human[] humans = new Human[6];
+        Human[] humans = new Human[9];
         for (int i = 0; i < humans.length; i++) {
             humans[i] = new Human("Human" + i);
         }
@@ -115,12 +117,32 @@ public class ApplicationConfiguration {
 
     @Bean
     public Sleigh[] sleighs() {
-        Sleigh[] sleighs = new Sleigh[6];
+        Sleigh[] sleighs = new Sleigh[3];
         for (int i = 0; i < sleighs.length; i++) {
             sleighs[i] = new Sleigh("Sleigh" + i);
         }
         return sleighs;
     }
+
+    @Bean
+    public Dog[] dogs() {
+        Dog[] dogs = new Dog[3];
+        for (int i = 0; i < dogs.length; i++) {
+            dogs[i] = new Dog("Dog" + i);
+        }
+        return dogs;
+    }
+
+    @Bean
+    public Base base() {
+        return new Base();
+    }
+
+    @Bean
+    public Lab lab() {
+        return new Lab(true);
+    }
+
 
 
 }

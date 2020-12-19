@@ -19,13 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: wip">
-      <change afterPath="$PROJECT_DIR$/src/interfaces/canBeAdded.java" afterDir="false" />
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: todos for new location system and main code wip">
+      <change afterPath="$PROJECT_DIR$/src/exceptions/NotEnoughPeopleException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Dog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creatures/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creatures/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Organism.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/enums/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/InvalidAuthorException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/canBeAdded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/canBeAdded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/places/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/places/Lab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,21 +42,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.1\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="1k0wGbJP4Do1xhEHa43lU29Q2BU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -76,7 +75,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -86,13 +85,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,7 +129,8 @@
       <workItem from="1608219177967" duration="134000" />
       <workItem from="1608219458536" duration="9238000" />
       <workItem from="1608278071291" duration="582000" />
-      <workItem from="1608278665316" duration="23192000" />
+      <workItem from="1608278665316" duration="23598000" />
+      <workItem from="1608390325195" duration="6345000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -172,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608323041740</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="programming lab 4: todos for new location system and main code wip">
+      <created>1608327099223</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608327099223</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +202,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="programming lab 4: moved to the new directory" />
     <MESSAGE value="programming lab 4: wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: wip" />
+    <MESSAGE value="programming lab 4: todos for new location system and main code wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: todos for new location system and main code wip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -202,7 +212,24 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/creatures/Organism.java</url>
+          <line>89</line>
+          <properties class="creatures.Organism" method="move">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="transport.Sleigh" memberName="cargo" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

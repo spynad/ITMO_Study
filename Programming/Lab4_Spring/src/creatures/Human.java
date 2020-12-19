@@ -56,7 +56,7 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
     }
 
     public void chipOffStalagmite(Stratum.Stalagmite stalagmite) {
-        int damage = (int) (Math.random()*300);
+        int damage = (int) (Math.random()*600);
         while (!stalagmite.isChippedOff()){
             System.out.println(getName() + " tried to damage the stalagmite");
             stalagmite.takeDamage(damage);
@@ -66,6 +66,10 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
 
     public void surprise(String text) {
         System.out.println(getName() + " is surprised: " + text);
+    }
+
+    public void watchOverADog(Dog dog) {
+        System.out.println(getName() + " is watching over " + dog.getName());
     }
 
     public void searchForSomething() {
@@ -100,6 +104,10 @@ public class Human extends Animal implements ableToRead, ableToLookAt{
 
     public void makeADiscovery(String discovery) {
         System.out.println(getName() + " made a discovery: " + discovery);
+    }
+
+    public void giveThanks(Human human, String reason){
+        System.out.println(getName() + " thanks " + human.getName() + " for: " + reason);
     }
 
 

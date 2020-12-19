@@ -3,6 +3,7 @@ package transport;
 import java.util.ArrayList;
 import creatures.Human;
 import enums.Location;
+import exceptions.NotEnoughPeopleException;
 import interfaces.Wind;
 import interfaces.canBeAdded;
 
@@ -10,7 +11,7 @@ public class Sleigh {
     private final String name;
     private final ArrayList<Human> helpers = new ArrayList<>();
     private Location loc = Location.SOMEWHERE;
-    private Location prevLoc;
+    private Location prevLoc = Location.SOMEWHERE;
     private canBeAdded cargo;
 
     public Sleigh(String name) {
@@ -33,7 +34,14 @@ public class Sleigh {
         }
     }
 
-    public void sendToBay() {
+    public void prepareSleigh(Human h1, Human h2, Human h3, canBeAdded c1) {
+        addHelper(h1);
+        addHelper(h2);
+        addHelper(h3);
+        addCargo(c1);
+    }
+
+    public void sendToBay() throws NotEnoughPeopleException {
         Wind wind = new Wind() {
             private int speed;
             @Override
@@ -65,10 +73,28 @@ public class Sleigh {
             }
             prevLoc = loc;
             loc = Location.BAY;
+
+            if (cargo != null) {
+                cargo.setLocation(loc);
+                unloadCargo();
+            }
+
         }
+        else
+            throw new NotEnoughPeopleException("NotEnoughPeopleException: required 3 people, found ", helpers.size());
     }
 
-    public void unloadCargo() {
+    protected void unloadCargo() {
         //TODO: реализовать выгрузку груза в локации Location
+        loc.addInStorage(cargo);
+        cargo = null;
+    }
+
+    public void returnBack() {
+        Location temp;
+        temp = loc;
+        loc = prevLoc;
+        prevLoc = temp;
+        System.out.println(name + " returned back to " + loc.toString());
     }
 }
