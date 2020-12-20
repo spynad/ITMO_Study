@@ -20,62 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: added junit tests">
-      <change beforePath="$PROJECT_DIR$/../.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Spring_5_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/junit_junit_4_13_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.uml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab4_Spring.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/ApplicationConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/AncientStar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Animal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Creature.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Dog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Elder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Human.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/HumanTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Mind.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/MulticellularOrganism.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Narrator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Organism.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/Plant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/UnicellularOrganism.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/parts/Part.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/creatures/parts/Parts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/entities/Expedition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/entities/Stratum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Era.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/ExpeditionResults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Family.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Muscularity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/Origin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/PartLocation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enums/PlaceOfLiving.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/exceptions/InvalidExperienceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/exceptions/NotEnoughPeopleException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/Wind.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/ableToLookAt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/ableToRead.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/canBeAdded.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/canBeMoved.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/canSleep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interfaces/canTransport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/items/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/items/DrillingDevice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/items/Picture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/items/StudyMaterial.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/items/StudyMaterialTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/places/Base.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/places/Cave.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/places/Lab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/transport/Sleigh.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,23 +80,10 @@
       <recent name="creatures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StudyMaterialTest">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="Lab4_Spring" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,9 +120,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
         <item itemvalue="JUnit.StudyMaterialTest" />
         <item itemvalue="JUnit.HumanTest" />
-        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -223,6 +155,8 @@
       <workItem from="1608390325195" duration="7114000" />
       <workItem from="1608471660383" duration="4509000" />
       <workItem from="1608478524329" duration="619000" />
+      <workItem from="1608479336741" duration="81000" />
+      <workItem from="1608479551208" duration="688000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -294,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608478435500</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added .gitignore">
+      <created>1608479399048</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608479399048</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +263,8 @@
     <MESSAGE value="programming lab 4: finished" />
     <MESSAGE value="programming lab 4: code cleanup and some fixes" />
     <MESSAGE value="programming lab 4: added junit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: added junit tests" />
+    <MESSAGE value="added .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added .gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
