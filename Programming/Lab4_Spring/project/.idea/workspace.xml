@@ -19,19 +19,63 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: code cleanup and some fixes">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creatures/HumanTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/items/StudyMaterialTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4_Spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4_Spring.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Expedition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Expedition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/PartLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/PartLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: added junit tests">
+      <change beforePath="$PROJECT_DIR$/../.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Spring_5_2_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/junit_junit_4_13_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab4_Spring.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/ApplicationConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/AncientStar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Creature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Elder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Human.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/HumanTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Mind.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/MulticellularOrganism.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Narrator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Organism.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/Plant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/UnicellularOrganism.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/parts/Part.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/creatures/parts/Parts.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/entities/Expedition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/entities/Stratum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Era.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/ExpeditionResults.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Family.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Muscularity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Origin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/PartLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/PlaceOfLiving.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/exceptions/InvalidExperienceException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/exceptions/NotEnoughPeopleException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/Wind.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/ableToLookAt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/ableToRead.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/canBeAdded.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/canBeMoved.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/canSleep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interfaces/canTransport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/items/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/items/DrillingDevice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/items/Picture.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/items/StudyMaterial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/items/StudyMaterialTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/places/Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/places/Cave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/places/Lab.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/transport/Sleigh.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +93,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1k0wGbJP4Do1xhEHa43lU29Q2BU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -80,7 +124,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -99,13 +143,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -175,7 +221,8 @@
       <workItem from="1608278071291" duration="582000" />
       <workItem from="1608278665316" duration="23598000" />
       <workItem from="1608390325195" duration="7114000" />
-      <workItem from="1608471660383" duration="4290000" />
+      <workItem from="1608471660383" duration="4509000" />
+      <workItem from="1608478524329" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -240,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608397682649</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="programming lab 4: added junit tests">
+      <created>1608478435500</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608478435500</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,12 +313,16 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
     <MESSAGE value="programming lab 4: moved to the new directory" />
     <MESSAGE value="programming lab 4: wip" />
     <MESSAGE value="programming lab 4: todos for new location system and main code wip" />
     <MESSAGE value="programming lab 4: finished" />
     <MESSAGE value="programming lab 4: code cleanup and some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: code cleanup and some fixes" />
+    <MESSAGE value="programming lab 4: added junit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: added junit tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

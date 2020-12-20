@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="535.0" y="795.0">com</node>
+    <node x="213.0" y="645.0">netscape</node>
+    <node x="317.0" y="495.0">toolbarButtonGraphics</node>
+    <node x="700.0" y="795.0">sun</node>
+    <node x="567.0" y="720.0">enums</node>
+    <node x="277.0" y="570.0">groovyjarjarasm</node>
+    <node x="362.0" y="795.0">java</node>
+    <node x="748.0" y="720.0">javax</node>
+    <node x="626.0" y="495.0">groovyjarjarpicocli</node>
+    <node x="0.0" y="0.0">ApplicationConfiguration</node>
+    <node x="285.0" y="0.0">interfaces</node>
+    <node x="0.0" y="720.0">images</node>
+    <node x="0.0" y="795.0">junit</node>
+    <node x="289.0" y="80.0">creatures</node>
+    <node x="0.0" y="870.0">org</node>
+    <node x="0.0" y="645.0">transport</node>
+    <node x="538.0" y="570.0">exceptions</node>
+    <node x="165.0" y="870.0">jdk</node>
+    <node x="418.0" y="645.0">META-INF</node>
+    <node x="189.0" y="720.0">places</node>
+    <node x="378.0" y="720.0">groovy</node>
+    <node x="623.0" y="645.0">entities</node>
+    <node x="0.0" y="495.0">groovyjarjarcommonscli</node>
+    <node x="181.0" y="795.0">items</node>
+    <node x="0.0" y="570.0">groovyjarjarantlr</node>
+    <node x="506.0" y="0.0">Application</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="creatures" target="interfaces">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="442.0" y="450.0" />
+  <SelectedNodes>
+    <node>com</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
