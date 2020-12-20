@@ -19,18 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: finished">
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: code cleanup and some fixes">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creatures/HumanTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/items/StudyMaterialTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab4_Spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4_Spring.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/AncientStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/AncientStar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creatures/Elder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Elder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/ElderLegacy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creatures/parts/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creatures/parts/Part.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/DrillingDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/DrillingDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/places/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/places/Lab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Expedition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Expedition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/PartLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/PartLocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transport/Sleigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/Sleigh.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +44,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -62,8 +63,12 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -71,13 +76,22 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="items" />
+      <recent name="creatures" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.StudyMaterialTest">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="Lab4_Spring" />
@@ -85,21 +99,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HumanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab4_Spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="creatures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="creatures" />
+      <option name="MAIN_CLASS_NAME" value="creatures.HumanTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudyMaterialTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lab4_Spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="items.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="items" />
+      <option name="MAIN_CLASS_NAME" value="items.StudyMaterialTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StudyMaterialTest" />
+        <item itemvalue="JUnit.HumanTest" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
@@ -130,7 +174,8 @@
       <workItem from="1608219458536" duration="9238000" />
       <workItem from="1608278071291" duration="582000" />
       <workItem from="1608278665316" duration="23598000" />
-      <workItem from="1608390325195" duration="7059000" />
+      <workItem from="1608390325195" duration="7114000" />
+      <workItem from="1608471660383" duration="4290000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
@@ -188,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608397085333</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="programming lab 4: code cleanup and some fixes">
+      <created>1608397682649</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608397682649</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +263,8 @@
     <MESSAGE value="programming lab 4: wip" />
     <MESSAGE value="programming lab 4: todos for new location system and main code wip" />
     <MESSAGE value="programming lab 4: finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: finished" />
+    <MESSAGE value="programming lab 4: code cleanup and some fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming lab 4: code cleanup and some fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -220,14 +273,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/creatures/Organism.java</url>
-          <line>89</line>
-          <properties class="creatures.Organism" method="move">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

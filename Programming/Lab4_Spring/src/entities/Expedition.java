@@ -4,13 +4,14 @@ import creatures.Human;
 import enums.ExpeditionResults;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Expedition {
     private final ArrayList<Human> expeditionMembers = new ArrayList<>();
     private ExpeditionResults expRes;
 
-    public ArrayList<Human> getExpeditionMembers() {
+    public List<Human> getExpeditionMembers() {
         return expeditionMembers;
     }
 
@@ -20,10 +21,16 @@ public class Expedition {
 
     public void setExpRes(ExpeditionResults expRes) {
         switch (expRes){
-            case FAILURE -> System.out.println("The expedition is a failure");
-            case SUCCESS -> System.out.println("The expedition is a success");
-            case SUPER_SUCCESS -> System.out.println("The expedition is a success; Such finds would do " +
+            case FAILURE:
+                System.out.println("The expedition is a failure");
+                break;
+            case SUCCESS:
+                System.out.println("The expedition is a success");
+                break;
+            case SUPER_SUCCESS:
+                System.out.println("The expedition is a success; Such finds would do " +
                     "honor to any expedition. A great contribution to science has been made.");
+                break;
         }
     }
 

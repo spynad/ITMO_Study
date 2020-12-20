@@ -1,6 +1,8 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import creatures.Human;
 import enums.Location;
 import exceptions.NotEnoughPeopleException;
@@ -9,7 +11,7 @@ import interfaces.canBeAdded;
 
 public class Sleigh {
     private final String name;
-    private final ArrayList<Human> helpers = new ArrayList<>();
+    private final List<Human> helpers = new ArrayList<>();
     private Location loc = Location.SOMEWHERE;
     private Location prevLoc = Location.SOMEWHERE;
     private canBeAdded cargo;

@@ -137,7 +137,4 @@ public class ApplicationConfiguration {
     public Lab lab() {
         return new Lab(true);
     }
-
-
-
 }

@@ -8,7 +8,8 @@ import interfaces.canBeAdded;
 public final class Elder extends MulticellularOrganism implements canBeAdded {
     private boolean corruptState;
     private boolean isUnderwater;
-    private final Parts wing = new Wing("wing");
+    private final Parts wing = new Wing("wing", PartLocation.SPINE);
+    private final Parts tentacle = new Tentacle("wing", PartLocation.SPINE);
 
     public Elder(String name) {
         super(name);
@@ -47,9 +48,14 @@ public final class Elder extends MulticellularOrganism implements canBeAdded {
         wing.use("swim");
     }
 
-    public final class Wing extends Part implements Parts {
-        public Wing(String name) {
+    public void moveUnderWater() {
+        tentacle.use("move");
+    }
+
+    private final class Wing extends Part implements Parts {
+        public Wing(String name, PartLocation partLocation) {
             super(name);
+            setPartLocation(partLocation);
         }
 
         @Override
@@ -66,7 +72,7 @@ public final class Elder extends MulticellularOrganism implements canBeAdded {
         }
     }
 
-    public final class Tentacle extends Part implements Parts {
+    private final class Tentacle extends Part implements Parts {
         private final int size = 4;
         private Muscularity muscularity = Muscularity.HIGH_MUSCLES;
 
