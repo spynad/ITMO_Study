@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: added junit tests">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="99702168-6ce5-416d-92ae-5f9040c149ec" name="Default Changelist" comment="programming lab 4: added junit tests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +154,7 @@
       <workItem from="1608471660383" duration="4509000" />
       <workItem from="1608478524329" duration="619000" />
       <workItem from="1608479336741" duration="81000" />
-      <workItem from="1608479551208" duration="688000" />
+      <workItem from="1608479551208" duration="706000" />
     </task>
     <task id="LOCAL-00001" summary="programming lab 4: wip">
       <created>1608138024908</created>
