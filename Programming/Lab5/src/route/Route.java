@@ -23,6 +23,7 @@ public class Route implements Comparable<Route>{
                  SecondLocation to,
                  double distance) throws InvalidArgumentException{
         id = uniqueId++;
+        this.name = name;
         this.coordinates = coordinates;
         creationDate = LocalDate.now();
         this.from = from;
