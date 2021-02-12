@@ -2,6 +2,7 @@ package route;
 
 import java.time.LocalDate;
 import java.util.Formatter;
+import java.util.Locale;
 
 import route.exceptions.InvalidArgumentException;
 
@@ -26,6 +27,23 @@ public class Route implements Comparable<Route>{
         this.name = name;
         this.coordinates = coordinates;
         creationDate = LocalDate.now();
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
+        if (!validateRoute())
+            throw new InvalidArgumentException();
+    }
+
+    public Route(String name,
+                 Coordinates coordinates,
+                 LocalDate date,
+                 FirstLocation from,
+                 SecondLocation to,
+                 double distance) throws InvalidArgumentException{
+        id = uniqueId++;
+        this.name = name;
+        this.coordinates = coordinates;
+        creationDate = date;
         this.from = from;
         this.to = to;
         this.distance = distance;
@@ -73,9 +91,10 @@ public class Route implements Comparable<Route>{
     @Override
     public String toString() {
         Formatter f = new Formatter();
-        f.format("id,name,coordinates,creationDate,from,to,distance\n" +
-                "%d,%s,%s,%s,%s,%s,%f",
-                id, name, coordinates.toString(), creationDate.toString(), from.toString(), to.toString(), distance);
+        f.format("%s,%s,\"%s,%s,%s\",%s,%s,%s",
+                name, coordinates.toString(), creationDate.getYear(),
+                creationDate.getMonthValue(), creationDate.getDayOfMonth(),
+                from.toString(), to.toString(), String.format(Locale.ROOT,"%.2f",distance));
         return f.toString();
     }
 }

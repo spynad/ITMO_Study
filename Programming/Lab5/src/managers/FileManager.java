@@ -35,7 +35,7 @@ public class FileManager {
                 readStringBuilder.append(nextChar);
 
                 if (nextChar == '\n') {
-                    readStringBuilder.delete(readStringBuilder.length() - 2, readStringBuilder.length());
+                    readStringBuilder.delete(readStringBuilder.length() - 1, readStringBuilder.length());
                     readResult.add(readStringBuilder.toString());
                     readStringBuilder.delete(0, readStringBuilder.length());
                 }
@@ -58,8 +58,21 @@ public class FileManager {
         return readResult;
     }
 
-    public void writeFile(Stack<Route> routes) {
+    public void writeFile(RouteManager routeManager) {
+        try {
+            FileWriter fileWriter = new FileWriter("2.csv");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            CSVReader csvReader = new CSVReader();
+            String output = csvReader.makeCSVFromRoute(routeManager.getRoutes());
+            printWriter.print(output);
+            //TODO: перенести в finally-блок
+            printWriter.close();
+            fileWriter.close();
 
+        } catch(IOException ioe) {
+            ioe.printStackTrace();
+            System.exit(1);
+        }
     }
 
 

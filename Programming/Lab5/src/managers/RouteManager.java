@@ -25,4 +25,8 @@ public class RouteManager {
             this.routes.push(route);
         }
     }
+
+    public Stack<Route> getRoutes() {
+        return routes;
+    }
 }

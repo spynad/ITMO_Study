@@ -16,7 +16,8 @@ public class Lab5 {
                 RouteManager routeManager = new RouteManager();
                 FileManager fileManager = new FileManager();
                 CSVReader csvReader = new CSVReader();
-                csvReader.makeRouteFromCSV(fileManager.readFile(args[0]));
+                routeManager.addRoutes(csvReader.makeRouteFromCSV(fileManager.readFile(args[0])));
+                fileManager.writeFile(routeManager);
             }
         }
         else {

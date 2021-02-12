@@ -3,6 +3,7 @@ package route;
 import route.exceptions.InvalidArgumentException;
 
 import java.util.Formatter;
+import java.util.Locale;
 
 public class Coordinates {
     private long x; //Значение поля должно быть больше -776
@@ -27,7 +28,7 @@ public class Coordinates {
     @Override
     public String toString() {
         Formatter f = new Formatter();
-        f.format("\"%d,%f\"", x, y);
+        f.format("\"%d,%s\"", x, String.format(Locale.ROOT, "%.2f", y));
         return f.toString();
     }
 }

@@ -3,6 +3,7 @@ package route;
 import route.exceptions.InvalidArgumentException;
 
 import java.util.Formatter;
+import java.util.Locale;
 
 public class SecondLocation {
     private Integer x; //Поле не может быть null
@@ -33,7 +34,7 @@ public class SecondLocation {
     @Override
     public String toString() {
         Formatter f = new Formatter();
-        f.format("\"%d,%d,%f\"", x, y, z);
+        f.format("\"%d,%d,%s\"", x, y, String.format(Locale.ROOT, "%.2f", z));
         return f.toString();
     }
 }
