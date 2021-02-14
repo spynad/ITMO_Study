@@ -19,6 +19,18 @@ public class SecondLocation {
             throw new InvalidArgumentException();
     }
 
+    public Integer getX() {
+        return x;
+    }
+
+    public Long getY() {
+        return y;
+    }
+
+    public Double getZ() {
+        return z;
+    }
+
     public boolean validateX() {
         return x != null;
     }

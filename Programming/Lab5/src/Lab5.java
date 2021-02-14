@@ -14,7 +14,7 @@ public class Lab5 {
                 routeManager.addRoutes(csvParser.parseRouteFromFile(fileManager.readFile(args[0])));
                 fileManager.writeFile();
 
-                ClientManager clientManager = new ClientManager(routeManager);
+                ClientManager clientManager = new ClientManager(routeManager, fileManager);
                 clientManager.start();
             }
         }

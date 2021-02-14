@@ -1,7 +1,15 @@
 package command;
 
-public class SumOfDistanceCommand implements Command{
-    public void execute(String[] args) {
+import managers.IRouteManager;
 
+public class SumOfDistanceCommand implements Command{
+    IRouteManager routeManager;
+
+    SumOfDistanceCommand(IRouteManager routeManager) {
+        this.routeManager = routeManager;
+    }
+
+    public void execute() {
+        routeManager.sumOfDistance();
     }
 }

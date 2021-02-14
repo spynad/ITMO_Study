@@ -1,7 +1,15 @@
 package command;
 
-public class ShowCommand implements Command{
-    public void execute(String[] args) {
+import managers.IRouteManager;
 
+public class ShowCommand implements Command{
+    IRouteManager routeManager;
+
+    ShowCommand(IRouteManager routeManager) {
+        this.routeManager = routeManager;
+    }
+
+    public void execute() {
+        routeManager.show();
     }
 }

@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class ClientManager {
     IRouteManager routeManager;
+    IFileManager fileManager;
     CommandInvoker commandInvoker;
 
-    public ClientManager(IRouteManager routeManager) {
+    public ClientManager(IRouteManager routeManager, IFileManager fileManager) {
         this.routeManager = routeManager;
-        commandInvoker = new CommandInvoker(routeManager);
+        this.fileManager = fileManager;
+        commandInvoker = new CommandInvoker(routeManager, fileManager);
     }
 
     public void start() {
@@ -21,7 +23,7 @@ public class ClientManager {
                 String str = scanner.nextLine();
                 commandInvoker.execute(str);
             } catch (IllegalStateException ise) {
-
+                System.err.println(ise.getMessage());
             }
 
         }

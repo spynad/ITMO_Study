@@ -55,6 +55,30 @@ public class Route implements Comparable<Route>{
         return id;
     }
 
+    public double getDistance() {
+        return distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public SecondLocation getTo() {
+        return to;
+    }
+
+    public FirstLocation getFrom() {
+        return from;
+    }
+
     public boolean validateId() {
         return (id != null) && (id > 0);
     }

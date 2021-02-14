@@ -18,6 +18,18 @@ public class FirstLocation {
             throw new InvalidArgumentException();
     }
 
+    public Integer getX() {
+        return x;
+    }
+
+    public long getY() {
+        return y;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public boolean validateX() {
         return x != null;
     }

@@ -17,6 +17,14 @@ public class Coordinates {
             throw new InvalidArgumentException();
     }
 
+    public long getX() {
+        return x;
+    }
+
+    public Double getY() {
+        return y;
+    }
+
     public boolean validateX() {
         return x > -776;
     }

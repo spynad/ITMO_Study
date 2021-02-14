@@ -1,7 +1,16 @@
 package command;
 
-public class RemoveByIdCommand implements Command{
-    public void execute(String[] args) {
+import managers.IRouteManager;
 
+public class RemoveByIdCommand implements Command{
+    IRouteManager routeManager;
+    final int id;
+
+    RemoveByIdCommand(IRouteManager routeManager, int id) {
+        this.routeManager = routeManager;
+        this.id = id;
+    }
+    public void execute() {
+        routeManager.removeById(id);
     }
 }

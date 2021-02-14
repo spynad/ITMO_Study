@@ -9,7 +9,7 @@ public class InfoCommand implements Command{
         this.routeManager = routeManager;
     }
 
-    public void execute(String[] args) {
+    public void execute() {
         routeManager.info();
     }
 }

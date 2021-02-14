@@ -26,7 +26,6 @@ public class FileManager implements IFileManager{
     public ArrayList<String> readFile(String filePath) {
         Log.logger.log(Level.INFO,"Reading file " + filePath);
         try {
-            CSVParser csvParser = new CSVParser();
             readStringBuilder = new StringBuilder();
             file = new File(filePath);
             inputStream = new FileInputStream(file);
