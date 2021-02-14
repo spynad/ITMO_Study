@@ -1,7 +1,10 @@
 package command;
 
+import managers.CommandManager;
+
 public class ClearCommand implements Command{
-    public void execute() {
+    private CommandManager commandManager;
+    public void execute(String[] args) {
 
     }
 }

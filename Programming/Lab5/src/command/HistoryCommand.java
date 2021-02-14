@@ -1,7 +1,7 @@
 package command;
 
 public class HistoryCommand implements Command{
-    public void execute() {
+    public void execute(String[] args) {
 
     }
 }

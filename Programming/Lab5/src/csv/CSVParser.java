@@ -16,13 +16,13 @@ import java.util.Iterator;
 import java.util.Stack;
 import java.util.logging.Level;
 
-public class CSVReader {
+public class CSVParser implements Parser{
 
-    public CSVReader() {
+    public CSVParser() {
         Log.logger.log(Level.INFO,"CSVReader object created");
     }
     //TODO: это пиздец, переделать это дерьмо
-    public ArrayList<Route> makeRouteFromCSV(ArrayList<String> inputString) {
+    public ArrayList<Route> parseRouteFromFile(ArrayList<String> inputString) {
         ArrayList<Route> routes = new ArrayList<>();
         Log.logger.log(Level.INFO,"Parsing file");
         try {
@@ -60,7 +60,8 @@ public class CSVReader {
         return routes;
     }
 
-    public String makeCSVFromRoute(Stack<Route> routes) {
+    public String makeFileFromRoute(Stack<Route> routes) {
+        Log.logger.log(Level.INFO,"Making csv string");
         StringBuilder csv = new StringBuilder();
         csv.append("name,coordinates,creationDate,from,to,distance\n");
         for (Route route: routes) {

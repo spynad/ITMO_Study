@@ -2,28 +2,31 @@ package managers;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Stack;
 import java.util.logging.Level;
 
-import csv.CSVReader;
+import csv.CSVParser;
+import csv.Parser;
 import log.Log;
-import route.Route;
 
-public class FileManager {
+public class FileManager implements IFileManager{
+    private IRouteManager routeManager;
+    private Parser parser;
     private File file;
     private FileInputStream inputStream;
     private BufferedInputStream buffer;
     private StringBuilder readStringBuilder;
     private ArrayList<String> readResult;
 
-    public FileManager() {
+    public FileManager(IRouteManager routeManager, Parser parser) {
         Log.logger.log(Level.INFO,"FileManager init");
+        this.routeManager = routeManager;
+        this.parser = parser;
     }
 
     public ArrayList<String> readFile(String filePath) {
         Log.logger.log(Level.INFO,"Reading file " + filePath);
         try {
-            CSVReader csvReader = new CSVReader();
+            CSVParser csvParser = new CSVParser();
             readStringBuilder = new StringBuilder();
             file = new File(filePath);
             inputStream = new FileInputStream(file);
@@ -43,7 +46,7 @@ public class FileManager {
         } catch (FileNotFoundException fnfe) {
             System.err.println("The file not found: " + fnfe);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An exception occurred while trying to read file: " + e);
         }
         finally {
             try {
@@ -52,18 +55,19 @@ public class FileManager {
                     inputStream.close();
                 }
             } catch (IOException ioe) {
-                ioe.printStackTrace();
+                System.err.println("An exception occurred while close files: " + ioe);
             }
         }
         return readResult;
     }
 
-    public void writeFile(RouteManager routeManager) {
+    public void writeFile() {
         try {
+            Log.logger.log(Level.INFO,"Writing csv string to csv file");
             FileWriter fileWriter = new FileWriter("2.csv");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            CSVReader csvReader = new CSVReader();
-            String output = csvReader.makeCSVFromRoute(routeManager.getRoutes());
+            CSVParser csvParser = new CSVParser();
+            String output = csvParser.makeFileFromRoute(routeManager.getRoutes());
             printWriter.print(output);
             //TODO: перенести в finally-блок
             printWriter.close();

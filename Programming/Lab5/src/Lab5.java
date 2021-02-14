@@ -1,23 +1,21 @@
-import csv.CSVReader;
-import log.Log;
-import managers.FileManager;
-import managers.RouteManager;
-
-import java.io.FileInputStream;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
+import csv.CSVParser;
+import csv.Parser;
+import managers.*;
 
 public class Lab5 {
 
     public static void main(String[] args) {
         if (args.length > 0) {
             if(!args[0].equals("")) {
-                RouteManager routeManager = new RouteManager();
-                FileManager fileManager = new FileManager();
-                CSVReader csvReader = new CSVReader();
-                routeManager.addRoutes(csvReader.makeRouteFromCSV(fileManager.readFile(args[0])));
-                fileManager.writeFile(routeManager);
+                IRouteManager routeManager = new RouteManager();
+                Parser csvParser = new CSVParser();
+                IFileManager fileManager = new FileManager(routeManager, csvParser);
+
+                routeManager.addRoutes(csvParser.parseRouteFromFile(fileManager.readFile(args[0])));
+                fileManager.writeFile();
+
+                ClientManager clientManager = new ClientManager(routeManager);
+                clientManager.start();
             }
         }
         else {

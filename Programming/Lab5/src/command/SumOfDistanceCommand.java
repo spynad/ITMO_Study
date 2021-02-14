@@ -1,7 +1,7 @@
 package command;
 
 public class SumOfDistanceCommand implements Command{
-    public void execute() {
+    public void execute(String[] args) {
 
     }
 }
