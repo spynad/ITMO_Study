@@ -272,6 +272,10 @@ public class RouteManager implements IRouteManager{
         }
     }
 
+    public void sort() {
+        Collections.sort(routes);
+    }
+
     /**
      * Класс, обеспечивающий считывание полей объектов Route из глобального потока ввода
      * @author spynad
