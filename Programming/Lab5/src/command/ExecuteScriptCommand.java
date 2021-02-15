@@ -18,9 +18,10 @@ public class ExecuteScriptCommand implements Command{
 
     public void execute() {
         commands = fileManager.readFile(filePath);
-        commandInvoker.addScriptName(filePath);
+        commandInvoker.addScript(filePath);
         for (String command : commands) {
             commandInvoker.execute(command);
         }
+        commandInvoker.removeScript(filePath);
     }
 }

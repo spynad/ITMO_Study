@@ -10,7 +10,6 @@ public class SecondLocation {
     private Long y; //Поле не может быть null
     private Double z; //Поле не может быть null
 
-    //TODO: объединить валидацию полей класса в один метод, так должно быть красивее
     public SecondLocation(Integer x, Long y, Double z) throws InvalidArgumentException{
         this.x = x;
         this.y = y;

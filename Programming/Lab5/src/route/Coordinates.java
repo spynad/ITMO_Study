@@ -9,7 +9,6 @@ public class Coordinates {
     private long x; //Значение поля должно быть больше -776
     private Double y; //Поле не может быть null
 
-    //TODO: объединить валидацию полей класса в один метод, так должно быть красивее
     public Coordinates(long x, Double y) throws InvalidArgumentException {
         this.x = x;
         this.y = y;

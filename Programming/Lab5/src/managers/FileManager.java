@@ -9,25 +9,21 @@ import csv.Parser;
 import log.Log;
 
 public class FileManager implements IFileManager{
-    private IRouteManager routeManager;
-    private Parser parser;
-    private File file;
+    private final IRouteManager routeManager;
     private FileInputStream inputStream;
     private BufferedInputStream buffer;
-    private StringBuilder readStringBuilder;
     private ArrayList<String> readResult;
 
     public FileManager(IRouteManager routeManager, Parser parser) {
         Log.logger.log(Level.INFO,"FileManager init");
         this.routeManager = routeManager;
-        this.parser = parser;
     }
 
     public ArrayList<String> readFile(String filePath) {
         Log.logger.log(Level.INFO,"Reading file " + filePath);
         try {
-            readStringBuilder = new StringBuilder();
-            file = new File(filePath);
+            StringBuilder readStringBuilder = new StringBuilder();
+            File file = new File(filePath);
             inputStream = new FileInputStream(file);
             buffer = new BufferedInputStream(inputStream);
             readResult = new ArrayList<>();
@@ -38,7 +34,8 @@ public class FileManager implements IFileManager{
 
                 if (nextChar == '\n') {
                     readStringBuilder.delete(readStringBuilder.length() - 1, readStringBuilder.length());
-                    readResult.add(readStringBuilder.toString());
+                    if(!readStringBuilder.toString().equals(""))
+                        readResult.add(readStringBuilder.toString());
                     readStringBuilder.delete(0, readStringBuilder.length());
                 }
             }
@@ -65,7 +62,7 @@ public class FileManager implements IFileManager{
             Log.logger.log(Level.INFO,"Writing csv string to csv file");
             FileWriter fileWriter = new FileWriter("2.csv");
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            CSVParser csvParser = new CSVParser();
+            Parser csvParser = new CSVParser();
             String output = csvParser.makeFileFromRoute(routeManager.getRoutes());
             printWriter.print(output);
             //TODO: перенести в finally-блок

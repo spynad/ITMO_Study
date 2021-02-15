@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import route.exceptions.InvalidArgumentException;
 
-public class Route implements Comparable<Route>{
+public final class Route implements Comparable<Route>{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -15,15 +15,15 @@ public class Route implements Comparable<Route>{
     private SecondLocation to; //Поле не может быть null
     private double distance; //Значение поля должно быть больше 1
 
-    private static Integer uniqueId = 1;
+    private static Integer uniqueId = 0;
 
-    //TODO: объединить валидацию полей класса в один метод, так должно быть красивее
     public Route(String name,
                  Coordinates coordinates,
                  FirstLocation from,
                  SecondLocation to,
                  double distance) throws InvalidArgumentException{
-        id = uniqueId++;
+        id = uniqueId + 1;
+        uniqueId++;
         this.name = name;
         this.coordinates = coordinates;
         creationDate = LocalDate.now();
@@ -34,16 +34,34 @@ public class Route implements Comparable<Route>{
             throw new InvalidArgumentException();
     }
 
-    public Route(String name,
+    public Route(int id,
+                 String name,
                  Coordinates coordinates,
                  LocalDate date,
                  FirstLocation from,
                  SecondLocation to,
                  double distance) throws InvalidArgumentException{
-        id = uniqueId++;
+        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
         creationDate = date;
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
+        if (!validateRoute())
+            throw new InvalidArgumentException();
+    }
+
+    public Route(int id,
+                 String name,
+                 Coordinates coordinates,
+                 FirstLocation from,
+                 SecondLocation to,
+                 double distance) throws InvalidArgumentException{
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        creationDate = LocalDate.now();
         this.from = from;
         this.to = to;
         this.distance = distance;
@@ -84,7 +102,7 @@ public class Route implements Comparable<Route>{
     }
 
     public boolean validateName() {
-        return (!name.equals("")) && (name != null);
+        return (!name.equals(""));
     }
 
     public boolean validateCoordinates() {
@@ -109,16 +127,22 @@ public class Route implements Comparable<Route>{
     }
     @Override
     public int compareTo(Route o) {
-        return id.compareTo(o.getId());
+        return getId() - o.getId();
     }
 
     @Override
     public String toString() {
         Formatter f = new Formatter();
+        String fr;
+        if(from == null) {
+            fr = "null, null, null";
+        } else {
+            fr = from.toString();
+        }
         f.format("%s,%s,\"%s,%s,%s\",%s,%s,%s",
                 name, coordinates.toString(), creationDate.getYear(),
                 creationDate.getMonthValue(), creationDate.getDayOfMonth(),
-                from.toString(), to.toString(), String.format(Locale.ROOT,"%.2f",distance));
+                fr, to.toString(), String.format(Locale.ROOT,"%.2f",distance));
         return f.toString();
     }
 }

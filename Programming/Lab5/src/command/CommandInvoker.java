@@ -16,8 +16,12 @@ public class CommandInvoker {
         this.fileManager = fileManager;
     }
 
-    public void addScriptName(String name) {
+    public void addScript(String name) {
         scripts.add(name);
+    }
+
+    public void removeScript(String name) {
+        scripts.remove(name);
     }
 
     public void execute(String commandName) {
@@ -25,10 +29,6 @@ public class CommandInvoker {
         String str2 = commandName.stripLeading();
         String[] str1 = str2.split("\\s+");
 
-        System.out.println(Arrays.toString(str1));
-        if (str1.length == 0) {
-            throw new IllegalStateException("try again.");
-        }
         switch (str1[0].toLowerCase(Locale.ROOT)) {
             case "help":
                 command = new HelpCommand();
@@ -89,7 +89,11 @@ public class CommandInvoker {
                 command = new HistoryCommand(history);
                 break;
             case "add":
-                command = new AddCommand(routeManager);
+                if ((str1.length > 2) && (str1.length < 12)) {
+                    command = new AddCommand(routeManager, str1);
+                } else {
+                    throw new IllegalStateException("invalid arguments. try again");
+                }
                 break;
             case "execute_script":
                 if(str1.length == 2) {
@@ -101,6 +105,13 @@ public class CommandInvoker {
                     throw new IllegalStateException("invalid arguments. try again");
                 }
                 break;
+            case "update":
+                if ((str1.length > 3) && (str1.length < 13)) {
+                    command = new UpdateCommand(routeManager, str1);
+                } else {
+                    throw new IllegalStateException("invalid arguments");
+                }
+                break;
             default:
                 throw new IllegalStateException("no command registered for " + commandName);
         }
@@ -109,8 +120,6 @@ public class CommandInvoker {
             history.remove(history.size() - 1);
         }
         history.push(str1[0].toLowerCase(Locale.ROOT));
-        /*if (command == null) {
-            throw new IllegalStateException("no command registered for " + commandName);
-        }*/
     }
+
 }

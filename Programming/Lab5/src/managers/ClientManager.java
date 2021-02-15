@@ -5,13 +5,9 @@ import command.CommandInvoker;
 import java.util.Scanner;
 
 public class ClientManager {
-    IRouteManager routeManager;
-    IFileManager fileManager;
     CommandInvoker commandInvoker;
 
     public ClientManager(IRouteManager routeManager, IFileManager fileManager) {
-        this.routeManager = routeManager;
-        this.fileManager = fileManager;
         commandInvoker = new CommandInvoker(routeManager, fileManager);
     }
 

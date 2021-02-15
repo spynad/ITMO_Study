@@ -35,7 +35,7 @@ public class FirstLocation {
     }
 
     public boolean validateName() {
-        return !name.equals("") && name != null;
+        return !name.equals("");
     }
 
     @Override

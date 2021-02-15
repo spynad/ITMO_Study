@@ -5243,3 +5243,433 @@ INFO: CSVManager init
 [вс февр. 14 23:53:24 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
 [вс февр. 14 23:53:24 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
 [вс февр. 14 23:53:33 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:51:15 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 17:51:15 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:51:15 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 17:51:15 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 17:51:16 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 17:51:16 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 17:51:16 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 17:51:16 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:51:16 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 17:51:26 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:51:53 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 17:51:53 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:51:53 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 17:51:53 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 17:51:53 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 17:51:54 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 17:51:54 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 17:51:54 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:51:54 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 17:52:05 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:52:16 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 17:52:16 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:52:16 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 17:52:16 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 17:52:17 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 17:52:17 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 17:52:17 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 17:52:17 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:52:17 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 17:52:24 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:52:41 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 17:52:41 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:52:41 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 17:52:41 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 17:52:42 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 17:52:42 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 17:52:42 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 17:52:42 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:52:42 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 17:52:49 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:54:56 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 17:54:56 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:54:56 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 17:54:56 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 17:54:57 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 17:54:57 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 17:54:57 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 17:54:57 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 17:54:57 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 17:55:04 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 17:55:16 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 18:14:17 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:14:17 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:14:17 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:14:17 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:14:18 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:14:18 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:14:18 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:14:18 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:14:18 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:15:48 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:15:48 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:15:48 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:15:48 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:15:48 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:15:48 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:15:48 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:15:48 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:15:48 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:15:57 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:15:57 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:15:57 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:15:57 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:15:58 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:15:58 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:15:58 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:15:58 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:15:58 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:16:21 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:16:21 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:16:21 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:16:21 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:16:22 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:16:22 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:16:22 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:16:22 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:16:22 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:27:57 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:27:57 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:27:57 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:27:57 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:27:58 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:27:58 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:27:58 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:27:58 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:27:58 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:30:45 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:30:45 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:30:45 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:30:45 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:30:46 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:30:46 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:30:46 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:30:46 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:30:46 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:31:25 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:31:25 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:31:25 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:31:25 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:31:26 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:31:26 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:31:26 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:31:26 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:31:26 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:32:30 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 18:37:48 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:37:48 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:37:48 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:37:48 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:37:49 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:54:57 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:54:57 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:54:57 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:54:57 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:54:57 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:54:57 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:54:57 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:54:57 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:54:57 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 18:56:19 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 18:56:19 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:56:19 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 18:56:19 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 18:56:19 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 18:56:19 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 18:56:19 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 18:56:19 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 18:56:19 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:11:12 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:11:12 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:11:12 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:11:12 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:11:12 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:11:12 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:11:12 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:11:12 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:11:12 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:11:43 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:11:43 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:11:43 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:11:43 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:11:43 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:11:43 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:11:43 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:11:43 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:11:43 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:12:13 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:12:13 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:12:13 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:12:13 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:12:13 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:12:13 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:12:13 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:12:13 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:12:13 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:44:10 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:44:10 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:44:10 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:44:10 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:44:10 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:44:10 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:44:10 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:44:10 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:44:10 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:45:33 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:45:33 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:45:33 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:45:33 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:45:33 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:45:33 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:45:33 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:45:33 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:45:33 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:46:26 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:46:26 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:46:26 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:46:26 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:46:26 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:46:26 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:46:26 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:46:26 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:46:26 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:47:00 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:47:00 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:47:00 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:47:00 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:47:00 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:47:00 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:47:00 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:47:00 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:47:00 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:47:32 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:47:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:47:32 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:47:32 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:47:32 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:47:32 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:47:32 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:47:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:47:32 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:49:01 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:49:01 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:49:01 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:49:01 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:49:01 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:49:01 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:49:01 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:49:01 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:49:01 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:50:20 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:50:20 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:50:20 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:50:20 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:50:20 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:50:20 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:50:20 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:50:20 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:50:20 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 19:59:09 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 19:59:09 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:59:09 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 19:59:09 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 19:59:09 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 19:59:09 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 19:59:09 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 19:59:09 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 19:59:09 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:00:07 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:00:07 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:00:07 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:00:07 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:00:07 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:00:07 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:00:07 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:00:07 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:00:07 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:00:22 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:00:22 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:00:22 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:00:22 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:00:22 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:00:22 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:00:22 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:00:22 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:00:22 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:03:13 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:03:13 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:03:13 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:03:13 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:03:13 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:03:13 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:03:13 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:03:13 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:03:13 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:05:22 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:05:22 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:05:22 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:05:22 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:05:22 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:05:22 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:05:22 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:05:22 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:05:22 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:07:32 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:07:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:07:32 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:07:32 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:07:32 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:07:32 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:07:32 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:07:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:07:32 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:08:47 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:08:47 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:08:47 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:08:47 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:08:47 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:08:47 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:08:47 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:08:47 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:08:47 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:09:07 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:09:07 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:09:07 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:09:07 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:09:07 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:09:07 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:09:07 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:09:07 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:09:07 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:38:17 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:38:17 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:38:17 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:38:17 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:38:17 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:38:17 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:38:17 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:38:17 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:38:17 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:46:48 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:46:48 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:46:48 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:46:48 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:46:48 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:46:48 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:46:48 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:46:48 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:46:48 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 20:50:18 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 20:50:18 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:50:18 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 20:50:18 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 20:50:18 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 20:50:18 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 20:50:18 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 20:50:18 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 20:50:18 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:01:55 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:01:55 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:01:55 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:01:55 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:01:55 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:01:55 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:01:55 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:01:55 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:01:55 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:03:39 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:03:39 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:03:39 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:03:39 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:03:39 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:03:39 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:03:39 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:03:39 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:03:39 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:04:55 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:04:55 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:04:55 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:04:55 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:04:55 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:04:55 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:04:55 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:04:55 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:04:55 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:11:32 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:11:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:11:32 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:11:32 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:11:32 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:11:32 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:11:32 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:11:32 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:11:32 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:15:37 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:20:02 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:20:02 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:02 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:20:02 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:20:02 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:20:02 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:20:02 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:20:02 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:02 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:20:13 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:20:35 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:20:35 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:35 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:20:35 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:20:35 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:20:35 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:20:35 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:20:35 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:35 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:20:43 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:20:52 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:20:52 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:52 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:20:52 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:20:52 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:20:52 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:20:52 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:20:52 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:20:52 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:21:00 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:21:08 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:21:08 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:08 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:21:08 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:21:08 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:21:08 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:21:08 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:21:08 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:08 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:21:15 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:21:37 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:21:37 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:37 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:21:37 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:21:37 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:21:37 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:21:37 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:21:37 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:37 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:21:43 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:21:54 MSK 2021][managers.RouteManager <init>]INFO: RouteManager init
+[пн февр. 15 21:21:54 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:54 MSK 2021][managers.FileManager <init>]INFO: FileManager init
+[пн февр. 15 21:21:54 MSK 2021][managers.FileManager readFile]INFO: Reading file 2.csv
+[пн февр. 15 21:21:54 MSK 2021][csv.CSVParser parseRouteFromFile]INFO: Parsing file
+[пн февр. 15 21:21:54 MSK 2021][managers.RouteManager addRoutes]INFO: Adding routes into stack
+[пн февр. 15 21:21:54 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:21:54 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:21:54 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
+[пн февр. 15 21:22:00 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:22:14 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:22:30 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:22:41 MSK 2021][managers.FileManager readFile]INFO: Reading file script.txt
+[пн февр. 15 21:22:44 MSK 2021][managers.FileManager writeFile]INFO: Writing csv string to csv file
+[пн февр. 15 21:22:44 MSK 2021][csv.CSVParser <init>]INFO: CSVReader object created
+[пн февр. 15 21:22:44 MSK 2021][csv.CSVParser makeFileFromRoute]INFO: Making csv string
