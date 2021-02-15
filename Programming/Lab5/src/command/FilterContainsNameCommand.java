@@ -2,6 +2,9 @@ package command;
 
 import managers.IRouteManager;
 
+/**
+ * Класс-команда, реализующая поиск и вывод элементов фыващзш
+ */
 public class FilterContainsNameCommand implements Command{
     IRouteManager routeManager;
     String name;

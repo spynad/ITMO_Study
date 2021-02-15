@@ -2,6 +2,9 @@ package command;
 
 import managers.IRouteManager;
 
+/**
+ * Класс-команда, реализующая удаление элемента на определенной позиции
+ */
 public class RemoveAtCommand implements Command{
     IRouteManager routeManager;
     int index;

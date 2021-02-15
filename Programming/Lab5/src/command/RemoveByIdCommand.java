@@ -2,6 +2,9 @@ package command;
 
 import managers.IRouteManager;
 
+/**
+ * Класс-команда, реализующая удаление элемента коллекции по его ID
+ */
 public class RemoveByIdCommand implements Command{
     IRouteManager routeManager;
     final int id;

@@ -7,8 +7,11 @@ import route.Route;
 import route.SecondLocation;
 import route.exceptions.InvalidArgumentException;
 
-import java.time.LocalDate;
-
+/**
+ * Класс-команда, реализующая добавление элемента в коллекцию
+ * @author spynad
+ * @version govno
+ */
 public class AddCommand implements Command{
     IRouteManager routeManager;
     String[] args;
@@ -21,7 +24,6 @@ public class AddCommand implements Command{
         this.args = args;
     }
 
-    //TODO: это пиздец x2
     public void execute() {
         if(args.length > 3) {
             try {
@@ -36,7 +38,6 @@ public class AddCommand implements Command{
                 System.err.println("invalid argument");
             }
         } else {
-
             try {
                 Route route = routeManager.readRoute(args[1], args[2], -1);
                 routeManager.addRoute(route);

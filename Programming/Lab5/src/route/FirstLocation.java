@@ -4,6 +4,11 @@ import route.exceptions.InvalidArgumentException;
 
 import java.util.Formatter;
 
+/**
+ * Класс, является полем класса Route
+ * @author spynad
+ * @version govno
+ */
 public class FirstLocation {
     private Integer x; //Поле не может быть null
     private long y;
@@ -15,7 +20,7 @@ public class FirstLocation {
         this.y = y;
         this.name = name;
         if (!(validateX() && validateName()))
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid firstlocation");
     }
 
     public Integer getX() {

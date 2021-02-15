@@ -8,22 +8,44 @@ import csv.CSVParser;
 import csv.Parser;
 import log.Log;
 
+/**
+ * Класс, отвечающий за взаимодействие с файлами
+ * @author spynad
+ * @version govno
+ */
 public class FileManager implements IFileManager{
+    /**
+     * Инстанция {@link RouteManager}
+     */
     private final IRouteManager routeManager;
     private FileInputStream inputStream;
     private BufferedInputStream buffer;
+    /**
+     * Массив со строчками файла
+     */
     private ArrayList<String> readResult;
+    private FileWriter fileWriter;
+    private PrintWriter printWriter;
 
-    public FileManager(IRouteManager routeManager, Parser parser) {
+    /**
+     * Конструктор FileManager
+     * @param routeManager - инстанция {@link RouteManager}
+     */
+    public FileManager(IRouteManager routeManager) {
         Log.logger.log(Level.INFO,"FileManager init");
         this.routeManager = routeManager;
     }
 
-    public ArrayList<String> readFile(String filePath) {
-        Log.logger.log(Level.INFO,"Reading file " + filePath);
+    /**
+     * Метод, читающий файл и возвращающий ArrayList строчек файла
+     * @param fileName - имя файла
+     * @return - массив со строчками файла
+     */
+    public ArrayList<String> readFile(String fileName) {
+        Log.logger.log(Level.INFO,"Reading file " + fileName);
         try {
             StringBuilder readStringBuilder = new StringBuilder();
-            File file = new File(filePath);
+            File file = new File(fileName);
             inputStream = new FileInputStream(file);
             buffer = new BufferedInputStream(inputStream);
             readResult = new ArrayList<>();
@@ -57,27 +79,30 @@ public class FileManager implements IFileManager{
         return readResult;
     }
 
+    /**
+     * Метдо, записывающий csv-строчку в файл
+     */
     public void writeFile() {
         try {
             Log.logger.log(Level.INFO,"Writing csv string to csv file");
-            FileWriter fileWriter = new FileWriter("2.csv");
-            PrintWriter printWriter = new PrintWriter(fileWriter);
+            fileWriter = new FileWriter("2.csv");
+            printWriter = new PrintWriter(fileWriter);
             Parser csvParser = new CSVParser();
             String output = csvParser.makeFileFromRoute(routeManager.getRoutes());
             printWriter.print(output);
-            //TODO: перенести в finally-блок
-            printWriter.close();
-            fileWriter.close();
 
         } catch(IOException ioe) {
             ioe.printStackTrace();
             System.exit(1);
+        } finally {
+            try {
+                if (fileWriter != null && printWriter != null) {
+                    printWriter.close();
+                    fileWriter.close();
+                }
+            } catch (IOException ioe) {
+                System.err.println("An exception occurred while close files: " + ioe);
+            }
         }
-    }
-
-
-
-    public boolean isWindows() {
-        return System.getProperty("os.name").startsWith("Windows");
     }
 }

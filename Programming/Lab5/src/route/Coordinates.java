@@ -5,6 +5,11 @@ import route.exceptions.InvalidArgumentException;
 import java.util.Formatter;
 import java.util.Locale;
 
+/**
+ * Класс, является полем класса Route
+ * @author spynad
+ * @version govno
+ */
 public class Coordinates {
     private long x; //Значение поля должно быть больше -776
     private Double y; //Поле не может быть null
@@ -13,7 +18,7 @@ public class Coordinates {
         this.x = x;
         this.y = y;
         if (!(validateX() && validateY()))
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid coordinates");
     }
 
     public long getX() {

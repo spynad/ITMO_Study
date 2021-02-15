@@ -2,6 +2,9 @@ package command;
 
 import managers.IRouteManager;
 
+/**
+ * Класс-команда, реализующая удаление всех элементов коллекции, у которых поле distance=заданному
+ */
 public class RemoveAllByDistanceCommand implements Command{
     IRouteManager routeManager;
     private final double distance;

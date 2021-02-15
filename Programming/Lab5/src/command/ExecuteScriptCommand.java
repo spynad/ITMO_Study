@@ -1,9 +1,19 @@
 package command;
 
+import managers.ClientManager;
 import managers.IFileManager;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * Класс-команда, реализующая выполение "скрипта" из файла
+ * @author spynad
+ * @version govno
+ */
 public class ExecuteScriptCommand implements Command{
     CommandInvoker commandInvoker;
     IFileManager fileManager;
@@ -17,11 +27,21 @@ public class ExecuteScriptCommand implements Command{
     }
 
     public void execute() {
-        commands = fileManager.readFile(filePath);
+        try {
+            ClientManager.setInput(new BufferedReader(new FileReader(filePath)));
+        } catch (IOException ioe) {
+            System.err.println("Exception while trying to read the file");
+        }
         commandInvoker.addScript(filePath);
-        for (String command : commands) {
-            commandInvoker.execute(command);
+        try {
+            while (ClientManager.getInput().ready()) {
+                String commands = ClientManager.getInput().readLine();
+                commandInvoker.getCommand(commands);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         commandInvoker.removeScript(filePath);
+        ClientManager.setInput(new BufferedReader(new InputStreamReader(System.in)));
     }
 }

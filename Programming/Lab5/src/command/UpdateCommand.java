@@ -7,6 +7,9 @@ import route.Route;
 import route.SecondLocation;
 import route.exceptions.InvalidArgumentException;
 
+/**
+ * Класс-команда, реализующая обновление элемента коллекции по его id
+ */
 public class UpdateCommand implements Command{
     IRouteManager routeManager;
     String[] args;

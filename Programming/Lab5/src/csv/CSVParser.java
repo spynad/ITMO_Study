@@ -7,34 +7,52 @@ import route.FirstLocation;
 import route.Route;
 import route.SecondLocation;
 import route.exceptions.InvalidArgumentException;
-import csv.exceptions.BadCSVException;
 
 import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Level;
 
+/**
+ * Класс, реализующий парсинг CSV-файла
+ * @author spynad
+ * @version govno
+ */
 public class CSVParser implements Parser{
+    /**
+     * Множество элементов ID для проверки на дубликаты и лимиты
+     */
     Set<Integer> setId = new HashSet<>();
 
+    /**
+     * Конструктор {@link CSVParser}
+     */
     public CSVParser() {
         Log.logger.log(Level.INFO,"CSVReader object created");
     }
-    //TODO: это пиздец, переделать это дерьмо
+
+    /**
+     * Метод, реализующий парсинг Route с CSV-строчки и возвращающая массив с объектами Route
+     * @param inputString - строчка, полученная из CSV-строчки
+     * @return - массив Route
+     */
     public ArrayList<Route> parseRouteFromFile(ArrayList<String> inputString) {
         ArrayList<Route> routes = new ArrayList<>();
         Log.logger.log(Level.INFO,"Parsing file");
         try {
             if(!inputString.get(0).equals("id,name,coordinates,creationDate,from,to,distance"))
-                throw new BadCSVException();
+                throw new BadCSVException("bad csv format");
             inputString.remove(0);
             for (String str : inputString) {
                 String formattedStr = str.replace("\"", "");
-                String[] params = formattedStr.split(",");
+                String[] params = formattedStr.split("\\s*,\\s*");
                 if(params.length != 14)
-                    throw new BadCSVException();
+                    throw new BadCSVException("shit with params.length");
                 int id = Integer.parseInt(params[0]);
-                if (setId.add(id)) {
-                    throw new BadCSVException();
+                if (!setId.add(id)) {
+                    throw new BadCSVException("duplicate id found");
+                }
+                if (setId.size() == Integer.MAX_VALUE) {
+                    throw new BadCSVException("id threshold reached");
                 }
                 String name = params[1];
                 Coordinates coordinates = new Coordinates(Long.parseLong(params[2]),
@@ -62,13 +80,18 @@ public class CSVParser implements Parser{
         } catch(NumberFormatException | BadCSVException nfe) {
             System.err.println("Exception while trying to read CSV file: " + nfe.toString());
             System.exit(1);
-        } catch(Exception | InvalidArgumentException e) {
-            e.printStackTrace();
+        } catch(InvalidArgumentException e) {
+            System.err.println(e.getMessage());
             System.exit(1);
         }
         return routes;
     }
 
+    /**
+     * Метод, создающий csv-строку для записи в файл из коллекции Stack объектов Route
+     * @param routes - коллекция Stack типа Route
+     * @return - csv-строчка
+     */
     public String makeFileFromRoute(Stack<Route> routes) {
         Log.logger.log(Level.INFO,"Making csv string");
         StringBuilder csv = new StringBuilder();

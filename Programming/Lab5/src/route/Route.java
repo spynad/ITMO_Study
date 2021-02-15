@@ -6,6 +6,11 @@ import java.util.Locale;
 
 import route.exceptions.InvalidArgumentException;
 
+/**
+ * Класс, который хранится в коллекции
+ * @author spynad
+ * @version govno
+ */
 public final class Route implements Comparable<Route>{
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -15,6 +20,9 @@ public final class Route implements Comparable<Route>{
     private SecondLocation to; //Поле не может быть null
     private double distance; //Значение поля должно быть больше 1
 
+    /**
+     * уникальный ID объекта
+     */
     private static Integer uniqueId = 0;
 
     public Route(String name,
@@ -31,7 +39,7 @@ public final class Route implements Comparable<Route>{
         this.to = to;
         this.distance = distance;
         if (!validateRoute())
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid route");
     }
 
     public Route(int id,
@@ -49,7 +57,7 @@ public final class Route implements Comparable<Route>{
         this.to = to;
         this.distance = distance;
         if (!validateRoute())
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid route");
     }
 
     public Route(int id,
@@ -66,7 +74,7 @@ public final class Route implements Comparable<Route>{
         this.to = to;
         this.distance = distance;
         if (!validateRoute())
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid route");
     }
 
     public Integer getId() {
@@ -121,6 +129,10 @@ public final class Route implements Comparable<Route>{
         return distance > 1;
     }
 
+    /**
+     * Метод, который валидирует все поля объекта Route
+     * @return - true, если валидация прошла успешно, иначе - false
+     */
     public boolean validateRoute() {
         return validateId() && validateName() && validateCoordinates() && validateDate() && validateSecondLocation()
                 && validateDistance();
@@ -139,8 +151,8 @@ public final class Route implements Comparable<Route>{
         } else {
             fr = from.toString();
         }
-        f.format("%s,%s,\"%s,%s,%s\",%s,%s,%s",
-                name, coordinates.toString(), creationDate.getYear(),
+        f.format("%d,%s,%s,\"%s,%s,%s\",%s,%s,%s",
+                id, name, coordinates.toString(), creationDate.getYear(),
                 creationDate.getMonthValue(), creationDate.getDayOfMonth(),
                 fr, to.toString(), String.format(Locale.ROOT,"%.2f",distance));
         return f.toString();

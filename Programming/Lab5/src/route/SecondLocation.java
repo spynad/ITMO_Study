@@ -5,6 +5,11 @@ import route.exceptions.InvalidArgumentException;
 import java.util.Formatter;
 import java.util.Locale;
 
+/**
+ * Класс, является полем класса Route
+ * @author spynad
+ * @version govno
+ */
 public class SecondLocation {
     private Integer x; //Поле не может быть null
     private Long y; //Поле не может быть null
@@ -15,7 +20,7 @@ public class SecondLocation {
         this.y = y;
         this.z = z;
         if (!(validateX() && validateY() && validateZ()))
-            throw new InvalidArgumentException();
+            throw new InvalidArgumentException("invalid secondlocation");
     }
 
     public Integer getX() {

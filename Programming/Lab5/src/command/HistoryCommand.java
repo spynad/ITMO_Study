@@ -1,8 +1,10 @@
 package command;
 
-import java.util.Iterator;
 import java.util.Stack;
 
+/**
+ * Класс-команда, реализующая вывод истории последних 11 команд
+ */
 public class HistoryCommand implements Command{
     Stack<String> history;
 
@@ -14,8 +16,5 @@ public class HistoryCommand implements Command{
         for (int i = history.size() - 1; i >= 0; i--) {
             System.out.println(history.get(i));
         }
-        /*for (String str : history) {
-            System.out.println(str);
-        }*/
     }
 }

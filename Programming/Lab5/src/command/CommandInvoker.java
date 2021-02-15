@@ -5,8 +5,20 @@ import managers.IRouteManager;
 
 import java.util.*;
 
+/**
+ * Класс, выбирающий и вызывающий команду для исполнения
+ * @author spynad
+ * @version govno
+ */
 public class CommandInvoker {
+    /**
+     * Стек с историей команд
+     */
     Stack<String> history = new Stack<>();
+
+    /**
+     * Множество с названиями файлов скриптов
+     */
     Set<String> scripts = new HashSet<>();
     IRouteManager routeManager;
     IFileManager fileManager;
@@ -16,15 +28,47 @@ public class CommandInvoker {
         this.fileManager = fileManager;
     }
 
+    /**
+     * Метод, который добавляет название файла скрипта в множество
+     * @param name - название файла
+     */
     public void addScript(String name) {
         scripts.add(name);
     }
 
+    /**
+     * Метод, который убирает название файла скрипта из множества
+     * @param name - название файла
+     */
     public void removeScript(String name) {
         scripts.remove(name);
     }
 
-    public void execute(String commandName) {
+    /**
+     * Метод, который кладет в стек последнюю выполненную команду
+     * @param command - название команды
+     */
+    public void pushHistory(String command) {
+        if(history.size() > 11) {
+            history.remove(history.size() - 1);
+        }
+        history.push(command.toLowerCase(Locale.ROOT));
+    }
+
+    /**
+     * Метод, вызывающий команду
+     * @param command - класс-команда
+     */
+    public void execute(Command command) {
+        command.execute();
+    }
+
+    /**
+     * Метод, возвращающий команду
+     * @param commandName - название команды
+     * @return - класс-команда
+     */
+    public Command getCommand(String commandName) {
         Command command;
         String str2 = commandName.stripLeading();
         String[] str1 = str2.split("\\s+");
@@ -115,11 +159,8 @@ public class CommandInvoker {
             default:
                 throw new IllegalStateException("no command registered for " + commandName);
         }
-        command.execute();
-        if(history.size() > 11) {
-            history.remove(history.size() - 1);
-        }
-        history.push(str1[0].toLowerCase(Locale.ROOT));
+        execute(command);
+        pushHistory(commandName);
+        return command;
     }
-
 }

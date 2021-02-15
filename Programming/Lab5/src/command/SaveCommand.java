@@ -1,8 +1,10 @@
 package command;
 
 import managers.IFileManager;
-import managers.IRouteManager;
 
+/**
+ * Класс-команда, реализующая сохранение коллекции в файл
+ */
 public class SaveCommand implements Command{
     IFileManager fileManager;
 

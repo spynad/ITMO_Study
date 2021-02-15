@@ -1,5 +1,8 @@
 package command;
 
+/**
+ * Класс-команда, реализующая вывод всех команд, доступных для выполнения
+ */
 public class HelpCommand implements Command{
     public void execute() {
         System.out.println("help : вывести справку по доступным командам");
