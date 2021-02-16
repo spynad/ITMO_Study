@@ -39,8 +39,8 @@ public class AddCommand implements Command{
             }
         } else {
             try {
-                Route route = routeManager.readRoute(args[1], args[2], -1);
-                routeManager.addRoute(route);
+                routeManager.readCreateRoute(-1);
+                //routeManager.addRoute(route);
             } catch (NumberFormatException | InvalidArgumentException nfe) {
                 System.err.println("invalid argument");
             }

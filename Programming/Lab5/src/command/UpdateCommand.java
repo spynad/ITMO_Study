@@ -40,8 +40,8 @@ public class UpdateCommand implements Command{
         } else {
 
             try {
-                Route route = routeManager.readRoute(args[2], args[3], Integer.parseInt(args[1]));
-                routeManager.updateId(Integer.parseInt(args[1]), route);
+                routeManager.readCreateRoute(Integer.parseInt(args[1]));
+                //routeManager.updateId(Integer.parseInt(args[1]), route);
             } catch (NumberFormatException | InvalidArgumentException nfe) {
                 System.err.println("invalid argument");
             }

@@ -10,6 +10,7 @@ import java.util.*;
  * @author spynad
  * @version govno
  */
+//TODO: CommandInvoker не должен заниматься базовым парсингом аргументов, это может делать, например, ClientManager (вроде)
 public class CommandInvoker {
     /**
      * Стек с историей команд
@@ -70,10 +71,10 @@ public class CommandInvoker {
      */
     public Command getCommand(String commandName) {
         Command command;
-        String str2 = commandName.stripLeading();
+        String str2 = commandName.trim();
         String[] str1 = str2.split("\\s+");
 
-        switch (str1[0].toLowerCase(Locale.ROOT)) {
+        switch (str1[0].toLowerCase(Locale.ROOT).trim()) {
             case "help":
                 command = new HelpCommand();
                 break;
@@ -133,11 +134,7 @@ public class CommandInvoker {
                 command = new HistoryCommand(history);
                 break;
             case "add":
-                if ((str1.length > 2) && (str1.length < 12)) {
-                    command = new AddCommand(routeManager, str1);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new AddCommand(routeManager, str1);
                 break;
             case "execute_script":
                 if(str1.length == 2) {
@@ -150,16 +147,15 @@ public class CommandInvoker {
                 }
                 break;
             case "update":
-                if ((str1.length > 3) && (str1.length < 13)) {
+                if (str1.length == 2)  {
                     command = new UpdateCommand(routeManager, str1);
                 } else {
                     throw new IllegalStateException("invalid arguments");
                 }
                 break;
             default:
-                throw new IllegalStateException("no command registered for " + commandName);
+                throw new IllegalStateException("no command registered for " + commandName.trim());
         }
-        execute(command);
         pushHistory(commandName);
         return command;
     }

@@ -46,7 +46,7 @@ public class FirstLocation {
     @Override
     public String toString() {
         Formatter f = new Formatter();
-        f.format("\"%d,%d,%s\"", x, y, name);
+        f.format("\"%d,%d,\"%s\"\"", x, y, name);
         return f.toString();
     }
 }

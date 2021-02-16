@@ -26,6 +26,11 @@ public class RouteManager implements IRouteManager{
     private final Stack<Route> routes;
 
     /**
+     * Множество уникальных значений ID Route
+     */
+    private final SortedSet<Integer> setId = new TreeSet<>();
+
+    /**
      * Дата иницзализации коллекции
      */
     private final LocalDate dateOfInit = LocalDate.now();
@@ -52,6 +57,36 @@ public class RouteManager implements IRouteManager{
             throws InvalidArgumentException, NumberFormatException {
         Route route = new Route(name, coordinates, from, to, distance);
         routes.add(route);
+    }
+
+    public void addRouteId(int id, String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
+            throws InvalidArgumentException, NumberFormatException {
+        Route route = new Route(id, name, coordinates, from, to, distance);
+        routes.add(route);
+    }
+
+    public Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
+            throws InvalidArgumentException, NumberFormatException {
+        int id = 1;
+        for (int idSearch : setId) {
+            if (idSearch != id) {
+                id = idSearch - 1;
+                break;
+            }
+            id++;
+        }
+        Route route = new Route(id, name, coordinates, from, to, distance);
+        addUniqueID(id);
+        return route;
+    }
+
+    public boolean addUniqueID(int id) {
+
+        return setId.add(id);
+    }
+
+    public Set<Integer> getUniqueID() {
+        return setId;
     }
 
     /**
@@ -149,9 +184,9 @@ public class RouteManager implements IRouteManager{
         if (route.getFrom() == null) {
             from = "null";
         } else {
-            from = String.format("{x:%d, y:%d, name:%s}", route.getFrom().getX(), route.getFrom().getY(), route.getFrom().getName());
+            from = String.format("{x:%d, y:%d, name:\"%s\"}", route.getFrom().getX(), route.getFrom().getY(), route.getFrom().getName());
         }
-        System.out.printf("Route object:ID:%d, Name:%s, Coordinates: {x:%d, y:%.2f}, Creation date: %s" +
+        System.out.printf("Route object:ID:%d, Name:\"%s\", Coordinates: {x:%d, y:%.2f}, Creation date: %s" +
                         " from: %s, to: {x:%d, y:%d, z:%.2f}, Distance: %.2f%n", route.getId(),
                 route.getName(), route.getCoordinates().getX(), route.getCoordinates().getY(),
                 route.getCreationDate().toString(), from, route.getTo().getX(), route.getTo().getY(),
@@ -163,11 +198,11 @@ public class RouteManager implements IRouteManager{
      */
     public void removeFirst() {
         try {
-            routes.pop();
-        } catch (EmptyStackException ese) {
+            routes.remove(0);
+        } catch (EmptyStackException | ArrayIndexOutOfBoundsException ese) {
             System.err.println("The stack is empty");
+            Log.logger.log(Level.WARNING, "EXCEPTION: ", ese);
         }
-
     }
 
     /**
@@ -198,7 +233,6 @@ public class RouteManager implements IRouteManager{
         } catch (ArrayIndexOutOfBoundsException e) {
             System.err.println("tried to remove non-existent element");
         }
-
     }
 
     /**
@@ -215,25 +249,22 @@ public class RouteManager implements IRouteManager{
 
     /**
      * Метод, считывающий поля и создающий Route
-     * @param nameArg - поле, полученное из аргумента команды
-     * @param distanceArg - поле, полученное из аргумента команды
      * @param id - если id == -1, тогда создаем объект без id, иначе с id
      * @return - объект типа Route
      * @throws InvalidArgumentException - выбрасывается, если какой-то из аргументов не прошел валидацию
      */
-    public Route readRoute(String nameArg, String distanceArg, int id) throws InvalidArgumentException{
+    public void readCreateRoute(int id) throws InvalidArgumentException{
         DataReader dataReader = new DataReader();
-        Double.parseDouble(distanceArg);
-        Coordinates coordinates;
-        FirstLocation firstLocation;
-        SecondLocation secondLocation;
-        coordinates = dataReader.readCoordinates();
-        firstLocation = dataReader.readFirstLocation();
-        secondLocation = dataReader.readSecondLocation();
+        String name = dataReader.readName();
+        Coordinates coordinates = dataReader.readCoordinates();
+        FirstLocation firstLocation = dataReader.readFirstLocation();
+        SecondLocation secondLocation = dataReader.readSecondLocation();
+        double distance = dataReader.readDistance();
         if (id != -1) {
-            return new Route(id, nameArg, coordinates, firstLocation, secondLocation, Double.parseDouble(distanceArg));
+            //return new Route(id, name, coordinates, firstLocation, secondLocation, distance);
         } else {
-            return new Route(nameArg, coordinates, firstLocation, secondLocation, Double.parseDouble(distanceArg));
+            addRoute(createRoute(name, coordinates, firstLocation, secondLocation, distance));
+            //return new Route(name, coordinates, firstLocation, secondLocation, distance);
         }
 
         //addRoute(nameArg, coordinates, firstLocation, secondLocation, Double.parseDouble(distanceArg));
@@ -255,6 +286,7 @@ public class RouteManager implements IRouteManager{
             routes.set(index, route);
         } catch (InvalidArgumentException e) {
             System.err.println(e.getMessage());
+            Log.logger.log(Level.WARNING, "EXCEPTION: ", e);
         }
     }
 
@@ -296,11 +328,17 @@ public class RouteManager implements IRouteManager{
                     String[] splitStr = readStr.split("\\s+");
                     if (splitStr.length != 2)
                         throw new InvalidArgumentException("expected 2 arguments; got " + splitStr.length);
-                    return new Coordinates(Long.parseLong(splitStr[0]), Double.parseDouble(splitStr[1]));
+                    Coordinates coordinates = new Coordinates(Long.parseLong(splitStr[0]), Double.parseDouble(splitStr[1]));
+                    return coordinates;
                 } catch (InvalidArgumentException e) {
                     System.err.println(e.getMessage());
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", e);;
                 } catch (IOException ioe) {
                     System.err.println("read error");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);;
+                } catch (NumberFormatException nfe) {
+                    System.err.println("invalid arguments");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);;
                 }
             }
         }
@@ -312,21 +350,28 @@ public class RouteManager implements IRouteManager{
         public FirstLocation readFirstLocation() {
             while(true) {
                 try {
-                    System.out.println("enter first location(x, y, name): ");
+                    System.out.println("enter first location(x, y): ");
                     String readStr = input.readLine();
                     if (readStr.equals("")) {
                         return null;
                     }
                     String[] splitStr = readStr.split("\\s+");
-                    if (splitStr.length != 3)
-                        throw new InvalidArgumentException("expected 3 arguments; got " + splitStr.length);
+                    if (splitStr.length != 2)
+                        throw new InvalidArgumentException("expected 2 arguments; got " + splitStr.length);
+                    System.out.print("enter first location, ");
+                    String readName = readName();
                     return new FirstLocation(Integer.parseInt(splitStr[0]),
                             Long.parseLong(splitStr[1]),
-                            splitStr[2]);
+                            readName);
                 } catch (InvalidArgumentException e) {
                     System.err.println(e.getMessage());
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", e);;
                 } catch (IOException ioe) {
                     System.err.println("read error");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);;
+                } catch (NumberFormatException nfe) {
+                    System.err.println("invalid arguments");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);
                 }
             }
         }
@@ -348,8 +393,44 @@ public class RouteManager implements IRouteManager{
                             Double.parseDouble(splitStr[2]));
                 } catch (InvalidArgumentException e) {
                     System.err.println(e.getMessage());
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", e);
                 } catch (IOException ioe) {
                     System.err.println("read error");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
+                } catch (NumberFormatException nfe) {
+                    System.err.println("invalid arguments");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);;
+                }
+            }
+        }
+
+        public String readName() {
+            while(true) {
+                try {
+                    System.out.println("enter name: ");
+                    String str = input.readLine();
+                    String formStr = str.replaceAll("[^\\w\\s]", "");
+                    return formStr;
+                } catch (IOException ioe) {
+                    System.err.println("something happened");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
+                }
+            }
+        }
+
+        public double readDistance() {
+            while(true) {
+                try {
+                    System.out.println("enter distance: ");
+                    String str = input.readLine();
+                    double distance = Double.parseDouble(str);
+                    return distance;
+                } catch (NumberFormatException nfe) {
+                    System.err.println("invalid argument");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);
+                } catch (IOException ioe) {
+                    System.err.println("something happened");
+                    Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
                 }
             }
         }

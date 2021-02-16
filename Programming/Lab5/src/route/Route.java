@@ -151,7 +151,7 @@ public final class Route implements Comparable<Route>{
         } else {
             fr = from.toString();
         }
-        f.format("%d,%s,%s,\"%s,%s,%s\",%s,%s,%s",
+        f.format("%d,\"%s\",%s,\"%s,%s,%s\",%s,%s,%s",
                 id, name, coordinates.toString(), creationDate.getYear(),
                 creationDate.getMonthValue(), creationDate.getDayOfMonth(),
                 fr, to.toString(), String.format(Locale.ROOT,"%.2f",distance));

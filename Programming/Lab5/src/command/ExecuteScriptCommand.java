@@ -36,7 +36,7 @@ public class ExecuteScriptCommand implements Command{
         try {
             while (ClientManager.getInput().ready()) {
                 String commands = ClientManager.getInput().readLine();
-                commandInvoker.getCommand(commands);
+                commandInvoker.getCommand(commands).execute();
             }
         } catch (IOException e) {
             e.printStackTrace();
