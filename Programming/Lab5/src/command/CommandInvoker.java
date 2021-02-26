@@ -1,8 +1,11 @@
 package command;
 
-import managers.IFileManager;
-import managers.IRouteManager;
+import managers.IOManager;
+import managers.CollectionRouteManager;
+import managers.RouteReader;
+import route.exceptions.InvalidArgumentException;
 
+import java.io.BufferedReader;
 import java.util.*;
 
 /**
@@ -12,28 +15,33 @@ import java.util.*;
  */
 //TODO: CommandInvoker не должен заниматься базовым парсингом аргументов, это может делать, например, ClientManager (вроде)
 public class CommandInvoker {
-    /**
-     * Стек с историей команд
-     */
+
     Stack<String> history = new Stack<>();
 
-    /**
-     * Множество с названиями файлов скриптов
-     */
-    Set<String> scripts = new HashSet<>();
-    IRouteManager routeManager;
-    IFileManager fileManager;
+    static Set<String> scripts = new HashSet<>();
 
-    public CommandInvoker(IRouteManager routeManager, IFileManager fileManager) {
+    CollectionRouteManager routeManager;
+
+    IOManager fileManager;
+
+    BufferedReader reader;
+
+    public CommandInvoker(CollectionRouteManager routeManager, IOManager fileManager) {
         this.routeManager = routeManager;
         this.fileManager = fileManager;
+    }
+
+    public CommandInvoker(CollectionRouteManager routeManager, IOManager fileManager, BufferedReader reader) {
+        this.routeManager = routeManager;
+        this.fileManager = fileManager;
+        this.reader = reader;
     }
 
     /**
      * Метод, который добавляет название файла скрипта в множество
      * @param name - название файла
      */
-    public void addScript(String name) {
+    public static void addScript(String name) {
         scripts.add(name);
     }
 
@@ -41,8 +49,12 @@ public class CommandInvoker {
      * Метод, который убирает название файла скрипта из множества
      * @param name - название файла
      */
-    public void removeScript(String name) {
+    public static void removeScript(String name) {
         scripts.remove(name);
+    }
+
+    public Set<String> getScripts() {
+        return scripts;
     }
 
     /**
@@ -56,25 +68,17 @@ public class CommandInvoker {
         history.push(command.toLowerCase(Locale.ROOT));
     }
 
-    /**
-     * Метод, вызывающий команду
-     * @param command - класс-команда
-     */
-    public void execute(Command command) {
-        command.execute();
-    }
 
     /**
-     * Метод, возвращающий команду
-     * @param commandName - название команды
-     * @return - класс-команда
+     * Метод, выполняющий команду
+     * @param inputString - название команды
      */
-    public Command getCommand(String commandName) {
+    public void execute(String inputString) {
         Command command;
-        String str2 = commandName.trim();
-        String[] str1 = str2.split("\\s+");
+        String[] split = inputString.split("\\s+");
+        String[] args = Arrays.copyOfRange(split, 1, split.length);
 
-        switch (str1[0].toLowerCase(Locale.ROOT).trim()) {
+        switch (split[0].toLowerCase(Locale.ROOT).trim()) {
             case "help":
                 command = new HelpCommand();
                 break;
@@ -91,12 +95,7 @@ public class CommandInvoker {
                 command = new SaveCommand(fileManager);
                 break;
             case "remove_all_by_distance":
-                if(str1.length == 2) {
-                    double distance = Double.parseDouble(str1[1]);
-                    command = new RemoveAllByDistanceCommand(routeManager, distance);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new RemoveAllByDistanceCommand(routeManager, args);
                 break;
             case "sum_of_distance":
                 command = new SumOfDistanceCommand(routeManager);
@@ -108,55 +107,30 @@ public class CommandInvoker {
                 command = new RemoveFirstCommand(routeManager);
                 break;
             case "remove_by_id":
-                if(str1.length == 2) {
-                    int id = Integer.parseInt(str1[1]);
-                    command = new RemoveByIdCommand(routeManager, id);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new RemoveByIdCommand(routeManager, args);
                 break;
             case "remove_at":
-                if(str1.length == 2) {
-                    int index = Integer.parseInt(str1[1]);
-                    command = new RemoveAtCommand(routeManager, index);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new RemoveAtCommand(routeManager, args);
                 break;
             case "filter_contains_name":
-                if(str1.length == 2) {
-                    command = new FilterContainsNameCommand(routeManager, str1[1]);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new FilterContainsNameCommand(routeManager, args);
                 break;
             case "history":
                 command = new HistoryCommand(history);
                 break;
             case "add":
-                command = new AddCommand(routeManager, str1);
+                command = new AddCommand(routeManager, reader);
                 break;
             case "execute_script":
-                if(str1.length == 2) {
-                    if (scripts.contains(str1[1])) {
-                        throw new IllegalStateException("recursive script call " + str1[1]);
-                    }
-                    command = new ExecuteScriptCommand(this, fileManager, str1[1]);
-                } else {
-                    throw new IllegalStateException("invalid arguments. try again");
-                }
+                command = new ExecuteScriptCommand(routeManager, fileManager, args);
                 break;
             case "update":
-                if (str1.length == 2)  {
-                    command = new UpdateCommand(routeManager, str1);
-                } else {
-                    throw new IllegalStateException("invalid arguments");
-                }
+                command = new UpdateCommand(routeManager, args, reader);
                 break;
             default:
-                throw new IllegalStateException("no command registered for " + commandName.trim());
+                throw new IllegalStateException("no command registered for " + split[0]);
         }
-        pushHistory(commandName);
-        return command;
+        pushHistory(inputString);
+        command.execute();
     }
 }

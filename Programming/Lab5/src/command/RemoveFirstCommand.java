@@ -1,14 +1,14 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
 
 /**
  * Класс-команда, реализующая удаление первого элемента коллекции
  */
 public class RemoveFirstCommand implements Command{
-    IRouteManager routeManager;
+    CollectionRouteManager routeManager;
 
-    RemoveFirstCommand(IRouteManager routeManager) {
+    RemoveFirstCommand(CollectionRouteManager routeManager) {
         this.routeManager = routeManager;
     }
     public void execute() {

@@ -1,66 +1,48 @@
 package managers;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.logging.Level;
 
-import csv.CSVRouteParser;
-import csv.Parser;
+import exception.BadCSVException;
 import log.Log;
+import route.Coordinates;
+import route.FirstLocation;
+import route.Route;
+import route.SecondLocation;
+import route.exceptions.InvalidArgumentException;
 
 /**
  * Класс, отвечающий за взаимодействие с файлами
  * @author spynad
- * @version govno
  */
-public class FileManager implements IFileManager{
-    /**
-     * Инстанция {@link RouteManager}
-     */
-    private final IRouteManager routeManager;
-    private final Parser csvParser;
-    private FileInputStream inputStream;
-    private BufferedInputStream buffer;
-    /**
-     * Массив со строчками файла
-     */
-    /*TODO: абсолютно бесполезное поле, необходимо избавиться от него, т.е. передавать его чере аргументы
-      TODO: методов, так как только в одном методе он используется*/
-    private ArrayList<String> readResult;
-    private FileWriter fileWriter;
-    private PrintWriter printWriter;
+public class FileManager implements IOManager {
+    private final CollectionRouteManager routeManager;
 
-    /**
-     * Название файла, с которым будет работать программа
-     */
-    private String fileName;
+    private final String fileName;
 
-    /**
-     * Конструктор FileManager
-     * @param routeManager - инстанция {@link RouteManager}
-     */
-    public FileManager(IRouteManager routeManager, Parser csvParser) {
+    public FileManager(CollectionRouteManager routeManager, String fileName) {
         Log.logger.log(Level.INFO,"FileManager init");
         this.routeManager = routeManager;
-        this.csvParser = csvParser;
-    }
-
-    public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
 
     /**
      * Метод, читающий файл и возвращающий ArrayList строчек файла
      * @return - массив со строчками файла
      */
-    public ArrayList<String> readFile() {
+    public ArrayList<Route> read() {
         Log.logger.log(Level.INFO,"Reading file " + fileName);
-        try {
+        File file = new File(fileName);
+        ArrayList<String> readResult = new ArrayList<>();
+        try (
+                FileInputStream inputStream = new FileInputStream(file);
+                BufferedInputStream buffer = new BufferedInputStream(inputStream)
+        ) {
             StringBuilder readStringBuilder = new StringBuilder();
-            File file = new File(fileName);
-            inputStream = new FileInputStream(file);
-            buffer = new BufferedInputStream(inputStream);
-            readResult = new ArrayList<>();
 
             while (buffer.available() > 0) {
                 char nextChar = (char) buffer.read();
@@ -75,69 +57,112 @@ public class FileManager implements IFileManager{
             }
         } catch (FileNotFoundException fnfe) {
             System.err.println("The file not found, creating a new one.");
-            createNewFile(fileName);
+            createNewFile();
+            read();
         } catch (IOException e) {
             System.err.println("An exception occurred while trying to read file: " + e);
         }
-        finally {
-            try {
-                if (inputStream != null && buffer != null) {
-                    buffer.close();
-                    inputStream.close();
-                }
-            } catch (IOException ioe) {
-                System.err.println("An exception occurred while close files: " + ioe);
-            }
-        }
-        return readResult;
+        return parseRouteFromFile(readResult);
     }
 
-    public void createNewFile(String fileName) {
-        try {
-            fileWriter = new FileWriter(fileName);
-            printWriter = new PrintWriter(fileWriter);
+    public void createNewFile() {
+        try (
+                FileWriter fileWriter = new FileWriter(fileName);
+                PrintWriter printWriter = new PrintWriter(fileWriter)
+        ) {
             printWriter.println("id,name,coordinates,creationDate,from,to,distance");
-            System.err.println("The file has been created, restart the application.");
+            System.err.println("The file has been created.");
         } catch (IOException ioe) {
             System.err.println("Exception while trying to create a new file");
-        } finally {
-            try {
-                if (fileWriter != null && printWriter != null) {
-                    printWriter.close();
-                    fileWriter.close();
-                    System.exit(0);
-                }
-            } catch (IOException ioe) {
-                System.err.println("Error while trying to close streams");
-            }
         }
     }
 
     /**
      * Метдо, записывающий csv-строчку в файл
      */
-    public void writeFile() {
-        try {
+    public void write() {
+        try (
+                FileWriter fileWriter = new FileWriter(fileName);
+                PrintWriter printWriter = new PrintWriter(fileWriter)
+        ) {
             Log.logger.log(Level.INFO,"Writing csv string to csv file");
-            fileWriter = new FileWriter(fileName);
-            printWriter = new PrintWriter(fileWriter);
-            String output = csvParser.makeFileFromRoute(routeManager.getRoutes());
+            String output = makeFileFromRoute(routeManager.getRoutes());
             printWriter.print(output);
 
         } catch(IOException ioe) {
             System.err.println("Exception while trying to write to a file");
             Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
             System.exit(1);
-        } finally {
-            try {
-                if (fileWriter != null && printWriter != null) {
-                    printWriter.close();
-                    fileWriter.close();
-                }
-            } catch (IOException ioe) {
-                System.err.println("An exception occurred while close files: " + ioe);
-                Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
-            }
         }
+    }
+
+    private ArrayList<Route> parseRouteFromFile(ArrayList<String> inputString) {
+        ArrayList<Route> routes = new ArrayList<>();
+        Log.logger.log(Level.INFO,"Parsing file");
+
+        try {
+            if(!inputString.get(0).replace("\r","").equals("id,name,coordinates,creationDate,from,to,distance"))
+                throw new BadCSVException("bad csv format");
+            inputString.remove(0);
+            for (String str : inputString) {
+                String formattedStr = str.replace("\"", "");
+                String[] params = formattedStr.split("\\s*,\\s*");
+
+                if(params.length != 14)
+                    throw new BadCSVException("shit with params.length");
+
+                int id = Integer.parseInt(params[0]);
+
+                if (!routeManager.addUniqueID(id)) {
+                    throw new BadCSVException("duplicate id found");
+                }
+
+                if (routeManager.getRoutes().size() == Integer.MAX_VALUE) {
+                    throw new BadCSVException("id threshold reached");
+                }
+                String name = params[1];
+                Coordinates coordinates = new Coordinates(Long.parseLong(params[2]),
+                        Double.parseDouble(params[3]));
+                LocalDate date = LocalDate.of(Integer.parseInt(params[4]),
+                        Integer.parseInt(params[5]),
+                        Integer.parseInt(params[6]));
+
+                FirstLocation firstLocation;
+                if (params[7].equals("null") && params[8].equals("null") && params[9].equals("null"))
+                {
+                    firstLocation = null;
+                } else {
+                    firstLocation = new FirstLocation(Integer.parseInt(params[7]),
+                            Long.parseLong(params[8]),
+                            params[9]);
+                }
+
+                SecondLocation secondLocation = new SecondLocation(Integer.parseInt(params[10]),
+                        Long.parseLong(params[11]),
+                        Double.parseDouble(params[12]));
+                double dist = Double.parseDouble(params[13]);
+                Route route = new Route(id, name, coordinates, date, firstLocation, secondLocation, dist);
+                routes.add(route);
+            }
+        } catch(NumberFormatException | BadCSVException nfe) {
+            System.err.println("Exception while trying to read CSV file: " + nfe.toString());
+            System.err.println("File read is interrupted.");
+            Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);
+        } catch(InvalidArgumentException e) {
+            System.err.println(e.getMessage());
+            System.err.println("File read is interrupted.");
+            Log.logger.log(Level.WARNING, "EXCEPTION: ", e);
+        }
+        return routes;
+    }
+
+    private String makeFileFromRoute(Stack<Route> routes) {
+        Log.logger.log(Level.INFO,"Making csv string");
+        StringBuilder csv = new StringBuilder();
+        csv.append("id,name,coordinates,creationDate,from,to,distance\n");
+        for (Route route: routes) {
+            csv.append(route.toString()).append('\n');
+        }
+        return csv.toString();
     }
 }

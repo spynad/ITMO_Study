@@ -1,20 +1,31 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
+import route.exceptions.InvalidArgumentException;
 
 /**
  * Класс-команда, реализующая удаление элемента на определенной позиции
  */
 public class RemoveAtCommand implements Command{
-    IRouteManager routeManager;
-    int index;
+    CollectionRouteManager routeManager;
+    String[] args;
 
-    RemoveAtCommand(IRouteManager routeManager, int index) {
+    RemoveAtCommand(CollectionRouteManager routeManager, String[] args) {
         this.routeManager = routeManager;
-        this.index = index;
+        this.args = args;
     }
 
     public void execute() {
-        routeManager.removeAt(index);
+        try {
+            if (args.length == 1) {
+                routeManager.removeAt(Integer.parseInt(args[0]));
+            } else {
+                throw new InvalidArgumentException("expected 1 argument, got " + args.length);
+            }
+        } catch (InvalidArgumentException iae) {
+            System.err.println(iae.getMessage());
+        } catch (NumberFormatException nfe) {
+            System.err.println("incorrect argument format");
+        }
     }
 }

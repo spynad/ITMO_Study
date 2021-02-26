@@ -1,14 +1,14 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
 
 /**
  * Класс-команда, реализующая вывод в стандартный поток всей коллекциииии
  */
 public class ShowCommand implements Command{
-    IRouteManager routeManager;
+    CollectionRouteManager routeManager;
 
-    ShowCommand(IRouteManager routeManager) {
+    ShowCommand(CollectionRouteManager routeManager) {
         this.routeManager = routeManager;
     }
 

@@ -1,17 +1,17 @@
 package command;
 
-import managers.IFileManager;
+import managers.IOManager;
 
 /**
  * Класс-команда, реализующая сохранение коллекции в файл
  */
 public class SaveCommand implements Command{
-    IFileManager fileManager;
+    IOManager fileManager;
 
-    SaveCommand(IFileManager fileManager) {
+    SaveCommand(IOManager fileManager) {
         this.fileManager = fileManager;
     }
     public void execute() {
-        fileManager.writeFile();
+        fileManager.write();
     }
 }

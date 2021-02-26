@@ -1,50 +1,54 @@
 package command;
 
-import managers.IRouteManager;
+import exception.RouteReadException;
+import managers.CollectionRouteManager;
+import managers.ConsoleRouteReader;
+import managers.FileRouteReader;
+import managers.RouteReader;
 import route.Coordinates;
 import route.FirstLocation;
-import route.Route;
 import route.SecondLocation;
 import route.exceptions.InvalidArgumentException;
+
+import java.io.BufferedReader;
 
 /**
  * Класс-команда, реализующая обновление элемента коллекции по его id
  */
 public class UpdateCommand implements Command{
-    IRouteManager routeManager;
+    CollectionRouteManager routeManager;
+    BufferedReader reader;
     String[] args;
 
-    UpdateCommand(IRouteManager routeManager) {
-        this.routeManager = routeManager;
-    }
-    UpdateCommand(IRouteManager routeManager, String[] args) {
+    UpdateCommand(CollectionRouteManager routeManager, String[] args, BufferedReader reader) {
         this.routeManager = routeManager;
         this.args = args;
+        this.reader = reader;
     }
 
     public void execute() {
-        if(args.length > 4) {
-            try {
-                int id = Integer.parseInt(args[1]);
-                Coordinates coordinates = new Coordinates(Long.parseLong(args[3]), Double.parseDouble(args[4]));
-                FirstLocation firstLocation = new FirstLocation(Integer.parseInt(args[5]), Long.parseLong(args[6]), args[7]);
-                SecondLocation secondLocation = new SecondLocation(Integer.parseInt(args[8]),
-                        Long.parseLong(args[9]), Double.parseDouble(args[10]));
-                Double.parseDouble(args[11]);
-
-
-                routeManager.updateId(id, args[2], coordinates, firstLocation, secondLocation, Double.parseDouble(args[10]));
-            } catch (NumberFormatException | InvalidArgumentException e) {
-                System.err.println("invalid argument");
+        try {
+            if (args.length == 1) {
+                RouteReader routeReader;
+                if (reader == null) {
+                    routeReader = new ConsoleRouteReader();
+                } else {
+                    routeReader = new FileRouteReader(reader);
+                }
+                routeManager.updateId(Integer.parseInt(args[0]), routeReader.readName(),
+                        routeReader.readCoordinates(),
+                        routeReader.readFirstLocation(),
+                        routeReader.readSecondLocation(),
+                        routeReader.readDistance());
+            } else {
+                throw new InvalidArgumentException("expected 1 argument, got " + args.length);
             }
-        } else {
-
-            try {
-                routeManager.readCreateRoute(Integer.parseInt(args[1]));
-                //routeManager.updateId(Integer.parseInt(args[1]), route);
-            } catch (NumberFormatException | InvalidArgumentException nfe) {
-                System.err.println("invalid argument");
-            }
+        } catch (NumberFormatException nfe) {
+            System.err.println("incorrect argument format");
+        } catch (InvalidArgumentException iae) {
+            System.err.println(iae.getMessage());
+        } catch (RouteReadException rre) {
+            throw new IllegalStateException();
         }
     }
 }

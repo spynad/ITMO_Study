@@ -1,20 +1,33 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
+import route.exceptions.InvalidArgumentException;
+
 
 /**
  * Класс-команда, реализующая удаление всех элементов коллекции, у которых поле distance=заданному
  */
 public class RemoveAllByDistanceCommand implements Command{
-    IRouteManager routeManager;
-    private final double distance;
+    CollectionRouteManager routeManager;
+    String[] args;
 
-    RemoveAllByDistanceCommand(IRouteManager routeManager, double distance) {
+    RemoveAllByDistanceCommand(CollectionRouteManager routeManager, String[] args) {
         this.routeManager = routeManager;
-        this.distance = distance;
+        this.args = args;
     }
 
     public void execute() {
-        routeManager.removeAllByDistance(distance);
+        try {
+            if (args.length == 1) {
+                routeManager.removeAllByDistance(Double.parseDouble(args[0]));
+            } else {
+                throw new InvalidArgumentException("expected 1 argument, got " + args.length);
+            }
+        } catch (InvalidArgumentException iae) {
+            System.err.println(iae.getMessage());
+        } catch (NumberFormatException nfe) {
+            System.err.println("incorrect argument format");
+        }
+
     }
 }

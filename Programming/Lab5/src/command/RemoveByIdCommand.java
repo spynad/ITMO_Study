@@ -1,19 +1,31 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
+import route.exceptions.InvalidArgumentException;
 
 /**
  * Класс-команда, реализующая удаление элемента коллекции по его ID
  */
 public class RemoveByIdCommand implements Command{
-    IRouteManager routeManager;
-    final int id;
+    CollectionRouteManager routeManager;
+    String[] args;
 
-    RemoveByIdCommand(IRouteManager routeManager, int id) {
+    RemoveByIdCommand(CollectionRouteManager routeManager, String[] args) {
         this.routeManager = routeManager;
-        this.id = id;
+        this.args = args;
     }
     public void execute() {
-        routeManager.removeById(id);
+        try {
+            if (args.length == 1) {
+                routeManager.removeById(Integer.parseInt(args[0]));
+            } else {
+                throw new InvalidArgumentException("expected 1 argument, got " + args.length);
+            }
+        } catch (InvalidArgumentException iae) {
+            System.err.println(iae.getMessage());
+        } catch (NumberFormatException nfe) {
+            System.err.println("incorrect argument format");
+        }
+
     }
 }

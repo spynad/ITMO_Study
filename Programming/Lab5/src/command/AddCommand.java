@@ -1,49 +1,47 @@
 package command;
 
-import managers.IRouteManager;
-import route.Coordinates;
-import route.FirstLocation;
+import exception.RouteReadException;
+import managers.CollectionRouteManager;
+import managers.ConsoleRouteReader;
+import managers.FileRouteReader;
+import managers.RouteReader;
 import route.Route;
-import route.SecondLocation;
 import route.exceptions.InvalidArgumentException;
+
+import java.io.BufferedReader;
+import java.io.EOFException;
 
 /**
  * Класс-команда, реализующая добавление элемента в коллекцию
  * @author spynad
- * @version govno
  */
 public class AddCommand implements Command{
-    IRouteManager routeManager;
-    String[] args;
+    CollectionRouteManager routeManager;
+    BufferedReader reader;
 
-    AddCommand(IRouteManager routeManager) {
+    AddCommand(CollectionRouteManager routeManager, BufferedReader reader) {
         this.routeManager = routeManager;
-    }
-    AddCommand(IRouteManager routeManager, String[] args) {
-        this.routeManager = routeManager;
-        this.args = args;
+        this.reader = reader;
     }
 
     public void execute() {
-        if(args.length > 3) {
-            try {
-                Coordinates coordinates = new Coordinates(Long.parseLong(args[2]), Double.parseDouble(args[3]));
-                FirstLocation firstLocation = new FirstLocation(Integer.parseInt(args[4]), Long.parseLong(args[5]), args[6]);
-                SecondLocation secondLocation = new SecondLocation(Integer.parseInt(args[7]),
-                        Long.parseLong(args[8]), Double.parseDouble(args[9]));
-                Double.parseDouble(args[10]);
+        try {
+            RouteReader routeReader;
+            if (reader == null) {
+                routeReader = new ConsoleRouteReader();
+            } else {
+                routeReader = new FileRouteReader(reader);
+            }
 
-                routeManager.addRoute(args[1], coordinates, firstLocation, secondLocation, Double.parseDouble(args[10]));
-            } catch (NumberFormatException | InvalidArgumentException e) {
-                System.err.println("invalid argument");
-            }
-        } else {
-            try {
-                routeManager.readCreateRoute(-1);
-                //routeManager.addRoute(route);
-            } catch (NumberFormatException | InvalidArgumentException nfe) {
-                System.err.println("invalid argument");
-            }
+            routeManager.addRoute(routeReader.readName(),
+                    routeReader.readCoordinates(),
+                    routeReader.readFirstLocation(),
+                    routeReader.readSecondLocation(),
+                    routeReader.readDistance());
+        } catch (NumberFormatException | InvalidArgumentException nfe) {
+            System.err.println("invalid argument");
+        } catch (RouteReadException eofe) {
+            throw new IllegalStateException();
         }
     }
 }

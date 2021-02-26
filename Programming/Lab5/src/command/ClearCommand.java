@@ -1,6 +1,6 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
 
 /**
  * Класс-команда, реализующая удаление всех элементов коллекции
@@ -8,9 +8,9 @@ import managers.IRouteManager;
  * @version govno
  */
 public class ClearCommand implements Command{
-    IRouteManager routeManager;
+    CollectionRouteManager routeManager;
 
-    ClearCommand(IRouteManager routeManager) {
+    ClearCommand(CollectionRouteManager routeManager) {
         this.routeManager = routeManager;
     }
 

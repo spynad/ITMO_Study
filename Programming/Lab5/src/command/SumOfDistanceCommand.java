@@ -1,14 +1,14 @@
 package command;
 
-import managers.IRouteManager;
+import managers.CollectionRouteManager;
 
 /**
  * Класс-команда, реализующая вывод в стандартный поток суммы занчений поля distance Кщгеу
  */
 public class SumOfDistanceCommand implements Command{
-    IRouteManager routeManager;
+    CollectionRouteManager routeManager;
 
-    SumOfDistanceCommand(IRouteManager routeManager) {
+    SumOfDistanceCommand(CollectionRouteManager routeManager) {
         this.routeManager = routeManager;
     }
 

@@ -1,13 +1,10 @@
 package command;
 
-import managers.ClientManager;
-import managers.IFileManager;
+import managers.CollectionRouteManager;
+import managers.IOManager;
+import route.exceptions.InvalidArgumentException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.*;
 
 /**
  * Класс-команда, реализующая выполение "скрипта" из файла
@@ -15,33 +12,56 @@ import java.util.ArrayList;
  * @version govno
  */
 public class ExecuteScriptCommand implements Command{
-    CommandInvoker commandInvoker;
-    IFileManager fileManager;
-    String filePath;
-    ArrayList<String> commands;
+    CollectionRouteManager routeManager;
+    IOManager fileManager;
+    String[] args;
+    String fileName;
 
-    ExecuteScriptCommand(CommandInvoker commandInvoker, IFileManager fileManager, String filePath) {
-        this.commandInvoker = commandInvoker;
+    ExecuteScriptCommand(CollectionRouteManager routeManager, IOManager fileManager, String[] args) {
+        this.routeManager = routeManager;
         this.fileManager = fileManager;
-        this.filePath = filePath;
+        this.args = args;
     }
 
     public void execute() {
         try {
-            ClientManager.setInput(new BufferedReader(new FileReader(filePath)));
-        } catch (IOException ioe) {
-            System.err.println("Exception while trying to read the file");
+            if (args.length == 1) {
+                fileName = args[0];
+            } else {
+                throw new InvalidArgumentException("expected 1 argument, got " + args.length);
+            }
+        } catch (InvalidArgumentException iae) {
+            System.err.println(iae.getMessage());
         }
-        commandInvoker.addScript(filePath);
-        try {
-            while (ClientManager.getInput().ready()) {
-                String commands = ClientManager.getInput().readLine();
-                commandInvoker.getCommand(commands).execute();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+                if (CommandInvoker.scripts.contains(fileName)) {
+                    throw new IllegalStateException("recursive script call: " + fileName);
+                }
+                CommandInvoker.addScript(fileName);
+
+                CommandInvoker commandInvoker = new CommandInvoker(routeManager, fileManager, reader);
+
+                while (reader.ready()) {
+                    String commands = reader.readLine();
+                    commandInvoker.execute(commands);
+                }
+        } catch (IllegalStateException ise) {
+            System.err.println("error while trying to execute the script");
+        } catch (FileNotFoundException fnfe) {
+            System.err.println("script file not found: " + fileName);
+        } catch (IOException e) {
+            System.err.println("error while reading the script: " + e.getMessage());
+        }
+        /*try {
+            while (Application.getInput().ready()) {
+                String commands = Application.getInput().readLine();
+                commandInvoker.execute(commands);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        commandInvoker.removeScript(filePath);
-        ClientManager.setInput(new BufferedReader(new InputStreamReader(System.in)));
+        }*/
+        CommandInvoker.removeScript(fileName);
+        //Application.setInput(new BufferedReader(new InputStreamReader(System.in)));
     }
 }
