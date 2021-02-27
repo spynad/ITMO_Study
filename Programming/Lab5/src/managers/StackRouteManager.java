@@ -5,7 +5,7 @@ import route.Coordinates;
 import route.FirstLocation;
 import route.Route;
 import route.SecondLocation;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -57,12 +57,6 @@ public class StackRouteManager implements CollectionRouteManager {
         routes.add(route);
     }
 
-    /*public void addRouteId(int id, String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws InvalidArgumentException, NumberFormatException {
-        Route route = new Route(id, name, coordinates, from, to, distance);
-        routes.add(route);
-    }*/
-
     public Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
             throws InvalidArgumentException, NumberFormatException {
         int id = 1;
@@ -87,23 +81,11 @@ public class StackRouteManager implements CollectionRouteManager {
         setId.remove(id);
     }
 
-    /*public Set<Integer> getUniqueID() {
-        return setId;
-    }*/
-
-    /**
-     * Метод, добавляющий элемент {@link Route} в коллекцию Stack.
-     * @param route - объект Route
-     */
-    public void addRoute(Route route) {
-        routes.add(route);
-    }
-
     /**
      * Метод, добавляющий объекты Route из ArrayList в коллекцию Stack.
      * @param routes - объект ArrayList<Route>
      */
-    public void addRoutes(ArrayList<Route> routes) {
+    public void addRoutes(List<Route> routes) {
         Log.logger.log(Level.INFO,"Adding routes into stack");
         for (Route route : routes) {
             this.routes.push(route);
@@ -172,27 +154,10 @@ public class StackRouteManager implements CollectionRouteManager {
      * Метод, выводящий все элементы типа Route коллекции Stack в стандартный поток вывода.
      */
     public void show() {
-        for (Route route: routes) {
-            showElement(route);
+        SingleRouteWriter routeWriter = new ConsoleRouteWriter(this);
+        for(Route route: routes) {
+            routeWriter.write(route);
         }
-    }
-
-    /**
-     * Метод, выводящий элемент типа Route в стандартный поток вывода.
-     * @param route - элемент Route
-     */
-    public void showElement(Route route) {
-        String from;
-        if (route.getFrom() == null) {
-            from = "null";
-        } else {
-            from = String.format("{x:%d, y:%d, name:\"%s\"}", route.getFrom().getX(), route.getFrom().getY(), route.getFrom().getName());
-        }
-        System.out.printf("Route object:ID:%d, Name:\"%s\", Coordinates: {x:%d, y:%.2f}, Creation date: %s" +
-                        " from: %s, to: {x:%d, y:%d, z:%.2f}, Distance: %.2f%n", route.getId(),
-                route.getName(), route.getCoordinates().getX(), route.getCoordinates().getY(),
-                route.getCreationDate().toString(), from, route.getTo().getX(), route.getTo().getY(),
-                route.getTo().getZ(), route.getDistance());
     }
 
     /**
@@ -245,67 +210,20 @@ public class StackRouteManager implements CollectionRouteManager {
      * @param name - подстрока, по которой будет вестись поиск
      */
     public void filterContainsName(String name) {
+        SingleRouteWriter routeWriter = new ConsoleRouteWriter(this);
         for (Route route : routes) {
             if (route.getName().contains(name)) {
-                showElement(route);
+                routeWriter.write(route);
             }
         }
     }
 
-    /**
-     * Метод, считывающий поля и создающий Route
-     * @param id - если id == -1, тогда создаем объект без id, иначе с id
-     * @throws InvalidArgumentException - выбрасывается, если какой-то из аргументов не прошел валидацию
-     */
-    public void readCreateRoute(int id) throws InvalidArgumentException{
-        ConsoleRouteReader routeReader = new ConsoleRouteReader();
-        String name = routeReader.readName();
-        Coordinates coordinates = routeReader.readCoordinates();
-        FirstLocation firstLocation = routeReader.readFirstLocation();
-        SecondLocation secondLocation = routeReader.readSecondLocation();
-        double distance = routeReader.readDistance();
-        if (id != -1) {
-            //return new Route(id, name, coordinates, firstLocation, secondLocation, distance);
-        } else {
-            addRoute(createRoute(name, coordinates, firstLocation, secondLocation, distance));
-            //return new Route(name, coordinates, firstLocation, secondLocation, distance);
-        }
 
-        //addRoute(nameArg, coordinates, firstLocation, secondLocation, Double.parseDouble(distanceArg));
-    }
-
-    /**
-     * Метод, обновляющий элемент с определенным значением поля ID объекта Route
-     * @param id - id элемента
-     * @param name - поле name объекта Route
-     * @param coordinates - поле coordinates объекта Route
-     * @param from - поле from объекта Route
-     * @param to - поле to объекта Route
-     * @param distance - поле distance объекта Route
-     */
-    public void updateId(int id, String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
+    public void updateId(int id, List<Route> route)
             throws InvalidArgumentException, NumberFormatException{
         int index = findRouteById(id);
-        Route route = new Route(name, coordinates, from, to, distance);
-        routes.set(index, route);
-    }
-
-    /**
-     * Метод, обновляющий элемент с определенным значением поля ID объекта Route
-     * @param id - поле id элемента Route
-     * @param route - объект Route
-     */
-    public void updateId(int id, Route route) {
-        try {
-            int index = findRouteById(id);
-            routes.set(index, route);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println("unknown element");
+        for (Route value : route) {
+            routes.set(index, value);
         }
     }
-
-    public void sort() {
-        Collections.sort(routes);
-    }
-
 }

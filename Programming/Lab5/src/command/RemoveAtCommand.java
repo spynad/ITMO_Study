@@ -1,7 +1,7 @@
 package command;
 
 import managers.CollectionRouteManager;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 /**
  * Класс-команда, реализующая удаление элемента на определенной позиции

@@ -1,9 +1,10 @@
 package command;
 
-import managers.IOManager;
+import main.Application;
+import managers.CsvFileRouteWriter;
+import managers.RouteWriter;
 import managers.CollectionRouteManager;
-import managers.RouteReader;
-import route.exceptions.InvalidArgumentException;
+import managers.ScriptRouteReader;
 
 import java.io.BufferedReader;
 import java.util.*;
@@ -22,18 +23,16 @@ public class CommandInvoker {
 
     CollectionRouteManager routeManager;
 
-    IOManager fileManager;
+    RouteWriter fileManager;
 
     BufferedReader reader;
 
-    public CommandInvoker(CollectionRouteManager routeManager, IOManager fileManager) {
+    public CommandInvoker(CollectionRouteManager routeManager) {
         this.routeManager = routeManager;
-        this.fileManager = fileManager;
     }
 
-    public CommandInvoker(CollectionRouteManager routeManager, IOManager fileManager, BufferedReader reader) {
+    public CommandInvoker(CollectionRouteManager routeManager, BufferedReader reader) {
         this.routeManager = routeManager;
-        this.fileManager = fileManager;
         this.reader = reader;
     }
 
@@ -92,7 +91,7 @@ public class CommandInvoker {
                 command = new ClearCommand(routeManager);
                 break;
             case "save":
-                command = new SaveCommand(fileManager);
+                command = new SaveCommand(new CsvFileRouteWriter(routeManager, Application.getFileName()));
                 break;
             case "remove_all_by_distance":
                 command = new RemoveAllByDistanceCommand(routeManager, args);
@@ -122,7 +121,7 @@ public class CommandInvoker {
                 command = new AddCommand(routeManager, reader);
                 break;
             case "execute_script":
-                command = new ExecuteScriptCommand(routeManager, fileManager, args);
+                command = new ExecuteScriptCommand(routeManager, new ScriptRouteReader(reader, routeManager), args);
                 break;
             case "update":
                 command = new UpdateCommand(routeManager, args, reader);

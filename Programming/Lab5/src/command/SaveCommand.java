@@ -1,14 +1,14 @@
 package command;
 
-import managers.IOManager;
+import managers.RouteWriter;
 
 /**
  * Класс-команда, реализующая сохранение коллекции в файл
  */
 public class SaveCommand implements Command{
-    IOManager fileManager;
+    RouteWriter fileManager;
 
-    SaveCommand(IOManager fileManager) {
+    SaveCommand(RouteWriter fileManager) {
         this.fileManager = fileManager;
     }
     public void execute() {

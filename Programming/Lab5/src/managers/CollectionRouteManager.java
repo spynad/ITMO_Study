@@ -4,22 +4,21 @@ import route.Coordinates;
 import route.FirstLocation;
 import route.Route;
 import route.SecondLocation;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
 import java.util.Stack;
 
 public interface CollectionRouteManager {
     Stack<Route> getRoutes();
-    void addRoutes(ArrayList<Route> routes);
-    void addRoute(Route route);
+    void addRoutes(List<Route> routes);
     void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
             throws InvalidArgumentException, NumberFormatException;
     boolean addUniqueID(int id);
-    void updateId(int id, String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
+    void updateId(int id, List<Route> route) throws InvalidArgumentException, NumberFormatException;
+    Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
             throws InvalidArgumentException, NumberFormatException;
-    void readCreateRoute(int id) throws InvalidArgumentException;
     void info();
     void clear();
     void removeAllByDistance(double distance);

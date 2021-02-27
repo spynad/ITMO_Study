@@ -3,12 +3,9 @@ package command;
 import exception.RouteReadException;
 import managers.CollectionRouteManager;
 import managers.ConsoleRouteReader;
-import managers.FileRouteReader;
+import managers.ScriptRouteReader;
 import managers.RouteReader;
-import route.Coordinates;
-import route.FirstLocation;
-import route.SecondLocation;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
 
@@ -31,15 +28,11 @@ public class UpdateCommand implements Command{
             if (args.length == 1) {
                 RouteReader routeReader;
                 if (reader == null) {
-                    routeReader = new ConsoleRouteReader();
+                    routeReader = new ConsoleRouteReader(routeManager);
                 } else {
-                    routeReader = new FileRouteReader(reader);
+                    routeReader = new ScriptRouteReader(reader, routeManager);
                 }
-                routeManager.updateId(Integer.parseInt(args[0]), routeReader.readName(),
-                        routeReader.readCoordinates(),
-                        routeReader.readFirstLocation(),
-                        routeReader.readSecondLocation(),
-                        routeReader.readDistance());
+                routeManager.updateId(Integer.parseInt(args[0]), routeReader.read());
             } else {
                 throw new InvalidArgumentException("expected 1 argument, got " + args.length);
             }

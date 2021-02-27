@@ -3,13 +3,11 @@ package command;
 import exception.RouteReadException;
 import managers.CollectionRouteManager;
 import managers.ConsoleRouteReader;
-import managers.FileRouteReader;
+import managers.ScriptRouteReader;
 import managers.RouteReader;
-import route.Route;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
-import java.io.EOFException;
 
 /**
  * Класс-команда, реализующая добавление элемента в коллекцию
@@ -28,20 +26,16 @@ public class AddCommand implements Command{
         try {
             RouteReader routeReader;
             if (reader == null) {
-                routeReader = new ConsoleRouteReader();
+                routeReader = new ConsoleRouteReader(routeManager);
             } else {
-                routeReader = new FileRouteReader(reader);
+                routeReader = new ScriptRouteReader(reader, routeManager);
             }
 
-            routeManager.addRoute(routeReader.readName(),
-                    routeReader.readCoordinates(),
-                    routeReader.readFirstLocation(),
-                    routeReader.readSecondLocation(),
-                    routeReader.readDistance());
-        } catch (NumberFormatException | InvalidArgumentException nfe) {
+            routeManager.addRoutes(routeReader.read());
+        } catch (NumberFormatException | InvalidArgumentException | RouteReadException nfe) {
             System.err.println("invalid argument");
-        } catch (RouteReadException eofe) {
+        } /* catch (RouteReadException eofe) {
             throw new IllegalStateException();
-        }
+        }*/
     }
 }

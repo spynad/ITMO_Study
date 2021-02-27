@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Formatter;
 import java.util.Locale;
 
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 /**
  * Класс, который хранится в коллекции

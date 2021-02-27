@@ -4,11 +4,14 @@ import log.Log;
 import main.Application;
 import route.Coordinates;
 import route.FirstLocation;
+import route.Route;
 import route.SecondLocation;
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -18,7 +21,18 @@ import java.util.logging.Level;
  */
 public class ConsoleRouteReader implements RouteReader {
     BufferedReader input = Application.getInput();
+    CollectionRouteManager routeManager;
 
+    public ConsoleRouteReader(CollectionRouteManager routeManager) {
+        this.routeManager = routeManager;
+    }
+
+    public List<Route> read() throws InvalidArgumentException{
+        List<Route> route = new ArrayList<>();
+        route.add(routeManager.createRoute(readName(),readCoordinates(),readFirstLocation(),readSecondLocation(),readDistance()));
+
+        return route;
+    }
 
     /**
      * Метод, который считывает поля объекта Coordinates и возвращает его

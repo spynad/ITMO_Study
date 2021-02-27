@@ -1,8 +1,9 @@
 package command;
 
 import managers.CollectionRouteManager;
-import managers.IOManager;
-import route.exceptions.InvalidArgumentException;
+import managers.RouteReader;
+import managers.RouteWriter;
+import exception.InvalidArgumentException;
 
 import java.io.*;
 
@@ -13,11 +14,11 @@ import java.io.*;
  */
 public class ExecuteScriptCommand implements Command{
     CollectionRouteManager routeManager;
-    IOManager fileManager;
+    RouteReader fileManager;
     String[] args;
     String fileName;
 
-    ExecuteScriptCommand(CollectionRouteManager routeManager, IOManager fileManager, String[] args) {
+    ExecuteScriptCommand(CollectionRouteManager routeManager, RouteReader fileManager, String[] args) {
         this.routeManager = routeManager;
         this.fileManager = fileManager;
         this.args = args;
@@ -40,7 +41,7 @@ public class ExecuteScriptCommand implements Command{
                 }
                 CommandInvoker.addScript(fileName);
 
-                CommandInvoker commandInvoker = new CommandInvoker(routeManager, fileManager, reader);
+                CommandInvoker commandInvoker = new CommandInvoker(routeManager, reader);
 
                 while (reader.ready()) {
                     String commands = reader.readLine();

@@ -1,16 +1,11 @@
 package managers;
 
+import exception.InvalidArgumentException;
 import exception.RouteReadException;
-import route.Coordinates;
-import route.FirstLocation;
-import route.SecondLocation;
+import route.Route;
 
-import java.io.EOFException;
+import java.util.List;
 
 public interface RouteReader {
-    public Coordinates readCoordinates() throws RouteReadException;
-    public FirstLocation readFirstLocation() throws RouteReadException;
-    public SecondLocation readSecondLocation() throws RouteReadException;
-    public String readName() throws RouteReadException;
-    public double readDistance() throws RouteReadException;
+    List<Route> read() throws InvalidArgumentException, RouteReadException;
 }

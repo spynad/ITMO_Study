@@ -1,6 +1,8 @@
 package main;
 
 import command.CommandInvoker;
+import exception.InvalidArgumentException;
+import exception.RouteReadException;
 import log.Log;
 import managers.*;
 
@@ -13,6 +15,7 @@ public class Application {
     CommandInvoker commandInvoker;
     private static BufferedReader input;
     private static boolean isRunning = true;
+    private static String fileName;
 
     public Application() {}
 
@@ -28,13 +31,21 @@ public class Application {
         return input;
     }
 
-    public void init(String fileName) {
-        CollectionRouteManager routeManager = new StackRouteManager();
-        IOManager fileManager = new FileManager(routeManager, fileName);
-        commandInvoker = new CommandInvoker(routeManager, fileManager);
-        input = new BufferedReader(new InputStreamReader(System.in));
+    public static String getFileName() {
+        return fileName;
+    }
 
-        routeManager.addRoutes(fileManager.read());
+    public void init(String fileName) {
+        Application.fileName = fileName;
+        CollectionRouteManager routeManager = new StackRouteManager();
+        RouteReader routeReader = new CsvFileRouteReader(routeManager, fileName);
+        commandInvoker = new CommandInvoker(routeManager);
+        input = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            routeManager.addRoutes(routeReader.read());
+        } catch (InvalidArgumentException | RouteReadException iae) {
+            System.err.println("application init error");
+        }
     }
 
     public void loop() {

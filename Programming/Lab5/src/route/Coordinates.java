@@ -1,6 +1,6 @@
 package route;
 
-import route.exceptions.InvalidArgumentException;
+import exception.InvalidArgumentException;
 
 import java.util.Formatter;
 import java.util.Locale;
