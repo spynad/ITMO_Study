@@ -1,19 +1,11 @@
-package managers;
+package main;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 import java.util.logging.Level;
 
-import exception.BadCSVException;
 import log.Log;
-import route.Coordinates;
-import route.FirstLocation;
 import route.Route;
-import route.SecondLocation;
-import exception.InvalidArgumentException;
 
 /**
  * Класс, отвечающий за взаимодействие с файлами

@@ -1,8 +1,7 @@
-package managers;
+package main;
 
 import exception.RouteBuildException;
 import log.Log;
-import main.Application;
 import route.Coordinates;
 import route.FirstLocation;
 import route.Route;
@@ -11,8 +10,6 @@ import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -129,8 +126,7 @@ public class ConsoleRouteReader implements SingleRouteReader {
             try {
                 System.out.println("enter name: ");
                 String str = input.readLine();
-                String formStr = str.replaceAll("[^\\w\\s]", "");
-                return formStr;
+                return str.replaceAll("[^\\w\\s]", "");
             } catch (IOException ioe) {
                 System.err.println("something happened");
                 Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
@@ -143,8 +139,7 @@ public class ConsoleRouteReader implements SingleRouteReader {
             try {
                 System.out.println("enter distance: ");
                 String str = input.readLine();
-                double distance = Double.parseDouble(str);
-                return distance;
+                return Double.parseDouble(str);
             } catch (NumberFormatException nfe) {
                 System.err.println("invalid argument");
                 Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);

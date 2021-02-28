@@ -1,10 +1,6 @@
-package managers;
+package main;
 
 import route.Route;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Stack;
 
 public class ConsoleRouteWriter implements SingleRouteWriter{
     CollectionRouteManager routeManager;

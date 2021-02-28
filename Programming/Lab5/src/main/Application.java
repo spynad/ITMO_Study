@@ -5,7 +5,6 @@ import exception.InvalidArgumentException;
 import exception.RouteBuildException;
 import exception.RouteReadException;
 import log.Log;
-import managers.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +21,6 @@ public class Application {
 
     public static void setIsRunning(boolean isRunning) {
         Application.isRunning = isRunning;
-    }
-
-    public static void setInput(BufferedReader input) {
-        Application.input = input;
     }
 
     public static BufferedReader getInput() {

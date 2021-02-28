@@ -1,4 +1,4 @@
-package managers;
+package main;
 
 import exception.RouteBuildException;
 import log.Log;
@@ -46,7 +46,6 @@ public class StackRouteManager implements CollectionRouteManager {
      * @param from - поле from элемента Route
      * @param to - поле to элемента Route
      * @param distance - поле distance элемента Route
-     * @throws InvalidArgumentException - выбрасывает, когда какое-то из полей не проходить валидацию
      * @throws NumberFormatException - -//-
      */
     public void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)

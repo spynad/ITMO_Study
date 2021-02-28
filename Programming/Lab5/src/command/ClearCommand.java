@@ -1,6 +1,6 @@
 package command;
 
-import managers.CollectionRouteManager;
+import main.CollectionRouteManager;
 
 /**
  * Класс-команда, реализующая удаление всех элементов коллекции

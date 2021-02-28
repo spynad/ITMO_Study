@@ -1,10 +1,10 @@
 package command;
 
 import main.Application;
-import managers.CsvFileRouteWriter;
-import managers.RouteWriter;
-import managers.CollectionRouteManager;
-import managers.ScriptRouteReader;
+import main.CsvFileRouteWriter;
+import main.RouteWriter;
+import main.CollectionRouteManager;
+import main.ScriptRouteReader;
 
 import java.io.BufferedReader;
 import java.util.*;

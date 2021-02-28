@@ -2,7 +2,10 @@ package command;
 
 import exception.RouteBuildException;
 import exception.RouteReadException;
-import managers.*;
+import main.CollectionRouteManager;
+import main.ConsoleRouteReader;
+import main.ScriptRouteReader;
+import main.SingleRouteReader;
 import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;

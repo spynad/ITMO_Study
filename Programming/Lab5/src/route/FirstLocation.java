@@ -14,7 +14,6 @@ public class FirstLocation {
     private long y;
     private String name; //Строка не может быть пустой, Поле не может быть null
 
-    //TODO: объединить валидацию полей класса в один метод, так должно быть красивее
     public FirstLocation(Integer x, long y, String name) throws InvalidArgumentException{
         this.x = x;
         this.y = y;

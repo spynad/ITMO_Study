@@ -1,4 +1,4 @@
-package managers;
+package main;
 
 import exception.BadCSVException;
 import exception.InvalidArgumentException;
