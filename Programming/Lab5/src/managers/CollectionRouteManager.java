@@ -1,5 +1,6 @@
 package managers;
 
+import exception.RouteBuildException;
 import route.Coordinates;
 import route.FirstLocation;
 import route.Route;
@@ -14,11 +15,12 @@ public interface CollectionRouteManager {
     Stack<Route> getRoutes();
     void addRoutes(List<Route> routes);
     void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws InvalidArgumentException, NumberFormatException;
+            throws NumberFormatException, RouteBuildException;
+    void addRoute(Route route);
     boolean addUniqueID(int id);
-    void updateId(int id, List<Route> route) throws InvalidArgumentException, NumberFormatException;
+    void updateId(int id, Route route) throws NumberFormatException;
     Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws InvalidArgumentException, NumberFormatException;
+            throws NumberFormatException, RouteBuildException;
     void info();
     void clear();
     void removeAllByDistance(double distance);

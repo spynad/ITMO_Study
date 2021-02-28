@@ -19,8 +19,6 @@ public class FirstLocation {
         this.x = x;
         this.y = y;
         this.name = name;
-        if (!(validateX() && validateName()))
-            throw new InvalidArgumentException("invalid firstlocation");
     }
 
     public Integer getX() {
@@ -35,13 +33,6 @@ public class FirstLocation {
         return name;
     }
 
-    public boolean validateX() {
-        return x != null;
-    }
-
-    public boolean validateName() {
-        return !name.equals("");
-    }
 
     @Override
     public String toString() {

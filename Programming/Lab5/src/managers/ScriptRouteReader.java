@@ -1,5 +1,6 @@
 package managers;
 
+import exception.RouteBuildException;
 import exception.RouteReadException;
 import log.Log;
 import route.Coordinates;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-public class ScriptRouteReader implements RouteReader{
+public class ScriptRouteReader implements SingleRouteReader{
     BufferedReader input;
     CollectionRouteManager routeManager;
 
@@ -24,10 +25,9 @@ public class ScriptRouteReader implements RouteReader{
     }
 
     @Override
-    public List<Route> read() throws InvalidArgumentException, RouteReadException {
-        List<Route> route = new ArrayList<>();
-
-        route.add(routeManager.createRoute(readName(),readCoordinates(),readFirstLocation(),readSecondLocation(),readDistance()));
+    public Route read() throws RouteBuildException, RouteReadException {
+        Route route;
+        route = routeManager.createRoute(readName(),readCoordinates(),readFirstLocation(),readSecondLocation(),readDistance());
         return route;
     }
 
@@ -153,8 +153,7 @@ public class ScriptRouteReader implements RouteReader{
                     throw new RouteReadException();
                 }
 
-                String formStr = str.replaceAll("[^\\w\\s]", "");
-                return formStr;
+                return str.replaceAll("[^\\w\\s]", "");
             } catch (IOException ioe) {
                 System.err.println("something happened");
                 Log.logger.log(Level.WARNING, "EXCEPTION: ", ioe);
@@ -171,8 +170,7 @@ public class ScriptRouteReader implements RouteReader{
                 } else {
                     throw new RouteReadException();
                 }
-                double distance = Double.parseDouble(str);
-                return distance;
+                return Double.parseDouble(str);
             } catch (NumberFormatException nfe) {
                 System.err.println("invalid argument");
                 Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);

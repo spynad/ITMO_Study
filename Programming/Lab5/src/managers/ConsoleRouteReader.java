@@ -1,5 +1,6 @@
 package managers;
 
+import exception.RouteBuildException;
 import log.Log;
 import main.Application;
 import route.Coordinates;
@@ -19,7 +20,7 @@ import java.util.logging.Level;
  *
  * @author spynad
  */
-public class ConsoleRouteReader implements RouteReader {
+public class ConsoleRouteReader implements SingleRouteReader {
     BufferedReader input = Application.getInput();
     CollectionRouteManager routeManager;
 
@@ -27,10 +28,9 @@ public class ConsoleRouteReader implements RouteReader {
         this.routeManager = routeManager;
     }
 
-    public List<Route> read() throws InvalidArgumentException{
-        List<Route> route = new ArrayList<>();
-        route.add(routeManager.createRoute(readName(),readCoordinates(),readFirstLocation(),readSecondLocation(),readDistance()));
-
+    public Route read() throws RouteBuildException {
+        Route route;
+        route = routeManager.createRoute(readName(),readCoordinates(),readFirstLocation(),readSecondLocation(),readDistance());
         return route;
     }
 

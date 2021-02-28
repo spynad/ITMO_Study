@@ -19,8 +19,6 @@ public class SecondLocation {
         this.x = x;
         this.y = y;
         this.z = z;
-        if (!(validateX() && validateY() && validateZ()))
-            throw new InvalidArgumentException("invalid secondlocation");
     }
 
     public Integer getX() {
@@ -33,18 +31,6 @@ public class SecondLocation {
 
     public Double getZ() {
         return z;
-    }
-
-    public boolean validateX() {
-        return x != null;
-    }
-
-    public boolean validateY() {
-        return y != null;
-    }
-
-    public boolean validateZ() {
-        return z != null;
     }
 
     @Override

@@ -17,8 +17,6 @@ public class Coordinates {
     public Coordinates(long x, Double y) throws InvalidArgumentException {
         this.x = x;
         this.y = y;
-        if (!(validateX() && validateY()))
-            throw new InvalidArgumentException("invalid coordinates");
     }
 
     public long getX() {
@@ -27,14 +25,6 @@ public class Coordinates {
 
     public Double getY() {
         return y;
-    }
-
-    public boolean validateX() {
-        return x > -776;
-    }
-
-    public boolean validateY() {
-        return y != null;
     }
 
     @Override

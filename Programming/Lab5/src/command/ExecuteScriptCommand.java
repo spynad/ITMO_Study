@@ -4,6 +4,7 @@ import managers.CollectionRouteManager;
 import managers.RouteReader;
 import managers.RouteWriter;
 import exception.InvalidArgumentException;
+import managers.SingleRouteReader;
 
 import java.io.*;
 
@@ -14,11 +15,11 @@ import java.io.*;
  */
 public class ExecuteScriptCommand implements Command{
     CollectionRouteManager routeManager;
-    RouteReader fileManager;
+    SingleRouteReader fileManager;
     String[] args;
     String fileName;
 
-    ExecuteScriptCommand(CollectionRouteManager routeManager, RouteReader fileManager, String[] args) {
+    ExecuteScriptCommand(CollectionRouteManager routeManager, SingleRouteReader fileManager, String[] args) {
         this.routeManager = routeManager;
         this.fileManager = fileManager;
         this.args = args;

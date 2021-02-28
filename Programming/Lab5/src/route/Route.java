@@ -29,7 +29,7 @@ public final class Route implements Comparable<Route>{
                  Coordinates coordinates,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) throws InvalidArgumentException{
+                 double distance) {
         id = uniqueId + 1;
         uniqueId++;
         this.name = name;
@@ -38,8 +38,6 @@ public final class Route implements Comparable<Route>{
         this.from = from;
         this.to = to;
         this.distance = distance;
-        if (!validateRoute())
-            throw new InvalidArgumentException("invalid route");
     }
 
     public Route(int id,
@@ -48,7 +46,7 @@ public final class Route implements Comparable<Route>{
                  LocalDate date,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) throws InvalidArgumentException{
+                 double distance) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -56,8 +54,6 @@ public final class Route implements Comparable<Route>{
         this.from = from;
         this.to = to;
         this.distance = distance;
-        if (!validateRoute())
-            throw new InvalidArgumentException("invalid route");
     }
 
     public Route(int id,
@@ -65,7 +61,7 @@ public final class Route implements Comparable<Route>{
                  Coordinates coordinates,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) throws InvalidArgumentException{
+                 double distance) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -73,8 +69,6 @@ public final class Route implements Comparable<Route>{
         this.from = from;
         this.to = to;
         this.distance = distance;
-        if (!validateRoute())
-            throw new InvalidArgumentException("invalid route");
     }
 
     public Integer getId() {
@@ -105,38 +99,15 @@ public final class Route implements Comparable<Route>{
         return from;
     }
 
-    public boolean validateId() {
-        return (id != null) && (id > 0);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public boolean validateName() {
-        return (!name.equals(""));
-    }
-
-    public boolean validateCoordinates() {
-        return coordinates != null;
-    }
-
-    public boolean validateDate() {
-        return creationDate != null;
-    }
-
-    public boolean validateSecondLocation() {
-        return to != null;
-    }
-
-    public boolean validateDistance() {
-        return distance > 1;
-    }
 
     /**
      * Метод, который валидирует все поля объекта Route
      * @return - true, если валидация прошла успешно, иначе - false
      */
-    public boolean validateRoute() {
-        return validateId() && validateName() && validateCoordinates() && validateDate() && validateSecondLocation()
-                && validateDistance();
-    }
     @Override
     public int compareTo(Route o) {
         return getId() - o.getId();

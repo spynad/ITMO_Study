@@ -1,10 +1,8 @@
 package managers;
 
+import exception.RouteBuildException;
 import log.Log;
-import route.Coordinates;
-import route.FirstLocation;
-import route.Route;
-import route.SecondLocation;
+import route.*;
 import exception.InvalidArgumentException;
 
 import java.time.LocalDate;
@@ -52,13 +50,17 @@ public class StackRouteManager implements CollectionRouteManager {
      * @throws NumberFormatException - -//-
      */
     public void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws InvalidArgumentException, NumberFormatException {
+            throws RouteBuildException, NumberFormatException {
         Route route = createRoute(name, coordinates, from, to, distance);
         routes.add(route);
     }
 
+    public void addRoute(Route route) {
+        routes.add(route);
+    }
+
     public Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws InvalidArgumentException, NumberFormatException {
+            throws RouteBuildException, NumberFormatException {
         int id = 1;
         for (int idSearch : setId) {
             if (idSearch != id) {
@@ -67,7 +69,14 @@ public class StackRouteManager implements CollectionRouteManager {
             }
             id++;
         }
-        Route route = new Route(id, name, coordinates, from, to, distance);
+        RouteBuilder routeBuilder = new RouteBuilder();
+        Route route = routeBuilder.setId(id)
+                .setName(name)
+                .setCoordinates(coordinates)
+                .setFirstLocation(from)
+                .setSecondLocation(to)
+                .setDistance(distance)
+                .buildWithId();
         addUniqueID(id);
         return route;
     }
@@ -219,11 +228,10 @@ public class StackRouteManager implements CollectionRouteManager {
     }
 
 
-    public void updateId(int id, List<Route> route)
-            throws InvalidArgumentException, NumberFormatException{
+    public void updateId(int id, Route route)
+            throws NumberFormatException{
         int index = findRouteById(id);
-        for (Route value : route) {
-            routes.set(index, value);
-        }
+        route.setId(id);
+        routes.set(index, route);
     }
 }

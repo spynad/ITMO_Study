@@ -2,6 +2,7 @@ package main;
 
 import command.CommandInvoker;
 import exception.InvalidArgumentException;
+import exception.RouteBuildException;
 import exception.RouteReadException;
 import log.Log;
 import managers.*;
@@ -43,8 +44,8 @@ public class Application {
         input = new BufferedReader(new InputStreamReader(System.in));
         try {
             routeManager.addRoutes(routeReader.read());
-        } catch (InvalidArgumentException | RouteReadException iae) {
-            System.err.println("application init error");
+        } catch (InvalidArgumentException | RouteReadException | RouteBuildException iae) {
+            System.err.println("application init error: " + iae.getMessage());
         }
     }
 

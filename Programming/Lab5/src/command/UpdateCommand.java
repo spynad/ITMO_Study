@@ -1,10 +1,8 @@
 package command;
 
+import exception.RouteBuildException;
 import exception.RouteReadException;
-import managers.CollectionRouteManager;
-import managers.ConsoleRouteReader;
-import managers.ScriptRouteReader;
-import managers.RouteReader;
+import managers.*;
 import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
@@ -26,7 +24,7 @@ public class UpdateCommand implements Command{
     public void execute() {
         try {
             if (args.length == 1) {
-                RouteReader routeReader;
+                SingleRouteReader routeReader;
                 if (reader == null) {
                     routeReader = new ConsoleRouteReader(routeManager);
                 } else {
@@ -38,7 +36,7 @@ public class UpdateCommand implements Command{
             }
         } catch (NumberFormatException nfe) {
             System.err.println("incorrect argument format");
-        } catch (InvalidArgumentException iae) {
+        } catch (InvalidArgumentException | RouteBuildException iae) {
             System.err.println(iae.getMessage());
         } catch (RouteReadException rre) {
             throw new IllegalStateException();

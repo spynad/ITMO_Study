@@ -2,11 +2,9 @@ package managers;
 
 import exception.BadCSVException;
 import exception.InvalidArgumentException;
+import exception.RouteBuildException;
 import log.Log;
-import route.Coordinates;
-import route.FirstLocation;
-import route.Route;
-import route.SecondLocation;
+import route.*;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -111,14 +109,21 @@ public class CsvFileRouteReader implements RouteReader{
                         Long.parseLong(params[11]),
                         Double.parseDouble(params[12]));
                 double dist = Double.parseDouble(params[13]);
-                Route route = new Route(id, name, coordinates, date, firstLocation, secondLocation, dist);
+                RouteBuilder routeBuilder = new RouteBuilder();
+                Route route = routeBuilder.setId(id)
+                        .setName(name)
+                        .setCoordinates(coordinates)
+                        .setFirstLocation(firstLocation)
+                        .setSecondLocation(secondLocation)
+                        .setDistance(dist)
+                        .buildWithId();
                 routes.add(route);
             }
         } catch(NumberFormatException | BadCSVException nfe) {
             System.err.println("Exception while trying to read CSV file: " + nfe.toString());
             System.err.println("File read is interrupted.");
             Log.logger.log(Level.WARNING, "EXCEPTION: ", nfe);
-        } catch(InvalidArgumentException e) {
+        } catch(InvalidArgumentException | RouteBuildException e) {
             System.err.println(e.getMessage());
             System.err.println("File read is interrupted.");
             Log.logger.log(Level.WARNING, "EXCEPTION: ", e);

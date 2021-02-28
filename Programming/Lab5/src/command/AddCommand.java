@@ -1,10 +1,8 @@
 package command;
 
+import exception.RouteBuildException;
 import exception.RouteReadException;
-import managers.CollectionRouteManager;
-import managers.ConsoleRouteReader;
-import managers.ScriptRouteReader;
-import managers.RouteReader;
+import managers.*;
 import exception.InvalidArgumentException;
 
 import java.io.BufferedReader;
@@ -24,15 +22,15 @@ public class AddCommand implements Command{
 
     public void execute() {
         try {
-            RouteReader routeReader;
+            SingleRouteReader routeReader;
             if (reader == null) {
                 routeReader = new ConsoleRouteReader(routeManager);
             } else {
                 routeReader = new ScriptRouteReader(reader, routeManager);
             }
 
-            routeManager.addRoutes(routeReader.read());
-        } catch (NumberFormatException | InvalidArgumentException | RouteReadException nfe) {
+            routeManager.addRoute(routeReader.read());
+        } catch (NumberFormatException | RouteReadException | RouteBuildException nfe) {
             System.err.println("invalid argument");
         } /* catch (RouteReadException eofe) {
             throw new IllegalStateException();
