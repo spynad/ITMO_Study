@@ -46,7 +46,7 @@ public class CsvFileRouteReader implements RouteReader{
         } catch (FileNotFoundException fnfe) {
             System.err.println("The file not found, creating a new one.");
             createNewFile();
-            read();
+            return read();
         } catch (IOException e) {
             System.err.println("An exception occurred while trying to read file: " + e);
         }

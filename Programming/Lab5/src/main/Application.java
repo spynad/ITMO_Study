@@ -54,7 +54,6 @@ public class Application {
                 System.err.println(ise.getMessage());
                 Log.logger.log(Level.WARNING, "EXCEPTION: ", ise);
             }
-
         }
     }
 }

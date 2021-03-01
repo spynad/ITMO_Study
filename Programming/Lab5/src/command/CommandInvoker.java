@@ -73,6 +73,11 @@ public class CommandInvoker {
      * @param inputString - название команды
      */
     public void execute(String inputString) {
+        if (inputString == null) {
+            System.err.println("eof detected, terminating the program");
+            Application.setIsRunning(false);
+            return;
+        }
         Command command;
         String[] split = inputString.split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
@@ -127,7 +132,11 @@ public class CommandInvoker {
                 command = new UpdateCommand(routeManager, args, reader);
                 break;
             default:
-                throw new IllegalStateException("no command registered for " + split[0]);
+                if (split[0].equals("")) {
+                    throw new IllegalStateException("unknown command");
+                } else {
+                    throw new IllegalStateException("unknown command: " + split[0]);
+                }
         }
         pushHistory(inputString);
         command.execute();
