@@ -2,9 +2,10 @@ package command;
 
 import exception.RouteBuildException;
 import exception.RouteReadException;
-import main.CollectionRouteManager;
-import main.ConsoleRouteReader;
-import main.ScriptRouteReader;
+import io.UserIO;
+import main.RouteCollectionManager;
+import main.ConsoleRouteParser;
+import main.ScriptRouteParser;
 import main.SingleRouteReader;
 
 import java.io.BufferedReader;
@@ -14,21 +15,23 @@ import java.io.BufferedReader;
  * @author spynad
  */
 public class AddCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
+    UserIO userIO;
     BufferedReader reader;
 
-    AddCommand(CollectionRouteManager routeManager, BufferedReader reader) {
+    AddCommand(RouteCollectionManager routeManager, BufferedReader reader, UserIO userIO) {
         this.routeManager = routeManager;
         this.reader = reader;
+        this.userIO = userIO;
     }
 
     public void execute() {
         try {
             SingleRouteReader routeReader;
             if (reader == null) {
-                routeReader = new ConsoleRouteReader(routeManager);
+                routeReader = new ConsoleRouteParser(routeManager, userIO);
             } else {
-                routeReader = new ScriptRouteReader(reader, routeManager);
+                routeReader = new ScriptRouteParser(reader, routeManager);
             }
 
             routeManager.addRoute(routeReader.read());

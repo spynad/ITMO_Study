@@ -1,17 +1,21 @@
 package command;
 
-import main.CollectionRouteManager;
+import main.RouteCollectionManager;
 import exception.InvalidArgumentException;
 
 /**
  * Класс-команда, реализующая поиск и вывод элементов фыващзш
  */
 public class FilterContainsNameCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
     String[] args;
 
-    FilterContainsNameCommand(CollectionRouteManager routeManager, String[] args) {
+    FilterContainsNameCommand(RouteCollectionManager routeManager) {
         this.routeManager = routeManager;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
         this.args = args;
     }
 

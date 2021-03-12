@@ -1,7 +1,11 @@
 package main;
 
 import exception.RouteBuildException;
+import io.UserIO;
 import log.Log;
+import main.Application;
+import main.RouteCollectionManager;
+import main.SingleRouteReader;
 import route.Coordinates;
 import route.FirstLocation;
 import route.Route;
@@ -17,12 +21,13 @@ import java.util.logging.Level;
  *
  * @author spynad
  */
-public class ConsoleRouteReader implements SingleRouteReader {
-    BufferedReader input = Application.getInput();
-    CollectionRouteManager routeManager;
+public class ConsoleRouteParser implements SingleRouteReader {
+    UserIO userIO;
+    RouteCollectionManager routeManager;
 
-    public ConsoleRouteReader(CollectionRouteManager routeManager) {
+    public ConsoleRouteParser(RouteCollectionManager routeManager, UserIO userIO) {
         this.routeManager = routeManager;
+        this.userIO = userIO;
     }
 
     public Route read() throws RouteBuildException {
@@ -35,15 +40,16 @@ public class ConsoleRouteReader implements SingleRouteReader {
      * Метод, который считывает поля объекта Coordinates и возвращает его
      *
      * @return - объект Coordinates
+     *
      */
     public Coordinates readCoordinates() {
         while (true) {
             try {
-                System.out.println("enter coordinates.x: ");
-                long x = Long.parseLong(input.readLine());
+                userIO.printLine("enter coordinates.x: ");
+                long x = Long.parseLong(userIO.readLine());
 
-                System.out.println("enter coordinates.y: ");
-                double y = Double.parseDouble(input.readLine());
+                userIO.printLine("enter coordinates.y: ");
+                double y = Double.parseDouble(userIO.readLine());
 
                 return new Coordinates(x, y);
             } catch (InvalidArgumentException e) {
@@ -67,13 +73,13 @@ public class ConsoleRouteReader implements SingleRouteReader {
     public FirstLocation readFirstLocation() {
         while (true) {
             try {
-                System.out.println("enter firstlocation.x: ");
-                int x = Integer.parseInt(input.readLine());
+                userIO.printLine("enter firstlocation.x: ");
+                int x = Integer.parseInt(userIO.readLine());
 
-                System.out.println("enter firstlocation.y: ");
-                long y = Long.parseLong(input.readLine());
+                userIO.printLine("enter firstlocation.y: ");
+                long y = Long.parseLong(userIO.readLine());
 
-                System.out.println("enter firstlocation.name: ");
+                userIO.printLine("enter firstlocation.name: ");
                 String readName = readName();
 
                 return new FirstLocation(x, y, readName);
@@ -98,14 +104,14 @@ public class ConsoleRouteReader implements SingleRouteReader {
     public SecondLocation readSecondLocation() {
         while (true) {
             try {
-                System.out.println("enter secondlocation.x: ");
-                int x = Integer.parseInt(input.readLine());
+                userIO.printLine("enter secondlocation.x: ");
+                int x = Integer.parseInt(userIO.readLine());
 
-                System.out.println("enter secondlocation.y: ");
-                long y = Long.parseLong(input.readLine());
+                userIO.printLine("enter secondlocation.y: ");
+                long y = Long.parseLong(userIO.readLine());
 
-                System.out.println("enter secondlocation.z: ");
-                double z = Double.parseDouble(input.readLine());
+                userIO.printLine("enter secondlocation.z: ");
+                double z = Double.parseDouble(userIO.readLine());
 
                 return new SecondLocation(x, y, z);
             } catch (InvalidArgumentException e) {
@@ -124,8 +130,8 @@ public class ConsoleRouteReader implements SingleRouteReader {
     public String readName() {
         while (true) {
             try {
-                System.out.println("enter name: ");
-                String str = input.readLine();
+                userIO.printLine("enter name: ");
+                String str = userIO.readLine();
                 return str.replaceAll("[^\\w\\s]", "");
             } catch (IOException ioe) {
                 System.err.println("something happened");
@@ -137,8 +143,8 @@ public class ConsoleRouteReader implements SingleRouteReader {
     public double readDistance() {
         while (true) {
             try {
-                System.out.println("enter distance: ");
-                String str = input.readLine();
+                userIO.printLine("enter distance: ");
+                String str = userIO.readLine();
                 return Double.parseDouble(str);
             } catch (NumberFormatException nfe) {
                 System.err.println("invalid argument");

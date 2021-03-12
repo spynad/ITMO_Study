@@ -1,6 +1,6 @@
 package command;
 
-import main.CollectionRouteManager;
+import main.RouteCollectionManager;
 import exception.InvalidArgumentException;
 import main.SingleRouteReader;
 
@@ -12,14 +12,16 @@ import java.io.*;
  * @version govno
  */
 public class ExecuteScriptCommand implements Command{
-    CollectionRouteManager routeManager;
-    SingleRouteReader fileManager;
+    RouteCollectionManager routeManager;
     String[] args;
     String fileName;
 
-    ExecuteScriptCommand(CollectionRouteManager routeManager, SingleRouteReader fileManager, String[] args) {
+    ExecuteScriptCommand(RouteCollectionManager routeManager) {
         this.routeManager = routeManager;
-        this.fileManager = fileManager;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
         this.args = args;
     }
 

@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class CsvFileRouteReader implements RouteReader{
-    private final CollectionRouteManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     private final String fileName;
 
-    public CsvFileRouteReader(CollectionRouteManager routeManager, String fileName) {
+    public CsvFileRouteReader(RouteCollectionManager routeManager, String fileName) {
         Log.logger.log(Level.INFO,"FileManager init");
         this.routeManager = routeManager;
         this.fileName = fileName;
@@ -113,6 +113,7 @@ public class CsvFileRouteReader implements RouteReader{
                 Route route = routeBuilder.setId(id)
                         .setName(name)
                         .setCoordinates(coordinates)
+                        .setDate(date)
                         .setFirstLocation(firstLocation)
                         .setSecondLocation(secondLocation)
                         .setDistance(dist)

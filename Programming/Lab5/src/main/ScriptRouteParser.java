@@ -13,11 +13,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.logging.Level;
 
-public class ScriptRouteReader implements SingleRouteReader{
+public class ScriptRouteParser implements SingleRouteReader{
     BufferedReader input;
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
 
-    public ScriptRouteReader(BufferedReader reader, CollectionRouteManager routeManager) {
+    public ScriptRouteParser(BufferedReader reader, RouteCollectionManager routeManager) {
         input = reader;
         this.routeManager = routeManager;
     }

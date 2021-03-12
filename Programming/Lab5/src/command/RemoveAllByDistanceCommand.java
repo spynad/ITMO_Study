@@ -1,6 +1,6 @@
 package command;
 
-import main.CollectionRouteManager;
+import main.RouteCollectionManager;
 import exception.InvalidArgumentException;
 
 
@@ -8,11 +8,15 @@ import exception.InvalidArgumentException;
  * Класс-команда, реализующая удаление всех элементов коллекции, у которых поле distance=заданному
  */
 public class RemoveAllByDistanceCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
     String[] args;
 
-    RemoveAllByDistanceCommand(CollectionRouteManager routeManager, String[] args) {
+    RemoveAllByDistanceCommand(RouteCollectionManager routeManager) {
         this.routeManager = routeManager;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
         this.args = args;
     }
 

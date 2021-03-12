@@ -2,9 +2,10 @@ package command;
 
 import exception.RouteBuildException;
 import exception.RouteReadException;
-import main.CollectionRouteManager;
-import main.ConsoleRouteReader;
-import main.ScriptRouteReader;
+import io.UserIO;
+import main.RouteCollectionManager;
+import main.ConsoleRouteParser;
+import main.ScriptRouteParser;
 import main.SingleRouteReader;
 import exception.InvalidArgumentException;
 
@@ -14,14 +15,20 @@ import java.io.BufferedReader;
  * Класс-команда, реализующая обновление элемента коллекции по его id
  */
 public class UpdateCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
+    UserIO userIO;
     BufferedReader reader;
     String[] args;
 
-    UpdateCommand(CollectionRouteManager routeManager, String[] args, BufferedReader reader) {
+    UpdateCommand(RouteCollectionManager routeManager, BufferedReader reader, UserIO userIO) {
         this.routeManager = routeManager;
-        this.args = args;
         this.reader = reader;
+        this.userIO = userIO;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
+        this.args = args;
     }
 
     public void execute() {
@@ -29,9 +36,9 @@ public class UpdateCommand implements Command{
             if (args.length == 1) {
                 SingleRouteReader routeReader;
                 if (reader == null) {
-                    routeReader = new ConsoleRouteReader(routeManager);
+                    routeReader = new ConsoleRouteParser(routeManager, userIO);
                 } else {
-                    routeReader = new ScriptRouteReader(reader, routeManager);
+                    routeReader = new ScriptRouteParser(reader, routeManager);
                 }
                 routeManager.updateId(Integer.parseInt(args[0]), routeReader.read());
             } else {

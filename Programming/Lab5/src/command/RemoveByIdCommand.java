@@ -1,19 +1,24 @@
 package command;
 
-import main.CollectionRouteManager;
+import main.RouteCollectionManager;
 import exception.InvalidArgumentException;
 
 /**
  * Класс-команда, реализующая удаление элемента коллекции по его ID
  */
 public class RemoveByIdCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
     String[] args;
 
-    RemoveByIdCommand(CollectionRouteManager routeManager, String[] args) {
+    RemoveByIdCommand(RouteCollectionManager routeManager) {
         this.routeManager = routeManager;
+    }
+
+    @Override
+    public void setArgs(String[] args) {
         this.args = args;
     }
+
     public void execute() {
         try {
             if (args.length == 1) {

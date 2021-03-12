@@ -6,8 +6,7 @@ public class Lab5 {
         if (args.length > 0) {
             if(!args[0].equals("")) {
                 Application application = new Application();
-                application.init(args[0]);
-                application.loop();
+                application.start(args[0]);
             } else {
                 System.err.println("Usage: program_name fileName");
             }

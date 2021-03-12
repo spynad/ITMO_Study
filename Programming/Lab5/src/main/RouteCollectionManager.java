@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public interface CollectionRouteManager {
+public interface RouteCollectionManager {
     Stack<Route> getRoutes();
     void addRoutes(List<Route> routes);
     void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)

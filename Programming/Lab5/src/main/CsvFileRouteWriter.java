@@ -12,11 +12,11 @@ import route.Route;
  * @author spynad
  */
 public class CsvFileRouteWriter implements RouteWriter {
-    private final CollectionRouteManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     private final String fileName;
 
-    public CsvFileRouteWriter(CollectionRouteManager routeManager, String fileName) {
+    public CsvFileRouteWriter(RouteCollectionManager routeManager, String fileName) {
         Log.logger.log(Level.INFO,"FileManager init");
         this.routeManager = routeManager;
         this.fileName = fileName;

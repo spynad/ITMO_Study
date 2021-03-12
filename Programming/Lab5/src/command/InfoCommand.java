@@ -1,14 +1,14 @@
 package command;
 
-import main.CollectionRouteManager;
+import main.RouteCollectionManager;
 
 /**
  * Класс-команда, реализующая вывод информации о коллекции
  */
 public class InfoCommand implements Command{
-    CollectionRouteManager routeManager;
+    RouteCollectionManager routeManager;
 
-    InfoCommand(CollectionRouteManager routeManager) {
+    InfoCommand(RouteCollectionManager routeManager) {
         this.routeManager = routeManager;
     }
 

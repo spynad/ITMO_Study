@@ -1,9 +1,9 @@
 package main;
 
 import exception.RouteBuildException;
+import io.UserIO;
 import log.Log;
 import route.*;
-import exception.InvalidArgumentException;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -14,29 +14,26 @@ import java.util.logging.Level;
  * @author spynad
  * @version govno
  */
-public class StackRouteManager implements CollectionRouteManager {
+public class RouteStackManager implements RouteCollectionManager {
 
     /**
      * Собственно говоря, сама коллекция Stack объектов Route
      */
     private final Stack<Route> routes;
 
+    private final UserIO userIO;
+
     /**
      * Множество уникальных значений ID Route
      */
     private final SortedSet<Integer> setId = new TreeSet<>();
 
-    /**
-     * Дата иницзализации коллекции
-     */
     private final LocalDate dateOfInit = LocalDate.now();
 
-    /**
-     * Конструктор, иницализирующий коллекцию Stack
-     */
-    public StackRouteManager() {
+    public RouteStackManager(UserIO userIO) {
         Log.logger.log(Level.INFO,"RouteManager init");
         routes = new Stack<>();
+        this.userIO = userIO;
     }
 
     /**
@@ -128,8 +125,8 @@ public class StackRouteManager implements CollectionRouteManager {
      * Метод, выводящий информацию о коллекции Stack
      */
     public void info() {
-        System.out.printf("%s, Date of init:%s, Number of objects: %d%n", routes.getClass().getName(),
-                dateOfInit.toString(), routes.size());
+        userIO.printLine(String.format("%s, Date of init:%s, Number of objects: %d", routes.getClass().getName(),
+                dateOfInit.toString(), routes.size()));
     }
 
     /**
@@ -155,16 +152,16 @@ public class StackRouteManager implements CollectionRouteManager {
         for (Route route : routes) {
             sum += route.getDistance();
         }
-        System.out.printf("Sum of distance: %.2f%n", sum);
+        userIO.printLine(String.format("Sum of distance: %.2f%n", sum));
     }
 
     /**
      * Метод, выводящий все элементы типа Route коллекции Stack в стандартный поток вывода.
      */
     public void show() {
-        SingleRouteWriter routeWriter = new ConsoleRouteWriter(this);
+        RouteFormatter formatter = new RouteFormatter();
         for(Route route: routes) {
-            routeWriter.write(route);
+            userIO.printLine(formatter.formatRoute(route));
         }
     }
 
@@ -196,7 +193,7 @@ public class StackRouteManager implements CollectionRouteManager {
                 count++;
             }
         }
-        System.out.printf("removed %d object(-s)%n", count);
+        userIO.printLine(String.format("removed %d object(-s)%n", count));
     }
 
     /**
@@ -207,7 +204,7 @@ public class StackRouteManager implements CollectionRouteManager {
         try {
             removeUniqueID(routes.get(index).getId());
             routes.remove(index);
-            System.out.println("removed 1 object");
+            userIO.printLine("removed 1 object");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.err.println("tried to remove non-existent element");
         }
@@ -218,10 +215,10 @@ public class StackRouteManager implements CollectionRouteManager {
      * @param name - подстрока, по которой будет вестись поиск
      */
     public void filterContainsName(String name) {
-        SingleRouteWriter routeWriter = new ConsoleRouteWriter(this);
+        RouteFormatter routeFormatter = new RouteFormatter();
         for (Route route : routes) {
             if (route.getName().contains(name)) {
-                routeWriter.write(route);
+                userIO.printLine(routeFormatter.formatRoute(route));
             }
         }
     }
