@@ -17,7 +17,9 @@ public class ResponseSender {
 
     public void sendResponse(Selector selector, Response response) throws IOException, ClassNotFoundException{
         this.selector = selector;
+        log.Log.getLogger().info("Sending response: " + response.toString());
         sendBytes(serializeResponse(response));
+        log.Log.getLogger().info("Response sent: " + response.toString());
     }
 
     private void sendBytes(byte[] bytes) throws IOException {

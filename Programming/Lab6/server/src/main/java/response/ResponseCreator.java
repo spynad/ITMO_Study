@@ -17,6 +17,6 @@ public class ResponseCreator implements Creator{
 
     public void addToMsg(String msg) {
         String initial = response.getMessage();
-        response.setMessage(initial + msg);
+        response.setMessage(initial + msg + '\n');
     }
 }

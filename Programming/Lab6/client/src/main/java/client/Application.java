@@ -2,6 +2,7 @@ package client;
 
 import commands.*;
 import connection.ConnectionOpener;
+import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
 import exception.RouteBuildException;
 import exception.RouteReadException;
@@ -44,6 +45,8 @@ public class Application {
             try {
                 userString = userIO.readLine();
                 commandInvoker.execute(userString, null);
+            } catch (CommandExecutionException executionException) {
+                userIO.printErrorMessage("Command execution error: " + executionException.getMessage());
             } catch (IOException ioe) {
                 userIO.printErrorMessage("IO error:" + ioe.getMessage());
             } catch (CommandNotFoundException ise) {

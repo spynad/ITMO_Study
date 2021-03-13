@@ -11,17 +11,17 @@ public class ResponseReader {
 
     public Response getResponse(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
         this.socketChannel = socketChannel;
-        return deseriliazeRequest(getBytes());
+        return deserializeRequest(getBytes());
     }
 
-    private Response deseriliazeRequest(byte[] bytes) throws IOException, ClassNotFoundException {
+    private Response deserializeRequest(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream byteStream = new ByteArrayInputStream(bytes);
         ObjectInputStream stream = new ObjectInputStream(byteStream);
         return (Response) stream.readObject();
     }
 
     private byte[] getBytes() throws IOException {
-        ByteBuffer buf = ByteBuffer.allocate(2048);
+        ByteBuffer buf = ByteBuffer.allocate(4096);
         buf.clear();
         //buf.flip();
         socketChannel.read(buf);

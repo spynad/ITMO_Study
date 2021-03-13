@@ -10,6 +10,6 @@ public class RequestCreator {
     }
 
     public Request createCommandRequest(String userString, Route route) {
-        return new Request(RequestType.ROUTE_REQUEST, userString, route);
+        return new Request(RequestType.COMMAND_REQUEST, userString, route);
     }
 }

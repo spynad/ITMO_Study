@@ -4,28 +4,16 @@ import log.Log;
 
 public class Server {
     public static void main(String[] args) {
-        Log.getLogger().info("Hello, world!");
-        Application application = new Application();
-        try {
-            application.start();
-        } catch (Exception e) {
-            Log.getLogger().error(e);
-        }
-        /*try {
-            ServerSocketChannel channel = ServerSocketChannel.open();
-            channel.socket().bind(new InetSocketAddress(3110));
-
-            while(true) {
-                SocketChannel socketChannel = channel.accept();
-                ByteBuffer buf = ByteBuffer.allocate(1024);
-                buf.clear();
-                socketChannel.read(buf);
-                ObjectInputStream stream = new ObjectInputStream(new ByteArrayInputStream(buf.array()));
-                String test = (String) stream.readObject();
-                System.out.println(test);
+        if (args.length == 2) {
+            Log.getLogger().info("Hello, world!");
+            Application application = new Application();
+            try {
+                application.start(Integer.parseInt(args[0]), args[1]);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid port");
             }
-        } catch (IOException | ClassNotFoundException ioe) {
-            System.err.println(ioe.getMessage());
-        }*/
+        } else {
+            System.err.println("Expected arguments: port file_name");
+        }
     }
 }
