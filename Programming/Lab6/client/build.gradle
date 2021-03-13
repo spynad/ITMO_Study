@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(':common'))
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
+}
+
+test {
+    useJUnitPlatform()
+}
