@@ -40,6 +40,7 @@ public class Application {
         RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
         CommandInvoker commandInvoker = new CommandInvoker(routeManager, writer, creator);
+        putCommands(commandInvoker, routeManager, creator);
 
         try {
             reader.read();
@@ -73,6 +74,14 @@ public class Application {
                 Log.getLogger().info(request.toString());
             } catch (IOException | ClassNotFoundException ioe) {
                 Log.getLogger().error(ioe);
+                Log.getLogger().error(ioe.getMessage());
+                try {
+                    connectionOpener.closeConnection();
+                } catch (IOException e) {
+                    Log.getLogger().error(e);
+                    System.exit(1);
+                }
+                //System.exit(1);
             }
         }
     }
@@ -89,7 +98,7 @@ public class Application {
         commandInvoker.addCommand("remove_by_id", new RemoveByIdCommand(manager, false));
         commandInvoker.addCommand("remove_at", new RemoveAtCommand(manager, false));
         commandInvoker.addCommand("filter_contains_name", new FilterContainsNameCommand(manager, false));
-        commandInvoker.addCommand("history", new HistoryCommand(history, creator, false));
+        commandInvoker.addCommand("history", new HistoryCommand(commandInvoker, creator, false));
         commandInvoker.addCommand("add", new AddCommand(manager, true));
         commandInvoker.addCommand("update", new UpdateCommand(manager, true));
     }

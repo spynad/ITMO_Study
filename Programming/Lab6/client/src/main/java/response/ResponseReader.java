@@ -8,10 +8,15 @@ import java.nio.channels.SocketChannel;
 
 public class ResponseReader {
     private SocketChannel socketChannel;
+    InputStream stream;
 
     public Response getResponse(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
+        byte[] bytes = new byte[16384];
         this.socketChannel = socketChannel;
-        return deserializeRequest(getBytes());
+        stream = socketChannel.socket().getInputStream();
+        stream.read(bytes);
+        return deserializeRequest(bytes);
+        //ObjectInputStream stream = new ObjectInputStream(byteStream);
     }
 
     private Response deserializeRequest(byte[] bytes) throws IOException, ClassNotFoundException {
@@ -20,11 +25,11 @@ public class ResponseReader {
         return (Response) stream.readObject();
     }
 
-    private byte[] getBytes() throws IOException {
+    /*private byte[] getBytes() throws IOException {
         ByteBuffer buf = ByteBuffer.allocate(4096);
         buf.clear();
         //buf.flip();
         socketChannel.read(buf);
         return buf.array();
-    }
+    }*/
 }

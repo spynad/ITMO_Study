@@ -81,6 +81,10 @@ public class CommandInvoker {
         history.push(command.toLowerCase(Locale.ROOT));
     }
 
+    public List<String> getHistory() {
+        return history;
+    }
+
 
     /**
      * Метод, выполняющий команду
@@ -92,7 +96,7 @@ public class CommandInvoker {
             throw new CommandNotFoundException("Input string is empty");
         }
         Command command;
-        String[] split = inputString.split("\\s+");
+        String[] split = inputString.trim().split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
         if(commands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {
@@ -116,7 +120,7 @@ public class CommandInvoker {
     }
 
     public boolean checkRouteRequirement(String str) throws CommandNotFoundException {
-        String[] split = str.split("\\s+");
+        String[] split = str.trim().split("\\s+");
         if (commands.get(split[0].toLowerCase(Locale.ROOT).trim()) == null) {
             throw new CommandNotFoundException("unknown command: " + split[0].toLowerCase(Locale.ROOT).trim());
         }

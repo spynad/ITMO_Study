@@ -98,7 +98,7 @@ public class CommandInvoker {
             return;
         }
         Command command;
-        String[] split = inputString.split("\\s+");
+        String[] split = inputString.trim().split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
         if(commands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {

@@ -28,4 +28,8 @@ public class ConnectionOpener {
         this.currentChannel = channel;
         return selector;
     }
+
+    public void closeConnection() throws IOException {
+        currentChannel.close();
+    }
 }

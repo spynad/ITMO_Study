@@ -17,6 +17,7 @@ import route.Request;
 import route.RequestType;
 import route.Response;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class Application {
                 try {
                     SocketChannel socketChannel = connectionOpener.openConnection(address, port);
                     Request request = requestCreator.createRouteRequest(userString);
+                    requestSender.initOutputStream(socketChannel);
                     requestSender.sendRequest(socketChannel, request);
                     Response response = reader.getResponse(socketChannel);
                     if (!response.isSuccess())
@@ -61,11 +63,13 @@ public class Application {
                     socketChannel = connectionOpener.openConnection(address, port);
                     if (!response.isRouteRequired()) {
                         request.setType(RequestType.COMMAND_REQUEST);
+                        requestSender.initOutputStream(socketChannel);
                         requestSender.sendRequest(socketChannel, request);
 
                     } else {
                         request.setRoute(routeReader.read());
                         request.setType(RequestType.COMMAND_REQUEST);
+                        requestSender.initOutputStream(socketChannel);
                         requestSender.sendRequest(socketChannel, request);
                     }
                     response = reader.getResponse(socketChannel);
@@ -73,12 +77,12 @@ public class Application {
                         throw new IllegalStateException(response.getMessage());
                     connectionOpener.closeConnection();
                     userIO.printLine(response.getMessage());
+                } catch (EOFException eofe) {
+                    userIO.printErrorMessage("network error: got too many bytes from the server");
                 } catch (IOException | ClassNotFoundException ioe) {
                     userIO.printErrorMessage("network error:" + ioe.getMessage());
-                } catch (RouteReadException | RouteBuildException e) {
-                    e.printStackTrace();
-                } catch (IllegalStateException illegalStateException) {
-                    userIO.printErrorMessage(illegalStateException.getMessage());
+                } catch (RouteReadException | RouteBuildException | IllegalStateException e) {
+                    userIO.printErrorMessage(e.getMessage());
                 }
             }
         }
