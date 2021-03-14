@@ -2,20 +2,20 @@ connection/ConnectionListener.java
  connection.ConnectionListener
 file/CsvFileRouteReader.java
  file.CsvFileRouteReader
-collection/RouteStackManager.java
- collection.RouteStackManager
-command/HistoryCommand.java
- command.HistoryCommand
-command/CommandInvoker.java
- command.CommandInvoker
+command/ExitCommand.java
+ command.ExitCommand
+log/Log.java
+ log.Log
+connection/ConnectionOpener.java
+ connection.ConnectionOpener
 command/InfoCommand.java
  command.InfoCommand
 command/AddCommand.java
  command.AddCommand
 command/RemoveAtCommand.java
  command.RemoveAtCommand
-command/SaveCommand.java
- command.SaveCommand
+command/ServerCommand.java
+ command.ServerCommand
 command/SumOfDistanceCommand.java
  command.SumOfDistanceCommand
 collection/RouteCollectionManager.java
@@ -26,10 +26,10 @@ command/UpdateCommand.java
  command.UpdateCommand
 response/ResponseCreator.java
  response.ResponseCreator
-command/RemoveByIdCommand.java
- command.RemoveByIdCommand
 file/RouteWriter.java
  file.RouteWriter
+command/RemoveByIdCommand.java
+ command.RemoveByIdCommand
 file/CsvFileRouteWriter.java
  file.CsvFileRouteWriter
 command/HelpCommand.java
@@ -52,17 +52,19 @@ command/RemoveFirstCommand.java
  command.RemoveFirstCommand
 command/AbstractServerCommand.java
  command.AbstractServerCommand
-command/ServerCommand.java
- command.ServerCommand
+command/SaveCommand.java
+ command.SaveCommand
 request/RequestHandler.java
  request.RequestHandler
-log/Log.java
- log.Log
-server/Application.java
- server.Application
-connection/ConnectionOpener.java
- connection.ConnectionOpener
+command/ServerCommandInvoker.java
+ command.ServerCommandInvoker
+command/CommandInvoker.java
+ command.CommandInvoker
+command/HistoryCommand.java
+ command.HistoryCommand
 server/Server.java
  server.Server
-command/ExitCommand.java
- command.ExitCommand
+server/Application.java
+ server.Application
+collection/RouteStackManager.java
+ collection.RouteStackManager

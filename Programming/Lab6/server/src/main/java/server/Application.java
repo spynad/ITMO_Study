@@ -10,6 +10,8 @@ import file.CsvFileRouteReader;
 import file.CsvFileRouteWriter;
 import file.RouteReader;
 import file.RouteWriter;
+import io.ConsoleIO;
+import io.UserIO;
 import log.Log;
 import request.RequestHandler;
 import request.RequestReader;
@@ -41,6 +43,7 @@ public class Application {
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
         CommandInvoker commandInvoker = new CommandInvoker(routeManager, writer, creator);
         putCommands(commandInvoker, routeManager, creator);
+        putServerCommands(commandInvoker, writer);
 
         try {
             reader.read();
@@ -52,6 +55,7 @@ public class Application {
         RequestReader requestReader = new RequestReader();
         RequestHandler requestHandler = new RequestHandler(commandInvoker, creator);
         ResponseSender responseSender = new ResponseSender();
+        consoleStart(commandInvoker);
 
         while (isRunning) {
             try {
@@ -81,14 +85,29 @@ public class Application {
                     Log.getLogger().error(e);
                     System.exit(1);
                 }
-                //System.exit(1);
             }
         }
     }
 
+    private void consoleStart(CommandInvoker commandInvoker) {
+        Thread consoleThread = new Thread(() -> {
+            UserIO userIO = new ConsoleIO();
+            while(!Thread.interrupted()) {
+                userIO.printUserPrompt();
+                try {
+                    String str = userIO.readLine();
+                    commandInvoker.execute(str);
+                } catch (IOException | CommandNotFoundException | CommandExecutionException ioe) {
+                    userIO.printErrorMessage(ioe.getMessage());
+                }
+            }
+        });
+        consoleThread.setDaemon(true);
+        consoleThread.start();
+    }
+
     private void putCommands(CommandInvoker commandInvoker, RouteCollectionManager manager, Creator creator) {
         commandInvoker.addCommand("help", new HelpCommand(false));
-        commandInvoker.addCommand("exit", new ExitCommand(false));
         commandInvoker.addCommand("info", new InfoCommand(manager, false));
         commandInvoker.addCommand("clear", new ClearCommand(manager, false));
         commandInvoker.addCommand("remove_all_by_distance", new RemoveAllByDistanceCommand(manager, false));
@@ -101,5 +120,10 @@ public class Application {
         commandInvoker.addCommand("history", new HistoryCommand(commandInvoker, creator, false));
         commandInvoker.addCommand("add", new AddCommand(manager, true));
         commandInvoker.addCommand("update", new UpdateCommand(manager, true));
+    }
+
+    private void putServerCommands(CommandInvoker commandInvoker, RouteWriter routeWriter) {
+        commandInvoker.addServerCommand("exit", new ExitCommand(routeWriter));
+        commandInvoker.addServerCommand("save", new SaveCommand(routeWriter));
     }
 }

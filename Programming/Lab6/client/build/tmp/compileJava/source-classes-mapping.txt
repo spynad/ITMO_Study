@@ -1,28 +1,24 @@
-io/ConsoleIO.java
- io.ConsoleIO
-commands/ExecuteScriptCommand.java
- commands.ExecuteScriptCommand
-request/RequestSender.java
- request.RequestSender
-commands/HelpCommand.java
- commands.HelpCommand
-io/SingleRouteReader.java
- io.SingleRouteReader
-request/RequestCreator.java
- request.RequestCreator
-io/UserIO.java
- io.UserIO
 io/ConsoleRouteParser.java
  io.ConsoleRouteParser
-commands/CommandInvoker.java
- commands.CommandInvoker
-connection/ConnectionOpener.java
- connection.ConnectionOpener
+request/RequestSender.java
+ request.RequestSender
 commands/ExitCommand.java
  commands.ExitCommand
-client/Client.java
- client.Client
+commands/HelpCommand.java
+ commands.HelpCommand
+connection/ConnectionOpener.java
+ connection.ConnectionOpener
 response/ResponseReader.java
  response.ResponseReader
+commands/ExecuteScriptCommand.java
+ commands.ExecuteScriptCommand
+request/RequestCreator.java
+ request.RequestCreator
 client/Application.java
  client.Application
+commands/CommandInvoker.java
+ commands.CommandInvoker
+io/SingleRouteReader.java
+ io.SingleRouteReader
+client/Client.java
+ client.Client

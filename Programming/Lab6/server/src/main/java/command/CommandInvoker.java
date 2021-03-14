@@ -24,6 +24,8 @@ public class CommandInvoker {
 
     Map<String, Command> commands = new HashMap<>();
 
+    Map<String, ServerCommand> serverCommands = new HashMap<>();
+
     static Set<String> scripts = new HashSet<>();
 
     RouteCollectionManager routeManager;
@@ -49,6 +51,10 @@ public class CommandInvoker {
 
     public void addCommand(String commandName, Command command) {
         commands.put(commandName, command);
+    }
+
+    public void addServerCommand(String commandName, ServerCommand command) {
+        serverCommands.put(commandName, command);
     }
 
     //TODO: добавлять поле необходимости Route ради двух классов - херовая идея
@@ -110,6 +116,27 @@ public class CommandInvoker {
                 RouteCommand routeCommand = (RouteCommand) command;
                 routeCommand.execute(route);
             }
+        } else {
+            if (split[0].equals("")) {
+                throw new CommandNotFoundException("unknown command");
+            } else {
+                throw new CommandNotFoundException("unknown command: " + split[0]);
+            }
+        }
+    }
+
+    public void execute(String inputString) throws CommandNotFoundException, CommandExecutionException {
+        if (inputString == null) {
+            Log.getLogger().error("Input string is empty");
+            throw new CommandNotFoundException("Input string is empty");
+        }
+        ServerCommand command;
+        String[] split = inputString.trim().split("\\s+");
+        String[] args = Arrays.copyOfRange(split, 1, split.length);
+
+        if(serverCommands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {
+            command = serverCommands.get(split[0].toLowerCase(Locale.ROOT).trim());
+            command.execute();
         } else {
             if (split[0].equals("")) {
                 throw new CommandNotFoundException("unknown command");

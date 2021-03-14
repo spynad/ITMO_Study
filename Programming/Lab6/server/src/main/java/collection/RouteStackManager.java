@@ -6,6 +6,7 @@ import route.*;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Класс, которой реализует взаимодействие с коллекцией типа Stack
@@ -17,7 +18,7 @@ public class RouteStackManager implements RouteCollectionManager {
     /**
      * Собственно говоря, сама коллекция Stack объектов Route
      */
-    private final Stack<Route> routes;
+    private Stack<Route> routes;
 
     private final Creator creator;
 
@@ -106,7 +107,7 @@ public class RouteStackManager implements RouteCollectionManager {
             }
             index++;
         }
-        return 0;
+        return index;
     }
 
     /**
@@ -137,7 +138,10 @@ public class RouteStackManager implements RouteCollectionManager {
      * @param distance - дистанция
      */
     public void removeAllByDistance(double distance) {
-        routes.removeIf(route -> distance == route.getDistance());
+        routes = routes.stream()
+                .filter(x -> x.getDistance() != distance)
+                .collect(Collectors.toCollection(Stack::new));
+        //routes.removeIf(route -> distance == route.getDistance());
     }
 
     /**
@@ -148,7 +152,7 @@ public class RouteStackManager implements RouteCollectionManager {
         for (Route route : routes) {
             sum += route.getDistance();
         }
-        creator.addToMsg(String.format("Sum of distance: %.2f%n", sum));
+        creator.addToMsg(String.format("Sum of distance: %.2f%n", routes.stream().map(Route::getDistance).reduce(Double::sum).get()));
     }
 
     /**
@@ -156,9 +160,9 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void show() {
         RouteFormatter formatter = new RouteFormatter();
-        for(Route route: routes) {
-            creator.addToMsg(formatter.formatRoute(route));
-        }
+        routes.stream()
+                .sorted()
+                .forEach(x -> creator.addToMsg(formatter.formatRoute(x)));
     }
 
     /**
@@ -167,7 +171,10 @@ public class RouteStackManager implements RouteCollectionManager {
     public void removeFirst() {
         try {
             removeUniqueID(routes.get(0).getId());
-            routes.remove(0);
+            routes = routes.stream()
+                    .filter(x -> !x.getId().equals(routes.get(0).getId()))
+                    .collect(Collectors.toCollection(Stack::new));
+            //routes.remove(0);
         } catch (EmptyStackException | ArrayIndexOutOfBoundsException ese) {
             creator.addToMsg("The stack is empty");
         }
@@ -178,17 +185,10 @@ public class RouteStackManager implements RouteCollectionManager {
      * @param id - поле id элемента Route
      */
     public void removeById(int id) {
-        int count = 0;
-        Iterator<Route> iterator = routes.iterator();
-        while(iterator.hasNext()) {
-            Route route = iterator.next();
-            if (route.getId() == id) {
-                removeUniqueID(route.getId());
-                iterator.remove();
-                count++;
-            }
-        }
-        creator.addToMsg(String.format("removed %d object(-s)%n", count));
+        routes = routes.stream()
+                .filter(x -> id != x.getId())
+                .collect(Collectors.toCollection(Stack::new));
+        //creator.addToMsg(String.format("removed %d object(-s)%n",));
     }
 
     /**
@@ -211,11 +211,9 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void filterContainsName(String name) {
         RouteFormatter routeFormatter = new RouteFormatter();
-        for (Route route : routes) {
-            if (route.getName().contains(name)) {
-                creator.addToMsg(routeFormatter.formatRoute(route));
-            }
-        }
+        routes.stream()
+                .filter(x -> x.getName().contains(name))
+                .forEach(x -> creator.addToMsg(routeFormatter.formatRoute(x)));
     }
 
 

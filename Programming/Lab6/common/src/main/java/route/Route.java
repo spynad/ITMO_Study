@@ -113,7 +113,7 @@ public final class Route implements Comparable<Route>, Serializable {
      */
     @Override
     public int compareTo(Route o) {
-        return getId() - o.getId();
+        return getName().compareTo(o.getName());
     }
 
     @Override

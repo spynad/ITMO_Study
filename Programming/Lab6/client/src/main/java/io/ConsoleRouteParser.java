@@ -1,13 +1,10 @@
 package io;
 
 import exception.RouteBuildException;
-import io.UserIO;
 import route.*;
 import exception.InvalidArgumentException;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.logging.Level;
 
 /**
  * Класс, обеспечивающий считывание полей объектов Route из глобального потока ввода
