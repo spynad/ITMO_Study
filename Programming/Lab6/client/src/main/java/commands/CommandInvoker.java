@@ -13,20 +13,17 @@ import java.util.*;
  * @author spynad
  */
 public class CommandInvoker {
-
-    Stack<String> history = new Stack<>();
-
-    Map<String, Command> commands = new HashMap<>();
-
-    static Set<String> scripts = new HashSet<>();
-
-    BufferedReader reader;
-
-    main.RouteWriter routeWriter;
-
+    private Application application;
+    private Stack<String> history = new Stack<>();
+    private Map<String, Command> commands = new HashMap<>();
+    private static Set<String> scripts = new HashSet<>();
 
     public Map<String, Command> getCommands() {
         return commands;
+    }
+
+    public CommandInvoker(Application application) {
+        this.application = application;
     }
 
     public void setCommands(Map<String, Command> commands) {
@@ -69,7 +66,7 @@ public class CommandInvoker {
     public void execute(String inputString, Route route) throws CommandNotFoundException, CommandExecutionException {
         if (inputString == null) {
             System.err.println("eof detected, terminating the program");
-            Application.setIsRunning(false);
+            application.setIsRunning(false);
             return;
         }
         Command command;

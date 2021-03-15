@@ -24,22 +24,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Application {
-    private static boolean isRunning = true;
+    private String address;
+    private int port;
+    private UserIO userIO;
+    private CommandInvoker commandInvoker;
+    private ConnectionOpener connectionOpener;
+    private RequestCreator requestCreator;
+    private RequestSender requestSender;
+    private ResponseReader reader;
+    private SingleRouteReader routeReader;
+    private boolean isRunning = true;
 
-    public static void setIsRunning(boolean b) {
+    public Application(String address, int port) {
+        this.address = address;
+        this.port = port;
+        userIO = new ConsoleIO();
+        commandInvoker = new CommandInvoker(this);
+        connectionOpener = new ConnectionOpener();
+        requestCreator = new RequestCreator();
+        requestSender = new RequestSender();
+        reader = new ResponseReader();
+        routeReader = new ConsoleRouteParser(userIO);
+        setCommands(commandInvoker);
+    }
+
+    public void setIsRunning(boolean b) {
         isRunning = b;
     }
 
-    public void start(String address, int port) {
-        UserIO userIO = new ConsoleIO();
-        CommandInvoker commandInvoker = new CommandInvoker();
-        ConnectionOpener connectionOpener = new ConnectionOpener();
-        RequestCreator requestCreator = new RequestCreator();
-        RequestSender requestSender = new RequestSender();
-        ResponseReader reader = new ResponseReader();
-        SingleRouteReader routeReader = new ConsoleRouteParser(userIO);
-        setCommands(commandInvoker);
-
+    public void start() {
         while(isRunning) {
             userIO.printUserPrompt();
             String userString = "";
@@ -57,24 +70,25 @@ public class Application {
                     requestSender.initOutputStream(socketChannel);
                     requestSender.sendRequest(socketChannel, request);
                     Response response = reader.getResponse(socketChannel);
+
                     if (!response.isSuccess())
                         throw new IllegalStateException(response.getMessage());
+
                     connectionOpener.closeConnection();
                     socketChannel = connectionOpener.openConnection(address, port);
-                    if (!response.isRouteRequired()) {
-                        request.setType(RequestType.COMMAND_REQUEST);
-                        requestSender.initOutputStream(socketChannel);
-                        requestSender.sendRequest(socketChannel, request);
 
-                    } else {
+                    if (response.isRouteRequired()) {
                         request.setRoute(routeReader.read());
-                        request.setType(RequestType.COMMAND_REQUEST);
-                        requestSender.initOutputStream(socketChannel);
-                        requestSender.sendRequest(socketChannel, request);
                     }
+
+                    request.setType(RequestType.COMMAND_REQUEST);
+                    requestSender.initOutputStream(socketChannel);
+                    requestSender.sendRequest(socketChannel, request);
                     response = reader.getResponse(socketChannel);
+
                     if (!response.isSuccess())
                         throw new IllegalStateException(response.getMessage());
+
                     connectionOpener.closeConnection();
                     userIO.printLine(response.getMessage());
                 } catch (EOFException eofe) {
@@ -90,8 +104,8 @@ public class Application {
 
     private void setCommands(CommandInvoker commandInvoker) {
         Map<String, Command> commandMap = new HashMap<>();
-        commandMap.put("exit", new ExitCommand());
-        commandMap.put("execute_script", new ExecuteScriptCommand());
+        commandMap.put("exit", new ExitCommand(this));
+        commandMap.put("execute_script", new ExecuteScriptCommand(commandInvoker));
         commandMap.put("help", new HelpCommand());
         commandInvoker.setCommands(commandMap);
     }
