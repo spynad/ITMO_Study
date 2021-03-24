@@ -11,7 +11,7 @@ import route.Route;
  * @author spynad
  */
 public class AddCommand extends AbstractCommand implements RouteCommand {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public AddCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

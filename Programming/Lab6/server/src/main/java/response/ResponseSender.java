@@ -1,5 +1,6 @@
 package response;
 
+import locale.ServerBundle;
 import log.Log;
 import route.Request;
 import route.Response;
@@ -17,9 +18,9 @@ public class ResponseSender {
 
     public void sendResponse(Selector selector, Response response) throws IOException, ClassNotFoundException{
         this.selector = selector;
-        log.Log.getLogger().info("Sending response: " + response.toString());
+        log.Log.getLogger().info(ServerBundle.getString("server.sending_response"));
         sendBytes(serializeResponse(response));
-        log.Log.getLogger().info("Response sent: " + response.toString());
+        log.Log.getLogger().info(ServerBundle.getString("server.response_sent"));
     }
 
     private void sendBytes(byte[] bytes) throws IOException {
@@ -30,15 +31,11 @@ public class ResponseSender {
             Set<SelectionKey> keys = selector.selectedKeys();
             Iterator<SelectionKey> iterator = keys.iterator();
 
-            //TODO: чекнуть позже хрень с итераторами
             while(iterator.hasNext()) {
                 SelectionKey key = iterator.next();
                 if (key.isWritable()) {
                     channel = (SocketChannel)key.channel();
-                    //buf.flip();
                     channel.write(buf);
-                    //channel.register(selector, SelectionKey.OP_READ);
-                    //key.cancel();
                 }
                 iterator.remove();
             }
@@ -46,7 +43,7 @@ public class ResponseSender {
     }
 
     private byte[] serializeResponse(Response response) throws IOException{
-        Log.getLogger().info("Serializing response");
+        Log.getLogger().info(ServerBundle.getString("server.serializing_response"));
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
         ObjectOutputStream stream = new ObjectOutputStream(byteStream);
         stream.writeObject(response);

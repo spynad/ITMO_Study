@@ -1,6 +1,7 @@
 package io;
 
 import exception.RouteBuildException;
+import locale.ClientLocale;
 import route.*;
 import exception.InvalidArgumentException;
 
@@ -12,10 +13,14 @@ import java.io.IOException;
  * @author spynad
  */
 public class ConsoleRouteParser implements SingleRouteReader {
-    UserIO userIO;
+    private final UserIO userIO;
+    private final String inputRequest;
+    private final String invalidFormat;
 
     public ConsoleRouteParser(UserIO userIO) {
         this.userIO = userIO;
+        inputRequest = ClientLocale.getString("client.input_request");
+        invalidFormat = ClientLocale.getString("exception.invalid_format_error");
     }
 
     public Route read() throws RouteBuildException {
@@ -37,19 +42,19 @@ public class ConsoleRouteParser implements SingleRouteReader {
     public Coordinates readCoordinates() {
         while (true) {
             try {
-                userIO.printLine("enter coordinates.x: ");
+                userIO.printLine(inputRequest + " coordinates.x: ");
                 long x = Long.parseLong(userIO.readLine());
 
-                userIO.printLine("enter coordinates.y: ");
+                userIO.printLine(inputRequest + " coordinates.y: ");
                 double y = Double.parseDouble(userIO.readLine());
 
                 return new Coordinates(x, y);
             } catch (InvalidArgumentException e) {
-                System.err.println(e.getMessage());
+                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
-                System.err.println("read error");
+                userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
-                System.err.println("invalid arguments");
+                userIO.printErrorMessage(invalidFormat);
             }
         }
     }
@@ -62,22 +67,22 @@ public class ConsoleRouteParser implements SingleRouteReader {
     public FirstLocation readFirstLocation() {
         while (true) {
             try {
-                userIO.printLine("enter firstlocation.x: ");
+                userIO.printLine(inputRequest + " firstlocation.x: ");
                 int x = Integer.parseInt(userIO.readLine());
 
-                userIO.printLine("enter firstlocation.y: ");
+                userIO.printLine(inputRequest + " firstlocation.y: ");
                 long y = Long.parseLong(userIO.readLine());
 
-                userIO.printLine("enter firstlocation.name: ");
+                userIO.printLine(inputRequest + " firstlocation.name: ");
                 String readName = readName();
 
                 return new FirstLocation(x, y, readName);
             } catch (InvalidArgumentException e) {
-                System.err.println(e.getMessage());
+                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
-                System.err.println("read error");
+                userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
-                System.err.println("invalid arguments");
+                userIO.printErrorMessage(invalidFormat);
             }
         }
     }
@@ -90,22 +95,22 @@ public class ConsoleRouteParser implements SingleRouteReader {
     public SecondLocation readSecondLocation() {
         while (true) {
             try {
-                userIO.printLine("enter secondlocation.x: ");
+                userIO.printLine(inputRequest + " secondlocation.x: ");
                 int x = Integer.parseInt(userIO.readLine());
 
-                userIO.printLine("enter secondlocation.y: ");
+                userIO.printLine(inputRequest + " secondlocation.y: ");
                 long y = Long.parseLong(userIO.readLine());
 
-                userIO.printLine("enter secondlocation.z: ");
+                userIO.printLine(inputRequest + " secondlocation.z: ");
                 double z = Double.parseDouble(userIO.readLine());
 
                 return new SecondLocation(x, y, z);
             } catch (InvalidArgumentException e) {
-                System.err.println(e.getMessage());
+                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
-                System.err.println("read error");
+                userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
-                System.err.println("invalid arguments");
+                userIO.printErrorMessage(invalidFormat);
             }
         }
     }
@@ -113,11 +118,11 @@ public class ConsoleRouteParser implements SingleRouteReader {
     public String readName() {
         while (true) {
             try {
-                userIO.printLine("enter name: ");
+                userIO.printLine(inputRequest + " name: ");
                 String str = userIO.readLine();
                 return str.replaceAll("[^\\w\\s]", "");
             } catch (IOException ioe) {
-                System.err.println("something happened");
+                userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             }
         }
     }
@@ -125,13 +130,13 @@ public class ConsoleRouteParser implements SingleRouteReader {
     public double readDistance() {
         while (true) {
             try {
-                userIO.printLine("enter distance: ");
+                userIO.printLine(inputRequest + " distance: ");
                 String str = userIO.readLine();
                 return Double.parseDouble(str);
             } catch (NumberFormatException nfe) {
-                System.err.println("invalid argument");
+                userIO.printErrorMessage(invalidFormat);
             } catch (IOException ioe) {
-                System.err.println("something happened");
+                userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             }
         }
     }

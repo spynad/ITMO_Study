@@ -3,7 +3,7 @@ package response;
 import route.Response;
 
 public class ResponseCreator implements Creator{
-    Response response = new Response();
+    private Response response = new Response();
 
     public Response createResponse(String message, boolean success, boolean routeRequired) {
         return new Response(message, success, routeRequired);

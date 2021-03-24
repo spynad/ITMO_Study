@@ -2,9 +2,9 @@ package file;
 
 import java.io.*;
 import java.util.Stack;
-import java.util.logging.Level;
 
 import collection.RouteCollectionManager;
+import locale.ServerBundle;
 import log.Log;
 import route.Route;
 
@@ -33,8 +33,8 @@ public class CsvFileRouteWriter implements RouteWriter {
             printWriter.print(output);
 
         } catch(IOException ioe) {
-            System.err.println("Exception while trying to write to a file");
-            System.exit(1);
+            Log.getLogger().error(ServerBundle.getString("exception.file_write_error"));
+            Log.getLogger().error(ioe.getStackTrace());
         }
     }
 

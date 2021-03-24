@@ -1,15 +1,13 @@
 package client;
 
 import commands.*;
-import connection.ConnectionOpener;
-import exception.CommandExecutionException;
-import exception.CommandNotFoundException;
-import exception.RouteBuildException;
-import exception.RouteReadException;
+import connection.ConnectionManager;
+import exception.*;
 import io.ConsoleIO;
 import io.ConsoleRouteParser;
 import io.SingleRouteReader;
 import io.UserIO;
+import locale.ClientLocale;
 import request.RequestCreator;
 import request.RequestSender;
 import response.ResponseReader;
@@ -20,27 +18,28 @@ import route.Response;
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Locale;
 
 public class Application {
-    private String address;
-    private int port;
-    private UserIO userIO;
-    private CommandInvoker commandInvoker;
-    private ConnectionOpener connectionOpener;
-    private RequestCreator requestCreator;
-    private RequestSender requestSender;
-    private ResponseReader reader;
-    private SingleRouteReader routeReader;
+    private final String address;
+    private final int port;
+    private final UserIO userIO;
+    private final CommandInvoker commandInvoker;
+    private final ConnectionManager connectionManager;
+    private final RequestCreator requestCreator;
+    private final RequestSender requestSender;
+    private final ResponseReader reader;
+    private final SingleRouteReader routeReader;
     private boolean isRunning = true;
 
+
     public Application(String address, int port) {
+        Locale.setDefault(new Locale("ru", "RU"));
         this.address = address;
         this.port = port;
         userIO = new ConsoleIO();
-        commandInvoker = new CommandInvoker(this);
-        connectionOpener = new ConnectionOpener();
+        commandInvoker = new CommandInvoker();
+        connectionManager = new ConnectionManager();
         requestCreator = new RequestCreator();
         requestSender = new RequestSender();
         reader = new ResponseReader();
@@ -59,42 +58,18 @@ public class Application {
             try {
                 userString = userIO.readLine();
                 commandInvoker.execute(userString, null);
-            } catch (CommandExecutionException executionException) {
-                userIO.printErrorMessage("Command execution error: " + executionException.getMessage());
+            } catch (BadCSVException | CommandExecutionException executionException) {
+                userIO.printErrorMessage(ClientLocale.getString("exception.command_exec_error") + ": " + executionException.getMessage());
             } catch (IOException ioe) {
-                userIO.printErrorMessage("IO error:" + ioe.getMessage());
+                userIO.printErrorMessage(ioe.getMessage());
             } catch (CommandNotFoundException ise) {
                 try {
-                    SocketChannel socketChannel = connectionOpener.openConnection(address, port);
-                    Request request = requestCreator.createRouteRequest(userString);
-                    requestSender.initOutputStream(socketChannel);
-                    requestSender.sendRequest(socketChannel, request);
-                    Response response = reader.getResponse(socketChannel);
-
-                    if (!response.isSuccess())
-                        throw new IllegalStateException(response.getMessage());
-
-                    connectionOpener.closeConnection();
-                    socketChannel = connectionOpener.openConnection(address, port);
-
-                    if (response.isRouteRequired()) {
-                        request.setRoute(routeReader.read());
-                    }
-
-                    request.setType(RequestType.COMMAND_REQUEST);
-                    requestSender.initOutputStream(socketChannel);
-                    requestSender.sendRequest(socketChannel, request);
-                    response = reader.getResponse(socketChannel);
-
-                    if (!response.isSuccess())
-                        throw new IllegalStateException(response.getMessage());
-
-                    connectionOpener.closeConnection();
+                    Response response = communicateWithServer(userString, routeReader);
                     userIO.printLine(response.getMessage());
                 } catch (EOFException eofe) {
-                    userIO.printErrorMessage("network error: got too many bytes from the server");
+                    userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));
                 } catch (IOException | ClassNotFoundException ioe) {
-                    userIO.printErrorMessage("network error:" + ioe.getMessage());
+                    userIO.printErrorMessage(ClientLocale.getString("exception.general_network"));
                 } catch (RouteReadException | RouteBuildException | IllegalStateException e) {
                     userIO.printErrorMessage(e.getMessage());
                 }
@@ -102,11 +77,40 @@ public class Application {
         }
     }
 
+    public Response communicateWithServer(String userString, SingleRouteReader routeReader) throws IOException, ClassNotFoundException,
+            RouteReadException, RouteBuildException {
+        SocketChannel socketChannel = connectionManager.openConnection(address, port);
+        Request request = requestCreator.createRouteRequest(userString);
+        requestSender.initOutputStream(socketChannel);
+        requestSender.sendRequest(socketChannel, request);
+        Response response = reader.getResponse(socketChannel);
+
+        if (!response.isSuccess())
+            throw new IllegalStateException(response.getMessage());
+
+        connectionManager.closeConnection();
+        socketChannel = connectionManager.openConnection(address, port);
+
+        if (response.isRouteRequired()) {
+            request.setRoute(routeReader.read());
+        }
+
+        request.setType(RequestType.COMMAND_REQUEST);
+        requestSender.initOutputStream(socketChannel);
+        requestSender.sendRequest(socketChannel, request);
+        response = reader.getResponse(socketChannel);
+
+        if (!response.isSuccess())
+            throw new IllegalStateException(response.getMessage());
+
+        connectionManager.closeConnection();
+
+        return response;
+    }
+
     private void setCommands(CommandInvoker commandInvoker) {
-        Map<String, Command> commandMap = new HashMap<>();
-        commandMap.put("exit", new ExitCommand(this));
-        commandMap.put("execute_script", new ExecuteScriptCommand(commandInvoker));
-        commandMap.put("help", new HelpCommand());
-        commandInvoker.setCommands(commandMap);
+        commandInvoker.addCommand("exit", new ExitCommand(this));
+        commandInvoker.addCommand("execute_script", new ExecuteScriptCommand(this, commandInvoker, userIO));
+        commandInvoker.addCommand("client_help", new ClientHelpCommand(userIO));
     }
 }

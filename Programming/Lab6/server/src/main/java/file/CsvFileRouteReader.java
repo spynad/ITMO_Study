@@ -4,6 +4,8 @@ import collection.RouteCollectionManager;
 import exception.BadCSVException;
 import exception.InvalidArgumentException;
 import exception.RouteBuildException;
+import locale.ServerBundle;
+import log.Log;
 import route.*;
 
 import java.io.*;
@@ -13,7 +15,6 @@ import java.util.List;
 
 public class CsvFileRouteReader implements RouteReader{
     private final RouteCollectionManager routeManager;
-
     private final String fileName;
 
     public CsvFileRouteReader(RouteCollectionManager routeManager, String fileName) {
@@ -41,11 +42,12 @@ public class CsvFileRouteReader implements RouteReader{
                 }
             }
         } catch (FileNotFoundException fnfe) {
-            System.err.println("The file not found, creating a new one.");
+            Log.getLogger().warn(ServerBundle.getString("exception.csvfile_not_found"));
             createNewFile();
             return read();
         } catch (IOException e) {
-            System.err.println("An exception occurred while trying to read file: " + e);
+            Log.getLogger().error(ServerBundle.getString("exception.csvfile_read_error"));
+            Log.getLogger().error(e.getStackTrace());
         }
         return parseRouteFromFile(readResult);
     }
@@ -55,9 +57,10 @@ public class CsvFileRouteReader implements RouteReader{
                 PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))
         ) {
             printWriter.println("id,name,coordinates,creationDate,from,to,distance");
-            System.err.println("The file has been created.");
+            Log.getLogger().info(ServerBundle.getString("csvfile_reader.file_created"));
         } catch (IOException ioe) {
-            System.err.println("Exception while trying to create a new file");
+            Log.getLogger().error(ServerBundle.getString("exception.csvfile_create_error"));
+            Log.getLogger().error(ioe.getStackTrace());
         }
     }
 
@@ -66,24 +69,21 @@ public class CsvFileRouteReader implements RouteReader{
 
         try {
             if(!inputString.get(0).replace("\r","").equals("id,name,coordinates,creationDate,from,to,distance"))
-                throw new BadCSVException("bad csv format");
+                throw new BadCSVException(ServerBundle.getString("exception.bad_csvfile_heading"));
             inputString.remove(0);
             for (String str : inputString) {
                 String formattedStr = str.replace("\"", "");
                 String[] params = formattedStr.split("\\s*,\\s*");
 
                 if(params.length != 14)
-                    throw new BadCSVException("shit with params.length");
+                    throw new BadCSVException(ServerBundle.getString("exception.wrong_csvfile_params"));
 
                 int id = Integer.parseInt(params[0]);
 
                 if (!routeManager.addUniqueID(id)) {
-                    throw new BadCSVException("duplicate id found");
+                    throw new BadCSVException(ServerBundle.getString("exception.csvfile_duplicate_id"));
                 }
 
-                if (routeManager.getRoutes().size() == Integer.MAX_VALUE) {
-                    throw new BadCSVException("id threshold reached");
-                }
                 String name = params[1];
                 Coordinates coordinates = new Coordinates(Long.parseLong(params[2]),
                         Double.parseDouble(params[3]));
@@ -106,8 +106,7 @@ public class CsvFileRouteReader implements RouteReader{
                         Double.parseDouble(params[12]));
                 double dist = Double.parseDouble(params[13]);
                 RouteBuilder routeBuilder = new RouteBuilder();
-                Route route = routeBuilder.setId(id)
-                        .setName(name)
+                Route route = routeBuilder.setId(id).setName(name)
                         .setCoordinates(coordinates)
                         .setDate(date)
                         .setFirstLocation(firstLocation)
@@ -117,12 +116,9 @@ public class CsvFileRouteReader implements RouteReader{
                 routeManager.addRoute(route);
                 routes.add(route);
             }
-        } catch(NumberFormatException | BadCSVException nfe) {
-            System.err.println("Exception while trying to read CSV file: " + nfe.toString());
-            System.err.println("File read is interrupted.");
-        } catch(InvalidArgumentException | RouteBuildException e) {
-            System.err.println(e.getMessage());
-            System.err.println("File read is interrupted.");
+        } catch(NumberFormatException | BadCSVException | InvalidArgumentException | RouteBuildException e) {
+            Log.getLogger().error(ServerBundle.getFormattedString("exception.bad_csvfile", e.getMessage()));
+            Log.getLogger().error(e.getStackTrace());
         }
         return routes;
     }

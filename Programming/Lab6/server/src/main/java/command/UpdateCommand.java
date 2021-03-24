@@ -4,16 +4,15 @@ import collection.RouteCollectionManager;
 import commands.AbstractCommand;
 import commands.RouteCommand;
 import exception.CommandExecutionException;
+import locale.ServerBundle;
 import route.Route;
-
-import java.io.BufferedReader;
 
 /**
  * Класс-команда, реализующая обновление элемента коллекции по его id
  */
 public class UpdateCommand extends AbstractCommand implements RouteCommand {
-    RouteCollectionManager routeManager;
-    String[] args;
+    private final RouteCollectionManager routeManager;
+    private String[] args;
 
     public UpdateCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);
@@ -22,7 +21,7 @@ public class UpdateCommand extends AbstractCommand implements RouteCommand {
 
     @Override
     public void setArgs(String[] args) {
-        this.args = args;
+        this.args = args.clone();
     }
 
     public void execute() {
@@ -34,10 +33,11 @@ public class UpdateCommand extends AbstractCommand implements RouteCommand {
             if (args.length == 1) {
                 routeManager.updateId(Integer.parseInt(args[0]), route);
             } else {
-                throw new CommandExecutionException("expected 1 argument, got " + args.length);
+                throw new CommandExecutionException(String.format(ServerBundle.getString("exception.expected_got"),
+                        1, args.length));
             }
         } catch (NumberFormatException nfe) {
-            throw new CommandExecutionException("incorrect argument format");
+            throw new CommandExecutionException(ServerBundle.getString("exception.invalid_format_error"));
         }
     }
 }

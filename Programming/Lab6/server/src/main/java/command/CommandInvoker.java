@@ -5,13 +5,11 @@ import commands.Command;
 import commands.RouteCommand;
 import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
-import file.RouteReader;
 import file.RouteWriter;
+import locale.ServerBundle;
 import log.Log;
-import response.Creator;
 import route.Route;
 
-import java.io.BufferedReader;
 import java.util.*;
 
 /**
@@ -20,29 +18,21 @@ import java.util.*;
  */
 public class CommandInvoker {
 
-    Stack<String> history = new Stack<>();
+    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, ServerCommand> serverCommands = new HashMap<>();
+    private final RouteCollectionManager routeManager;
+    private final RouteWriter routeWriter;
+    private final CommandHistory commandHistory;
 
-    Map<String, Command> commands = new HashMap<>();
-
-    Map<String, ServerCommand> serverCommands = new HashMap<>();
-
-    static Set<String> scripts = new HashSet<>();
-
-    RouteCollectionManager routeManager;
-
-    Creator creator;
-
-    RouteWriter routeWriter;
-
-    public CommandInvoker(RouteCollectionManager routeManager, RouteWriter routeWriter) {
+    /*public CommandInvoker(RouteCollectionManager routeManager, RouteWriter routeWriter) {
         this.routeManager = routeManager;
         this.routeWriter = routeWriter;
-    }
+    }*/
 
-    public CommandInvoker(RouteCollectionManager routeManager, RouteWriter writer, Creator creator) {
+    public CommandInvoker(RouteCollectionManager routeManager, RouteWriter writer, CommandHistory commandHistory) {
         this.routeManager = routeManager;
-        this.creator = creator;
         this.routeWriter = writer;
+        this.commandHistory = commandHistory;
     }
 
     public Map<String, Command> getCommands() {
@@ -57,58 +47,23 @@ public class CommandInvoker {
         serverCommands.put(commandName, command);
     }
 
-    //TODO: добавлять поле необходимости Route ради двух классов - херовая идея
-
-    /**
-     * Метод, который добавляет название файла скрипта в множество
-     * @param name - название файла
-     */
-    public static void addScript(String name) {
-        scripts.add(name);
-    }
-
-    /**
-     * Метод, который убирает название файла скрипта из множества
-     * @param name - название файла
-     */
-    public static void removeScript(String name) {
-        scripts.remove(name);
-    }
-
-
-    /**
-     * Метод, который кладет в стек последнюю выполненную команду
-     * @param command - название команды
-     */
-    public void pushHistory(String command) {
-        if(history.size() > 11) {
-            history.remove(history.size() - 1);
-        }
-        history.push(command.toLowerCase(Locale.ROOT));
-    }
-
-    public List<String> getHistory() {
-        return history;
-    }
-
-
     /**
      * Метод, выполняющий команду
      * @param inputString - название команды
      */
     public void execute(String inputString, Route route) throws CommandNotFoundException, CommandExecutionException {
         if (inputString == null) {
-            Log.getLogger().error("Input string is empty");
-            throw new CommandNotFoundException("Input string is empty");
+            Log.getLogger().error(ServerBundle.getString("exception.eof"));
+            throw new CommandNotFoundException(ServerBundle.getString("exception.eof"));
         }
         Command command;
         String[] split = inputString.trim().split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
-        if(commands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {
-            command = commands.get(split[0].toLowerCase(Locale.ROOT).trim());
+        if(commands.containsKey(split[0].toLowerCase(Locale.ROOT))) {
+            command = commands.get(split[0].toLowerCase(Locale.ROOT));
             command.setArgs(args);
-            pushHistory(inputString);
+            commandHistory.pushHistory(inputString);
 
             if(route == null) {
                 command.execute();
@@ -118,39 +73,39 @@ public class CommandInvoker {
             }
         } else {
             if (split[0].equals("")) {
-                throw new CommandNotFoundException("unknown command");
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found"));
             } else {
-                throw new CommandNotFoundException("unknown command: " + split[0]);
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0]);
             }
         }
     }
 
     public void execute(String inputString) throws CommandNotFoundException, CommandExecutionException {
         if (inputString == null) {
-            Log.getLogger().error("Input string is empty");
-            throw new CommandNotFoundException("Input string is empty");
+            Log.getLogger().error(ServerBundle.getString("exception.eof"));
+            throw new CommandNotFoundException(ServerBundle.getString("exception.eof"));
         }
         ServerCommand command;
         String[] split = inputString.trim().split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
-        if(serverCommands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {
-            command = serverCommands.get(split[0].toLowerCase(Locale.ROOT).trim());
+        if(serverCommands.containsKey(split[0].toLowerCase())) {
+            command = serverCommands.get(split[0].toLowerCase());
             command.execute();
         } else {
             if (split[0].equals("")) {
-                throw new CommandNotFoundException("unknown command");
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found"));
             } else {
-                throw new CommandNotFoundException("unknown command: " + split[0]);
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0]);
             }
         }
     }
 
     public boolean checkRouteRequirement(String str) throws CommandNotFoundException {
         String[] split = str.trim().split("\\s+");
-        if (commands.get(split[0].toLowerCase(Locale.ROOT).trim()) == null) {
-            throw new CommandNotFoundException("unknown command: " + split[0].toLowerCase(Locale.ROOT).trim());
+        if (commands.get(split[0].toLowerCase()) == null) {
+            throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0].toLowerCase(Locale.ROOT));
         }
-        return commands.get(split[0].toLowerCase(Locale.ROOT).trim()).isRouteRequired();
+        return commands.get(split[0].toLowerCase()).isRouteRequired();
     }
 }

@@ -4,7 +4,6 @@ import collection.RouteCollectionManager;
 import collection.RouteStackManager;
 import command.*;
 import connection.ConnectionListener;
-import connection.ConnectionOpener;
 import exception.*;
 import file.CsvFileRouteReader;
 import file.CsvFileRouteWriter;
@@ -12,6 +11,7 @@ import file.RouteReader;
 import file.RouteWriter;
 import io.ConsoleIO;
 import io.UserIO;
+import locale.ServerBundle;
 import log.Log;
 import request.RequestHandler;
 import request.RequestReader;
@@ -21,10 +21,10 @@ import response.ResponseSender;
 import route.Request;
 import route.Response;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.channels.Selector;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Application {
     private static boolean isRunning = true;
@@ -34,15 +34,17 @@ public class Application {
         isRunning = b;
     }
 
-    public void start(int port, String fileName) {
+    public void start(String address, int port, String fileName) {
+        Locale.setDefault(new Locale("ru", "RU"));
         fileNameArg = fileName;
         Selector selector;
         Creator creator = new ResponseCreator();
         RouteCollectionManager routeManager = new RouteStackManager(creator);
         RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
-        CommandInvoker commandInvoker = new CommandInvoker(routeManager, writer, creator);
-        putCommands(commandInvoker, routeManager, creator);
+        CommandHistory commandHistory = new CommandHistory();
+        CommandInvoker commandInvoker = new CommandInvoker(routeManager, writer, commandHistory);
+        putCommands(commandInvoker, routeManager, creator, commandHistory);
         putServerCommands(commandInvoker, writer);
 
         try {
@@ -50,7 +52,6 @@ public class Application {
         } catch (InvalidArgumentException | RouteReadException | RouteBuildException e) {
             log.Log.getLogger().error(e.getMessage());
         }
-        ConnectionOpener connectionOpener = new ConnectionOpener();
         ConnectionListener connectionListener = new ConnectionListener();
         RequestReader requestReader = new RequestReader();
         RequestHandler requestHandler = new RequestHandler(commandInvoker, creator);
@@ -59,18 +60,17 @@ public class Application {
 
         while (isRunning) {
             try {
-                connectionListener.setSelector(connectionOpener.getConnection("localhost", port));
-                connectionListener.setChannel(connectionOpener.getCurrentChannel());
+                connectionListener.openConnection(address, port);
                 selector = connectionListener.listen();
                 Request request = requestReader.getRequest(selector);
-                log.Log.getLogger().info("Got request: " + request.toString());
+                log.Log.getLogger().info(ServerBundle.getString("server.got_request"));
                 try {
-                    log.Log.getLogger().info("Handling request: " + request.toString());
+                    log.Log.getLogger().info(ServerBundle.getString("server.request_handling"));
                     Response response = requestHandler.handleRequest(request);
                     responseSender.sendResponse(selector, response);
                     connectionListener.stop();
                 } catch (CommandNotFoundException | CommandExecutionException e) {
-                    Log.getLogger().error(e);
+                    Log.getLogger().error(e.getStackTrace());
                     Response response = new Response(e.getMessage(), false, false);
                     responseSender.sendResponse(selector, response);
                     connectionListener.stop();
@@ -78,12 +78,12 @@ public class Application {
                 Log.getLogger().info(request.toString());
             } catch (IOException | ClassNotFoundException ioe) {
                 Log.getLogger().error(ioe);
-                Log.getLogger().error(ioe.getMessage());
+                Log.getLogger().error(ioe.getStackTrace());
                 try {
-                    connectionOpener.closeConnection();
+                    connectionListener.stop();
                 } catch (IOException e) {
-                    Log.getLogger().error(e);
-                    System.exit(1);
+                    Log.getLogger().error(e.getStackTrace());
+                    isRunning = false;
                 }
             }
         }
@@ -106,8 +106,8 @@ public class Application {
         consoleThread.start();
     }
 
-    private void putCommands(CommandInvoker commandInvoker, RouteCollectionManager manager, Creator creator) {
-        commandInvoker.addCommand("help", new HelpCommand(false));
+    private void putCommands(CommandInvoker commandInvoker, RouteCollectionManager manager, Creator creator, CommandHistory commandHistory) {
+        commandInvoker.addCommand("help", new HelpCommand(false, creator));
         commandInvoker.addCommand("info", new InfoCommand(manager, false));
         commandInvoker.addCommand("clear", new ClearCommand(manager, false));
         commandInvoker.addCommand("remove_all_by_distance", new RemoveAllByDistanceCommand(manager, false));
@@ -117,7 +117,7 @@ public class Application {
         commandInvoker.addCommand("remove_by_id", new RemoveByIdCommand(manager, false));
         commandInvoker.addCommand("remove_at", new RemoveAtCommand(manager, false));
         commandInvoker.addCommand("filter_contains_name", new FilterContainsNameCommand(manager, false));
-        commandInvoker.addCommand("history", new HistoryCommand(commandInvoker, creator, false));
+        commandInvoker.addCommand("history", new HistoryCommand(commandHistory, creator, false));
         commandInvoker.addCommand("add", new AddCommand(manager, true));
         commandInvoker.addCommand("update", new UpdateCommand(manager, true));
     }

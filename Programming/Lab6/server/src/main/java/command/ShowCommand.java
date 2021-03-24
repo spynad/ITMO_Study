@@ -8,7 +8,7 @@ import commands.Command;
  * Класс-команда, реализующая вывод в стандартный поток всей коллекциииии
  */
 public class ShowCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public ShowCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

@@ -8,7 +8,7 @@ import commands.Command;
  * Класс-команда, реализующая удаление первого элемента коллекции
  */
 public class RemoveFirstCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public RemoveFirstCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

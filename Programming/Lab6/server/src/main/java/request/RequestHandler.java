@@ -3,6 +3,7 @@ package request;
 import command.CommandInvoker;
 import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
+import locale.ServerBundle;
 import log.Log;
 import response.Creator;
 import route.Request;
@@ -10,8 +11,8 @@ import route.RequestType;
 import route.Response;
 
 public class RequestHandler {
-    Creator responseCreator;
-    CommandInvoker commandInvoker;
+    private final Creator responseCreator;
+    private final CommandInvoker commandInvoker;
 
     public RequestHandler(CommandInvoker commandInvoker, Creator responseCreator) {
         this.commandInvoker = commandInvoker;
@@ -27,22 +28,19 @@ public class RequestHandler {
     }
 
     public Response handleRouteRequest(Request request) throws CommandNotFoundException {
-        Log.getLogger().info("Client is asking for route requirement");
+        Log.getLogger().info(ServerBundle.getString("server.ask_route_requirement"));
         if (commandInvoker.checkRouteRequirement(request.getUserString())) {
-            Log.getLogger().info("Creating response with positive answer");
+            Log.getLogger().info(ServerBundle.getString("server.ask_route_positive"));
             return responseCreator.createResponse("", true, true);
         } else {
-            Log.getLogger().info("Creating response with negative answer");
+            Log.getLogger().info(ServerBundle.getString("server.ask_route_negative"));
             return responseCreator.createResponse("", true, false);
         }
     }
 
     public Response handleCommandRequest(Request request) throws CommandExecutionException, CommandNotFoundException {
-        Log.getLogger().info("Attempt to execute " + request.getUserString());
+        Log.getLogger().info(ServerBundle.getFormattedString("server.execute_attempt", request.getUserString()));
         commandInvoker.execute(request.getUserString(), request.getRoute());
         return responseCreator.createResponse();
     }
 }
-
-//клиент сначала отправляет объект запроса без класса route, затем, если он необходим,
-//сервер об этом говорит и клиент повторяет запрос, только уже с собранным route

@@ -1,5 +1,6 @@
 package request;
 
+import locale.ServerBundle;
 import log.Log;
 import route.Request;
 
@@ -31,16 +32,13 @@ public class RequestReader {
             Set<SelectionKey> keys = selector.selectedKeys();
             Iterator<SelectionKey> iterator = keys.iterator();
 
-            //TODO: чекнуть позже хрень с итераторами
             while(iterator.hasNext()) {
                 SelectionKey key = iterator.next();
                 if (key.isReadable()) {
                     channel = (SocketChannel)key.channel();
                     channel.read(buf);
                     log.Log.getLogger().info(Arrays.toString(buf.array()));
-                    //buf.flip();
                     channel.register(selector, SelectionKey.OP_WRITE);
-                    //key.cancel();
                 }
                 iterator.remove();
             }
@@ -49,7 +47,7 @@ public class RequestReader {
     }
 
     private Request deserializeRequest(byte[] bytes) throws IOException, ClassNotFoundException{
-        Log.getLogger().info("Deserializing request");
+        Log.getLogger().info(ServerBundle.getString("server.deserialization_request"));
         ObjectInputStream stream = new ObjectInputStream(new ByteArrayInputStream(bytes));
         return (Request) stream.readObject();
     }

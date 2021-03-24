@@ -1,6 +1,7 @@
 package route;
 
 import exception.RouteBuildException;
+import locale.RouteBundle;
 
 import java.time.LocalDate;
 
@@ -17,7 +18,7 @@ public class RouteBuilder implements Builder{
     @Override
     public RouteBuilder setId(int id) throws RouteBuildException{
         if (id < 0) {
-            throw new RouteBuildException("invalid id");
+            throw new RouteBuildException(RouteBundle.getString("route.invalid_id"));
         }
         this.id = id;
         return this;
@@ -26,7 +27,7 @@ public class RouteBuilder implements Builder{
     @Override
     public RouteBuilder setName(String name) throws RouteBuildException {
         if (name.equals("")) {
-            throw new RouteBuildException("invalid name");
+            throw new RouteBuildException(RouteBundle.getString("route.invalid_name"));
         }
         this.name = name;
         return this;
@@ -40,13 +41,13 @@ public class RouteBuilder implements Builder{
                 return this;
             }
         }
-        throw new RouteBuildException("invalid coordinates");
+        throw new RouteBuildException(RouteBundle.getString("route.invalid_coordinates"));
     }
 
     @Override
     public RouteBuilder setDate(LocalDate localDate) throws RouteBuildException {
         if (localDate == null) {
-            throw new RouteBuildException("invalid date");
+            throw new RouteBuildException(RouteBundle.getString("route.invalid_date"));
         }
         this.creationDate = localDate;
         return this;
@@ -62,7 +63,7 @@ public class RouteBuilder implements Builder{
                 this.from = firstLocation;
                 return this;
             } else {
-                throw new RouteBuildException("invalid first location");
+                throw new RouteBuildException(RouteBundle.getString("route.invalid_first_location"));
             }
         }
     }
@@ -70,18 +71,18 @@ public class RouteBuilder implements Builder{
     @Override
     public RouteBuilder setSecondLocation(SecondLocation secondLocation) throws RouteBuildException {
         if (secondLocation != null) {
-            if (secondLocation.getX() != null & secondLocation.getY() != null && secondLocation.getZ() != null) {
+            if (secondLocation.getX() != null && secondLocation.getY() != null && secondLocation.getZ() != null) {
                 this.to = secondLocation;
                 return this;
             }
         }
-        throw new RouteBuildException("invalid second location");
+        throw new RouteBuildException(RouteBundle.getString("route.invalid_second_location"));
     }
 
     @Override
     public RouteBuilder setDistance(double distance) throws RouteBuildException {
         if (distance < 1) {
-            throw new RouteBuildException("invalid distance");
+            throw new RouteBuildException(RouteBundle.getString("route.invalid_distance"));
         }
         this.distance = distance;
         return this;

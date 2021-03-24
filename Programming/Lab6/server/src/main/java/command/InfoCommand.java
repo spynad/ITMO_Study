@@ -8,7 +8,7 @@ import commands.Command;
  * Класс-команда, реализующая вывод информации о коллекции
  */
 public class InfoCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public InfoCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

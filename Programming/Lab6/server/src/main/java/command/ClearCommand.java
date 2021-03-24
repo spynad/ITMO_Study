@@ -10,7 +10,7 @@ import collection.RouteCollectionManager;
  * @version govno
  */
 public class ClearCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public ClearCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

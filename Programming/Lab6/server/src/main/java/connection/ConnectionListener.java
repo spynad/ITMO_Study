@@ -1,8 +1,10 @@
 package connection;
 
+import locale.ServerBundle;
 import log.Log;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -13,15 +15,16 @@ import java.util.Set;
 public class ConnectionListener {
     private Selector selector;
     private ServerSocketChannel serverChannel;
-    private SocketChannel connectedChannel;
 
-    public void setChannel(ServerSocketChannel channel) {
-        this.serverChannel = channel;
-    }
+    public void openConnection(String address, int port) throws IOException{
+        selector = Selector.open();
+        serverChannel = ServerSocketChannel.open();
+        serverChannel.socket().bind(new InetSocketAddress(address, port));
+        serverChannel.configureBlocking(false);
+        int ops = serverChannel.validOps();
+        serverChannel.register(selector, ops, null);
 
-    public void setSelector(Selector selector) {
-        this.selector = selector;
-        Log.getLogger().info("Set channel to " + this.selector.toString());
+        Log.getLogger().info(ServerBundle.getFormattedString("server.created_channel", port));
     }
 
     public Selector listen() throws IOException {
@@ -32,10 +35,10 @@ public class ConnectionListener {
         while(iterator.hasNext()) {
             SelectionKey key = iterator.next();
             if (key.isAcceptable()) {
-                connectedChannel = serverChannel.accept();
+                SocketChannel connectedChannel = serverChannel.accept();
                 connectedChannel.configureBlocking(false);
                 connectedChannel.register(selector, SelectionKey.OP_READ);
-                Log.getLogger().info("Accepted connection from the client " + connectedChannel.getRemoteAddress());
+                Log.getLogger().info(ServerBundle.getFormattedString("server.accepted_connection",connectedChannel.getRemoteAddress()));
             }
             iterator.remove();
         }
@@ -48,4 +51,6 @@ public class ConnectionListener {
         serverChannel.socket().close();
         serverChannel.close();
     }
+
+
 }

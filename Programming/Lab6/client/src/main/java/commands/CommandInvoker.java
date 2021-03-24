@@ -1,11 +1,10 @@
 package commands;
 
-import client.Application;
 import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
+import locale.ClientLocale;
 import route.Route;
 
-import java.io.BufferedReader;
 import java.util.*;
 
 /**
@@ -13,8 +12,6 @@ import java.util.*;
  * @author spynad
  */
 public class CommandInvoker {
-    private Application application;
-    private Stack<String> history = new Stack<>();
     private Map<String, Command> commands = new HashMap<>();
     private static Set<String> scripts = new HashSet<>();
 
@@ -22,19 +19,19 @@ public class CommandInvoker {
         return commands;
     }
 
-    public CommandInvoker(Application application) {
-        this.application = application;
+    public Set<String> getScripts() {
+        return scripts;
     }
 
-    public void setCommands(Map<String, Command> commands) {
-        this.commands = commands;
+    public void addCommand(String commandName, Command command) {
+        commands.put(commandName, command);
     }
 
     /**
      * Метод, который добавляет название файла скрипта в множество
      * @param name - название файла
      */
-    public static void addScript(String name) {
+    public void addScript(String name) {
         scripts.add(name);
     }
 
@@ -42,20 +39,8 @@ public class CommandInvoker {
      * Метод, который убирает название файла скрипта из множества
      * @param name - название файла
      */
-    public static void removeScript(String name) {
+    public void removeScript(String name) {
         scripts.remove(name);
-    }
-
-
-    /**
-     * Метод, который кладет в стек последнюю выполненную команду
-     * @param command - название команды
-     */
-    public void pushHistory(String command) {
-        if(history.size() > 11) {
-            history.remove(history.size() - 1);
-        }
-        history.push(command.toLowerCase(Locale.ROOT));
     }
 
 
@@ -65,18 +50,15 @@ public class CommandInvoker {
      */
     public void execute(String inputString, Route route) throws CommandNotFoundException, CommandExecutionException {
         if (inputString == null) {
-            System.err.println("eof detected, terminating the program");
-            application.setIsRunning(false);
             return;
         }
         Command command;
         String[] split = inputString.split("\\s+");
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
-        if(commands.containsKey(split[0].toLowerCase(Locale.ROOT).trim())) {
-            command = commands.get(split[0].toLowerCase(Locale.ROOT).trim());
+        if(commands.containsKey(split[0].toLowerCase().trim())) {
+            command = commands.get(split[0].toLowerCase().trim());
             command.setArgs(args);
-            pushHistory(inputString);
 
             if(route == null) {
                 command.execute();
@@ -86,9 +68,9 @@ public class CommandInvoker {
             }
         } else {
             if (split[0].equals("")) {
-                throw new CommandNotFoundException("unknown command");
+                throw new CommandNotFoundException(ClientLocale.getString("exception.command_not_found"));
             } else {
-                throw new CommandNotFoundException("unknown command: " + split[0]);
+                throw new CommandNotFoundException(ClientLocale.getString("exception.command_not_found") + ": " + split[0]);
             }
         }
     }

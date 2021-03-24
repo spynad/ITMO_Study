@@ -5,14 +5,15 @@ import commands.AbstractCommand;
 import commands.Command;
 import exception.CommandExecutionException;
 import exception.InvalidArgumentException;
+import locale.ServerBundle;
 
 
 /**
  * Класс-команда, реализующая удаление всех элементов коллекции, у которых поле distance=заданному
  */
 public class RemoveAllByDistanceCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
-    String[] args;
+    private final RouteCollectionManager routeManager;
+    private String[] args;
 
     public RemoveAllByDistanceCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);
@@ -21,7 +22,7 @@ public class RemoveAllByDistanceCommand extends AbstractCommand implements Comma
 
     @Override
     public void setArgs(String[] args) {
-        this.args = args;
+        this.args = args.clone();
     }
 
     public void execute() throws CommandExecutionException {
@@ -29,10 +30,11 @@ public class RemoveAllByDistanceCommand extends AbstractCommand implements Comma
             if (args.length == 1) {
                 routeManager.removeAllByDistance(Double.parseDouble(args[0]));
             } else {
-                throw new CommandExecutionException("expected 1 argument, got " + args.length);
+                throw new CommandExecutionException(String.format(ServerBundle.getString("exception.expected_got"),
+                        1, args.length));
             }
         } catch (NumberFormatException nfe) {
-            throw new CommandExecutionException("incorrect argument format");
+            throw new CommandExecutionException(ServerBundle.getString("exception.invalid_format_error"));
         }
 
     }

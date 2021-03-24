@@ -8,7 +8,7 @@ import commands.Command;
  * Класс-команда, реализующая вывод в стандартный поток суммы занчений поля distance Кщгеу
  */
 public class SumOfDistanceCommand extends AbstractCommand implements Command {
-    RouteCollectionManager routeManager;
+    private final RouteCollectionManager routeManager;
 
     public SumOfDistanceCommand(RouteCollectionManager routeManager, boolean req) {
         super(req);

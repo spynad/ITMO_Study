@@ -55,15 +55,6 @@ public class ExecuteScriptCommand implements Command{
         } catch (IOException e) {
             System.err.println("error while reading the script: " + e.getMessage());
         }
-        /*try {
-            while (Application.getInput().ready()) {
-                String commands = Application.getInput().readLine();
-                commandInvoker.execute(commands);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         CommandInvoker.removeScript(fileName);
-        //Application.setInput(new BufferedReader(new InputStreamReader(System.in)));
     }
 }

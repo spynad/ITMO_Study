@@ -12,9 +12,20 @@ repositories {
 
 dependencies {
     implementation(project(':common'))
+    implementation 'com.google.inject:guice:5.0.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
 }
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = "server.Server"
+}
+
+manifest {
+    manifest {
+        attributes 'Main-Class': 'server.Server'
+    }
 }

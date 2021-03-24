@@ -4,16 +4,16 @@ import log.Log;
 
 public class Server {
     public static void main(String[] args) {
-        if (args.length == 2) {
+        if (args.length == 3) {
             Log.getLogger().info("Hello, world!");
             Application application = new Application();
             try {
-                application.start(Integer.parseInt(args[0]), args[1]);
+                application.start(args[0], Integer.parseInt(args[1]), args[2]);
             } catch (NumberFormatException e) {
-                System.err.println("Invalid port");
+                Log.getLogger().error("Invalid port");
             }
         } else {
-            System.err.println("Expected arguments: port file_name");
+            Log.getLogger().error("Expected arguments: port file_name");
         }
     }
 }

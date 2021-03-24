@@ -1,6 +1,7 @@
 package collection;
 
 import exception.RouteBuildException;
+import locale.ServerBundle;
 import response.Creator;
 import route.*;
 
@@ -122,7 +123,7 @@ public class RouteStackManager implements RouteCollectionManager {
      * Метод, выводящий информацию о коллекции Stack
      */
     public void info() {
-        creator.addToMsg(String.format("%s, Date of init:%s, Number of objects: %d", routes.getClass().getName(),
+        creator.addToMsg(String.format(ServerBundle.getString("collection.info"), routes.getClass().getName(),
                 dateOfInit.toString(), routes.size()));
     }
 
@@ -152,7 +153,7 @@ public class RouteStackManager implements RouteCollectionManager {
         for (Route route : routes) {
             sum += route.getDistance();
         }
-        creator.addToMsg(String.format("Sum of distance: %.2f%n", routes.stream().map(Route::getDistance).reduce(Double::sum).get()));
+        creator.addToMsg(String.format(ServerBundle.getString("collection.sum_of_distance"), routes.stream().map(Route::getDistance).reduce(Double::sum).get()));
     }
 
     /**
@@ -176,7 +177,7 @@ public class RouteStackManager implements RouteCollectionManager {
                     .collect(Collectors.toCollection(Stack::new));
             //routes.remove(0);
         } catch (EmptyStackException | ArrayIndexOutOfBoundsException ese) {
-            creator.addToMsg("The stack is empty");
+            creator.addToMsg(ServerBundle.getString("collection.empty_stack"));
         }
     }
 
@@ -188,7 +189,6 @@ public class RouteStackManager implements RouteCollectionManager {
         routes = routes.stream()
                 .filter(x -> id != x.getId())
                 .collect(Collectors.toCollection(Stack::new));
-        //creator.addToMsg(String.format("removed %d object(-s)%n",));
     }
 
     /**
@@ -199,9 +199,9 @@ public class RouteStackManager implements RouteCollectionManager {
         try {
             removeUniqueID(routes.get(index).getId());
             routes.remove(index);
-            creator.addToMsg("removed 1 object");
+            creator.addToMsg(ServerBundle.getString("collection.removed_one"));
         } catch (ArrayIndexOutOfBoundsException e) {
-            creator.addToMsg("tried to remove non-existent element");
+            creator.addToMsg(ServerBundle.getString("collection.unexistent_element"));
         }
     }
 
