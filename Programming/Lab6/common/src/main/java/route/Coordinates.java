@@ -17,7 +17,7 @@ public class Coordinates implements Serializable {
     private long x; //Значение поля должно быть больше -776
     private Double y; //Поле не может быть null
 
-    public Coordinates(long x, Double y) throws InvalidArgumentException {
+    public Coordinates(long x, Double y) {
         this.x = x;
         this.y = y;
     }

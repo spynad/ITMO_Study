@@ -8,7 +8,6 @@ import locale.ClientLocale;
 import route.Response;
 
 import java.io.*;
-import java.util.ResourceBundle;
 
 public class ExecuteScriptCommand extends AbstractCommand {
     CommandInvoker commandInvoker;

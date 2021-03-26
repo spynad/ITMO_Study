@@ -1,11 +1,9 @@
 package command;
 
-import collection.RouteCollectionManager;
 import commands.Command;
 import commands.RouteCommand;
 import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
-import file.RouteWriter;
 import locale.ServerBundle;
 import log.Log;
 import route.Route;
@@ -20,8 +18,6 @@ public class CommandInvoker {
 
     private final Map<String, Command> commands = new HashMap<>();
     private final Map<String, ServerCommand> serverCommands = new HashMap<>();
-    private final RouteCollectionManager routeManager;
-    private final RouteWriter routeWriter;
     private final CommandHistory commandHistory;
 
     /*public CommandInvoker(RouteCollectionManager routeManager, RouteWriter routeWriter) {
@@ -29,9 +25,7 @@ public class CommandInvoker {
         this.routeWriter = routeWriter;
     }*/
 
-    public CommandInvoker(RouteCollectionManager routeManager, RouteWriter writer, CommandHistory commandHistory) {
-        this.routeManager = routeManager;
-        this.routeWriter = writer;
+    public CommandInvoker(CommandHistory commandHistory) {
         this.commandHistory = commandHistory;
     }
 
@@ -96,7 +90,7 @@ public class CommandInvoker {
             if (split[0].equals("")) {
                 throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found"));
             } else {
-                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0]);
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + ": " + split[0]);
             }
         }
     }
@@ -104,7 +98,7 @@ public class CommandInvoker {
     public boolean checkRouteRequirement(String str) throws CommandNotFoundException {
         String[] split = str.trim().split("\\s+");
         if (commands.get(split[0].toLowerCase()) == null) {
-            throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0].toLowerCase(Locale.ROOT));
+            throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + ": " + split[0].toLowerCase());
         }
         return commands.get(split[0].toLowerCase()).isRouteRequired();
     }

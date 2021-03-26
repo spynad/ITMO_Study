@@ -17,7 +17,7 @@ public class FirstLocation implements Serializable {
     private long y;
     private String name; //Строка не может быть пустой, Поле не может быть null
 
-    public FirstLocation(Integer x, long y, String name) throws InvalidArgumentException{
+    public FirstLocation(Integer x, long y, String name) {
         this.x = x;
         this.y = y;
         this.name = name;

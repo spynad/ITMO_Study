@@ -1,6 +1,5 @@
 package collection;
 
-import exception.RouteBuildException;
 import locale.ServerBundle;
 import response.Creator;
 import route.*;
@@ -16,16 +15,10 @@ import java.util.stream.Collectors;
  */
 public class RouteStackManager implements RouteCollectionManager {
 
-    /**
-     * Собственно говоря, сама коллекция Stack объектов Route
-     */
     private Stack<Route> routes;
 
     private final Creator creator;
 
-    /**
-     * Множество уникальных значений ID Route
-     */
     private final SortedSet<Integer> setId = new TreeSet<>();
 
     private final LocalDate dateOfInit = LocalDate.now();
@@ -35,64 +28,31 @@ public class RouteStackManager implements RouteCollectionManager {
         this.creator = creator;
     }
 
-    /**
-     * Метод, создающий и добавляющий элемент {@link Route} в коллекцию Stack.
-     * @param name - поле name элемента Route
-     * @param coordinates - поле coordinates элемента Route
-     * @param from - поле from элемента Route
-     * @param to - поле to элемента Route
-     * @param distance - поле distance элемента Route
-     * @throws NumberFormatException - -//-
-     */
-    public void addRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws RouteBuildException, NumberFormatException {
-        Route route = createRoute(name, coordinates, from, to, distance);
-        routes.add(route);
-    }
-
-    public void addRoute(Route route) {
-        routes.add(route);
-    }
-
-    public Route createRoute(String name, Coordinates coordinates, FirstLocation from, SecondLocation to, double distance)
-            throws RouteBuildException, NumberFormatException {
-        /*int id = 1;
+    public void addRouteId(Route route) {
+        int id = 1;
         for (int idSearch : setId) {
             if (idSearch != id) {
                 id = idSearch - 1;
                 break;
             }
             id++;
-        }`
-        RouteBuilder routeBuilder = new RouteBuilder();
-        Route route = routeBuilder.setId(id)
-                .setName(name)
-                .setCoordinates(coordinates)
-                .setFirstLocation(from)
-                .setSecondLocation(to)
-                .setDistance(distance)
-                .buildWithId();
-        addUniqueID(id);*/
-        return null; //route
+        }
+
+        route.setId(id);
+        routes.add(route);
+        addUniqueID(id);
+    }
+
+    public void addRoute(Route route) {
+        routes.add(route);
     }
 
     public boolean addUniqueID(int id) {
-
         return setId.add(id);
     }
 
     public void removeUniqueID(int id) {
         setId.remove(id);
-    }
-
-    /**
-     * Метод, добавляющий объекты Route из ArrayList в коллекцию Stack.
-     * @param routes - объект ArrayList<Route>
-     */
-    public void addRoutes(List<Route> routes) {
-        for (Route route : routes) {
-            this.routes.push(route);
-        }
     }
 
     /**
@@ -149,10 +109,6 @@ public class RouteStackManager implements RouteCollectionManager {
      * Метод, возвращающий сумму полей distance объектов Route коллекции Stack
      */
     public void sumOfDistance() {
-        double sum = 0;
-        for (Route route : routes) {
-            sum += route.getDistance();
-        }
         creator.addToMsg(String.format(ServerBundle.getString("collection.sum_of_distance"), routes.stream().map(Route::getDistance).reduce(Double::sum).get()));
     }
 
@@ -175,7 +131,6 @@ public class RouteStackManager implements RouteCollectionManager {
             routes = routes.stream()
                     .filter(x -> !x.getId().equals(routes.get(0).getId()))
                     .collect(Collectors.toCollection(Stack::new));
-            //routes.remove(0);
         } catch (EmptyStackException | ArrayIndexOutOfBoundsException ese) {
             creator.addToMsg(ServerBundle.getString("collection.empty_stack"));
         }

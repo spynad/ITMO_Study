@@ -12,7 +12,6 @@ public class ExitCommand implements ServerCommand {
         this.routeWriter = routeWriter;
     }
 
-    //TODO: сделать не через статическое поле
     public void execute() {
         routeWriter.write();
         System.exit(0);

@@ -23,6 +23,6 @@ public class AddCommand extends AbstractCommand implements RouteCommand {
     }
 
     public void execute(Route route) {
-        routeManager.addRoute(route);
+        routeManager.addRouteId(route);
     }
 }

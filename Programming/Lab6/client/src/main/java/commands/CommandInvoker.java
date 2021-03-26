@@ -12,12 +12,8 @@ import java.util.*;
  * @author spynad
  */
 public class CommandInvoker {
-    private Map<String, Command> commands = new HashMap<>();
-    private static Set<String> scripts = new HashSet<>();
-
-    public Map<String, Command> getCommands() {
-        return commands;
-    }
+    private final Map<String, Command> commands = new HashMap<>();
+    private static final Set<String> scripts = new HashSet<>();
 
     public Set<String> getScripts() {
         return scripts;

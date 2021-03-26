@@ -4,6 +4,7 @@ import collection.RouteCollectionManager;
 import collection.RouteStackManager;
 import command.*;
 import connection.ConnectionListener;
+import connection.ConnectionListenerImpl;
 import exception.*;
 import file.CsvFileRouteReader;
 import file.CsvFileRouteWriter;
@@ -14,36 +15,32 @@ import io.UserIO;
 import locale.ServerBundle;
 import log.Log;
 import request.RequestHandler;
+import request.RequestHandlerImpl;
 import request.RequestReader;
+import request.RequestReaderImpl;
 import response.Creator;
 import response.ResponseCreator;
 import response.ResponseSender;
+import response.ResponseSenderImpl;
 import route.Request;
 import route.Response;
 
 import java.io.IOException;
 import java.nio.channels.Selector;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Application {
     private static boolean isRunning = true;
-    private String fileNameArg;
-
-    public static void setIsRunning(boolean b) {
-        isRunning = b;
-    }
 
     public void start(String address, int port, String fileName) {
         Locale.setDefault(new Locale("ru", "RU"));
-        fileNameArg = fileName;
         Selector selector;
         Creator creator = new ResponseCreator();
         RouteCollectionManager routeManager = new RouteStackManager(creator);
         RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
         CommandHistory commandHistory = new CommandHistory();
-        CommandInvoker commandInvoker = new CommandInvoker(routeManager, writer, commandHistory);
+        CommandInvoker commandInvoker = new CommandInvoker(commandHistory);
         putCommands(commandInvoker, routeManager, creator, commandHistory);
         putServerCommands(commandInvoker, writer);
 
@@ -52,10 +49,10 @@ public class Application {
         } catch (InvalidArgumentException | RouteReadException | RouteBuildException e) {
             log.Log.getLogger().error(e.getMessage());
         }
-        ConnectionListener connectionListener = new ConnectionListener();
-        RequestReader requestReader = new RequestReader();
-        RequestHandler requestHandler = new RequestHandler(commandInvoker, creator);
-        ResponseSender responseSender = new ResponseSender();
+        ConnectionListener connectionListener = new ConnectionListenerImpl();
+        RequestReader requestReader = new RequestReaderImpl();
+        RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator);
+        ResponseSender responseSender = new ResponseSenderImpl();
         consoleStart(commandInvoker);
 
         while (isRunning) {

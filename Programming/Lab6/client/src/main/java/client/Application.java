@@ -2,6 +2,7 @@ package client;
 
 import commands.*;
 import connection.ConnectionManager;
+import connection.ConnectionManagerImpl;
 import exception.*;
 import io.ConsoleIO;
 import io.ConsoleRouteParser;
@@ -10,7 +11,9 @@ import io.UserIO;
 import locale.ClientLocale;
 import request.RequestCreator;
 import request.RequestSender;
+import request.RequestSenderImpl;
 import response.ResponseReader;
+import response.ResponseReaderImpl;
 import route.Request;
 import route.RequestType;
 import route.Response;
@@ -39,10 +42,10 @@ public class Application {
         this.port = port;
         userIO = new ConsoleIO();
         commandInvoker = new CommandInvoker();
-        connectionManager = new ConnectionManager();
+        connectionManager = new ConnectionManagerImpl();
         requestCreator = new RequestCreator();
-        requestSender = new RequestSender();
-        reader = new ResponseReader();
+        requestSender = new RequestSenderImpl();
+        reader = new ResponseReaderImpl();
         routeReader = new ConsoleRouteParser(userIO);
         setCommands(commandInvoker);
     }

@@ -116,7 +116,7 @@ public class CsvFileRouteReader implements RouteReader{
                 routeManager.addRoute(route);
                 routes.add(route);
             }
-        } catch(NumberFormatException | BadCSVException | InvalidArgumentException | RouteBuildException e) {
+        } catch(NumberFormatException | BadCSVException | RouteBuildException e) {
             Log.getLogger().error(ServerBundle.getFormattedString("exception.bad_csvfile", e.getMessage()));
             Log.getLogger().error(e.getStackTrace());
         }

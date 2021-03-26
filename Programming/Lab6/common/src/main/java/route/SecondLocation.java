@@ -18,7 +18,7 @@ public class SecondLocation implements Serializable {
     private Long y; //Поле не может быть null
     private Double z; //Поле не может быть null
 
-    public SecondLocation(Integer x, Long y, Double z) throws InvalidArgumentException{
+    public SecondLocation(Integer x, Long y, Double z) {
         this.x = x;
         this.y = y;
         this.z = z;
