@@ -1,30 +1,34 @@
-client/Client.java
- client.Client
-response/ResponseReader.java
- response.ResponseReader
-locale/ClientLocale.java
- locale.ClientLocale
+connection/ConnectionManagerImpl.java
+ connection.ConnectionManagerImpl
+commands/ExecuteScriptCommand.java
+ commands.ExecuteScriptCommand
+commands/ClientHelpCommand.java
+ commands.ClientHelpCommand
+client/Main.java
+ client.Main
+client/Application.java
+ client.Application
 commands/CommandInvoker.java
  commands.CommandInvoker
 request/RequestCreator.java
  request.RequestCreator
 io/SingleRouteReader.java
  io.SingleRouteReader
-commands/ExecuteScriptCommand.java
- commands.ExecuteScriptCommand
-client/Main.java
- client.Main
-connection/ConnectionManager.java
- connection.ConnectionManager
-commands/ClientHelpCommand.java
- commands.ClientHelpCommand
-commands/ExitCommand.java
- commands.ExitCommand
 io/ConsoleRouteParser.java
  io.ConsoleRouteParser
 request/RequestSender.java
  request.RequestSender
+connection/ConnectionManager.java
+ connection.ConnectionManager
+commands/ExitCommand.java
+ commands.ExitCommand
+response/ResponseReader.java
+ response.ResponseReader
 io/ScriptRouteParser.java
  io.ScriptRouteParser
-client/Application.java
- client.Application
+locale/ClientLocale.java
+ locale.ClientLocale
+request/RequestSenderImpl.java
+ request.RequestSenderImpl
+response/ResponseReaderImpl.java
+ response.ResponseReaderImpl

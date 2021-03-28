@@ -45,6 +45,7 @@ public class RouteStackManager implements RouteCollectionManager {
 
     public void addRoute(Route route) {
         routes.add(route);
+        addUniqueID(route.getId());
     }
 
     public boolean addUniqueID(int id) {
@@ -92,6 +93,7 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void clear() {
         routes.removeAllElements();
+        setId.clear();
     }
 
     /**
@@ -99,10 +101,10 @@ public class RouteStackManager implements RouteCollectionManager {
      * @param distance - дистанция
      */
     public void removeAllByDistance(double distance) {
+        routes.stream().filter(x -> x.getDistance() == distance).forEach(x -> removeUniqueID(x.getId()));
         routes = routes.stream()
                 .filter(x -> x.getDistance() != distance)
                 .collect(Collectors.toCollection(Stack::new));
-        //routes.removeIf(route -> distance == route.getDistance());
     }
 
     /**
@@ -141,6 +143,7 @@ public class RouteStackManager implements RouteCollectionManager {
      * @param id - поле id элемента Route
      */
     public void removeById(int id) {
+        routes.stream().filter(x -> id == x.getId()).forEach(x -> removeUniqueID(x.getId()));
         routes = routes.stream()
                 .filter(x -> id != x.getId())
                 .collect(Collectors.toCollection(Stack::new));

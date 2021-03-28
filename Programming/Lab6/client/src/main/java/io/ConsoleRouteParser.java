@@ -49,8 +49,6 @@ public class ConsoleRouteParser implements SingleRouteReader {
                 double y = Double.parseDouble(userIO.readLine());
 
                 return new Coordinates(x, y);
-            } catch (InvalidArgumentException e) {
-                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
                 userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
@@ -77,8 +75,6 @@ public class ConsoleRouteParser implements SingleRouteReader {
                 String readName = readName();
 
                 return new FirstLocation(x, y, readName);
-            } catch (InvalidArgumentException e) {
-                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
                 userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
@@ -105,8 +101,6 @@ public class ConsoleRouteParser implements SingleRouteReader {
                 double z = Double.parseDouble(userIO.readLine());
 
                 return new SecondLocation(x, y, z);
-            } catch (InvalidArgumentException e) {
-                userIO.printErrorMessage(e.getMessage());
             } catch (IOException ioe) {
                 userIO.printErrorMessage(ClientLocale.getString("exception.general"));
             } catch (NumberFormatException nfe) {
