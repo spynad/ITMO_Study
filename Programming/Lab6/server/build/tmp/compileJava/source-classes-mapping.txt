@@ -24,16 +24,16 @@ command/SumOfDistanceCommand.java
  command.SumOfDistanceCommand
 collection/RouteCollectionManager.java
  collection.RouteCollectionManager
-server/Application.java
- server.Application
+request/RequestReader.java
+ request.RequestReader
 command/UpdateCommand.java
  command.UpdateCommand
 response/ResponseCreator.java
  response.ResponseCreator
-server/Server.java
- server.Server
-command/ExitCommand.java
- command.ExitCommand
+command/RemoveByIdCommand.java
+ command.RemoveByIdCommand
+connection/ConnectionListenerImpl.java
+ connection.ConnectionListenerImpl
 file/CsvFileRouteWriter.java
  file.CsvFileRouteWriter
 command/HelpCommand.java
@@ -68,9 +68,9 @@ request/RequestHandlerImpl.java
  request.RequestHandlerImpl
 file/RouteWriter.java
  file.RouteWriter
-connection/ConnectionListenerImpl.java
- connection.ConnectionListenerImpl
-command/RemoveByIdCommand.java
- command.RemoveByIdCommand
-request/RequestReader.java
- request.RequestReader
+server/Application.java
+ server.Application
+server/Server.java
+ server.Server
+command/ExitCommand.java
+ command.ExitCommand

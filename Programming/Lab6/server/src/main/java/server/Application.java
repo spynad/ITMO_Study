@@ -26,11 +26,12 @@ import route.Request;
 import route.Response;
 
 import java.io.IOException;
+import java.nio.channels.ClosedSelectorException;
 import java.nio.channels.Selector;
 import java.util.Locale;
 
 public class Application {
-    private static boolean isRunning = true;
+    private boolean isRunning = true;
 
     public void start(String address, int port, String fileName) {
         Locale.setDefault(new Locale("ru", "RU"));
@@ -41,8 +42,6 @@ public class Application {
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
         CommandHistory commandHistory = new CommandHistory();
         CommandInvoker commandInvoker = new CommandInvoker(commandHistory);
-        putCommands(commandInvoker, routeManager, creator, commandHistory);
-        putServerCommands(commandInvoker, writer);
 
         try {
             reader.read();
@@ -53,12 +52,18 @@ public class Application {
         RequestReader requestReader = new RequestReaderImpl();
         RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator);
         ResponseSender responseSender = new ResponseSenderImpl();
+        putCommands(commandInvoker, routeManager, creator, commandHistory);
+        putServerCommands(commandInvoker, writer, connectionListener);
         consoleStart(commandInvoker);
 
         while (isRunning) {
             try {
                 connectionListener.openConnection(address, port);
-                selector = connectionListener.listen();
+                try {
+                    selector = connectionListener.listen();
+                } catch (ClosedSelectorException e){
+                    return;
+                }
                 Request request = requestReader.getRequest(selector);
                 log.Log.getLogger().info(ServerBundle.getString("server.got_request"));
                 try {
@@ -119,8 +124,12 @@ public class Application {
         commandInvoker.addCommand("update", new UpdateCommand(manager, true));
     }
 
-    private void putServerCommands(CommandInvoker commandInvoker, RouteWriter routeWriter) {
-        commandInvoker.addServerCommand("exit", new ExitCommand(routeWriter));
+    private void putServerCommands(CommandInvoker commandInvoker, RouteWriter routeWriter, ConnectionListener connectionListener) {
+        commandInvoker.addServerCommand("exit", new ExitCommand(routeWriter, connectionListener, this));
         commandInvoker.addServerCommand("save", new SaveCommand(routeWriter));
+    }
+
+    public void setIsRunning(boolean isRunning) {
+        this.isRunning = isRunning;
     }
 }

@@ -52,5 +52,7 @@ public class ConnectionListenerImpl implements ConnectionListener {
         serverChannel.close();
     }
 
-
+    public Selector getSelector() {
+        return selector;
+    }
 }

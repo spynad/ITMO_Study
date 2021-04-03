@@ -73,6 +73,7 @@ public class Application {
                     userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));
                 } catch (IOException | ClassNotFoundException ioe) {
                     userIO.printErrorMessage(ClientLocale.getString("exception.general_network"));
+                    ioe.printStackTrace();
                 } catch (RouteReadException | RouteBuildException | IllegalStateException e) {
                     userIO.printErrorMessage(e.getMessage());
                 }
