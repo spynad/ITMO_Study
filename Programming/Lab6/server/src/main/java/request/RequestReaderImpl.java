@@ -36,7 +36,6 @@ public class RequestReaderImpl implements RequestReader{
                 if (key.isReadable()) {
                     channel = (SocketChannel)key.channel();
                     channel.read(buf);
-                    log.Log.getLogger().info(Arrays.toString(buf.array()));
                     channel.register(selector, SelectionKey.OP_WRITE);
                 }
                 iterator.remove();

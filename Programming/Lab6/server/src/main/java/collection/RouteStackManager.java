@@ -111,7 +111,10 @@ public class RouteStackManager implements RouteCollectionManager {
      * Метод, возвращающий сумму полей distance объектов Route коллекции Stack
      */
     public void sumOfDistance() {
-        creator.addToMsg(String.format(ServerBundle.getString("collection.sum_of_distance"), routes.stream().map(Route::getDistance).reduce(Double::sum).get()));
+        creator.addToMsg(String.format(ServerBundle.getString("collection.sum_of_distance"), routes.stream()
+                .map(Route::getDistance)
+                .reduce(Double::sum)
+                .get()));
     }
 
     /**

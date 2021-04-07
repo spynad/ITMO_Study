@@ -13,5 +13,6 @@ public class ExitCommand extends AbstractCommand{
     @Override
     public void execute() {
         application.setIsRunning(false);
+
     }
 }
