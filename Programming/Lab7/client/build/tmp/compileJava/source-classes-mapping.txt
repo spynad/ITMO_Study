@@ -1,0 +1,34 @@
+connection/ConnectionManagerImpl.java
+ connection.ConnectionManagerImpl
+request/RequestSenderImpl.java
+ request.RequestSenderImpl
+commands/ClientHelpCommand.java
+ commands.ClientHelpCommand
+response/ResponseReaderImpl.java
+ response.ResponseReaderImpl
+io/ScriptRouteParser.java
+ io.ScriptRouteParser
+commands/CommandInvoker.java
+ commands.CommandInvoker
+request/RequestCreator.java
+ request.RequestCreator
+io/SingleRouteReader.java
+ io.SingleRouteReader
+io/ConsoleRouteParser.java
+ io.ConsoleRouteParser
+request/RequestSender.java
+ request.RequestSender
+connection/ConnectionManager.java
+ connection.ConnectionManager
+locale/ClientLocale.java
+ locale.ClientLocale
+response/ResponseReader.java
+ response.ResponseReader
+commands/ExitCommand.java
+ commands.ExitCommand
+commands/ExecuteScriptCommand.java
+ commands.ExecuteScriptCommand
+client/Main.java
+ client.Main
+client/Application.java
+ client.Application
