@@ -5,6 +5,7 @@ import collection.RouteStackManager;
 import command.*;
 import connection.ConnectionListener;
 import connection.ConnectionListenerImpl;
+import data.DBConnectionManager;
 import exception.*;
 import file.CsvFileRouteReader;
 import file.CsvFileRouteWriter;
@@ -52,6 +53,12 @@ public class Application {
         RequestReader requestReader = new RequestReaderImpl();
         RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator);
         ResponseSender responseSender = new ResponseSenderImpl();
+        DBConnectionManager dbConnectionManager = new DBConnectionManager();
+        try {
+            dbConnectionManager.establishConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         putCommands(commandInvoker, routeManager, creator, commandHistory);
         putServerCommands(commandInvoker, writer, connectionListener);
         consoleStart(commandInvoker);

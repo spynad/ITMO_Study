@@ -70,6 +70,8 @@ file/RouteWriter.java
  file.RouteWriter
 server/Application.java
  server.Application
+data/DBConnectionManager.java
+ data.DBConnectionManager
 server/Server.java
  server.Server
 command/ExitCommand.java
