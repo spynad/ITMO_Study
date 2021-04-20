@@ -1,4 +1,9 @@
-/.gradle
-build
 logs
-/gradle
+/gradle/
+/build/
+/.gradle/
+/server/build/
+/server/out/
+/common/build/
+/common/out/
+/client/build/
