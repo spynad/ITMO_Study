@@ -2,45 +2,51 @@ route/RouteFormatter.java
  route.RouteFormatter
 exception/CommandExecutionException.java
  exception.CommandExecutionException
-exception/RouteReadException.java
- exception.RouteReadException
 io/ConsoleIO.java
  io.ConsoleIO
 route/Request.java
  route.Request
-route/Route.java
- route.Route
 route/Coordinates.java
  route.Coordinates
-commands/RouteCommand.java
- commands.RouteCommand
 exception/BadCSVException.java
  exception.BadCSVException
 route/RequestType.java
  route.RequestType
 route/RouteWriter.java
  main.RouteWriter
+hash/SHA224Generator.java
+ hash.SHA224Generator
+route/RouteBuilder.java
+ route.RouteBuilder
+exception/CommandNotFoundException.java
+ exception.CommandNotFoundException
+route/Builder.java
+ route.Builder
+user/User.java
+ user.User
+exception/InvalidArgumentException.java
+ exception.InvalidArgumentException
+exception/RouteReadException.java
+ exception.RouteReadException
+route/Route.java
+ route.Route
+commands/RouteCommand.java
+ commands.RouteCommand
+hash/HashGenerator.java
+ hash.HashGenerator
 exception/RouteBuildException.java
  exception.RouteBuildException
 io/UserIO.java
  io.UserIO
 commands/Command.java
  commands.Command
-route/RouteBuilder.java
- route.RouteBuilder
 route/Response.java
  route.Response
 route/FirstLocation.java
  route.FirstLocation
-exception/CommandNotFoundException.java
- exception.CommandNotFoundException
-route/Builder.java
- route.Builder
 route/SecondLocation.java
  route.SecondLocation
 locale/RouteBundle.java
  locale.RouteBundle
 commands/AbstractCommand.java
  commands.AbstractCommand
-exception/InvalidArgumentException.java
- exception.InvalidArgumentException

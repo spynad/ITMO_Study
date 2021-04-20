@@ -16,6 +16,7 @@ public class RequestSenderImpl implements RequestSender{
     }
 
     public void sendRequest(SocketChannel socketChannel, Request request) throws IOException {
+        stream = socketChannel.socket().getOutputStream();
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
         ObjectOutputStream stream = new ObjectOutputStream(byteStream);
         stream.writeObject(request);

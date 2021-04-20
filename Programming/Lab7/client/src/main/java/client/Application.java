@@ -33,6 +33,7 @@ public class Application {
     private final RequestSender requestSender;
     private final ResponseReader reader;
     private final SingleRouteReader routeReader;
+    private final AuthModule authModule;
     private boolean isRunning = true;
 
 
@@ -47,6 +48,7 @@ public class Application {
         requestSender = new RequestSenderImpl();
         reader = new ResponseReaderImpl();
         routeReader = new ConsoleRouteParser(userIO);
+        authModule = new AuthModule(userIO, connectionManager, requestSender, reader);
         setCommands(commandInvoker);
     }
 
@@ -54,11 +56,18 @@ public class Application {
         isRunning = b;
     }
 
+
     public void start() {
+        try {
+            connectionManager.openConnection(address, port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         while(isRunning) {
-            userIO.printUserPrompt();
             String userString = "";
             try {
+                //authModule.authorize();
+                userIO.printUserPrompt();
                 userString = userIO.readLine();
                 commandInvoker.execute(userString, null);
             } catch (BadCSVException | CommandExecutionException executionException) {
@@ -83,31 +92,29 @@ public class Application {
 
     public Response communicateWithServer(String userString, SingleRouteReader routeReader) throws IOException, ClassNotFoundException,
             RouteReadException, RouteBuildException {
-        SocketChannel socketChannel = connectionManager.openConnection(address, port);
+        SocketChannel socketChannel = connectionManager.getConnection();
         Request request = requestCreator.createRouteRequest(userString);
-        requestSender.initOutputStream(socketChannel);
         requestSender.sendRequest(socketChannel, request);
         Response response = reader.getResponse(socketChannel);
 
         if (!response.isSuccess())
             throw new IllegalStateException(response.getMessage());
 
-        connectionManager.closeConnection();
-        socketChannel = connectionManager.openConnection(address, port);
+        //connectionManager.closeConnection();
+        //socketChannel = connectionManager.openConnection(address, port);
 
         if (response.isRouteRequired()) {
             request.setRoute(routeReader.read());
         }
 
         request.setType(RequestType.COMMAND_REQUEST);
-        requestSender.initOutputStream(socketChannel);
         requestSender.sendRequest(socketChannel, request);
         response = reader.getResponse(socketChannel);
 
         if (!response.isSuccess())
             throw new IllegalStateException(response.getMessage());
 
-        connectionManager.closeConnection();
+        //connectionManager.closeConnection();
 
         return response;
     }

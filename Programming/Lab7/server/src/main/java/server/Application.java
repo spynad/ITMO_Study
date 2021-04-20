@@ -5,12 +5,14 @@ import collection.RouteStackManager;
 import command.*;
 import connection.ConnectionListener;
 import connection.ConnectionListenerImpl;
-import data.DBConnectionManager;
+import data.DAOFactory;
+import data.RouteDAO;
 import exception.*;
 import file.CsvFileRouteReader;
 import file.CsvFileRouteWriter;
 import file.RouteReader;
 import file.RouteWriter;
+import hash.SHA224Generator;
 import io.ConsoleIO;
 import io.UserIO;
 import locale.ServerBundle;
@@ -23,13 +25,14 @@ import response.Creator;
 import response.ResponseCreator;
 import response.ResponseSender;
 import response.ResponseSenderImpl;
-import route.Request;
-import route.Response;
+import route.*;
 
 import java.io.IOException;
-import java.nio.channels.ClosedSelectorException;
 import java.nio.channels.Selector;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Stack;
 
 public class Application {
     private boolean isRunning = true;
@@ -38,24 +41,21 @@ public class Application {
         Locale.setDefault(new Locale("ru", "RU"));
         Selector selector;
         Creator creator = new ResponseCreator();
-        RouteCollectionManager routeManager = new RouteStackManager(creator);
-        RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
+        DAOFactory daoFactory = DAOFactory.getDAOFactory();
+        RouteDAO routeDAO = daoFactory.getRouteDAO();
+        RouteCollectionManager routeManager = new RouteStackManager(creator, routeDAO);
+        //RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
         RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
         CommandHistory commandHistory = new CommandHistory();
         CommandInvoker commandInvoker = new CommandInvoker(commandHistory);
 
-        try {
-            reader.read();
-        } catch (InvalidArgumentException | RouteReadException | RouteBuildException e) {
-            log.Log.getLogger().error(e.getMessage());
-        }
+        routeManager.addRoutes(routeDAO.selectRoutesToCollection());
         ConnectionListener connectionListener = new ConnectionListenerImpl();
         RequestReader requestReader = new RequestReaderImpl();
         RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator);
         ResponseSender responseSender = new ResponseSenderImpl();
-        DBConnectionManager dbConnectionManager = new DBConnectionManager();
         try {
-            dbConnectionManager.establishConnection();
+            System.out.println(SHA224Generator.getHash("test"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,26 +63,37 @@ public class Application {
         putServerCommands(commandInvoker, writer, connectionListener);
         consoleStart(commandInvoker);
 
+        try {
+            connectionListener.openConnection(address, port);
+            selector = connectionListener.listen();
+        } catch (IOException e) {
+            System.out.println("test");
+            return;
+        }
         while (isRunning) {
             try {
-                connectionListener.openConnection(address, port);
-                try {
+                //connectionListener.openConnection(address, port);
+                /*try {
                     selector = connectionListener.listen();
                 } catch (ClosedSelectorException e){
                     return;
-                }
+                }*/
                 Request request = requestReader.getRequest(selector);
                 log.Log.getLogger().info(ServerBundle.getString("server.got_request"));
                 try {
                     log.Log.getLogger().info(ServerBundle.getString("server.request_handling"));
                     Response response = requestHandler.handleRequest(request);
                     responseSender.sendResponse(selector, response);
-                    connectionListener.stop();
+                    //connectionListener.stop();
                 } catch (CommandNotFoundException | CommandExecutionException e) {
                     Log.getLogger().error(e.getStackTrace());
                     Response response = new Response(e.getMessage(), false, false);
                     responseSender.sendResponse(selector, response);
-                    connectionListener.stop();
+                    //connectionListener.stop();
+                } catch (PersistentException e) {
+                    Log.getLogger().error(e);
+                    Response response = new Response(e.getMessage(), false, false);
+                    responseSender.sendResponse(selector, response);
                 }
                 Log.getLogger().info(request.toString());
             } catch (IOException | ClassNotFoundException ioe) {

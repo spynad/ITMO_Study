@@ -35,6 +35,7 @@ public class ResponseSenderImpl implements ResponseSender{
                 if (key.isWritable()) {
                     channel = (SocketChannel)key.channel();
                     channel.write(buf);
+                    channel.register(selector, SelectionKey.OP_READ);
                 }
                 iterator.remove();
             }

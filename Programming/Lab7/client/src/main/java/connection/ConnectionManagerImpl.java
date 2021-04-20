@@ -12,6 +12,10 @@ public class ConnectionManagerImpl implements ConnectionManager{
         return socketChannel;
     }
 
+    public SocketChannel getConnection() {
+        return socketChannel;
+    }
+
     public void closeConnection() throws IOException{
         socketChannel.close();
     }

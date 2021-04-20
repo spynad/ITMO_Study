@@ -1,7 +1,8 @@
 package route;
 
+import user.User;
+
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Request implements Serializable {
     private static final long serialVersionUID = -4287447999382808577L;
@@ -9,11 +10,17 @@ public class Request implements Serializable {
     private RequestType type;
     private String userString;
     private Route route;
+    private User user;
 
     public Request(RequestType type, String userString, Route route) {
         this.type = type;
         this.userString = userString;
         this.route = route;
+    }
+
+    public Request(RequestType type, User user) {
+        this.type = type;
+        this.user = user;
     }
 
     public String getUserString() {
@@ -24,9 +31,12 @@ public class Request implements Serializable {
         return route;
     }
 
-
     public RequestType getType() {
         return type;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void setUserString(String userString) {
@@ -41,6 +51,9 @@ public class Request implements Serializable {
         this.route = route;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package collection;
 
+import data.RouteDAO;
 import locale.ServerBundle;
 import response.Creator;
 import route.*;
@@ -23,9 +24,12 @@ public class RouteStackManager implements RouteCollectionManager {
 
     private final LocalDate dateOfInit = LocalDate.now();
 
-    public RouteStackManager(Creator creator) {
+    private final RouteDAO routeDAO;
+
+    public RouteStackManager(Creator creator, RouteDAO routeDAO) {
         routes = new Stack<>();
         this.creator = creator;
+        this.routeDAO = routeDAO;
     }
 
     public void addRouteId(Route route) {
@@ -46,6 +50,10 @@ public class RouteStackManager implements RouteCollectionManager {
     public void addRoute(Route route) {
         routes.add(route);
         addUniqueID(route.getId());
+    }
+
+    public void addRoutes(Collection<Route> routes) {
+        this.routes.addAll(routes);
     }
 
     public boolean addUniqueID(int id) {
@@ -102,9 +110,16 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void removeAllByDistance(double distance) {
         routes.stream().filter(x -> x.getDistance() == distance).forEach(x -> removeUniqueID(x.getId()));
+        //TODO: think of the better method of doing that
+        ArrayList<Route> routesToDelete = routes.stream()
+                .filter(x -> x.getDistance() == distance)
+                .collect(Collectors.toCollection(ArrayList::new));
         routes = routes.stream()
                 .filter(x -> x.getDistance() != distance)
                 .collect(Collectors.toCollection(Stack::new));
+        for (Route route : routesToDelete) {
+            routeDAO.deleteRoute(route);
+        }
     }
 
     /**

@@ -1,13 +1,13 @@
 connection/ConnectionManagerImpl.java
  connection.ConnectionManagerImpl
-request/RequestSenderImpl.java
- request.RequestSenderImpl
+commands/ExecuteScriptCommand.java
+ commands.ExecuteScriptCommand
 commands/ClientHelpCommand.java
  commands.ClientHelpCommand
-response/ResponseReaderImpl.java
- response.ResponseReaderImpl
-io/ScriptRouteParser.java
- io.ScriptRouteParser
+client/Main.java
+ client.Main
+client/Application.java
+ client.Application
 commands/CommandInvoker.java
  commands.CommandInvoker
 request/RequestCreator.java
@@ -20,15 +20,17 @@ request/RequestSender.java
  request.RequestSender
 connection/ConnectionManager.java
  connection.ConnectionManager
-locale/ClientLocale.java
- locale.ClientLocale
-response/ResponseReader.java
- response.ResponseReader
 commands/ExitCommand.java
  commands.ExitCommand
-commands/ExecuteScriptCommand.java
- commands.ExecuteScriptCommand
-client/Main.java
- client.Main
-client/Application.java
- client.Application
+response/ResponseReader.java
+ response.ResponseReader
+io/ScriptRouteParser.java
+ io.ScriptRouteParser
+locale/ClientLocale.java
+ locale.ClientLocale
+client/AuthModule.java
+ client.AuthModule
+request/RequestSenderImpl.java
+ request.RequestSenderImpl
+response/ResponseReaderImpl.java
+ response.ResponseReaderImpl

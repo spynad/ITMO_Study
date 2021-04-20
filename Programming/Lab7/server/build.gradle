@@ -14,9 +14,10 @@ dependencies {
     implementation(project(':common'))
     implementation 'com.google.inject:guice:5.0.1'
     implementation 'org.postgresql:postgresql:42.2.19'
+    implementation 'com.mchange:c3p0:0.9.5.5'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
 }
 
 test {
@@ -32,7 +33,7 @@ jar {
     }
 
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
