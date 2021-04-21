@@ -12,6 +12,7 @@ public interface Builder {
     RouteBuilder setFirstLocation(FirstLocation firstLocation) throws RouteBuildException;
     RouteBuilder setSecondLocation(SecondLocation secondLocation) throws RouteBuildException;
     RouteBuilder setDistance(double distance) throws RouteBuildException;
+    RouteBuilder setUsername(String username) throws RouteBuildException;
     Route buildWithId();
     Route buildWithoutId();
 }

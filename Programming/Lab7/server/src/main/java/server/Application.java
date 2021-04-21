@@ -52,13 +52,9 @@ public class Application {
         routeManager.addRoutes(routeDAO.selectRoutesToCollection());
         ConnectionListener connectionListener = new ConnectionListenerImpl();
         RequestReader requestReader = new RequestReaderImpl();
-        RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator);
+        UserAuthModule userAuthModule = new UserAuthModule(daoFactory.getUserDAO());
+        RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator, userAuthModule);
         ResponseSender responseSender = new ResponseSenderImpl();
-        try {
-            System.out.println(SHA224Generator.getHash("test"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         putCommands(commandInvoker, routeManager, creator, commandHistory);
         putServerCommands(commandInvoker, writer, connectionListener);
         consoleStart(commandInvoker);
@@ -85,12 +81,13 @@ public class Application {
                     Response response = requestHandler.handleRequest(request);
                     responseSender.sendResponse(selector, response);
                     //connectionListener.stop();
-                } catch (CommandNotFoundException | CommandExecutionException e) {
+                } catch (CommandNotFoundException | CommandExecutionException | AuthException e) {
                     Log.getLogger().error(e.getStackTrace());
                     Response response = new Response(e.getMessage(), false, false);
                     responseSender.sendResponse(selector, response);
                     //connectionListener.stop();
                 } catch (PersistentException e) {
+                    Log.getLogger().error(e.getDbErrorMessage());
                     Log.getLogger().error(e);
                     Response response = new Response(e.getMessage(), false, false);
                     responseSender.sendResponse(selector, response);

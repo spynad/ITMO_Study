@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PostgresDAOFactory extends DAOFactory {
-    private static final String DATABASE_URL = "jdbc:postgresql://192.168.1.5/postgres";
+    private static final String DATABASE_URL = "jdbc:postgresql://10.147.17.114/postgres";
 
     private static final ComboPooledDataSource cpds = new ComboPooledDataSource();
 

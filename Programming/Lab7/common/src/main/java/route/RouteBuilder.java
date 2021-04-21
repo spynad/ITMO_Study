@@ -13,6 +13,7 @@ public class RouteBuilder implements Builder{
     private FirstLocation from; //Поле может быть null
     private SecondLocation to; //Поле не может быть null
     private double distance; //Значение поля должно быть больше 1
+    private String username;
 
 
     @Override
@@ -85,6 +86,12 @@ public class RouteBuilder implements Builder{
             throw new RouteBuildException(RouteBundle.getString("route.invalid_distance"));
         }
         this.distance = distance;
+        return this;
+    }
+
+    @Override
+    public RouteBuilder setUsername(String username) throws RouteBuildException {
+        this.username = username;
         return this;
     }
 

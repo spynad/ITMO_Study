@@ -44,11 +44,11 @@ public class Application {
         userIO = new ConsoleIO();
         commandInvoker = new CommandInvoker();
         connectionManager = new ConnectionManagerImpl();
-        requestCreator = new RequestCreator();
         requestSender = new RequestSenderImpl();
         reader = new ResponseReaderImpl();
         routeReader = new ConsoleRouteParser(userIO);
         authModule = new AuthModule(userIO, connectionManager, requestSender, reader);
+        requestCreator = new RequestCreator(authModule);
         setCommands(commandInvoker);
     }
 
@@ -66,7 +66,6 @@ public class Application {
         while(isRunning) {
             String userString = "";
             try {
-                //authModule.authorize();
                 userIO.printUserPrompt();
                 userString = userIO.readLine();
                 commandInvoker.execute(userString, null);
@@ -123,5 +122,7 @@ public class Application {
         commandInvoker.addCommand("exit", new ExitCommand(this));
         commandInvoker.addCommand("execute_script", new ExecuteScriptCommand(this, commandInvoker, userIO));
         commandInvoker.addCommand("client_help", new ClientHelpCommand(userIO));
+        commandInvoker.addCommand("auth", new AuthCommand(authModule));
+        commandInvoker.addCommand("register", new RegisterCommand(authModule));
     }
 }

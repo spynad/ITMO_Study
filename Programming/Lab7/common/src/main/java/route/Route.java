@@ -22,6 +22,7 @@ public final class Route implements Comparable<Route>, Serializable {
     private FirstLocation from; //Поле может быть null
     private SecondLocation to; //Поле не может быть null
     private double distance; //Значение поля должно быть больше 1
+    private String username;
 
     /**
      * уникальный ID объекта
@@ -102,6 +103,10 @@ public final class Route implements Comparable<Route>, Serializable {
         return from;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -115,6 +120,7 @@ public final class Route implements Comparable<Route>, Serializable {
     public int compareTo(Route o) {
         return getName().compareTo(o.getName());
     }
+
 
     @Override
     public String toString() {

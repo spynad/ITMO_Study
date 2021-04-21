@@ -13,11 +13,15 @@ public class PostgresUserDAO implements UserDAO{
 
     @Override
     public User getUserWhere(String username) {
-        try (Connection connection = PostgresDAOFactory.createConnection()){
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+        try (Connection connection = PostgresDAOFactory.createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?")){
             preparedStatement.setString(1, username);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return new User(resultSet.getString(1), resultSet.getString(2));
+            try (ResultSet resultSet = preparedStatement.executeQuery();){
+                resultSet.next();
+                User user = new User(resultSet.getString(1));
+                user.setPassword(resultSet.getString(2));
+                return user;
+            }
         } catch (SQLException e) {
             throw new PersistentException(e.getErrorCode(), e.getMessage());
         }
@@ -25,8 +29,8 @@ public class PostgresUserDAO implements UserDAO{
 
     @Override
     public void insertUser(User user) {
-        try (Connection connection = PostgresDAOFactory.createConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?,?)");
+        try (Connection connection = PostgresDAOFactory.createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO users VALUES (?,?)")) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.execute();
@@ -37,8 +41,8 @@ public class PostgresUserDAO implements UserDAO{
 
     @Override
     public boolean deleteUser(User user) {
-        try (Connection connection = PostgresDAOFactory.createConnection()){
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM users WHERE username = ?");
+        try (Connection connection = PostgresDAOFactory.createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM users WHERE username = ?")){
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.execute();
             return true;

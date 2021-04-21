@@ -81,7 +81,6 @@ public class CommandInvoker {
         }
         ServerCommand command;
         String[] split = inputString.trim().split("\\s+");
-        String[] args = Arrays.copyOfRange(split, 1, split.length);
 
         if(serverCommands.containsKey(split[0].toLowerCase())) {
             command = serverCommands.get(split[0].toLowerCase());

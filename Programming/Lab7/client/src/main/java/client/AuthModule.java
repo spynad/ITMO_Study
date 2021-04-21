@@ -12,6 +12,7 @@ import user.User;
 
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
+import java.util.Arrays;
 
 public class AuthModule {
     private final UserIO userIO;
@@ -30,25 +31,46 @@ public class AuthModule {
     public User authorize() throws IOException {
         Request request;
         String username, password;
-        userIO.printLine("Welcome!");
-        while (true) {
-            userIO.printLine("Enter login:");
-            username = userIO.readLine();
-            userIO.printLine("Enter password:");
-            password = userIO.readLine();
-            user = new User(username, SHA224Generator.getHash(password));
-            request = new Request(RequestType.AUTH_REQUEST, user);
-            requestSender.sendRequest(connectionManager.getConnection(), request);
-            try {
-                Response response = reader.getResponse(connectionManager.getConnection());
-                if (response.isSuccess()) {
-                    userIO.printLine("Successful auth");
-                    return user;
-                } else {
-                    userIO.printLine("Invalid username or password");
-                }
-            } catch (ClassNotFoundException ignored) {}
+        userIO.printLine("Enter login:");
+        username = userIO.readLine();
+        userIO.printLine("Enter password:");
+        password = userIO.readLine();
+        user = new User(username, password);
+        request = new Request(RequestType.AUTH_REQUEST, user);
+        requestSender.sendRequest(connectionManager.getConnection(), request);
+        try {
+            Response response = reader.getResponse(connectionManager.getConnection());
+            if (response.isSuccess()) {
+                userIO.printLine("Successful auth");
+            } else {
+                userIO.printLine("Invalid username or password");
+                return null;
+            }
+        } catch (ClassNotFoundException ignored) {}
+        return user;
+    }
 
-        }
+    public void register() throws IOException {
+        Request request;
+        String username, password;
+        userIO.printLine("Enter login:");
+        username = userIO.readLine();
+        userIO.printLine("Enter password:");
+        password = userIO.readLine();
+        user = new User(username, password);
+        request = new Request(RequestType.REGISTER_REQUEST, user);
+        requestSender.sendRequest(connectionManager.getConnection(), request);
+        try {
+            Response response = reader.getResponse(connectionManager.getConnection());
+            if (response.isSuccess()) {
+                userIO.printLine("Registration successful. Type auth to authorize");
+            } else {
+                userIO.printLine("This username exists.");
+            }
+        } catch (ClassNotFoundException ignored) {}
+    }
+
+    public User getUser() {
+        return user;
     }
 }

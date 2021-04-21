@@ -10,4 +10,5 @@ public interface RouteDAO {
     void insertRoute(Route route);
     boolean updateRoute(Route route);
     boolean deleteRoute(Route route);
+    boolean deleteRoutes();
 }

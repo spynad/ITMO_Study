@@ -131,6 +131,9 @@ public class ScriptRouteParser implements SingleRouteReader{
                 String str;
                 if (input.ready()) {
                     str = input.readLine();
+                    if (str == null) {
+                        throw new RouteReadException();
+                    }
                 } else {
                     throw new RouteReadException();
                 }
@@ -148,6 +151,9 @@ public class ScriptRouteParser implements SingleRouteReader{
                 String str;
                 if(input.ready()) {
                     str = input.readLine();
+                    if (str == null) {
+                        throw new RouteReadException();
+                    }
                 } else {
                     throw new RouteReadException();
                 }

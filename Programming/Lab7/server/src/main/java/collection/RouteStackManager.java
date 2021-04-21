@@ -33,27 +33,23 @@ public class RouteStackManager implements RouteCollectionManager {
     }
 
     public void addRouteId(Route route) {
-        int id = 1;
-        for (int idSearch : setId) {
-            if (idSearch != id) {
-                id = idSearch - 1;
-                break;
-            }
-            id++;
-        }
-
-        route.setId(id);
+        route.setId(setId.last() + 1);
         routes.add(route);
-        addUniqueID(id);
+        addUniqueID(setId.last() + 1);
+        routeDAO.insertRoute(route);
     }
 
     public void addRoute(Route route) {
         routes.add(route);
         addUniqueID(route.getId());
+        routeDAO.insertRoute(route);
     }
 
     public void addRoutes(Collection<Route> routes) {
         this.routes.addAll(routes);
+        for (Route route : routes) {
+            setId.add(route.getId());
+        }
     }
 
     public boolean addUniqueID(int id) {
@@ -102,6 +98,7 @@ public class RouteStackManager implements RouteCollectionManager {
     public void clear() {
         routes.removeAllElements();
         setId.clear();
+        routeDAO.deleteRoutes();
     }
 
     /**
@@ -147,10 +144,10 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void removeFirst() {
         try {
-            removeUniqueID(routes.get(0).getId());
-            routes = routes.stream()
-                    .filter(x -> !x.getId().equals(routes.get(0).getId()))
-                    .collect(Collectors.toCollection(Stack::new));
+            Route route = routes.get(0);
+            removeUniqueID(route.getId());
+            routes.remove(0);
+            routeDAO.deleteRoute(route);
         } catch (EmptyStackException | ArrayIndexOutOfBoundsException ese) {
             creator.addToMsg(ServerBundle.getString("collection.empty_stack"));
         }
@@ -161,10 +158,17 @@ public class RouteStackManager implements RouteCollectionManager {
      * @param id - поле id элемента Route
      */
     public void removeById(int id) {
-        routes.stream().filter(x -> id == x.getId()).forEach(x -> removeUniqueID(x.getId()));
+        /*routes.stream().filter(x -> id == x.getId()).forEach(x -> removeUniqueID(x.getId()));
         routes = routes.stream()
                 .filter(x -> id != x.getId())
-                .collect(Collectors.toCollection(Stack::new));
+                .collect(Collectors.toCollection(Stack::new));*/
+        for (int i = 0; i < routes.size(); i++) {
+            if (routes.get(i).getId() == id) {
+                routes.remove(i);
+                routeDAO.deleteRoute(routes.get(i));
+                break;
+            }
+        }
     }
 
     /**
@@ -173,8 +177,10 @@ public class RouteStackManager implements RouteCollectionManager {
      */
     public void removeAt(int index) {
         try {
-            removeUniqueID(routes.get(index).getId());
+            Route route = routes.get(index);
+            removeUniqueID(route.getId());
             routes.remove(index);
+            routeDAO.deleteRoute(route);
             creator.addToMsg(ServerBundle.getString("collection.removed_one"));
         } catch (ArrayIndexOutOfBoundsException e) {
             creator.addToMsg(ServerBundle.getString("collection.unexistent_element"));
@@ -198,5 +204,6 @@ public class RouteStackManager implements RouteCollectionManager {
         int index = findRouteById(id);
         route.setId(id);
         routes.set(index, route);
+        routeDAO.updateRoute(route);
     }
 }

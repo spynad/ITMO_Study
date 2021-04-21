@@ -1,6 +1,7 @@
 package request;
 
 import command.CommandInvoker;
+import exception.AuthException;
 import exception.CommandExecutionException;
 import exception.CommandNotFoundException;
 import locale.ServerBundle;
@@ -9,25 +10,45 @@ import response.Creator;
 import route.Request;
 import route.RequestType;
 import route.Response;
+import server.UserAuthModule;
 
 public class RequestHandlerImpl implements RequestHandler{
     private final Creator responseCreator;
     private final CommandInvoker commandInvoker;
+    private final UserAuthModule userAuthModule;
 
-    public RequestHandlerImpl(CommandInvoker commandInvoker, Creator responseCreator) {
+    public RequestHandlerImpl(CommandInvoker commandInvoker, Creator responseCreator, UserAuthModule userAuthModule) {
         this.commandInvoker = commandInvoker;
         this.responseCreator = responseCreator;
+        this.userAuthModule = userAuthModule;
     }
 
-    public Response handleRequest(Request request) throws CommandNotFoundException, CommandExecutionException {
+    public Response handleRequest(Request request) throws CommandNotFoundException, CommandExecutionException, AuthException {
         if (request.getType().equals(RequestType.ROUTE_REQUEST)) {
             return handleRouteRequest(request);
-        } else {
+        } else if (request.getType().equals(RequestType.COMMAND_REQUEST)){
             return handleCommandRequest(request);
+        } else if (request.getType().equals(RequestType.AUTH_REQUEST)){
+            return handleAuthRequest(request);
+        } else {
+            return handleRegisterRequest(request);
         }
     }
 
-    private Response handleRouteRequest(Request request) throws CommandNotFoundException {
+    private Response handleAuthRequest(Request request) {
+        boolean result = userAuthModule.authUser(request.getUser());
+        return responseCreator.createResponse("", result, result);
+    }
+
+    private Response handleRegisterRequest(Request request) {
+        boolean result = userAuthModule.registerUser(request.getUser());
+        return responseCreator.createResponse("", result, result);
+    }
+
+    private Response handleRouteRequest(Request request) throws CommandNotFoundException, AuthException {
+        if (request.getUser() == null) {
+            throw new AuthException(ServerBundle.getString("exception.no_auth"));
+        }
         Log.getLogger().info(ServerBundle.getString("server.ask_route_requirement"));
         if (commandInvoker.checkRouteRequirement(request.getUserString())) {
             Log.getLogger().info(ServerBundle.getString("server.ask_route_positive"));
@@ -38,7 +59,10 @@ public class RequestHandlerImpl implements RequestHandler{
         }
     }
 
-    private Response handleCommandRequest(Request request) throws CommandExecutionException, CommandNotFoundException {
+    private Response handleCommandRequest(Request request) throws CommandExecutionException, CommandNotFoundException, AuthException {
+        if (request.getUser() == null) {
+            throw new AuthException(ServerBundle.getString("exception.no_auth"));
+        }
         Log.getLogger().info(ServerBundle.getFormattedString("server.execute_attempt", request.getUserString()));
         commandInvoker.execute(request.getUserString(), request.getRoute());
         return responseCreator.createResponse();
