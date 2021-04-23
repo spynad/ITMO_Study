@@ -2,7 +2,6 @@ package file;
 
 import collection.RouteCollectionManager;
 import exception.BadCSVException;
-import exception.InvalidArgumentException;
 import exception.RouteBuildException;
 import locale.ServerBundle;
 import log.Log;
@@ -80,9 +79,9 @@ public class CsvFileRouteReader implements RouteReader{
 
                 int id = Integer.parseInt(params[0]);
 
-                if (!routeManager.addUniqueID(id)) {
+                /*if (!routeManager.addUniqueID(id)) {
                     throw new BadCSVException(ServerBundle.getString("exception.csvfile_duplicate_id"));
-                }
+                }*/
 
                 String name = params[1];
                 Coordinates coordinates = new Coordinates(Long.parseLong(params[2]),

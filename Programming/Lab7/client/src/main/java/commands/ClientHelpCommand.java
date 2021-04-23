@@ -15,6 +15,7 @@ public class ClientHelpCommand extends AbstractCommand{
 
     @Override
     public void execute() {
+        //TODO: есть идея, можно переделать
         ResourceBundle rb = ResourceBundle.getBundle("help", Locale.getDefault());
         Enumeration<String> keys = rb.getKeys();
         while (keys.hasMoreElements()) {

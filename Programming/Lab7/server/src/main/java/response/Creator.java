@@ -1,6 +1,6 @@
 package response;
 
-import route.Response;
+import transferobjects.Response;
 
 public interface Creator {
     public Response createResponse(String message, boolean success, boolean routeRequired);

@@ -1,8 +1,10 @@
-package route;
+package transferobjects;
 
+import route.Route;
 import user.User;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class Request implements Serializable {
     private static final long serialVersionUID = -4287447999382808577L;
@@ -11,6 +13,7 @@ public class Request implements Serializable {
     private String userString;
     private Route route;
     private User user;
+    private Locale locale = Locale.getDefault();
 
     public Request(RequestType type, String userString, Route route) {
         this.type = type;
@@ -37,6 +40,10 @@ public class Request implements Serializable {
 
     public User getUser() {
         return user;
+    }
+
+    public Locale getLocale() {
+        return locale;
     }
 
     public void setUserString(String userString) {

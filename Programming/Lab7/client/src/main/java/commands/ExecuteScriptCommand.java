@@ -5,7 +5,7 @@ import exception.*;
 import io.ScriptRouteParser;
 import io.UserIO;
 import locale.ClientLocale;
-import route.Response;
+import transferobjects.Response;
 
 import java.io.*;
 
@@ -57,7 +57,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
                         userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));
                     } catch (IOException | ClassNotFoundException ioe) {
                         userIO.printErrorMessage(ClientLocale.getString("exception.general_network")+": " + ioe.getMessage());
-                    } catch (RouteReadException | RouteBuildException | IllegalStateException ex) {
+                    } catch (IllegalStateException ex) {
                         userIO.printErrorMessage(e.getMessage());
                     }
                 } catch (CommandExecutionException executionException) {

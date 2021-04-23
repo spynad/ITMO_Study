@@ -4,20 +4,20 @@ exception/CommandExecutionException.java
  exception.CommandExecutionException
 io/ConsoleIO.java
  io.ConsoleIO
-route/Request.java
- route.Request
 route/Coordinates.java
  route.Coordinates
 exception/BadCSVException.java
  exception.BadCSVException
-route/RequestType.java
- route.RequestType
 route/RouteWriter.java
  main.RouteWriter
 hash/SHA224Generator.java
  hash.SHA224Generator
 route/RouteBuilder.java
  route.RouteBuilder
+transferobjects/RequestType.java
+ transferobjects.RequestType
+transferobjects/Response.java
+ transferobjects.Response
 exception/CommandNotFoundException.java
  exception.CommandNotFoundException
 route/Builder.java
@@ -26,22 +26,20 @@ user/User.java
  user.User
 exception/InvalidArgumentException.java
  exception.InvalidArgumentException
+transferobjects/Request.java
+ transferobjects.Request
 exception/RouteReadException.java
  exception.RouteReadException
 route/Route.java
  route.Route
 commands/RouteCommand.java
  commands.RouteCommand
-hash/HashGenerator.java
- hash.HashGenerator
 exception/RouteBuildException.java
  exception.RouteBuildException
 io/UserIO.java
  io.UserIO
 commands/Command.java
  commands.Command
-route/Response.java
- route.Response
 route/FirstLocation.java
  route.FirstLocation
 route/SecondLocation.java

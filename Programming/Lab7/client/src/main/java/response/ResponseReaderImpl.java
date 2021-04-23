@@ -1,6 +1,6 @@
 package response;
 
-import route.Response;
+import transferobjects.Response;
 
 import java.io.*;
 import java.nio.channels.SocketChannel;

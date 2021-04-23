@@ -1,4 +1,4 @@
-package route;
+package transferobjects;
 
 public enum RequestType {
     AUTH_REQUEST,

@@ -1,8 +1,8 @@
 package command;
 
 import connection.ConnectionListener;
-import file.RouteWriter;
 import server.Application;
+import server.Server;
 
 import java.io.IOException;
 
@@ -10,20 +10,20 @@ import java.io.IOException;
  * Класс-команда, реализующая выход из JVM
  */
 public class ExitCommand implements ServerCommand {
-    private final RouteWriter routeWriter;
     private final ConnectionListener connectionListener;
     private final Application application;
+    private final Server server;
 
-    public ExitCommand(RouteWriter routeWriter, ConnectionListener connectionListener, Application application) {
-        this.routeWriter = routeWriter;
+    public ExitCommand(ConnectionListener connectionListener, Application application, Server server) {
         this.connectionListener = connectionListener;
         this.application = application;
+        this.server = server;
     }
 
-    public void execute() {
-        routeWriter.write();
+    public synchronized void execute() {
         try {
             application.setIsRunning(false);
+            server.shutdownExecutorServices();
             connectionListener.stop();
         } catch (IOException ignored) {
 

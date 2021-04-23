@@ -33,7 +33,8 @@ public final class Route implements Comparable<Route>, Serializable {
                  Coordinates coordinates,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) {
+                 double distance,
+                 String username) {
         id = uniqueId + 1;
         uniqueId++;
         this.name = name;
@@ -42,6 +43,7 @@ public final class Route implements Comparable<Route>, Serializable {
         this.from = from;
         this.to = to;
         this.distance = distance;
+        this.username = username;
     }
 
     public Route(int id,
@@ -50,7 +52,8 @@ public final class Route implements Comparable<Route>, Serializable {
                  LocalDate date,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) {
+                 double distance,
+                 String username) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -58,6 +61,7 @@ public final class Route implements Comparable<Route>, Serializable {
         this.from = from;
         this.to = to;
         this.distance = distance;
+        this.username = username;
     }
 
     public Route(int id,
@@ -65,7 +69,8 @@ public final class Route implements Comparable<Route>, Serializable {
                  Coordinates coordinates,
                  FirstLocation from,
                  SecondLocation to,
-                 double distance) {
+                 double distance,
+                 String username) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -73,6 +78,7 @@ public final class Route implements Comparable<Route>, Serializable {
         this.from = from;
         this.to = to;
         this.distance = distance;
+        this.username = username;
     }
 
     public Integer getId() {

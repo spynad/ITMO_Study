@@ -1,8 +1,8 @@
 package request;
 
 import client.AuthModule;
-import route.Request;
-import route.RequestType;
+import transferobjects.Request;
+import transferobjects.RequestType;
 import route.Route;
 
 public class RequestCreator {

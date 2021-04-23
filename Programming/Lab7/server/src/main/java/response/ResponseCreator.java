@@ -1,6 +1,6 @@
 package response;
 
-import route.Response;
+import transferobjects.Response;
 
 public class ResponseCreator implements Creator{
     private Response response = new Response();

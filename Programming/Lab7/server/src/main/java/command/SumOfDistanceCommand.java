@@ -5,7 +5,7 @@ import commands.AbstractCommand;
 import commands.Command;
 
 /**
- * Класс-команда, реализующая вывод в стандартный поток суммы занчений поля distance Кщгеу
+ * Класс-команда, реализующая вывод в стандартный поток суммы значений поля distance
  */
 public class SumOfDistanceCommand extends AbstractCommand implements Command {
     private final RouteCollectionManager routeManager;

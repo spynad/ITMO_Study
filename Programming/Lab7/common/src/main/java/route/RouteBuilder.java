@@ -97,12 +97,12 @@ public class RouteBuilder implements Builder{
 
     @Override
     public Route buildWithId() {
-        return new Route(id, name, coordinates, from, to, distance);
+        return new Route(id, name, coordinates, from, to, distance, username);
     }
 
     @Override
     public Route buildWithoutId() {
-        return new Route(name, coordinates, from, to, distance);
+        return new Route(name, coordinates, from, to, distance, username);
     }
 
 

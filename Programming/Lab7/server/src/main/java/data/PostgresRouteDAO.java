@@ -14,20 +14,19 @@ public class PostgresRouteDAO implements RouteDAO{
     @Override
     public Collection<Route> selectRoutesToCollection()  {
         try (Connection connection = PostgresDAOFactory.createConnection();
-             Statement statement = connection.createStatement();) {
+             Statement statement = connection.createStatement()) {
             Collection<Route> routes = new ArrayList<>();
-            try (ResultSet r = statement.executeQuery("SELECT * FROM routes")){
-                while (r.next()) {
-                    RouteBuilder routeBuilder = new RouteBuilder();
-                    try {
-                        buildRoute(r, routeBuilder);
-                        routes.add(routeBuilder.buildWithId());
-                    } catch (RouteBuildException e) {
-                        throw new PersistentException("UNKNOWN", e.getMessage());
-                    }
+            ResultSet r = statement.executeQuery("SELECT * FROM routes");
+            while (r.next()) {
+                RouteBuilder routeBuilder = new RouteBuilder();
+                try {
+                    buildRoute(r, routeBuilder);
+                    routes.add(routeBuilder.buildWithId());
+                } catch (RouteBuildException e) {
+                    throw new PersistentException("UNKNOWN", e.getMessage());
                 }
-                return routes;
             }
+            return routes;
         } catch (SQLException e) {
             throw new PersistentException(e.getErrorCode(), e.getMessage());
         }
@@ -39,19 +38,30 @@ public class PostgresRouteDAO implements RouteDAO{
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM routes WHERE id=?")) {
             Route route = null;
             statement.setInt(1, id);
-            try (ResultSet r = statement.executeQuery()){
-                while (r.next()) {
-                    RouteBuilder routeBuilder = new RouteBuilder();
-                    try {
-                        buildRoute(r, routeBuilder);
-                        route = routeBuilder
-                                .buildWithId();
-                    } catch (RouteBuildException e) {
-                        throw new PersistentException("UNKNOWN", e.getMessage());
-                    }
+            ResultSet r = statement.executeQuery();
+            while (r.next()) {
+                RouteBuilder routeBuilder = new RouteBuilder();
+                try {
+                    buildRoute(r, routeBuilder);
+                    route = routeBuilder
+                            .buildWithId();
+                } catch (RouteBuildException e) {
+                    throw new PersistentException("UNKNOWN", e.getMessage());
                 }
-                return route;
             }
+        return route;
+        } catch (SQLException e) {
+            throw new PersistentException(e.getErrorCode(), e.getMessage());
+        }
+    }
+
+    @Override
+    public int getNextId()  {
+        try (Connection connection = PostgresDAOFactory.createConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT nextval('id')")) {
+            ResultSet r = statement.executeQuery();
+            r.next();
+            return r.getInt(1);
         } catch (SQLException e) {
             throw new PersistentException(e.getErrorCode(), e.getMessage());
         }
@@ -117,7 +127,7 @@ public class PostgresRouteDAO implements RouteDAO{
                      "location2_z = ?," +
                      "username = ?," +
                      "distance = ?" +
-                     "WHERE id = ?");) {
+                     "WHERE id = ?")) {
 
             statement.setString(1, route.getName());
             statement.setLong(2, route.getCoordinates().getX());

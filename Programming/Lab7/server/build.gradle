@@ -29,7 +29,7 @@ application {
 }
 jar {
     manifest {
-        attributes 'Main-Class': 'server.Server'
+        attributes 'Main-Class': 'server.Main'
     }
 
     from {

@@ -1,10 +1,10 @@
 package response;
 
-import route.Response;
+import transferobjects.Response;
 
 import java.io.IOException;
-import java.nio.channels.Selector;
+import java.nio.channels.SocketChannel;
 
 public interface ResponseSender {
-    void sendResponse(Selector selector, Response response) throws IOException, ClassNotFoundException;
+    void sendResponse(SocketChannel socket, Response response) throws IOException, ClassNotFoundException;
 }

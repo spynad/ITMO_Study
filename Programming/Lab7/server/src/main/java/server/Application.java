@@ -1,123 +1,70 @@
 package server;
 
-import collection.RouteCollectionManager;
-import collection.RouteStackManager;
+import collection.*;
 import command.*;
-import connection.ConnectionListener;
-import connection.ConnectionListenerImpl;
+import connection.*;
+import exception.*;
+import request.*;
+import response.*;
+import io.*;
 import data.DAOFactory;
 import data.RouteDAO;
-import exception.*;
-import file.CsvFileRouteReader;
-import file.CsvFileRouteWriter;
-import file.RouteReader;
-import file.RouteWriter;
-import hash.SHA224Generator;
-import io.ConsoleIO;
-import io.UserIO;
-import locale.ServerBundle;
 import log.Log;
-import request.RequestHandler;
-import request.RequestHandlerImpl;
-import request.RequestReader;
-import request.RequestReaderImpl;
-import response.Creator;
-import response.ResponseCreator;
-import response.ResponseSender;
-import response.ResponseSenderImpl;
-import route.*;
 
 import java.io.IOException;
-import java.nio.channels.Selector;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.Stack;
 
 public class Application {
-    private boolean isRunning = true;
+    private volatile boolean isRunning = true;
 
-    public void start(String address, int port, String fileName) {
-        Locale.setDefault(new Locale("ru", "RU"));
-        Selector selector;
+    public void start(String address, int port) {
+        Locale.setDefault(new Locale("ru"));
         Creator creator = new ResponseCreator();
         DAOFactory daoFactory = DAOFactory.getDAOFactory();
         RouteDAO routeDAO = daoFactory.getRouteDAO();
-        RouteCollectionManager routeManager = new RouteStackManager(creator, routeDAO);
-        //RouteReader reader = new CsvFileRouteReader(routeManager, fileName);
-        RouteWriter writer = new CsvFileRouteWriter(routeManager, fileName);
+        UserAuthModule userAuthModule = new UserAuthModule(daoFactory.getUserDAO());
+        RouteCollectionManager routeManager = new RouteStackManager(creator, routeDAO, userAuthModule);
         CommandHistory commandHistory = new CommandHistory();
         CommandInvoker commandInvoker = new CommandInvoker(commandHistory);
 
-        routeManager.addRoutes(routeDAO.selectRoutesToCollection());
+        try {
+            routeManager.addRoutesFromDB();
+        } catch(PersistentException e) {
+            System.out.println(e.getDbErrorMessage());
+        }
         ConnectionListener connectionListener = new ConnectionListenerImpl();
         RequestReader requestReader = new RequestReaderImpl();
-        UserAuthModule userAuthModule = new UserAuthModule(daoFactory.getUserDAO());
         RequestHandler requestHandler = new RequestHandlerImpl(commandInvoker, creator, userAuthModule);
         ResponseSender responseSender = new ResponseSenderImpl();
         putCommands(commandInvoker, routeManager, creator, commandHistory);
-        putServerCommands(commandInvoker, writer, connectionListener);
+        Server server = new Server(connectionListener, requestReader, requestHandler, responseSender);
+        putServerCommands(commandInvoker, connectionListener, server);
         consoleStart(commandInvoker);
-
         try {
             connectionListener.openConnection(address, port);
-            selector = connectionListener.listen();
-        } catch (IOException e) {
-            System.out.println("test");
-            return;
-        }
-        while (isRunning) {
-            try {
-                //connectionListener.openConnection(address, port);
-                /*try {
-                    selector = connectionListener.listen();
-                } catch (ClosedSelectorException e){
-                    return;
-                }*/
-                Request request = requestReader.getRequest(selector);
-                log.Log.getLogger().info(ServerBundle.getString("server.got_request"));
-                try {
-                    log.Log.getLogger().info(ServerBundle.getString("server.request_handling"));
-                    Response response = requestHandler.handleRequest(request);
-                    responseSender.sendResponse(selector, response);
-                    //connectionListener.stop();
-                } catch (CommandNotFoundException | CommandExecutionException | AuthException e) {
-                    Log.getLogger().error(e.getStackTrace());
-                    Response response = new Response(e.getMessage(), false, false);
-                    responseSender.sendResponse(selector, response);
-                    //connectionListener.stop();
-                } catch (PersistentException e) {
-                    Log.getLogger().error(e.getDbErrorMessage());
-                    Log.getLogger().error(e);
-                    Response response = new Response(e.getMessage(), false, false);
-                    responseSender.sendResponse(selector, response);
-                }
-                Log.getLogger().info(request.toString());
-            } catch (IOException | ClassNotFoundException ioe) {
-                Log.getLogger().error(ioe);
-                Log.getLogger().error(ioe.getStackTrace());
-                try {
-                    connectionListener.stop();
-                } catch (IOException e) {
-                    Log.getLogger().error(e.getStackTrace());
-                    isRunning = false;
-                }
+            while (isRunning) {
+                server.start();
             }
+        } catch (IOException e) {
+            Log.getLogger().error(e);
+            Log.getLogger().error(e.getStackTrace());
         }
     }
 
     private void consoleStart(CommandInvoker commandInvoker) {
         Thread consoleThread = new Thread(() -> {
             UserIO userIO = new ConsoleIO();
-            while(!Thread.interrupted()) {
+            //while(!Thread.interrupted()) {
                 userIO.printUserPrompt();
-                try {
-                    String str = userIO.readLine();
-                    commandInvoker.execute(str);
-                } catch (IOException | CommandNotFoundException | CommandExecutionException ioe) {
-                    userIO.printErrorMessage(ioe.getMessage());
+                while(isRunning) {
+                    try {
+                        String str = userIO.readLine();
+                        commandInvoker.execute(str);
+                    } catch (IOException | CommandNotFoundException | CommandExecutionException ioe) {
+                        userIO.printErrorMessage(ioe.getMessage());
+                    }
                 }
-            }
+            //}
         });
         consoleThread.setDaemon(true);
         consoleThread.start();
@@ -139,12 +86,11 @@ public class Application {
         commandInvoker.addCommand("update", new UpdateCommand(manager, true));
     }
 
-    private void putServerCommands(CommandInvoker commandInvoker, RouteWriter routeWriter, ConnectionListener connectionListener) {
-        commandInvoker.addServerCommand("exit", new ExitCommand(routeWriter, connectionListener, this));
-        commandInvoker.addServerCommand("save", new SaveCommand(routeWriter));
+    private void putServerCommands(CommandInvoker commandInvoker, ConnectionListener connectionListener, Server server) {
+        commandInvoker.addServerCommand("exit", new ExitCommand(connectionListener, this, server));
     }
 
-    public void setIsRunning(boolean isRunning) {
+    public synchronized void setIsRunning(boolean isRunning) {
         this.isRunning = isRunning;
     }
 }

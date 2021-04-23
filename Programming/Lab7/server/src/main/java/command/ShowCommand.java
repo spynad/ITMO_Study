@@ -5,7 +5,7 @@ import commands.AbstractCommand;
 import commands.Command;
 
 /**
- * Класс-команда, реализующая вывод в стандартный поток всей коллекциииии
+ * Класс-команда, реализующая вывод в стандартный поток всей коллекции
  */
 public class ShowCommand extends AbstractCommand implements Command {
     private final RouteCollectionManager routeManager;

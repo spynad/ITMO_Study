@@ -2,44 +2,23 @@ package response;
 
 import locale.ServerBundle;
 import log.Log;
-import route.Response;
+import transferobjects.Response;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.util.Iterator;
-import java.util.Set;
 
 public class ResponseSenderImpl implements ResponseSender{
-    private Selector selector;
 
-    public void sendResponse(Selector selector, Response response) throws IOException, ClassNotFoundException{
-        this.selector = selector;
+    public void sendResponse(SocketChannel socket, Response response) throws IOException{
         log.Log.getLogger().info(ServerBundle.getString("server.sending_response"));
-        sendBytes(serializeResponse(response));
+        sendBytes(serializeResponse(response), socket);
         log.Log.getLogger().info(ServerBundle.getString("server.response_sent"));
     }
 
-    private void sendBytes(byte[] bytes) throws IOException {
-        ByteBuffer buf = ByteBuffer.wrap(bytes);
-        SocketChannel channel = null;
-        while (channel == null) {
-            selector.select();
-            Set<SelectionKey> keys = selector.selectedKeys();
-            Iterator<SelectionKey> iterator = keys.iterator();
-
-            while(iterator.hasNext()) {
-                SelectionKey key = iterator.next();
-                if (key.isWritable()) {
-                    channel = (SocketChannel)key.channel();
-                    channel.write(buf);
-                    channel.register(selector, SelectionKey.OP_READ);
-                }
-                iterator.remove();
-            }
-        }
+    private void sendBytes(byte[] bytes, SocketChannel socket) throws IOException {
+        ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
+        socket.write(byteBuffer);
     }
 
     private byte[] serializeResponse(Response response) throws IOException{
@@ -47,6 +26,7 @@ public class ResponseSenderImpl implements ResponseSender{
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
         ObjectOutputStream stream = new ObjectOutputStream(byteStream);
         stream.writeObject(response);
+        stream.flush();
         return byteStream.toByteArray();
     }
 }

@@ -14,9 +14,10 @@ import request.RequestSender;
 import request.RequestSenderImpl;
 import response.ResponseReader;
 import response.ResponseReaderImpl;
-import route.Request;
-import route.RequestType;
-import route.Response;
+import transferobjects.Request;
+import transferobjects.RequestType;
+import transferobjects.Response;
+import route.Route;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -46,8 +47,8 @@ public class Application {
         connectionManager = new ConnectionManagerImpl();
         requestSender = new RequestSenderImpl();
         reader = new ResponseReaderImpl();
-        routeReader = new ConsoleRouteParser(userIO);
         authModule = new AuthModule(userIO, connectionManager, requestSender, reader);
+        routeReader = new ConsoleRouteParser(userIO, authModule);
         requestCreator = new RequestCreator(authModule);
         setCommands(commandInvoker);
     }
@@ -61,7 +62,8 @@ public class Application {
         try {
             connectionManager.openConnection(address, port);
         } catch (IOException e) {
-            e.printStackTrace();
+            userIO.printErrorMessage(ClientLocale.getString("client.server_unreachable"));
+            return;
         }
         while(isRunning) {
             String userString = "";
@@ -73,6 +75,7 @@ public class Application {
                 userIO.printErrorMessage(ClientLocale.getString("exception.command_exec_error") + ": " + executionException.getMessage());
             } catch (IOException ioe) {
                 userIO.printErrorMessage(ioe.getMessage());
+                isRunning = false;
             } catch (CommandNotFoundException ise) {
                 try {
                     Response response = communicateWithServer(userString, routeReader);
@@ -80,17 +83,23 @@ public class Application {
                 } catch (EOFException eofe) {
                     userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));
                 } catch (IOException | ClassNotFoundException ioe) {
-                    userIO.printErrorMessage(ClientLocale.getString("exception.general_network"));
-                    ioe.printStackTrace();
-                } catch (RouteReadException | RouteBuildException | IllegalStateException e) {
+                    userIO.printErrorMessage(ClientLocale.getString("exception.general_network_reconnect"));
+                    try {
+                        connectionManager.openConnection(address, port);
+                        userIO.printErrorMessage(ClientLocale.getString("client.successful_reconnect_attempt"));
+                        /*Response response = communicateWithServer(userString, routeReader);
+                        userIO.printLine(response.getMessage());*/
+                    } catch (IOException e) {
+                        userIO.printErrorMessage(ClientLocale.getString("client.failed_reconnect_attempt"));
+                    }
+                } catch (IllegalStateException e) {
                     userIO.printErrorMessage(e.getMessage());
                 }
             }
         }
     }
 
-    public Response communicateWithServer(String userString, SingleRouteReader routeReader) throws IOException, ClassNotFoundException,
-            RouteReadException, RouteBuildException {
+    public Response communicateWithServer(String userString, SingleRouteReader routeReader) throws IOException, ClassNotFoundException {
         SocketChannel socketChannel = connectionManager.getConnection();
         Request request = requestCreator.createRouteRequest(userString);
         requestSender.sendRequest(socketChannel, request);
@@ -99,11 +108,15 @@ public class Application {
         if (!response.isSuccess())
             throw new IllegalStateException(response.getMessage());
 
-        //connectionManager.closeConnection();
-        //socketChannel = connectionManager.openConnection(address, port);
 
         if (response.isRouteRequired()) {
-            request.setRoute(routeReader.read());
+            Route route;
+            try {
+                route = routeReader.read();
+            } catch (RouteBuildException | RouteReadException e) {
+                throw new IllegalStateException(e.getMessage());
+            }
+            request = requestCreator.createCommandRequest(userString, route);
         }
 
         request.setType(RequestType.COMMAND_REQUEST);
@@ -112,9 +125,6 @@ public class Application {
 
         if (!response.isSuccess())
             throw new IllegalStateException(response.getMessage());
-
-        //connectionManager.closeConnection();
-
         return response;
     }
 
@@ -124,5 +134,6 @@ public class Application {
         commandInvoker.addCommand("client_help", new ClientHelpCommand(userIO));
         commandInvoker.addCommand("auth", new AuthCommand(authModule));
         commandInvoker.addCommand("register", new RegisterCommand(authModule));
+        commandInvoker.addCommand("change_language", new ChangeLanguageCommand(userIO));
     }
 }

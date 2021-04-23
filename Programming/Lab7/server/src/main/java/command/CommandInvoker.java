@@ -20,10 +20,6 @@ public class CommandInvoker {
     private final Map<String, ServerCommand> serverCommands = new HashMap<>();
     private final CommandHistory commandHistory;
 
-    /*public CommandInvoker(RouteCollectionManager routeManager, RouteWriter routeWriter) {
-        this.routeManager = routeManager;
-        this.routeWriter = routeWriter;
-    }*/
 
     public CommandInvoker(CommandHistory commandHistory) {
         this.commandHistory = commandHistory;

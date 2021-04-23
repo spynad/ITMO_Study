@@ -1,5 +1,6 @@
 package io;
 
+import client.AuthModule;
 import exception.RouteBuildException;
 import locale.ClientLocale;
 import route.*;
@@ -14,22 +15,27 @@ import java.io.IOException;
  */
 public class ConsoleRouteParser implements SingleRouteReader {
     private final UserIO userIO;
-    private final String inputRequest;
-    private final String invalidFormat;
+    private final AuthModule authModule;
+    private String inputRequest;
+    private String invalidFormat;
 
-    public ConsoleRouteParser(UserIO userIO) {
+    public ConsoleRouteParser(UserIO userIO, AuthModule authModule) {
         this.userIO = userIO;
+        this.authModule = authModule;
         inputRequest = ClientLocale.getString("client.input_request");
         invalidFormat = ClientLocale.getString("exception.invalid_format_error");
     }
 
     public Route read() throws RouteBuildException {
+        inputRequest = ClientLocale.getString("client.input_request");
+        invalidFormat = ClientLocale.getString("exception.invalid_format_error");
         RouteBuilder routeBuilder = new RouteBuilder();
         return routeBuilder.setName(readName())
                 .setCoordinates(readCoordinates())
                 .setFirstLocation(readFirstLocation())
                 .setSecondLocation(readSecondLocation())
                 .setDistance(readDistance())
+                .setUsername(authModule.getUser().getUsername())
                 .buildWithoutId();
     }
 

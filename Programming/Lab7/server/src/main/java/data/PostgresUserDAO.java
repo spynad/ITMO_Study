@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class PostgresUserDAO implements UserDAO{
 
@@ -16,12 +15,11 @@ public class PostgresUserDAO implements UserDAO{
         try (Connection connection = PostgresDAOFactory.createConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?")){
             preparedStatement.setString(1, username);
-            try (ResultSet resultSet = preparedStatement.executeQuery();){
-                resultSet.next();
-                User user = new User(resultSet.getString(1));
-                user.setPassword(resultSet.getString(2));
-                return user;
-            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            User user = new User(resultSet.getString(1));
+            user.setPassword(resultSet.getString(2));
+            return user;
         } catch (SQLException e) {
             throw new PersistentException(e.getErrorCode(), e.getMessage());
         }

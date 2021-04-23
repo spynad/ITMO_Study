@@ -6,6 +6,7 @@ import user.User;
 
 public class UserAuthModule {
     private final UserDAO userDAO;
+    private User user;
 
     public UserAuthModule(UserDAO userDAO) {
         this.userDAO = userDAO;
@@ -13,7 +14,13 @@ public class UserAuthModule {
 
     public boolean authUser(User user) {
         User authUser = userDAO.getUserWhere(user.getUsername());
-        return authUser.getPassword().equals(user.getPassword());
+        if (authUser.getPassword().equals(user.getPassword())) {
+            this.user = user;
+            return true;
+        } else {
+            this.user = null;
+            return false;
+        }
     }
 
     public boolean registerUser(User user) {
@@ -23,5 +30,10 @@ public class UserAuthModule {
         } catch (PersistentException e) {
             return false;
         }
+    }
+
+    public User getUser() {
+        System.out.println(user);
+        return user;
     }
 }

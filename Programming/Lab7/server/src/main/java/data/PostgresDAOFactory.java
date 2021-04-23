@@ -15,9 +15,10 @@ public class PostgresDAOFactory extends DAOFactory {
         cpds.setUser("postgres");
         cpds.setPassword("pashaloh");
 
+        cpds.setInitialPoolSize(5);
         cpds.setMinPoolSize(5);
         cpds.setAcquireIncrement(5);
-        cpds.setMaxPoolSize(20);
+        cpds.setMaxPoolSize(10);
     }
 
     public static Connection createConnection() throws SQLException {

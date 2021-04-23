@@ -1,6 +1,6 @@
 package request;
 
-import route.Request;
+import transferobjects.Request;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

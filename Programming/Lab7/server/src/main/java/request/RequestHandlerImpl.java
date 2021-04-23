@@ -7,10 +7,12 @@ import exception.CommandNotFoundException;
 import locale.ServerBundle;
 import log.Log;
 import response.Creator;
-import route.Request;
-import route.RequestType;
-import route.Response;
+import transferobjects.Request;
+import transferobjects.RequestType;
+import transferobjects.Response;
 import server.UserAuthModule;
+
+import java.util.Locale;
 
 public class RequestHandlerImpl implements RequestHandler{
     private final Creator responseCreator;
@@ -24,6 +26,7 @@ public class RequestHandlerImpl implements RequestHandler{
     }
 
     public Response handleRequest(Request request) throws CommandNotFoundException, CommandExecutionException, AuthException {
+        Locale.setDefault(request.getLocale());
         if (request.getType().equals(RequestType.ROUTE_REQUEST)) {
             return handleRouteRequest(request);
         } else if (request.getType().equals(RequestType.COMMAND_REQUEST)){
@@ -46,7 +49,8 @@ public class RequestHandlerImpl implements RequestHandler{
     }
 
     private Response handleRouteRequest(Request request) throws CommandNotFoundException, AuthException {
-        if (request.getUser() == null) {
+        //TODO: разъединить условие (в след методе тоже)
+        if (request.getUser() == null || !userAuthModule.authUser(request.getUser())) {
             throw new AuthException(ServerBundle.getString("exception.no_auth"));
         }
         Log.getLogger().info(ServerBundle.getString("server.ask_route_requirement"));
@@ -60,7 +64,7 @@ public class RequestHandlerImpl implements RequestHandler{
     }
 
     private Response handleCommandRequest(Request request) throws CommandExecutionException, CommandNotFoundException, AuthException {
-        if (request.getUser() == null) {
+        if (request.getUser() == null || !userAuthModule.authUser(request.getUser())) {
             throw new AuthException(ServerBundle.getString("exception.no_auth"));
         }
         Log.getLogger().info(ServerBundle.getFormattedString("server.execute_attempt", request.getUserString()));
