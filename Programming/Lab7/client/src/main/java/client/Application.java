@@ -19,6 +19,8 @@ import transferobjects.RequestType;
 import transferobjects.Response;
 import route.Route;
 
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
@@ -35,11 +37,12 @@ public class Application {
     private final ResponseReader reader;
     private final SingleRouteReader routeReader;
     private final AuthModule authModule;
+    private final ValidatorFactory validatorFactory;
     private boolean isRunning = true;
 
 
     public Application(String address, int port) {
-        Locale.setDefault(new Locale("ru", "RU"));
+        Locale.setDefault(new Locale("ru"));
         this.address = address;
         this.port = port;
         userIO = new ConsoleIO();
@@ -48,7 +51,8 @@ public class Application {
         requestSender = new RequestSenderImpl();
         reader = new ResponseReaderImpl();
         authModule = new AuthModule(userIO, connectionManager, requestSender, reader);
-        routeReader = new ConsoleRouteParser(userIO, authModule);
+        validatorFactory = Validation.buildDefaultValidatorFactory();
+        routeReader = new ConsoleRouteParser(userIO, authModule, validatorFactory);
         requestCreator = new RequestCreator(authModule);
         setCommands(commandInvoker);
     }
@@ -130,7 +134,7 @@ public class Application {
 
     private void setCommands(CommandInvoker commandInvoker) {
         commandInvoker.addCommand("exit", new ExitCommand(this));
-        commandInvoker.addCommand("execute_script", new ExecuteScriptCommand(this, commandInvoker, userIO));
+        commandInvoker.addCommand("execute_script", new ExecuteScriptCommand(this, commandInvoker, userIO, validatorFactory));
         commandInvoker.addCommand("client_help", new ClientHelpCommand(userIO));
         commandInvoker.addCommand("auth", new AuthCommand(authModule));
         commandInvoker.addCommand("register", new RegisterCommand(authModule));

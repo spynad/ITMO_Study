@@ -2,6 +2,9 @@ package route;
 
 import exception.InvalidArgumentException;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Formatter;
 
@@ -13,8 +16,12 @@ import java.util.Formatter;
 public class FirstLocation implements Serializable {
     private static final long serialVersionUID = -4314801651620839309L;
 
+    @NotNull
     private Integer x; //Поле не может быть null
     private long y;
+
+    @NotNull
+    @Min(value = 1)
     private String name; //Строка не может быть пустой, Поле не может быть null
 
     public FirstLocation(Integer x, long y, String name) {

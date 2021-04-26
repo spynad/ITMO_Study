@@ -50,6 +50,10 @@ public class AuthModule {
         String username = userIO.readLine();
         userIO.printLine(ClientLocale.getString("client.password_prompt"));
         String password = userIO.readPasswordLine();
+        if (password.length() < 7) {
+            userIO.printErrorMessage(ClientLocale.getString("client.invalid_password"));
+            return;
+        }
         user = new User(username, password);
         Request request = new Request(RequestType.REGISTER_REQUEST, user);
         requestSender.sendRequest(connectionManager.getConnection(), request);

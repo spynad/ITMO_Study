@@ -2,6 +2,7 @@ package route;
 
 import exception.InvalidArgumentException;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Formatter;
 import java.util.Locale;
@@ -14,8 +15,13 @@ import java.util.Locale;
 public class SecondLocation implements Serializable {
     private static final long serialVersionUID = -6047800813680293373L;
 
+    @NotNull
     private Integer x; //Поле не может быть null
+
+    @NotNull
     private Long y; //Поле не может быть null
+
+    @NotNull
     private Double z; //Поле не может быть null
 
     public SecondLocation(Integer x, Long y, Double z) {

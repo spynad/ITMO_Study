@@ -5,11 +5,17 @@ import exception.RouteBuildException;
 import route.*;
 import utils.DateLocalDateConverter;
 
+import javax.validation.ValidatorFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class PostgresRouteDAO implements RouteDAO{
+    private ValidatorFactory validatorFactory;
+
+    public PostgresRouteDAO(ValidatorFactory validatorFactory) {
+        this.validatorFactory = validatorFactory;
+    }
 
     @Override
     public Collection<Route> selectRoutesToCollection()  {
@@ -18,7 +24,7 @@ public class PostgresRouteDAO implements RouteDAO{
             Collection<Route> routes = new ArrayList<>();
             ResultSet r = statement.executeQuery("SELECT * FROM routes");
             while (r.next()) {
-                RouteBuilder routeBuilder = new RouteBuilder();
+                RouteBuilder routeBuilder = new RouteBuilder(validatorFactory);
                 try {
                     buildRoute(r, routeBuilder);
                     routes.add(routeBuilder.buildWithId());
@@ -40,7 +46,7 @@ public class PostgresRouteDAO implements RouteDAO{
             statement.setInt(1, id);
             ResultSet r = statement.executeQuery();
             while (r.next()) {
-                RouteBuilder routeBuilder = new RouteBuilder();
+                RouteBuilder routeBuilder = new RouteBuilder(validatorFactory);
                 try {
                     buildRoute(r, routeBuilder);
                     route = routeBuilder

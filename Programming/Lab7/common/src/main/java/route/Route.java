@@ -7,6 +7,10 @@ import java.util.Locale;
 
 import exception.InvalidArgumentException;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Класс, который хранится в коллекции
  * @author spynad
@@ -15,13 +19,29 @@ import exception.InvalidArgumentException;
 public final class Route implements Comparable<Route>, Serializable {
     private static final long serialVersionUID = 5913735705352552388L;
 
+    @NotNull
+    @Min(value = 1)
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+
+    @NotNull
+    @Size(min = 1)
     private String name; //Поле не может быть null, Строка не может быть пустой
+
+    @NotNull
     private Coordinates coordinates; //Поле не может быть null
+
+    @NotNull
     private LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+
     private FirstLocation from; //Поле может быть null
+
+    @NotNull
     private SecondLocation to; //Поле не может быть null
+
+    @Min(value = 2)
     private double distance; //Значение поля должно быть больше 1
+
+    @NotNull
     private String username;
 
     /**

@@ -7,19 +7,22 @@ import io.UserIO;
 import locale.ClientLocale;
 import transferobjects.Response;
 
+import javax.validation.ValidatorFactory;
 import java.io.*;
 
 public class ExecuteScriptCommand extends AbstractCommand {
-    CommandInvoker commandInvoker;
-    Application application;
-    UserIO userIO;
-    String[] args;
-    String fileName;
+    private CommandInvoker commandInvoker;
+    private Application application;
+    private UserIO userIO;
+    private String[] args;
+    private String fileName;
+    private ValidatorFactory validatorFactory;
 
-    public ExecuteScriptCommand(Application application, CommandInvoker commandInvoker, UserIO userIO) {
+    public ExecuteScriptCommand(Application application, CommandInvoker commandInvoker, UserIO userIO, ValidatorFactory validatorFactory) {
         this.application = application;
         this.commandInvoker = commandInvoker;
         this.userIO = userIO;
+        this.validatorFactory = validatorFactory;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
                     commandInvoker.execute(commands, null);
                 } catch (CommandNotFoundException e) {
                     try {
-                        Response response = application.communicateWithServer(commands, new ScriptRouteParser(reader, userIO));
+                        Response response = application.communicateWithServer(commands, new ScriptRouteParser(reader, userIO, validatorFactory));
                         userIO.printLine(response.getMessage());
                     } catch (EOFException eofe) {
                         userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));

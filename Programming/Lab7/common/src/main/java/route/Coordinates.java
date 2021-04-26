@@ -2,6 +2,8 @@ package route;
 
 import exception.InvalidArgumentException;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Formatter;
 import java.util.Locale;
@@ -14,7 +16,10 @@ import java.util.Locale;
 public class Coordinates implements Serializable {
     private static final long serialVersionUID = 1278816392291719517L;
 
+    @Min(value = -775)
     private long x; //Значение поля должно быть больше -776
+
+    @NotNull
     private Double y; //Поле не может быть null
 
     public Coordinates(long x, Double y) {

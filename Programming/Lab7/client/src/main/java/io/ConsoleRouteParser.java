@@ -6,6 +6,7 @@ import locale.ClientLocale;
 import route.*;
 import exception.InvalidArgumentException;
 
+import javax.validation.ValidatorFactory;
 import java.io.IOException;
 
 /**
@@ -18,18 +19,20 @@ public class ConsoleRouteParser implements SingleRouteReader {
     private final AuthModule authModule;
     private String inputRequest;
     private String invalidFormat;
+    private final ValidatorFactory validatorFactory;
 
-    public ConsoleRouteParser(UserIO userIO, AuthModule authModule) {
+    public ConsoleRouteParser(UserIO userIO, AuthModule authModule, ValidatorFactory validatorFactory) {
         this.userIO = userIO;
         this.authModule = authModule;
         inputRequest = ClientLocale.getString("client.input_request");
         invalidFormat = ClientLocale.getString("exception.invalid_format_error");
+        this.validatorFactory = validatorFactory;
     }
 
     public Route read() throws RouteBuildException {
         inputRequest = ClientLocale.getString("client.input_request");
         invalidFormat = ClientLocale.getString("exception.invalid_format_error");
-        RouteBuilder routeBuilder = new RouteBuilder();
+        RouteBuilder routeBuilder = new RouteBuilder(validatorFactory);
         return routeBuilder.setName(readName())
                 .setCoordinates(readCoordinates())
                 .setFirstLocation(readFirstLocation())
@@ -69,6 +72,13 @@ public class ConsoleRouteParser implements SingleRouteReader {
      * @return - объект FirstLocation
      */
     public FirstLocation readFirstLocation() {
+        try {
+            if (userIO.askYesOrNo(ClientLocale.getString("client.ask_for_first_location_null"))) {
+                return null;
+            }
+        } catch (IOException e) {
+            userIO.printErrorMessage(ClientLocale.getString("exception.general"));
+        }
         while (true) {
             try {
                 userIO.printLine(inputRequest + " firstlocation.x: ");

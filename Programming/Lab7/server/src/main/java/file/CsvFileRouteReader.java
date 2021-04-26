@@ -7,6 +7,7 @@ import locale.ServerBundle;
 import log.Log;
 import route.*;
 
+import javax.validation.ValidatorFactory;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,10 +16,12 @@ import java.util.List;
 public class CsvFileRouteReader implements RouteReader{
     private final RouteCollectionManager routeManager;
     private final String fileName;
+    private final ValidatorFactory validatorFactory;
 
-    public CsvFileRouteReader(RouteCollectionManager routeManager, String fileName) {
+    public CsvFileRouteReader(RouteCollectionManager routeManager, String fileName, ValidatorFactory validatorFactory) {
         this.routeManager = routeManager;
         this.fileName = fileName;
+        this.validatorFactory = validatorFactory;
     }
 
     public List<Route> read() {
@@ -104,7 +107,7 @@ public class CsvFileRouteReader implements RouteReader{
                         Long.parseLong(params[11]),
                         Double.parseDouble(params[12]));
                 double dist = Double.parseDouble(params[13]);
-                RouteBuilder routeBuilder = new RouteBuilder();
+                RouteBuilder routeBuilder = new RouteBuilder(validatorFactory);
                 Route route = routeBuilder.setId(id).setName(name)
                         .setCoordinates(coordinates)
                         .setDate(date)

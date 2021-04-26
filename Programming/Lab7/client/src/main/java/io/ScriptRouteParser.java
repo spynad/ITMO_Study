@@ -6,21 +6,24 @@ import locale.ClientLocale;
 import route.*;
 import exception.InvalidArgumentException;
 
+import javax.validation.ValidatorFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 
 public class ScriptRouteParser implements SingleRouteReader{
-    BufferedReader input;
-    UserIO userIO;
+    private BufferedReader input;
+    private UserIO userIO;
+    private ValidatorFactory validatorFactory;
 
-    public ScriptRouteParser(BufferedReader reader, UserIO userIO) {
+    public ScriptRouteParser(BufferedReader reader, UserIO userIO, ValidatorFactory validatorFactory) {
         input = reader;
         this.userIO = userIO;
+        this.validatorFactory = validatorFactory;
     }
 
     @Override
     public Route read() throws RouteBuildException, RouteReadException {
-        return new RouteBuilder().setName(readName())
+        return new RouteBuilder(validatorFactory).setName(readName())
                 .setCoordinates(readCoordinates())
                 .setFirstLocation(readFirstLocation())
                 .setSecondLocation(readSecondLocation())
