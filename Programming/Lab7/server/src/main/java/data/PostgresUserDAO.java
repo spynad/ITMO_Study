@@ -15,11 +15,16 @@ public class PostgresUserDAO implements UserDAO{
         try (Connection connection = PostgresDAOFactory.createConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?")){
             preparedStatement.setString(1, username);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            User user = new User(resultSet.getString(1));
-            user.setPassword(resultSet.getString(2));
-            return user;
+            if (preparedStatement.execute()) {
+                ResultSet resultSet = preparedStatement.getResultSet();
+                if (resultSet.getFetchSize() > 0) {
+                    resultSet.next();
+                    User user = new User(resultSet.getString(1));
+                    user.setPassword(resultSet.getString(2));
+                    return user;
+                }
+            }
+            return null;
         } catch (SQLException e) {
             throw new PersistentException(e.getErrorCode(), e.getMessage());
         }

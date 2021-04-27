@@ -2,8 +2,8 @@ route/RouteFormatter.java
  route.RouteFormatter
 exception/CommandExecutionException.java
  exception.CommandExecutionException
-io/ConsoleIO.java
- io.ConsoleIO
+commands/AbstractCommand.java
+ commands.AbstractCommand
 route/Coordinates.java
  route.Coordinates
 exception/BadCSVException.java
@@ -32,6 +32,8 @@ exception/RouteReadException.java
  exception.RouteReadException
 route/Route.java
  route.Route
+locale/CommonBundle.java
+ locale.CommonBundle
 commands/RouteCommand.java
  commands.RouteCommand
 exception/RouteBuildException.java
@@ -44,7 +46,5 @@ route/FirstLocation.java
  route.FirstLocation
 route/SecondLocation.java
  route.SecondLocation
-locale/RouteBundle.java
- locale.RouteBundle
-commands/AbstractCommand.java
- commands.AbstractCommand
+io/ConsoleIO.java
+ io.ConsoleIO

@@ -40,12 +40,12 @@ public class RequestHandlerImpl implements RequestHandler{
 
     private Response handleAuthRequest(Request request) {
         boolean result = userAuthModule.authUser(request.getUser());
-        return responseCreator.createResponse("", result, result);
+        return responseCreator.createResponse(userAuthModule.getReason(), result, result);
     }
 
     private Response handleRegisterRequest(Request request) {
         boolean result = userAuthModule.registerUser(request.getUser());
-        return responseCreator.createResponse("", result, result);
+        return responseCreator.createResponse(userAuthModule.getReason(), result, result);
     }
 
     private Response handleRouteRequest(Request request) throws CommandNotFoundException, AuthException {
