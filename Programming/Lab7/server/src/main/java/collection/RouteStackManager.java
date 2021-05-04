@@ -37,6 +37,7 @@ public class RouteStackManager implements RouteCollectionManager {
         routes.add(route);
     }
 
+
     synchronized public void addRoute(Route route) {
         routeDAO.insertRoute(route);
         routes.add(route);

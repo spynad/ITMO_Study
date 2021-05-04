@@ -13,6 +13,7 @@ public class ConnectionListenerImpl implements ConnectionListener {
 
     public void openConnection(String address, int port) throws IOException{
         serverChannel = ServerSocketChannel.open();
+        serverChannel.configureBlocking(false);
         serverChannel.socket().bind(new InetSocketAddress(address, port));
         Log.getLogger().info(ServerBundle.getFormattedString("server.created_channel", port));
     }

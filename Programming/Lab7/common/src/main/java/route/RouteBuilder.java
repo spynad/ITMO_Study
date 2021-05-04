@@ -74,17 +74,6 @@ public class RouteBuilder implements Builder{
             return this;
         }
         throw new RouteBuildException(CommonBundle.getString("route.invalid_first_location"));
-        /*if (firstLocation == null) {
-            this.from = firstLocation;
-            return this;
-        } else {
-            if (firstLocation.getX() != null && !firstLocation.getName().equals("")) {
-                this.from = firstLocation;
-                return this;
-            } else {
-                throw new RouteBuildException(RouteBundle.getString("route.invalid_first_location"));
-            }
-        }*/
     }
 
     @Override
@@ -95,13 +84,6 @@ public class RouteBuilder implements Builder{
             return this;
         }
         throw new RouteBuildException(CommonBundle.getString("route.invalid_second_location"));
-        /*if (secondLocation != null) {
-            if (secondLocation.getX() != null && secondLocation.getY() != null && secondLocation.getZ() != null) {
-                this.to = secondLocation;
-                return this;
-            }
-        }
-        throw new RouteBuildException(RouteBundle.getString("route.invalid_second_location"));*/
     }
 
     @Override

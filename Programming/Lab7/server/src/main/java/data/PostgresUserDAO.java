@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PostgresUserDAO implements UserDAO{
+public class PostgresUserDAO implements UserDAO {
 
     @Override
     public User getUserWhere(String username) {
