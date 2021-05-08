@@ -76,6 +76,11 @@ public class Application {
                     ioe.printStackTrace();
                 } catch (RouteReadException | RouteBuildException | IllegalStateException e) {
                     userIO.printErrorMessage(e.getMessage());
+                    try {
+                        connectionManager.closeConnection();
+                    } catch (IOException ioe) {
+                        return;
+                    }
                 }
             }
         }

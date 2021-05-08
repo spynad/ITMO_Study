@@ -1,0 +1,5 @@
+rootProject.name = 'Lab8'
+include 'client'
+include 'server'
+include 'common'
+

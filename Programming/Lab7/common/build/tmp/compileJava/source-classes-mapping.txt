@@ -2,8 +2,8 @@ route/RouteFormatter.java
  route.RouteFormatter
 exception/CommandExecutionException.java
  exception.CommandExecutionException
-commands/AbstractCommand.java
- commands.AbstractCommand
+io/ConsoleIO.java
+ io.ConsoleIO
 route/Coordinates.java
  route.Coordinates
 exception/BadCSVException.java
@@ -12,6 +12,8 @@ route/RouteWriter.java
  main.RouteWriter
 hash/SHA224Generator.java
  hash.SHA224Generator
+transferobjects/RequestOpsState.java
+ transferobjects.RequestOpsState
 route/RouteBuilder.java
  route.RouteBuilder
 transferobjects/RequestType.java
@@ -46,5 +48,5 @@ route/FirstLocation.java
  route.FirstLocation
 route/SecondLocation.java
  route.SecondLocation
-io/ConsoleIO.java
- io.ConsoleIO
+commands/AbstractCommand.java
+ commands.AbstractCommand

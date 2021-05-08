@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(':common'))
+    implementation 'com.google.inject:guice:5.0.1'
+    implementation 'org.postgresql:postgresql:42.2.19'
+    implementation 'com.mchange:c3p0:0.9.5.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.2.0.Final'
+    implementation group: 'org.glassfish', name: 'javax.el', version: '3.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = "server.Server"
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'server.Main'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
