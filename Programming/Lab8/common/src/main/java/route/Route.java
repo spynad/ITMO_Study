@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Formatter;
 import java.util.Locale;
+import java.util.Optional;
 
 import exception.InvalidArgumentException;
 
@@ -136,6 +137,49 @@ public final class Route implements Comparable<Route>, Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public Long getCoordinatesX() {
+        return coordinates.getX();
+    }
+
+    public Double getCoordinatesY() {
+        return coordinates.getY();
+    }
+
+    public String getFromX() {
+        if (from == null) {
+            return "null";
+        }
+        return Optional.ofNullable(String.valueOf(from.getX())).orElse("null");
+    }
+
+    public String getFromY() {
+        if (from == null) {
+            return "null";
+        }
+        return Optional.ofNullable(String.valueOf(from.getY())).orElse("null");
+    }
+
+    public String getFromName() {
+        if (from == null) {
+            return "null";
+        }
+        return Optional.ofNullable(String.valueOf(from.getName())).orElse("null");
+    }
+
+    public Integer getToX() {
+        return to.getX();
+    }
+
+    public Long getToY() {
+        return to.getY();
+    }
+
+    public Double getToZ() {
+        return to.getZ();
+    }
+
+
 
     
     @Override

@@ -3,9 +3,11 @@ package response;
 import transferobjects.Response;
 
 public interface Creator {
-    public Response createResponse(String message, boolean success, boolean routeRequired);
+    Response createResponse(String message, boolean success, boolean routeRequired);
 
-    public Response createResponse();
+    Response createResponse();
 
-    public void addToMsg(String msg);
+    void addToMsg(String msg);
+
+    void setObject(Object o);
 }

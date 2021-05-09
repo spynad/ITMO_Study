@@ -15,10 +15,6 @@ public class AuthCommand extends AbstractCommand{
 
     @Override
     public void execute() throws CommandExecutionException {
-        try {
-            authModule.authorize();
-        } catch (IOException e) {
-            throw new CommandExecutionException(ClientLocale.getString("exception.general"));
-        }
+
     }
 }

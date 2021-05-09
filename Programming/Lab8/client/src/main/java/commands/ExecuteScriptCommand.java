@@ -1,6 +1,6 @@
 package commands;
 
-import client.Application;
+import client.Client;
 import exception.*;
 import io.ScriptRouteParser;
 import io.UserIO;
@@ -12,14 +12,14 @@ import java.io.*;
 
 public class ExecuteScriptCommand extends AbstractCommand {
     private CommandInvoker commandInvoker;
-    private Application application;
+    private Client client;
     private UserIO userIO;
     private String[] args;
     private String fileName;
     private ValidatorFactory validatorFactory;
 
-    public ExecuteScriptCommand(Application application, CommandInvoker commandInvoker, UserIO userIO, ValidatorFactory validatorFactory) {
-        this.application = application;
+    public ExecuteScriptCommand(Client client, CommandInvoker commandInvoker, UserIO userIO, ValidatorFactory validatorFactory) {
+        this.client = client;
         this.commandInvoker = commandInvoker;
         this.userIO = userIO;
         this.validatorFactory = validatorFactory;
@@ -54,7 +54,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
                     commandInvoker.execute(commands, null);
                 } catch (CommandNotFoundException e) {
                     try {
-                        Response response = application.communicateWithServer(commands, new ScriptRouteParser(reader, userIO, validatorFactory));
+                        Response response = client.communicateWithServer(commands, new ScriptRouteParser(reader, userIO, validatorFactory));
                         userIO.printLine(response.getMessage());
                     } catch (EOFException eofe) {
                         userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));

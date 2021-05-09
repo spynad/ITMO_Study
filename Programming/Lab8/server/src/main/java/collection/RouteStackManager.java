@@ -96,10 +96,11 @@ public class RouteStackManager implements RouteCollectionManager {
     }
 
     synchronized public void show() {
-        RouteFormatter formatter = new RouteFormatter();
+        /*RouteFormatter formatter = new RouteFormatter();
         routes.stream()
                 .sorted()
-                .forEach(x -> creator.addToMsg(formatter.formatRoute(x)));
+                .forEach(x -> creator.addToMsg(formatter.formatRoute(x)));*/
+        creator.setObject(routes);
     }
 
     synchronized public void removeFirst() {

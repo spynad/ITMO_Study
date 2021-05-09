@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="261a956e-6ea3-4b4f-82ca-15f26c3e0e7a" name="Default Changelist" comment="programming: lab7 ver0.2">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/commands/ChangeLanguageCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OPD/lab4/Lab4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../OPD/lab4/Lab4.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Lab6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Lab6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/AuthModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/AuthModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/commands/ClientHelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/commands/ClientHelpCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/commands/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/commands/ExecuteScriptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/io/ConsoleRouteParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/io/ConsoleRouteParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/locale/ClientLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/locale/ClientLocale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/request/RequestCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/request/RequestCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/request/RequestSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/request/RequestSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/request/RequestSenderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/request/RequestSenderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/response/ResponseReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/response/ResponseReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/response/ResponseReaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/response/ResponseReaderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/client.properties" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/client.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/client_ru_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/help_ru_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/common/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/hash/HashGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/ConsoleIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/ConsoleIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/io/UserIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/io/UserIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/transferobjects/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/transferobjects/RequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/transferobjects/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/route/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/RouteBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/route/RouteBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/route/RouteFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/route/RouteFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/collection/RouteCollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/collection/RouteCollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/collection/RouteStackManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/collection/RouteStackManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/CommandInvoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/CommandInvoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/ExitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/RemoveAllByDistanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/RemoveAllByDistanceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/RemoveByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/RemoveByIdCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/ShowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/command/SumOfDistanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/command/SumOfDistanceCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ConnectionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ConnectionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/connection/ConnectionListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/connection/ConnectionListenerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/data/PostgresDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/data/PostgresDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/data/PostgresRouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/data/PostgresRouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/data/PostgresUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/data/PostgresUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/data/RouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/data/RouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/file/CsvFileRouteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/file/CsvFileRouteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/request/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/request/RequestHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/request/RequestHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/request/RequestReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/request/RequestReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/request/RequestReaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/request/RequestReaderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/response/Creator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/response/Creator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/response/ResponseCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/response/ResponseCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/response/ResponseSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/response/ResponseSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/response/ResponseSenderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/response/ResponseSenderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/UserAuthModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/UserAuthModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/utils/DateLocalDateConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/utils/DateLocalDateConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/help_ru_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/server_ru_RU.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/server">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/client">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab7" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/DAOFactory.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/exception/PersistentException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/UserDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresDAOFactory.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresUserDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresRouteDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/server/Application.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1rAcDBMRROTRbHKUebFMswsMLst" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Gradle.Lab7:client [jar]">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="Lab7.client.main" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.3 60000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="server.Main" />
+      <module name="Lab7.server.main" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 60000 test.csv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="server.Main" />
+      <module name="Lab7.server.main" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.3 60000 test.csv" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lab7:client [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Lab7:server [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Gradle.Lab7:server [jar]" />
+      <item itemvalue="Gradle.Lab7:client [jar]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Lab7:client [jar]" />
+        <item itemvalue="Gradle.Lab7:server [jar]" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="261a956e-6ea3-4b4f-82ca-15f26c3e0e7a" name="Default Changelist" comment="" />
+      <created>1618422217430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618422217430</updated>
+      <workItem from="1618422222845" duration="12189000" />
+      <workItem from="1618483698990" duration="1245000" />
+      <workItem from="1618675858918" duration="1176000" />
+      <workItem from="1618682746911" duration="2628000" />
+      <workItem from="1618757065119" duration="740000" />
+      <workItem from="1618848471247" duration="10337000" />
+      <workItem from="1618909447525" duration="2540000" />
+      <workItem from="1618912194080" duration="1056000" />
+      <workItem from="1618913725635" duration="5558000" />
+      <workItem from="1618922909909" duration="8096000" />
+      <workItem from="1618945344793" duration="198000" />
+      <workItem from="1618945636607" duration="18000" />
+      <workItem from="1618947517217" duration="2173000" />
+      <workItem from="1618950998330" duration="7322000" />
+      <workItem from="1619015901128" duration="8056000" />
+      <workItem from="1619036668390" duration="420000" />
+      <workItem from="1619037177015" duration="2080000" />
+      <workItem from="1619075316300" duration="6626000" />
+      <workItem from="1619102442597" duration="106000" />
+      <workItem from="1619102626916" duration="11327000" />
+      <workItem from="1619161181284" duration="748000" />
+      <workItem from="1619170971451" duration="4951000" />
+      <workItem from="1619182656756" duration="628000" />
+      <workItem from="1619200612113" duration="1483000" />
+      <workItem from="1619207390299" duration="466000" />
+    </task>
+    <task id="LOCAL-00001" summary="programming: added .gitignore for lab7">
+      <created>1618946042198</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946042198</updated>
+    </task>
+    <task id="LOCAL-00002" summary="programming: lab7 ver0.1">
+      <created>1618946196473</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946196473</updated>
+    </task>
+    <task id="LOCAL-00003" summary="programming: tried to delete a junk from lab7 src">
+      <created>1618946449338</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946449338</updated>
+    </task>
+    <task id="LOCAL-00004" summary="programming: lab7 ver0.2">
+      <created>1619035987552</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619035987552</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="programming: added .gitignore for lab7" />
+    <MESSAGE value="programming: lab7 ver0.1" />
+    <MESSAGE value="programming: tried to delete a junk from lab7 src" />
+    <MESSAGE value="programming: lab7 ver0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming: lab7 ver0.2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lab7$Server.ic" NAME="Server Coverage Results" MODIFIED="1618424129656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.*</FILTER>
+    </SUITE>
+  </component>
+</project>

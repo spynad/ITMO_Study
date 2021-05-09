@@ -1,18 +1,18 @@
 package commands;
 
-import client.Application;
+import client.Client;
 
 public class ExitCommand extends AbstractCommand{
-    Application application;
+    Client client;
 
 
-    public ExitCommand(Application application) {
-        this.application = application;
+    public ExitCommand(Client client) {
+        this.client = client;
     }
 
     @Override
     public void execute() {
-        application.setIsRunning(false);
+        client.setIsRunning(false);
 
     }
 }

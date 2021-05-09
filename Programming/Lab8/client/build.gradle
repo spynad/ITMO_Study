@@ -28,6 +28,11 @@ application {
     mainClass = "client.Main"
 }
 
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
 jar {
     manifest {
         attributes 'Main-Class': 'client.Main'

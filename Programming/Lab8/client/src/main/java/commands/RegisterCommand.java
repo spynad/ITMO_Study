@@ -14,10 +14,6 @@ public class RegisterCommand extends AbstractCommand{
     }
     @Override
     public void execute() throws CommandExecutionException {
-        try {
-            authModule.register();
-        } catch (IOException e) {
-            throw new CommandExecutionException(ClientLocale.getString("exception.general"));
-        }
+
     }
 }

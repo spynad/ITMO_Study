@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.nio.channels.SocketChannel;
 import java.util.Locale;
 
-public class Application {
+public class Client {
+    private final Context context;
     private final String address;
     private final int port;
     private final UserIO userIO;
@@ -41,19 +42,20 @@ public class Application {
     private boolean isRunning = true;
 
 
-    public Application(String address, int port) {
-        Locale.setDefault(new Locale("ru"));
+    public Client(String address, int port, Context context) {
+        this.context = context;
+        Locale.setDefault(new Locale("en"));
         this.address = address;
         this.port = port;
-        userIO = new ConsoleIO();
-        commandInvoker = new CommandInvoker();
-        connectionManager = new ConnectionManagerImpl();
-        requestSender = new RequestSenderImpl();
-        reader = new ResponseReaderImpl();
-        authModule = new AuthModule(userIO, connectionManager, requestSender, reader);
+        userIO = context.getUserIO();
+        commandInvoker = context.getCommandInvoker();
+        connectionManager = context.getConnectionManager();
+        requestSender = context.getRequestSender();
+        reader = context.getResponseReader();
+        authModule = context.getAuthModule();
         validatorFactory = Validation.buildDefaultValidatorFactory();
         routeReader = new ConsoleRouteParser(userIO, authModule, validatorFactory);
-        requestCreator = new RequestCreator(authModule);
+        requestCreator = context.getRequestCreator();
         setCommands(commandInvoker);
     }
 
@@ -61,6 +63,14 @@ public class Application {
         isRunning = b;
     }
 
+    public void openConnection() {
+        try {
+            connectionManager.openConnection(address, port);
+        } catch (IOException e) {
+            userIO.printErrorMessage(ClientLocale.getString("client.server_unreachable"));
+            return;
+        }
+    }
 
     public void start() {
         try {
