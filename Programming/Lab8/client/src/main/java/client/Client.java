@@ -92,7 +92,7 @@ public class Client {
                 isRunning = false;
             } catch (CommandNotFoundException ise) {
                 try {
-                    Response response = communicateWithServer(userString, routeReader);
+                    Response response = communicateWithServer(userString, routeReader, null);
                     userIO.printLine(response.getMessage());
                 } catch (EOFException eofe) {
                     userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));
@@ -113,22 +113,20 @@ public class Client {
         }
     }
 
-    public Response communicateWithServer(String userString, SingleRouteReader routeReader) throws IOException, ClassNotFoundException {
+    public Response communicateWithServer(String userString, SingleRouteReader routeReader, Route route) throws IOException, ClassNotFoundException {
         SocketChannel socketChannel = connectionManager.getConnection();
         Request request = requestCreator.createRouteRequest(userString);
         requestSender.sendRequest(socketChannel, request);
         Response response = reader.getResponse(socketChannel);
 
-        if (!response.isSuccess())
-            throw new IllegalStateException(response.getMessage());
-
-
         if (response.isRouteRequired()) {
-            Route route;
-            try {
-                route = routeReader.read();
-            } catch (RouteBuildException | RouteReadException e) {
-                throw new IllegalStateException(e.getMessage());
+            if (route == null) {
+                try {
+                    route = routeReader.read();
+                } catch (RouteBuildException | RouteReadException e) {
+                    throw new IllegalStateException(e.getMessage());
+                }
+            } else {
             }
             request = requestCreator.createCommandRequest(userString, route);
         }

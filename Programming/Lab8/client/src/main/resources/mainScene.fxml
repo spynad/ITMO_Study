@@ -46,7 +46,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -57,21 +57,21 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Commands">
                <items>
-                  <MenuItem fx:id="addItem" mnemonicParsing="false" text="Add..." />
-                  <MenuItem fx:id="updateItem" mnemonicParsing="false" text="Update..." />
+                  <MenuItem fx:id="addItem" mnemonicParsing="false" onAction="#add" text="Add..." />
+                  <MenuItem fx:id="updateItem" mnemonicParsing="false" onAction="#update" text="Update..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <Menu mnemonicParsing="false" text="Delete...">
                     <items>
-                      <MenuItem fx:id="deleteByIdItem" mnemonicParsing="false" text="By ID..." />
-                        <MenuItem fx:id="deleteByIndexItem" mnemonicParsing="false" text="By Index..." />
+                      <MenuItem fx:id="deleteByIdItem" mnemonicParsing="false" onAction="#deleteByID" text="By ID..." />
+                        <MenuItem fx:id="deleteByIndexItem" mnemonicParsing="false" onAction="#deleteByIndex" text="By Index..." />
                         <MenuItem fx:id="deleteFirstItem" mnemonicParsing="false" onAction="#deleteFirst" text="First Element" />
-                        <MenuItem fx:id="deleteAllByDistanceItem" mnemonicParsing="false" text="All Elements By Distance..." />
+                        <MenuItem fx:id="deleteAllByDistanceItem" mnemonicParsing="false" onAction="#deleteAllByDistance" text="All Elements By Distance..." />
                         <MenuItem fx:id="deleteAllItem" mnemonicParsing="false" onAction="#deleteAll" text="All Elements" />
                     </items>
                   </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="sumOfDistanceItem" mnemonicParsing="false" onAction="#sumOfDistance" text="Get Sum Of Distances" />
-                  <MenuItem fx:id="filterByNameItem" mnemonicParsing="false" text="Filter Elements By Name" />
+                  <MenuItem fx:id="filterByNameItem" mnemonicParsing="false" onAction="#filterByName" text="Filter Elements By Name" />
                   <MenuItem fx:id="infoItem" mnemonicParsing="false" onAction="#info" text="Collection Info" />
                   <MenuItem fx:id="refreshItem" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                   <SeparatorMenuItem mnemonicParsing="false" />

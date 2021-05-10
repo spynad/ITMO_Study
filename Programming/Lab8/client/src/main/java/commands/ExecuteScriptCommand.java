@@ -54,7 +54,7 @@ public class ExecuteScriptCommand extends AbstractCommand {
                     commandInvoker.execute(commands, null);
                 } catch (CommandNotFoundException e) {
                     try {
-                        Response response = client.communicateWithServer(commands, new ScriptRouteParser(reader, userIO, validatorFactory));
+                        Response response = client.communicateWithServer(commands, new ScriptRouteParser(reader, userIO, validatorFactory), null);
                         userIO.printLine(response.getMessage());
                     } catch (EOFException eofe) {
                         userIO.printErrorMessage(ClientLocale.getString("exception.too_many_bytes"));

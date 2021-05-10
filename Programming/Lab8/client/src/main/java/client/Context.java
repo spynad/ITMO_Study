@@ -13,6 +13,9 @@ import request.RequestSenderImpl;
 import response.ResponseReader;
 import response.ResponseReaderImpl;
 
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+
 public class Context {
     private AuthModule authModule;
     private CommandInvoker commandInvoker;
@@ -22,6 +25,7 @@ public class Context {
     private ResponseReader responseReader;
     private SceneLoader sceneLoader;
     private UserIO userIO;
+    private ValidatorFactory validatiorFactory;
 
     public AuthModule getAuthModule() {
         if (authModule == null) {
@@ -70,5 +74,12 @@ public class Context {
             userIO = new JavaFXIO();
         }
         return userIO;
+    }
+
+    public ValidatorFactory getValidationFactory() {
+        if (validatiorFactory == null) {
+            validatiorFactory = Validation.buildDefaultValidatorFactory();
+        }
+        return validatiorFactory;
     }
 }

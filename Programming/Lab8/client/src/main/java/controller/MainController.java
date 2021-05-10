@@ -6,12 +6,17 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import route.Route;
 
 import java.io.IOException;
@@ -85,7 +90,7 @@ public class MainController {
 
     public void deleteFirst(ActionEvent actionEvent) {
         try {
-            String msg = client.communicateWithServer("remove_first", null).getMessage();
+            String msg = client.communicateWithServer("remove_first", null, null).getMessage();
             if (msg.length() > 0) {
                 context.getUserIO().printLine(msg);
             }
@@ -97,7 +102,7 @@ public class MainController {
 
     public void deleteAll(ActionEvent actionEvent) {
         try {
-            String msg = client.communicateWithServer("clear", null).getMessage();
+            String msg = client.communicateWithServer("clear", null, null).getMessage();
             if (msg.length() > 0) {
                 context.getUserIO().printLine(msg);
             }
@@ -109,7 +114,7 @@ public class MainController {
 
     public void sumOfDistance(ActionEvent actionEvent) {
         try {
-            context.getUserIO().printLine(client.communicateWithServer("sum_of_distance", null).getMessage());
+            context.getUserIO().printLine(client.communicateWithServer("sum_of_distance", null, null).getMessage());
             updateTable();
         } catch (IOException | ClassNotFoundException e) {
 
@@ -118,7 +123,7 @@ public class MainController {
 
     public void info(ActionEvent actionEvent) {
         try {
-            context.getUserIO().printLine(client.communicateWithServer("info", null).getMessage());
+            context.getUserIO().printLine(client.communicateWithServer("info", null, null).getMessage());
             updateTable();
         } catch (IOException | ClassNotFoundException e) {
 
@@ -132,12 +137,122 @@ public class MainController {
     private void updateTable() {
         ObservableList<Route> list;
         try {
-            list = FXCollections.observableList((List<Route>) client.communicateWithServer("show", null).getObj());
+            list = FXCollections.observableList((List<Route>) client.communicateWithServer("show", null, null).getObj());
             collectionTable.setItems(list);
             usernameLabel.setText(context.getAuthModule().getUser().getUsername());
             countLabel.setText(String.valueOf(list.size()));
         } catch (IOException | ClassNotFoundException e) {
             context.getUserIO().printErrorMessage(e.getMessage());
         }
+    }
+
+    public void add(ActionEvent actionEvent) {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../route.fxml"));
+        stage.setResizable(false);
+        stage.setTitle("Enter route");
+        try {
+            showAndWaitOnRouteStage(stage, loader, true);
+            if (stage.getUserData() != null) {
+                Route data = (Route) stage.getUserData();
+                client.communicateWithServer("add", null, data);
+                updateTable();
+            }
+        } catch (IOException | ClassNotFoundException | IllegalStateException e) {
+            context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    public void update(ActionEvent actionEvent) {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../route.fxml"));
+        stage.setResizable(false);
+        stage.setTitle("Enter route");
+        try {
+            showAndWaitOnRouteStage(stage, loader, false);
+            if (stage.getUserData() != null) {
+                Route data = (Route) stage.getUserData();
+                context.getUserIO().printLine(String.valueOf(data.getId()));
+                client.communicateWithServer("update " + data.getId(), null, data);
+                updateTable();
+            }
+        } catch (IOException | IllegalStateException | ClassNotFoundException e) {
+            context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    private void showAndWaitOnRouteStage(Stage stage, FXMLLoader loader, boolean disallowIdField) throws IOException {
+        Parent root = loader.load();
+        RouteController controller = loader.getController();
+        controller.initialize(client, context, stage, disallowIdField);
+        Scene scene = new Scene(root);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    public void deleteByID(ActionEvent actionEvent) {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
+        stage.setResizable(false);
+        stage.setTitle("Enter ID");
+        try {
+            showAndWaitOnArgStage(stage, loader);
+            if (stage.getUserData() != null) {
+                String data = (String) stage.getUserData();
+                client.communicateWithServer("remove_by_id " + data, null, null);
+                updateTable();
+            }
+        } catch (IOException | ClassNotFoundException | IllegalStateException e) {
+            context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    public void deleteByIndex(ActionEvent actionEvent) {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
+        stage.setResizable(false);
+        stage.setTitle("Enter index");
+        try {
+            showAndWaitOnArgStage(stage, loader);
+            if (stage.getUserData() != null) {
+                String data = (String) stage.getUserData();
+                client.communicateWithServer("remove_at " + data, null, null);
+                updateTable();
+            }
+        } catch (IOException | ClassNotFoundException | IllegalStateException e) {
+            context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    public void deleteAllByDistance(ActionEvent actionEvent) {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
+        stage.setResizable(false);
+        stage.setTitle("Enter distance");
+        try {
+            showAndWaitOnArgStage(stage, loader);
+            if (stage.getUserData() != null) {
+                String data = (String) stage.getUserData();
+                client.communicateWithServer("remove_all_by_distance " + data, null, null);
+                updateTable();
+            }
+        } catch (IOException | ClassNotFoundException | IllegalStateException e) {
+            context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    private void showAndWaitOnArgStage(Stage stage, FXMLLoader loader) throws IOException {
+        Parent root = loader.load();
+        ArgumentController controller = loader.getController();
+        controller.initialize(stage, context);
+        Scene scene = new Scene(root);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    public void filterByName(ActionEvent actionEvent) {
+
     }
 }
