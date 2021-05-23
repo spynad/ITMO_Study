@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import locale.ClientLocale;
 
 public class ArgumentController {
 
@@ -20,7 +21,13 @@ public class ArgumentController {
         Platform.runLater(() -> {
             this.stage = stage;
             this.context = context;
+            localize();
         });
+    }
+
+    private void localize() {
+        okButton.setText(ClientLocale.getString("UI_OK"));
+        cancelButton.setText(ClientLocale.getString("UI_CANCEL"));
     }
 
     public void ok(ActionEvent actionEvent) {
@@ -28,7 +35,7 @@ public class ArgumentController {
             stage.setUserData(argumentField.getText());
             stage.close();
         } else {
-            context.getUserIO().printErrorMessage("Invalid argument");
+            context.getUserIO().printErrorMessage(ClientLocale.getString("UI_ERROR_INVALID_ARGUMENT"));
         }
     }
 

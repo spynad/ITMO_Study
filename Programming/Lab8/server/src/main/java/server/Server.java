@@ -78,6 +78,7 @@ public class Server implements Runnable{
                         connectionListener.accept(key);
                     } else if (key.isReadable()) {
                         read(key);
+                        key.interestOps(0);
                     } else if (key.isWritable()) {
                         sendResponse(key);
                         key.interestOps(0);

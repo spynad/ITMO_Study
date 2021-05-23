@@ -63,12 +63,11 @@ public class Client {
         isRunning = b;
     }
 
-    public void openConnection() {
+    public void openConnection() throws IOException {
         try {
             connectionManager.openConnection(address, port);
         } catch (IOException e) {
-            userIO.printErrorMessage(ClientLocale.getString("client.server_unreachable"));
-            return;
+            throw new IOException(e.getMessage());
         }
     }
 

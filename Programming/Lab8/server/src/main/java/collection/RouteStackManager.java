@@ -139,10 +139,9 @@ public class RouteStackManager implements RouteCollectionManager {
     }
 
     synchronized public void filterContainsName(String name) {
-        RouteFormatter routeFormatter = new RouteFormatter();
-        routes.stream()
+        creator.setObject(routes.stream()
                 .filter(x -> x.getName().contains(name))
-                .forEach(x -> creator.addToMsg(routeFormatter.formatRoute(x)));
+                .collect(Collectors.toCollection(Stack::new)));
     }
 
 

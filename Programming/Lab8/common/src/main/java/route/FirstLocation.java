@@ -18,6 +18,7 @@ public class FirstLocation implements Serializable {
 
     @NotNull
     private Integer x; //Поле не может быть null
+
     private long y;
 
     @NotNull

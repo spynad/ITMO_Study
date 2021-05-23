@@ -1,7 +1,11 @@
 package route;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Formatter;
 import java.util.Locale;
 import java.util.Optional;
@@ -110,6 +114,11 @@ public final class Route implements Comparable<Route>, Serializable {
         return distance;
     }
 
+    public String getLocalizedDistance() {
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.getDefault());
+        return numberFormat.format(distance);
+    }
+
     public String getName() {
         return name;
     }
@@ -120,6 +129,11 @@ public final class Route implements Comparable<Route>, Serializable {
 
     public LocalDate getCreationDate() {
         return creationDate;
+    }
+
+    public String getLocalizedCreationDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Locale.getDefault());
+        return formatter.format(creationDate);
     }
 
     public SecondLocation getTo() {
@@ -144,6 +158,11 @@ public final class Route implements Comparable<Route>, Serializable {
 
     public Double getCoordinatesY() {
         return coordinates.getY();
+    }
+
+    public String getLocalizedCoordinatesY() {
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.getDefault());
+        return numberFormat.format(getCoordinatesY());
     }
 
     public String getFromX() {
@@ -179,14 +198,15 @@ public final class Route implements Comparable<Route>, Serializable {
         return to.getZ();
     }
 
+    public String getLocalizedToZ() {
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.getDefault());
+        return numberFormat.format(to.getZ());
+    }
 
-
-    
     @Override
     public int compareTo(Route o) {
         return getName().compareTo(o.getName());
     }
-
 
     @Override
     public String toString() {

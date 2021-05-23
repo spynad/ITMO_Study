@@ -9,10 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import locale.ClientLocale;
 
 import java.io.IOException;
 
@@ -21,6 +23,8 @@ public class AuthController {
     public Button loginButton;
     public Button registerButton;
     public PasswordField passwordField;
+    public Label usernameLabel;
+    public Label passwordLabel;
 
     private Client client;
     private Context context;
@@ -40,6 +44,8 @@ public class AuthController {
                 stage.setScene(scene);
                 stage.setTitle("Lab8 Application");
                 stage.setResizable(true);
+                stage.setMaxHeight(800);
+                stage.setMaxWidth(1500);
                 stage.show();
             }
         } catch (IOException e) {
@@ -72,6 +78,14 @@ public class AuthController {
             setContext(context);
             setClient(client);
             setCurrentStage(stage);
+            localize();
         });
+    }
+
+    public void localize() {
+        usernameLabel.setText(ClientLocale.getString("UI_AUTH_USERNAME"));
+        passwordLabel.setText(ClientLocale.getString("UI_AUTH_PASSWORD"));
+        loginButton.setText(ClientLocale.getString("UI_AUTH_AUTHORIZE"));
+        registerButton.setText(ClientLocale.getString("UI_AUTH_REGISTER"));
     }
 }

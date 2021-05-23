@@ -5,6 +5,7 @@ import exception.InvalidArgumentException;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Formatter;
 import java.util.Locale;
 
