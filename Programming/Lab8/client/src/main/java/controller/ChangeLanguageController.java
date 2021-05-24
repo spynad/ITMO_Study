@@ -48,7 +48,7 @@ public class ChangeLanguageController {
         }
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel() {
         stage.close();
     }
 }

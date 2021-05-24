@@ -17,6 +17,7 @@ import org.checkerframework.checker.units.qual.C;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Main extends Application {
     public static void main(String[] args)  {
@@ -32,6 +33,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Context context = new Context();
+        Locale.setDefault(new Locale("ru"));
         Parameters parameters = getParameters();
         List<String> args = parameters.getRaw();
         if (args.size() == 2) {

@@ -138,6 +138,7 @@ public class MainController {
     
     public void initialize(Client client, Context context, Stage stage) {
         Platform.runLater(() -> {
+            localize();
             this.context = context;
             this.currentStage = stage;
             this.client = client;

@@ -44,7 +44,6 @@ public class Client {
 
     public Client(String address, int port, Context context) {
         this.context = context;
-        Locale.setDefault(new Locale("en"));
         this.address = address;
         this.port = port;
         userIO = context.getUserIO();
