@@ -3,8 +3,6 @@ package client;
 import commands.CommandInvoker;
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
-import controller.SceneLoader;
-import io.ConsoleIO;
 import io.JavaFXIO;
 import io.UserIO;
 import request.RequestCreator;
@@ -23,7 +21,6 @@ public class Context {
     private RequestCreator requestCreator;
     private RequestSender requestSender;
     private ResponseReader responseReader;
-    private SceneLoader sceneLoader;
     private UserIO userIO;
     private ValidatorFactory validatiorFactory;
 

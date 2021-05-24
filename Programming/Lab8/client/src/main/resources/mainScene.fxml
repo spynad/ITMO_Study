@@ -83,7 +83,7 @@
                   <MenuItem fx:id="infoItem" mnemonicParsing="false" onAction="#info" text="Collection Info" />
                   <MenuItem fx:id="refreshItem" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="executeScriptItem" mnemonicParsing="false" text="Execute Script..." />
+                  <MenuItem fx:id="executeScriptItem" mnemonicParsing="false" onAction="#executeScript" text="Execute Script..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="historyItem" mnemonicParsing="false" onAction="#historyEventShow" text="History" />
                </items>

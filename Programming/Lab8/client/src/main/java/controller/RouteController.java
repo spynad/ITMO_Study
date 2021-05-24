@@ -4,7 +4,6 @@ import client.Client;
 import client.Context;
 import exception.RouteBuildException;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -13,7 +12,6 @@ import javafx.stage.Stage;
 import locale.ClientLocale;
 import route.*;
 
-import javax.validation.ValidatorFactory;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
@@ -111,7 +109,7 @@ public class RouteController {
     }
 
 
-    public void ok(ActionEvent actionEvent) {
+    public void ok() {
         RouteBuilder routeBuilder = new RouteBuilder(context.getValidationFactory());
         Route route;
         NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
@@ -144,12 +142,12 @@ public class RouteController {
 
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel() {
         stage.setUserData(null);
         stage.close();
     }
 
-    public void setFromNull(ActionEvent actionEvent) {
+    public void setFromNull() {
         if (isNullCheckBox.isSelected()) {
             fromXField.setText(null);
             fromYField.setText(null);

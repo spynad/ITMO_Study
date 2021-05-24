@@ -4,7 +4,7 @@ import client.Context;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -17,10 +17,14 @@ import java.util.stream.Collectors;
 
 public class FilterController {
 
-    public ChoiceBox<String> columnChoiceBox;
-    public Button cancelButton;
-    public Button okButton;
-    public TextField filterField;
+    @FXML
+    private ChoiceBox<String> columnChoiceBox;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button okButton;
+    @FXML
+    private TextField filterField;
 
     private final ObservableList<String> routeFields = FXCollections.observableArrayList("id", "name", "coordinates_x",
             "coordinates_y", "creationdate", "location1_x", "location1_y", "location1_name", "location2_x",
@@ -46,12 +50,12 @@ public class FilterController {
         cancelButton.setText(ClientLocale.getString("UI_CANCEL"));
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel() {
         stage.setUserData(null);
         stage.close();
     }
 
-    public void ok(ActionEvent actionEvent) {
+    public void ok() {
         try {
             switch (columnChoiceBox.getValue()) {
                 case "name":

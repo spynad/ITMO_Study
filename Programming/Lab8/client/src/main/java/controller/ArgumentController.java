@@ -2,7 +2,7 @@ package controller;
 
 import client.Context;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -10,9 +10,9 @@ import locale.ClientLocale;
 
 public class ArgumentController {
 
-    public TextField argumentField;
-    public Button cancelButton;
-    public Button okButton;
+    @FXML private TextField argumentField;
+    @FXML private Button cancelButton;
+    @FXML private Button okButton;
 
     private Stage stage;
     private Context context;
@@ -30,7 +30,7 @@ public class ArgumentController {
         cancelButton.setText(ClientLocale.getString("UI_CANCEL"));
     }
 
-    public void ok(ActionEvent actionEvent) {
+    public void ok() {
         if (argumentField.getText().length() > 0) {
             stage.setUserData(argumentField.getText());
             stage.close();
@@ -39,7 +39,7 @@ public class ArgumentController {
         }
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel() {
         stage.setUserData(null);
         stage.close();
     }

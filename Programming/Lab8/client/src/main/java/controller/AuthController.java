@@ -3,7 +3,6 @@ package controller;
 import client.Client;
 import client.Context;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,18 +18,24 @@ import locale.ClientLocale;
 import java.io.IOException;
 
 public class AuthController {
-    public TextField usernameField;
-    public Button loginButton;
-    public Button registerButton;
-    public PasswordField passwordField;
-    public Label usernameLabel;
-    public Label passwordLabel;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button registerButton;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
 
     private Client client;
     private Context context;
     private Stage currentStage;
 
-    public void login(ActionEvent actionEvent) {
+    public void login() {
         try {
             if (context.getAuthModule().authorize(usernameField.getText(), passwordField.getText())) {
                 currentStage.hide();
@@ -53,7 +58,7 @@ public class AuthController {
         }
     }
 
-    public void register(ActionEvent actionEvent) {
+    public void register() {
         try {
             context.getAuthModule().register(usernameField.getText(), passwordField.getText());
         } catch (IOException e) {

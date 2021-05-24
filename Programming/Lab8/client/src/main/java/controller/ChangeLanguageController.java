@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
@@ -14,9 +15,12 @@ import java.util.Locale;
 import java.util.Set;
 
 public class ChangeLanguageController {
-    public ChoiceBox<String> languageChoiceBox;
-    public Button cancelButton;
-    public Button okButton;
+    @FXML
+    private ChoiceBox<String> languageChoiceBox;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button okButton;
 
     private Stage stage;
     private Context context;
@@ -34,7 +38,7 @@ public class ChangeLanguageController {
         });
     }
 
-    public void ok(ActionEvent actionEvent) {
+    public void ok() {
         for (Locale locale : resourceBundles) {
             if (locale.getLanguage().equals(languageChoiceBox.getValue())) {
                 Locale.setDefault(locale);

@@ -2,6 +2,8 @@ package controller;
 
 import client.Client;
 import client.Context;
+import exception.CommandExecutionException;
+import exception.CommandNotFoundException;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -11,7 +13,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,73 +24,116 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import locale.ClientLocale;
 import route.Route;
-import route.RouteFormatter;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
 //FIXME REFACTOR! god controller, mvc is broken here
-// - pls do not use this code in your own lab works it's soo bad
+// - pls do not use this code in your own lab works, it's soo bad
 public class MainController {
-    public Canvas visualizationCanvas;
-    public AnchorPane visualizationAnchorPane;
     private Context context;
     private Stage currentStage;
     private Client client;
 
-    public Menu labMenu;
-    public MenuItem settingsMenuItem;
-    public Menu commandsMenu;
-    public Menu deleteMenu;
-    public MenuItem filterItem;
-    public Menu helpMenu;
-    public MenuItem aboutMenuItem;
-    public Tab tableTab;
-    public Tab visualizationTab;
-    public MenuItem quitItem;
-    public MenuItem addItem;
-    public MenuItem updateItem;
-    public MenuItem deleteByIdItem;
-    public MenuItem deleteByIndexItem;
-    public MenuItem deleteFirstItem;
-    public MenuItem deleteAllByDistanceItem;
-    public MenuItem deleteAllItem;
-    public Label usernameLabel;
-    public Label countLabel;
-    public MenuItem sumOfDistanceItem;
-    public MenuItem filterByNameItem;
-    public MenuItem infoItem;
-    public MenuItem refreshItem;
-    public MenuItem executeScriptItem;
-    public MenuItem historyItem;
-    public MenuItem commandsHelpItem;
-    public TableView<Route> collectionTable;
-    public TableColumn<Route, Integer> idColumn;
-    public TableColumn<Route, String> nameColumn;
-    public TableColumn<Route, Long> coordinatesXColumn;
-    public TableColumn<Route, Double> coordinatesYColumn;
-    public TableColumn<Route, LocalDate> creationdateColumn;
-    public TableColumn<Route, String> location1XColumn;
-    public TableColumn<Route, String> location1YColumn;
-    public TableColumn<Route, String> location1NameColumn;
-    public TableColumn<Route, Integer> location2XColumn;
-    public TableColumn<Route, Long> location2YColumn;
-    public TableColumn<Route, Double> location2ZColumn;
-    public TableColumn<Route, Double> usernameColumn;
-    public TableColumn<Route, Double> distanceColumn;
+    @FXML
+    private Canvas visualizationCanvas;
+    @FXML
+    private AnchorPane visualizationAnchorPane;
+    @FXML
+    private Menu labMenu;
+    @FXML
+    private MenuItem settingsMenuItem;
+    @FXML
+    private Menu commandsMenu;
+    @FXML
+    private Menu deleteMenu;
+    @FXML
+    private MenuItem filterItem;
+    @FXML
+    private Menu helpMenu;
+    @FXML
+    private MenuItem aboutMenuItem;
+    @FXML
+    private Tab tableTab;
+    @FXML
+    private Tab visualizationTab;
+    @FXML
+    private MenuItem quitItem;
+    @FXML
+    private MenuItem addItem;
+    @FXML
+    private MenuItem updateItem;
+    @FXML
+    private MenuItem deleteByIdItem;
+    @FXML
+    private MenuItem deleteByIndexItem;
+    @FXML
+    private MenuItem deleteFirstItem;
+    @FXML
+    private MenuItem deleteAllByDistanceItem;
+    @FXML
+    private MenuItem deleteAllItem;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label countLabel;
+    @FXML
+    private MenuItem sumOfDistanceItem;
+    @FXML
+    private MenuItem filterByNameItem;
+    @FXML
+    private MenuItem infoItem;
+    @FXML
+    private MenuItem refreshItem;
+    @FXML
+    private MenuItem executeScriptItem;
+    @FXML
+    private MenuItem historyItem;
+    @FXML
+    private MenuItem commandsHelpItem;
+    @FXML
+    private TableView<Route> collectionTable;
+    @FXML
+    private TableColumn<Route, Integer> idColumn;
+    @FXML
+    private TableColumn<Route, String> nameColumn;
+    @FXML
+    private TableColumn<Route, Long> coordinatesXColumn;
+    @FXML
+    private TableColumn<Route, Double> coordinatesYColumn;
+    @FXML
+    private TableColumn<Route, LocalDate> creationdateColumn;
+    @FXML
+    private TableColumn<Route, String> location1XColumn;
+    @FXML
+    private TableColumn<Route, String> location1YColumn;
+    @FXML
+    private TableColumn<Route, String> location1NameColumn;
+    @FXML
+    private TableColumn<Route, Integer> location2XColumn;
+    @FXML
+    private TableColumn<Route, Long> location2YColumn;
+    @FXML
+    private TableColumn<Route, Double> location2ZColumn;
+    @FXML
+    private TableColumn<Route, Double> usernameColumn;
+    @FXML
+    private TableColumn<Route, Double> distanceColumn;
 
     private ObservableList<Route> routeList;
-    private RouteFormatter routeFormatter = new RouteFormatter();
-    private Map<String, Color> usersColorMap = new HashMap<>();
-    private Set<String> users = new HashSet<>();
+    private final Map<String, Color> usersColorMap = new HashMap<>();
+    private final Set<String> users = new HashSet<>();
     private boolean filterEnabled = false;
+    private final FileChooser fileChooser = new FileChooser();
     
     
     public void initialize(Client client, Context context, Stage stage) {
@@ -133,14 +178,10 @@ public class MainController {
                             System.err.println("no connection");
                         }
                     }
-                } catch (ClassNotFoundException | InterruptedException e) {
-
-                }
+                } catch (ClassNotFoundException | InterruptedException ignored) {}
             });
             updateThread.start();
-            stage.setOnHidden(event -> {
-                updateThread.interrupt();
-            });
+            stage.setOnHidden(event -> updateThread.interrupt());
         });
     }
 
@@ -173,53 +214,47 @@ public class MainController {
         visualizationTab.setText(ClientLocale.getString("UI_MAIN_VISUALIZATION"));
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit() {
         currentStage.close();
     }
 
-    public void deleteFirst(ActionEvent actionEvent) {
+    public void deleteFirst() {
         try {
             String msg = client.communicateWithServer("remove_first", null, null).getMessage();
-            if (msg.length() > 0) {
-                context.getUserIO().printLine(msg);
-            }
             updateTable(null);
         } catch (IOException | ClassNotFoundException e) {
             context.getUserIO().printErrorMessage(e.getMessage());
         }
     }
 
-    public void deleteAll(ActionEvent actionEvent) {
+    public void deleteAll() {
         try {
             String msg = client.communicateWithServer("clear", null, null).getMessage();
-            if (msg.length() > 0) {
-                context.getUserIO().printLine(msg);
-            }
             updateTable(null);
         } catch (IOException | ClassNotFoundException e) {
             context.getUserIO().printErrorMessage(e.getMessage());
         }
     }
 
-    public void sumOfDistance(ActionEvent actionEvent) {
+    public void sumOfDistance() {
         try {
             context.getUserIO().printLine(client.communicateWithServer("sum_of_distance", null, null).getMessage());
             updateTable(null);
         } catch (IOException | ClassNotFoundException e) {
-
+            context.getUserIO().printErrorMessage(e.getMessage());
         }
     }
 
-    public void info(ActionEvent actionEvent) {
+    public void info() {
         try {
             context.getUserIO().printLine(client.communicateWithServer("info", null, null).getMessage());
             updateTable(null);
         } catch (IOException | ClassNotFoundException e) {
-
+            context.getUserIO().printErrorMessage(e.getMessage());
         }
     }
 
-    public void refresh(ActionEvent actionEvent) {
+    public void refresh() {
         filterEnabled = false;
         updateTable(null);
     }
@@ -266,7 +301,7 @@ public class MainController {
         });
     }
 
-    public void add(ActionEvent actionEvent) {
+    public void add() {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../route.fxml"));
         stage.setResizable(false);
@@ -283,7 +318,7 @@ public class MainController {
         }
     }
 
-    public void updateEvent(ActionEvent actionEvent) {
+    public void updateEvent() {
         update(null);
     }
 
@@ -296,7 +331,6 @@ public class MainController {
             showAndWaitOnRouteStage(stage, loader, false, route);
             if (stage.getUserData() != null) {
                 Route data = (Route) stage.getUserData();
-                context.getUserIO().printLine(String.valueOf(data.getId()));
                 client.communicateWithServer("update " + data.getId(), null, data);
                 updateTable(null);
             }
@@ -315,7 +349,7 @@ public class MainController {
         stage.showAndWait();
     }
 
-    public void deleteByID(ActionEvent actionEvent) {
+    public void deleteByID() {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
         stage.setResizable(false);
@@ -332,7 +366,7 @@ public class MainController {
         }
     }
 
-    public void deleteByIndex(ActionEvent actionEvent) {
+    public void deleteByIndex() {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
         stage.setResizable(false);
@@ -349,7 +383,7 @@ public class MainController {
         }
     }
 
-    public void deleteAllByDistance(ActionEvent actionEvent) {
+    public void deleteAllByDistance() {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
         stage.setResizable(false);
@@ -386,7 +420,7 @@ public class MainController {
         stage.showAndWait();
     }
 
-    public void filterByName(ActionEvent actionEvent) {
+    public void filterByName() {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../argument.fxml"));
         stage.setResizable(false);
@@ -404,7 +438,7 @@ public class MainController {
         }
     }
 
-    public void historyEventShow(ActionEvent actionEvent) {
+    public void historyEventShow() {
         try {
             String msg = client.communicateWithServer("history", null, null).getMessage();
             context.getUserIO().printLine(msg);
@@ -413,7 +447,7 @@ public class MainController {
         }
     }
 
-    public void filterElements(ActionEvent actionEvent) throws IOException {
+    public void filterElements() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../filter.fxml"));
         stage.setResizable(false);
@@ -426,7 +460,7 @@ public class MainController {
         }
     }
 
-    public void openSettings(ActionEvent actionEvent) throws IOException {
+    public void openSettings() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../changeLanguage.fxml"));
         stage.setResizable(false);
@@ -486,9 +520,7 @@ public class MainController {
                     };
                     timer.start();
                     timeline.play();
-                    timeline.setOnFinished(event -> {
-                        timer.stop();
-                    });
+                    timeline.setOnFinished(event -> timer.stop());
                 } else {
                     gc.setFill(usersColorMap.get(route.getUsername()));
                     gc.fillRect(Math.max(0, Math.min(visualizationCanvas.getWidth(), route.getCoordinatesX())),
@@ -498,11 +530,20 @@ public class MainController {
         });
     }
 
-    public void showHelp(ActionEvent actionEvent) {
+    public void showHelp() {
         try {
             context.getUserIO().printLine(client.communicateWithServer("help", null, null).getMessage());
         } catch (IOException | ClassNotFoundException e) {
             context.getUserIO().printErrorMessage(e.getMessage());
+        }
+    }
+
+    public void executeScript() {
+        File file = fileChooser.showOpenDialog(currentStage);
+        if (file != null) {
+            try {
+                context.getCommandInvoker().execute("execute_script " + "\""+file.getAbsolutePath()+"\"", null);
+            } catch (CommandNotFoundException | CommandExecutionException ignored) {}
         }
     }
 }

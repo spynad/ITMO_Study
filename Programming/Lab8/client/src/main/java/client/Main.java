@@ -51,7 +51,6 @@ public class Main extends Application {
             controller.initialize(client, context, primaryStage);
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.setTitle(ClientLocale.getString("UI_AUTH_TITLE"));
             primaryStage.setResizable(false);
             primaryStage.show();

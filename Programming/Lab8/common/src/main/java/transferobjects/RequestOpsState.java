@@ -1,9 +1,8 @@
 package transferobjects;
 
-import java.io.Serializable;
 import java.nio.channels.SocketChannel;
 
-public class RequestOpsState implements Serializable {
+public class RequestOpsState {
     public static final int REGISTER = 1;
     public static final int CHANGEOPS = 2;
     public static final int DEREGISTER = 3;

@@ -9,6 +9,8 @@ import log.Log;
 import route.Route;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Класс, выбирающий и вызывающий команду для исполнения
@@ -19,6 +21,7 @@ public class CommandInvoker {
     private final Map<String, Command> commands = new HashMap<>();
     private final Map<String, ServerCommand> serverCommands = new HashMap<>();
     private final CommandHistory commandHistory;
+    private final Pattern argPattern = Pattern.compile("[^\\s\"']+|\"([^\"]*)\"|'([^']*)'");
 
 
     public CommandInvoker(CommandHistory commandHistory) {
@@ -47,12 +50,23 @@ public class CommandInvoker {
             throw new CommandNotFoundException(ServerBundle.getString("exception.eof"));
         }
         Command command;
-        String[] split = inputString.trim().split("\\s+");
-        String[] args = Arrays.copyOfRange(split, 1, split.length);
+        List<String> matchList = new ArrayList<>();
+        Matcher regexMatcher = argPattern.matcher(inputString.trim());
+        while (regexMatcher.find()) {
+            if (regexMatcher.group(1) != null) {
+                matchList.add(regexMatcher.group(1));
+            } else if (regexMatcher.group(2) != null) {
+                matchList.add(regexMatcher.group(2));
+            } else {
+                matchList.add(regexMatcher.group());
+            }
+        }
+        //String[] split = inputString.trim().split("\\s+");
+        String[] args = matchList.toArray(new String[0]);
 
-        if(commands.containsKey(split[0].toLowerCase(Locale.ROOT))) {
-            command = commands.get(split[0].toLowerCase(Locale.ROOT));
-            command.setArgs(args);
+        if(commands.containsKey(args[0].toLowerCase(Locale.ROOT))) {
+            command = commands.get(args[0].toLowerCase(Locale.ROOT));
+            command.setArgs(Arrays.copyOfRange(args, 1, args.length));
             commandHistory.pushHistory(inputString);
 
             if(route == null) {
@@ -62,10 +76,10 @@ public class CommandInvoker {
                 routeCommand.execute(route);
             }
         } else {
-            if (split[0].equals("")) {
+            if (args[0].equals("")) {
                 throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found"));
             } else {
-                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + split[0]);
+                throw new CommandNotFoundException(ServerBundle.getString("exception.command_not_found") + args[0]);
             }
         }
     }
