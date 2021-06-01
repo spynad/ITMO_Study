@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="261a956e-6ea3-4b4f-82ca-15f26c3e0e7a" name="Default Changelist" comment="programming: lab8 ver0.2">
+      <change beforePath="$PROJECT_DIR$/../../OPD/lab5/Lab4.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/6.7/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/client/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/client/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/common/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/common/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab6/server/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab6/server/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/common/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/common/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/common/src/main/java/transferobjects/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/common/src/main/java/transferobjects/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/server/src/main/java/collection/RouteStackManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/server/src/main/java/collection/RouteStackManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/server/src/main/java/request/RequestReaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/server/src/main/java/request/RequestReaderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/server/src/main/java/response/Creator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/server/src/main/java/response/Creator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab7/server/src/main/java/response/ResponseCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab7/server/src/main/java/response/ResponseCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/mainScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/mainScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script" beforeDir="false" afterPath="$PROJECT_DIR$/script" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/server">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/client">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Lab8" type="f1a62948:ProjectNode" />
+                <item name="server" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Danila Lysenko &lt;danyps1@yandex.ru&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/server/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/server/Application.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/client/Client.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/client/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/resources/auth.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/client/Context.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/UserDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/client/AuthModule.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/DAOFactory.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresUserDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresRouteDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/data/PostgresDAOFactory.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/commands/RegisterCommand.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/commands/AuthCommand.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/server/src/main/java/exception/PersistentException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/client/src/main/java/controller/AuthController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1rAcDBMRROTRbHKUebFMswsMLst" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.28619248" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OneDrive - ITMO UNIVERSITY\ITMO_Study\Programming\Lab8\client\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client 2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="Lab8.client.main" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 60000" />
+      <option name="VM_PARAMETERS" value="--module-path D:\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="Lab8.client.main" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 60000" />
+      <option name="VM_PARAMETERS" value="--module-path D:\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="server.Main" />
+      <module name="Lab8.server.main" />
+      <option name="PROGRAM_PARAMETERS" value="localhost 60000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lab7:client [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Lab7:server [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Lab8 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client 2" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Gradle.Lab7:client [jar]" />
+      <item itemvalue="Gradle.Lab7:server [jar]" />
+      <item itemvalue="Gradle.Lab8 [build]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Gradle.Lab7:server [jar]" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Gradle.Lab8 [build]" />
+        <item itemvalue="Gradle.Lab7:client [jar]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="261a956e-6ea3-4b4f-82ca-15f26c3e0e7a" name="Default Changelist" comment="" />
+      <created>1618422217430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618422217430</updated>
+      <workItem from="1618422222845" duration="12189000" />
+      <workItem from="1618483698990" duration="1245000" />
+      <workItem from="1618675858918" duration="1176000" />
+      <workItem from="1618682746911" duration="2628000" />
+      <workItem from="1618757065119" duration="740000" />
+      <workItem from="1618848471247" duration="10337000" />
+      <workItem from="1618909447525" duration="2540000" />
+      <workItem from="1618912194080" duration="1056000" />
+      <workItem from="1618913725635" duration="5558000" />
+      <workItem from="1618922909909" duration="8096000" />
+      <workItem from="1618945344793" duration="198000" />
+      <workItem from="1618945636607" duration="18000" />
+      <workItem from="1618947517217" duration="2173000" />
+      <workItem from="1618950998330" duration="7322000" />
+      <workItem from="1619015901128" duration="8056000" />
+      <workItem from="1619036668390" duration="420000" />
+      <workItem from="1619037177015" duration="2080000" />
+      <workItem from="1619075316300" duration="6626000" />
+      <workItem from="1619102442597" duration="106000" />
+      <workItem from="1619102626916" duration="11327000" />
+      <workItem from="1619161181284" duration="748000" />
+      <workItem from="1619170971451" duration="4951000" />
+      <workItem from="1619182656756" duration="628000" />
+      <workItem from="1619200612113" duration="1483000" />
+      <workItem from="1619289694908" duration="3243000" />
+      <workItem from="1619341507401" duration="17000" />
+      <workItem from="1619367837498" duration="3119000" />
+      <workItem from="1619421872786" duration="3963000" />
+      <workItem from="1619447960820" duration="82000" />
+      <workItem from="1619448052345" duration="472000" />
+      <workItem from="1619448533242" duration="1378000" />
+      <workItem from="1619453833014" duration="2908000" />
+      <workItem from="1619508668498" duration="7899000" />
+      <workItem from="1619766082125" duration="261000" />
+      <workItem from="1620199306640" duration="388000" />
+      <workItem from="1620305301149" duration="455000" />
+      <workItem from="1620306499170" duration="2542000" />
+      <workItem from="1620322729410" duration="464000" />
+      <workItem from="1620323409257" duration="84000" />
+      <workItem from="1620323553228" duration="1287000" />
+      <workItem from="1620324874039" duration="2560000" />
+      <workItem from="1620405871831" duration="2915000" />
+      <workItem from="1620470469918" duration="21543000" />
+      <workItem from="1620502124713" duration="10000" />
+      <workItem from="1620502210133" duration="1022000" />
+      <workItem from="1620503334195" duration="75000" />
+      <workItem from="1620548526642" duration="6395000" />
+      <workItem from="1620575819388" duration="18876000" />
+      <workItem from="1620633220764" duration="5758000" />
+      <workItem from="1620649475295" duration="8061000" />
+      <workItem from="1620936557452" duration="3822000" />
+      <workItem from="1620941975857" duration="946000" />
+      <workItem from="1620986051870" duration="599000" />
+      <workItem from="1621171249181" duration="1476000" />
+      <workItem from="1621525408413" duration="1484000" />
+      <workItem from="1621593399724" duration="19935000" />
+      <workItem from="1621628090545" duration="1931000" />
+      <workItem from="1621680920924" duration="5284000" />
+      <workItem from="1621697810569" duration="5931000" />
+      <workItem from="1621793039580" duration="3433000" />
+      <workItem from="1621796576342" duration="73000" />
+      <workItem from="1621844587394" duration="879000" />
+      <workItem from="1621845777277" duration="2901000" />
+    </task>
+    <task id="LOCAL-00001" summary="programming: added .gitignore for lab7">
+      <created>1618946042198</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946042198</updated>
+    </task>
+    <task id="LOCAL-00002" summary="programming: lab7 ver0.1">
+      <created>1618946196473</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946196473</updated>
+    </task>
+    <task id="LOCAL-00003" summary="programming: tried to delete a junk from lab7 src">
+      <created>1618946449338</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618946449338</updated>
+    </task>
+    <task id="LOCAL-00004" summary="programming: lab7 ver0.2">
+      <created>1619035987552</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619035987552</updated>
+    </task>
+    <task id="LOCAL-00005" summary="programming: lab7 ver0.3">
+      <created>1619209868874</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619209868874</updated>
+    </task>
+    <task id="LOCAL-00006" summary="programming: lab7 ver1.0">
+      <created>1619455510022</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619455510022</updated>
+    </task>
+    <task id="LOCAL-00007" summary="programming: lab7 ver1.1">
+      <created>1619512156219</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1619512156219</updated>
+    </task>
+    <task id="LOCAL-00008" summary="programming: base for lab8">
+      <created>1620502584485</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620502584486</updated>
+    </task>
+    <task id="LOCAL-00009" summary="programming: lab8 ver0.2">
+      <created>1620658447202</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1620658447202</updated>
+    </task>
+    <task id="LOCAL-00010" summary="programming: lab8 ver1.0">
+      <created>1621796638682</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621796638682</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="programming: added .gitignore for lab7" />
+    <MESSAGE value="programming: lab7 ver0.1" />
+    <MESSAGE value="programming: tried to delete a junk from lab7 src" />
+    <MESSAGE value="programming: lab7 ver0.2" />
+    <MESSAGE value="programming: lab7 ver0.3" />
+    <MESSAGE value="programming: lab7 ver1.0" />
+    <MESSAGE value="programming: lab7 ver1.1" />
+    <MESSAGE value="programming: base for lab8" />
+    <MESSAGE value="programming: lab8 ver0.1" />
+    <MESSAGE value="programming: lab8 ver0.2" />
+    <MESSAGE value="programming: lab8 ver1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="programming: lab8 ver1.0" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/server/src/main/java/connection/ConnectionListener.java</url>
+          <line>6</line>
+          <properties class="connection.ConnectionListener" method="openConnection">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/response/ResponseSenderImpl.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/server/Server.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/controller/FilterController.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/client/src/main/java/controller/MainController.java</url>
+          <line>517</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lab7$Server.ic" NAME="Server Coverage Results" MODIFIED="1618424129656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.*</FILTER>
+    </SUITE>
+  </component>
+</project>

@@ -18,8 +18,8 @@ route/RouteBuilder.java
  route.RouteBuilder
 transferobjects/RequestType.java
  transferobjects.RequestType
-transferobjects/Response.java
- transferobjects.Response
+commands/AbstractCommand.java
+ commands.AbstractCommand
 exception/CommandNotFoundException.java
  exception.CommandNotFoundException
 route/Builder.java
@@ -48,5 +48,5 @@ route/FirstLocation.java
  route.FirstLocation
 route/SecondLocation.java
  route.SecondLocation
-commands/AbstractCommand.java
- commands.AbstractCommand
+transferobjects/Response.java
+ transferobjects.Response

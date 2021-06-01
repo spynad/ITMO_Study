@@ -23,6 +23,7 @@ public class RequestReaderImpl implements RequestReader{
         try {
             while (numRead > 0) {
                 numRead = socketChannel.read(buffer);
+                System.out.println(numRead);
             }
         } catch (IOException e) {
             selectionKey.cancel();

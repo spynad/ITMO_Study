@@ -9,6 +9,7 @@ public class Response implements Serializable {
     private String message;
     private boolean success;
     private boolean routeRequired;
+    private Object obj;
     private transient SocketChannel socketChannel;
 
     public Response(String message, boolean b, boolean b2) {
@@ -29,6 +30,10 @@ public class Response implements Serializable {
 
     public SocketChannel getSocketChannel() {
         return socketChannel;
+    }
+
+    public Object getObj() {
+        return obj;
     }
 
     public boolean isSuccess() {
@@ -53,5 +58,9 @@ public class Response implements Serializable {
 
     public void setSocketChannel(SocketChannel socketChannel) {
         this.socketChannel = socketChannel;
+    }
+
+    public void setObj(Object obj) {
+        this.obj = obj;
     }
 }

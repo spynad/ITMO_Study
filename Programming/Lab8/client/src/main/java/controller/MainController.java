@@ -37,8 +37,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-//FIXME REFACTOR! god controller, mvc is broken here
-// - pls do not use this code in your own lab works, it's soo bad
+//FIXME REFACTOR! god controller, model is missing (applied to every single controller class)
 public class MainController {
     private Context context;
     private Stage currentStage;
@@ -169,7 +168,11 @@ public class MainController {
                 try {
                     while(true) {
                         try {
-                            routeList = FXCollections.observableList((List<Route>) client.communicateWithServer("show", null, null).getObj());
+                            List<Route> routes = (List<Route>) client.communicateWithServer("show", null, null).getObj();
+                            if (routes == null) {
+                                continue;
+                            }
+                            routeList = FXCollections.observableList(routes);
                             updateTable(routeList);
                             if (visualizationTab.isSelected()) {
                                 drawVisualization(false);
@@ -177,6 +180,8 @@ public class MainController {
                             Thread.sleep(2000);
                         } catch (IOException e) {
                             System.err.println("no connection");
+                        } catch (NullPointerException e) {
+                            Thread.sleep(2000);
                         }
                     }
                 } catch (ClassNotFoundException | InterruptedException ignored) {}
@@ -264,13 +269,14 @@ public class MainController {
         try {
             if (filteredList == null) {
                 List<Route> routes = (List<Route>) client.communicateWithServer("show", null, null).getObj();
-
                 routeList = FXCollections.observableList(routes);
             } else {
                 routeList = FXCollections.observableList(filteredList);
             }
         } catch (IOException | ClassNotFoundException e) {
             context.getUserIO().printErrorMessage(e.getMessage());
+        } catch (NullPointerException e) {
+
         }
         Platform.runLater(() -> {
             for (Route route : collectionTable.getItems()) {
@@ -502,6 +508,8 @@ public class MainController {
                     if (route.getUsername().equals(context.getAuthModule().getUser().getUsername())) {
                         update(route);
                         drawVisualization(false);
+                    } else {
+                        context.getUserIO().printErrorMessage(ClientLocale.getString("UI_ERROR_ATTEMPT_TO_UPDATE_NOT_BELONG_TO_USER"));
                     }
                 });
                 visualizationAnchorPane.getChildren().add(button);

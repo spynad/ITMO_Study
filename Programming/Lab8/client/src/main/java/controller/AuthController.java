@@ -3,21 +3,24 @@ package controller;
 import client.Client;
 import client.Context;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import locale.ClientLocale;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.Set;
 
 public class AuthController {
+    @FXML
+    private ChoiceBox<String> languageBox;
     @FXML
     private TextField usernameField;
     @FXML
@@ -34,10 +37,26 @@ public class AuthController {
     private Client client;
     private Context context;
     private Stage currentStage;
+    private Set<Locale> resourceBundles;
+
+    public void initialize() {
+        ObservableList<String> availableLanguages = FXCollections.observableArrayList();
+        resourceBundles = ClientLocale.getResourceBundles();
+        for (Locale rb : resourceBundles) {
+            availableLanguages.add(rb.getLanguage());
+        }
+        languageBox.setItems(availableLanguages);
+    }
 
     public void login() {
         try {
             if (context.getAuthModule().authorize(usernameField.getText(), passwordField.getText())) {
+                for (Locale locale : resourceBundles) {
+                    if (locale.getLanguage().equals(languageBox.getValue())) {
+                        Locale.setDefault(locale);
+                        break;
+                    }
+                }
                 currentStage.hide();
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../mainScene.fxml"));

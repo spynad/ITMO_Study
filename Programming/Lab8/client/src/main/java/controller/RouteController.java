@@ -133,7 +133,6 @@ public class RouteController {
                 routeBuilder = routeBuilder.setId(Integer.parseInt(idField.getText()));
                 route = routeBuilder.buildWithId();
             }
-            context.getUserIO().printLine(idField.getText());
             stage.setUserData(route);
             stage.close();
         } catch (RouteBuildException | NumberFormatException | ParseException e) {

@@ -4,8 +4,8 @@ request/RequestSenderImpl.java
  request.RequestSenderImpl
 commands/ClientHelpCommand.java
  commands.ClientHelpCommand
-response/ResponseReaderImpl.java
- response.ResponseReaderImpl
+locale/ClientLocale.java
+ locale.ClientLocale
 io/ScriptRouteParser.java
  io.ScriptRouteParser
 commands/CommandInvoker.java
@@ -20,8 +20,8 @@ request/RequestSender.java
  request.RequestSender
 connection/ConnectionManager.java
  connection.ConnectionManager
-locale/ClientLocale.java
- locale.ClientLocale
+response/ResponseReaderImpl.java
+ response.ResponseReaderImpl
 response/ResponseReader.java
  response.ResponseReader
 commands/ExitCommand.java

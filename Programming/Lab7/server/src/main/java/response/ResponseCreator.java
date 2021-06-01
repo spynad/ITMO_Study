@@ -19,4 +19,8 @@ public class ResponseCreator implements Creator{
         String initial = response.getMessage();
         response.setMessage(initial + msg + '\n');
     }
+
+    public void setObject(Object o) {
+        response.setObj(o);
+    }
 }

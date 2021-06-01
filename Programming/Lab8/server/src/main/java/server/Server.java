@@ -130,10 +130,13 @@ public class Server implements Runnable{
     private void prepareToSend(Response response) {
         synchronized (changeRequests) {
             changeRequests.add(new RequestOpsState(response.getSocketChannel(), RequestOpsState.CHANGEOPS, OP_WRITE));
-            synchronized (responseMap) {
+            //synchronized (responseMap) {
                 responseMap.put(response.getSocketChannel(), response);
-            }
+            //}
         }
+        /*synchronized (responseMap) {
+            responseMap.put(response.getSocketChannel(), response);
+        }*/
         this.selector.wakeup();
     }
 
